@@ -1,12 +1,10 @@
 package View;
 
 import Controller.States.State;
-import oracle.jrockit.jfr.JFR;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
-import java.nio.file.FileSystemNotFoundException;
 
 /**
  * Created by jlkegley on 1/31/2016.
