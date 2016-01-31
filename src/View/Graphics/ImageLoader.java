@@ -5,5 +5,8 @@ package View.Graphics;
  */
 public class ImageLoader {
 
-    
+    public ImageLoader() {
+        System.out.println("LOL");
+    }
+
 }
