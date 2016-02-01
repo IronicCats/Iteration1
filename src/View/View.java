@@ -1,6 +1,7 @@
 package View;
 
 import Controller.States.State;
+import View.Graphics.Assets;
 
 import javax.swing.*;
 import java.awt.*;
@@ -44,6 +45,8 @@ public class View extends JFrame implements Runnable {
 
         add(canvas);
         pack();
+
+        Assets.init();
 
     }
 

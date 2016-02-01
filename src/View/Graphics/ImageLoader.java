@@ -8,15 +8,15 @@ import java.io.IOException;
  */
 public class ImageLoader {
 
-        public static BufferedImage loadImage(String path){
-
-
+        public BufferedImage loadImage(String path){
+            System.out.println(path);
             try {
-                return ImageIO.read(ImageLoader.class.getResource(path));
+                return ImageIO.read(getClass().getResourceAsStream(path));
             } catch(IOException e) {
                 e.printStackTrace();
                 System.exit(1);
             }
+            System.out.println("Failed");
             return null;
         }
     }

@@ -8,6 +8,6 @@ public class Stats {
     private DerivedStats derivedStats;
 
     Stats(StatStructure ss) {
-        primaryStats = ss.
+        //primaryStats = s
     } // end constructor
 } // end class Stats
