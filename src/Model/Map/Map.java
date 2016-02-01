@@ -3,7 +3,9 @@ package Model.Map;
 
 import Model.Location;
 import Model.Map.Tiles.Grass;
+import Model.Map.Tiles.Mountain;
 import Model.Map.Tiles.Tile;
+import Model.Map.Tiles.Water;
 
 import java.awt.*;
 import java.io.BufferedReader;
@@ -49,6 +51,12 @@ public class Map {
                 switch(parseInt(tokens[(x + y * width) + 4])) {
                     case 0:
                         tile = new Grass(new Location(x, y, 0));
+                        break;
+                    case 1:
+                        tile = new Mountain(new Location(x, y, 0));
+                        break;
+                    case 2:
+                        tile = new Water(new Location(x, y, 0));
                         break;
                     default:
                         tile = new Grass(new Location(x, y, 0));
