@@ -13,7 +13,7 @@ public class Main {
     public static void main(String args[]) {
         System.out.println("Hello World");
 
-        InputManager inputManager = new InputManager();
+       InputManager inputManager = new InputManager();
 
         View gameView = new View("Ironic Cats", 800, 600);
         gameView.addKeyListener(inputManager);

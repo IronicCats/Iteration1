@@ -75,7 +75,7 @@ public class Map {
 
 
     public void render(Graphics g) {
-        System.out.println("Render Map");
+     //   System.out.println("Render Map");
         for(int y = 0; y <  height; ++y){
             for (int x = 0; x < width; ++x) {
                 getTile(x, y).render(g);

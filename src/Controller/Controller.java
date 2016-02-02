@@ -10,9 +10,20 @@ import javax.naming.ldap.Control;
 public class Controller {
 
     private Game game;
+    private InputManager inputManager;
 
-    public Controller(Game game) {
 
+    public Controller(Game game, InputManager inputManager) {
+        this.game = game;
+        this.inputManager = inputManager;
+    }
+
+    public InputManager getInputManager() {
+        return inputManager;
+    }
+
+    public void setInputManager(InputManager inputManager) {
+        this.inputManager = inputManager;
     }
 
     public Game getGame() {
