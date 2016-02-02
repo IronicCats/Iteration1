@@ -10,22 +10,21 @@ import java.security.KeyManagementException;
 public class InputManager implements KeyListener{
 
     private boolean[] keys;
-    private boolean N, NE, E, SE, S, SW, W, NW;
+    public boolean N, NE, E, SE, S, SW, W, NW;
 
     public InputManager() {
-        System.out.println(KeyEvent.VK_NUMPAD8);
         keys = new boolean[256];
         System.out.println("Input Manager Started");
     }
 
     public void tick() {
-        N = keys[KeyEvent.VK_NUMPAD8];
+        N = keys[KeyEvent.VK_UP];
         NE = keys[KeyEvent.VK_NUMPAD9];
-        E = keys[KeyEvent.VK_NUMPAD6];
+        E = keys[KeyEvent.VK_RIGHT];
         SE = keys[KeyEvent.VK_NUMPAD3];
-        S = keys[KeyEvent.VK_NUMPAD2];
+        S = keys[KeyEvent.VK_LEFT];
         SW = keys[KeyEvent.VK_NUMPAD1];
-        W = keys[KeyEvent.VK_NUMPAD4];
+        W = keys[KeyEvent.VK_RIGHT];
         NW = keys[KeyEvent.VK_NUMPAD7];
     }
 
@@ -43,6 +42,7 @@ public class InputManager implements KeyListener{
 
     @Override
     public void keyReleased(KeyEvent e) {
+        N = false;
         keys[e.getKeyCode()] = false;
 
     }

@@ -11,7 +11,7 @@ import java.awt.image.BufferedImage;
 public class Grass extends Tile {
     public Grass(Location location ) {
         super(Assets.grass, location, true);
-        System.out.println("GRASS");
+       // System.out.println("GRASS");
     }
 
 }

@@ -14,12 +14,11 @@ import javax.naming.ldap.Control;
  */
 public class Game implements Runnable {
 
-    private InputManager inputManager;
     private Controller controller;
 
     private State gameState;
     private State menuState;
-
+    private InputManager inputManager;
 
     public Game(InputManager inputManager) {
         this.inputManager = inputManager;
@@ -30,7 +29,7 @@ public class Game implements Runnable {
 
     public void init() {
         //START STATES HERE
-        controller = new Controller(this);
+        controller = new Controller(this, inputManager);
         gameState = new GameState(controller);
         menuState = new MenuState(controller);
         State.setState(gameState);
@@ -79,6 +78,10 @@ public class Game implements Runnable {
         }
 
         stop();
+    }
+
+    public InputManager getInputManager(){
+        return inputManager;
     }
 
 
