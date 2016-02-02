@@ -14,7 +14,6 @@ public class InputManager implements KeyListener{
 
     public InputManager() {
         keys = new boolean[256];
-        System.out.println("Input Manager Started");
     }
 
     public void tick() {
@@ -22,9 +21,9 @@ public class InputManager implements KeyListener{
         NE = keys[KeyEvent.VK_NUMPAD9];
         E = keys[KeyEvent.VK_RIGHT];
         SE = keys[KeyEvent.VK_NUMPAD3];
-        S = keys[KeyEvent.VK_LEFT];
+        S = keys[KeyEvent.VK_DOWN];
         SW = keys[KeyEvent.VK_NUMPAD1];
-        W = keys[KeyEvent.VK_RIGHT];
+        W = keys[KeyEvent.VK_LEFT];
         NW = keys[KeyEvent.VK_NUMPAD7];
     }
 
@@ -37,7 +36,6 @@ public class InputManager implements KeyListener{
     @Override
     public void keyPressed(KeyEvent e) {
         keys[e.getKeyCode()] = true;
-        System.out.println(e.getKeyCode());
     }
 
     @Override
