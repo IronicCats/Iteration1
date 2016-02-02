@@ -2,6 +2,7 @@ package Model.Entity;
 
 import Controller.Controller;
 import Model.Game;
+import Model.Location;
 
 import java.awt.Graphics;
 
@@ -19,11 +20,11 @@ public abstract class Entity {
     protected Controller controller;
     protected float x,y;
     protected int width, height;
+    protected Location location;
 
     public Entity(Controller controller, float x, float y, int width, int height){
+        location = new Location((int)x, (int)y, 0);
         this.controller = controller;
-        this.x = x;
-        this.y = y;
         this.width = width;
         this.height = height;
     }
@@ -33,19 +34,19 @@ public abstract class Entity {
     public abstract void render(Graphics g);
 
     public float getX() {
-        return x;
+        return location.getX();
     }
 
     public void setX(float x) {
-        this.x = x;
+        location.setX((int) x);
     }
 
     public float getY() {
-        return y;
+        return location.getY();
     }
 
     public void setY(float y) {
-        this.y = y;
+        location.setY((int) y);
     }
 
     public int getWidth() {
@@ -87,11 +88,11 @@ public abstract class Entity {
     }
 
     public void moveX(){
-        x += xVelocity;
+        location.setX((int) (location.getX() + xVelocity));
     }
 
     public void moveY(){
-        y += yVelocity;
+        location.setY((int) (location.getY() + yVelocity));
     }
 
     public float getSpeed() {
@@ -100,5 +101,13 @@ public abstract class Entity {
 
     public void setSpeed(float speed) {
         this.speed = speed;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 }

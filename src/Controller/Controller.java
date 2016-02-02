@@ -1,8 +1,8 @@
 package Controller;
 
 import Model.Game;
-
-import javax.naming.ldap.Control;
+import View.Graphics.Camera;
+import View.View;
 
 /**
  * Created by jlkegley on 1/31/2016.
@@ -11,11 +11,13 @@ public class Controller {
 
     private Game game;
     private InputManager inputManager;
+    private Camera camera;
 
 
     public Controller(Game game, InputManager inputManager) {
         this.game = game;
         this.inputManager = inputManager;
+
     }
 
     public InputManager getInputManager() {
@@ -34,5 +36,11 @@ public class Controller {
         this.game = game;
     }
 
+    public Camera getCamera() {
+        return camera;
+    }
 
+    public void setCamera(Camera camera) {
+        this.camera = camera;
+    }
 }

@@ -13,12 +13,13 @@ public class Main {
     public static void main(String args[]) {
         System.out.println("Hello World");
 
-       InputManager inputManager = new InputManager();
-
-        View gameView = new View("Ironic Cats", 800, 600);
+        InputManager inputManager = new InputManager();
+        int width = 800;
+        int height = 600;
+        View gameView = new View("Ironic Cats", width, height);
         gameView.addKeyListener(inputManager);
 
-        Game game = new Game(inputManager);
+        Game game = new Game(inputManager, width, height);
 
 
         gameView.setVisible(true);

@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
  */
 public abstract class Tile {
     //Same as Assets.width, Assets.height
-    public static final int TILEWIDTH = 32, TILEHEIGHT = 32;
+    public static final int TILEWIDTH = 64, TILEHEIGHT = 64;
 
 
     private Location location;
@@ -23,10 +23,10 @@ public abstract class Tile {
         this.isWalkable = isWalkable;
     }
 
-    public void render(Graphics g) {
+    public void render(Graphics g,int x, int y) {
         //System.out.println("Render Tile");
-        g.drawImage( texture, this.location.getX() * TILEWIDTH, this.location.getY() * TILEHEIGHT, TILEWIDTH, TILEHEIGHT, null);
-    }
+        g.drawImage( texture, x , y, TILEWIDTH, TILEHEIGHT, null); //TILEWIDTH and TILEHEIGHT
+}
 
 
 }
