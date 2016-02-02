@@ -32,12 +32,12 @@ public class Stats {
     public int getBaseMovement() { return primaryStats.getBaseMovement(); }
     public int getEquipmentStats() { return primaryStats.getEquipmentStats(); }
     public  int getLevel() { return derivedStats.getLevel(); }
-    public int getLife() { return getLife(); }
-    public int getBaseLife() { return getBaseLife(); }
-    public int getMana() { return getMana(); }
-    public int getBaseMana() { return getBaseMana(); }
-    public int getOffensiveRating() { return getOffensiveRating(); }
-    public int getDefensiveRating() { return getDefensiveRating(); }
-    public int getArmorRating() { return getArmorRating(); }
+    public int getLife() { return derivedStats.getLife(); }
+    public int getBaseLife() { return derivedStats.getBaseLife(); }
+    public int getMana() { return derivedStats.getMana(); }
+    public int getBaseMana() { return derivedStats.getBaseMana(); }
+    public int getOffensiveRating() { return derivedStats.getOffensiveRating(); }
+    public int getDefensiveRating() { return derivedStats.getDefensiveRating(); }
+    public int getArmorRating() { return derivedStats.getArmorRating(); }
 
 } // end class Stats
