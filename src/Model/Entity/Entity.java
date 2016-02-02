@@ -82,12 +82,8 @@ public abstract class Entity {
 
 
     public void move(){
-        System.out.println("Setting Y Velocity: " + yVelocity);
-        System.out.println("Setting X Velocity: " + xVelocity);
-
-            moveX();
-            moveY();
-
+        moveX();
+        moveY();
     }
 
     public void moveX(){
@@ -95,7 +91,6 @@ public abstract class Entity {
     }
 
     public void moveY(){
-        System.out.println("Moving in Y: " + yVelocity);
         y += yVelocity;
     }
 

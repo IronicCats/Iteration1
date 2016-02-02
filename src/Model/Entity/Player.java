@@ -25,7 +25,6 @@ public class Player extends Entity {
     public void tick() {
         getInput();
         move();
-        System.out.println("Players: X: " + x + " Y: " + y);
     }
 
     public void getInput(){
@@ -34,11 +33,9 @@ public class Player extends Entity {
         //TODO: Add the numpad movement options
         if(controller.getInputManager().N) {
             yVelocity = -(speed);
-            System.out.println("Setting Y Velocity: " + yVelocity);
         }
         if(controller.getInputManager().E) {
             xVelocity = (speed);
-            System.out.println("Setting Y Velocity: " + yVelocity);
 
         }
         if(controller.getInputManager().S) {
