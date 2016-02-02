@@ -1,0 +1,51 @@
+package Controller;
+
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.security.KeyManagementException;
+
+/**
+ * Created by jlkegley on 1/31/2016.
+ */
+public class InputManager implements KeyListener{
+
+    private boolean[] keys;
+    public boolean N, NE, E, SE, S, SW, W, NW;
+
+    public InputManager() {
+        keys = new boolean[256];
+        System.out.println("Input Manager Started");
+    }
+
+    public void tick() {
+        N = keys[KeyEvent.VK_UP];
+        NE = keys[KeyEvent.VK_NUMPAD9];
+        E = keys[KeyEvent.VK_RIGHT];
+        SE = keys[KeyEvent.VK_NUMPAD3];
+        S = keys[KeyEvent.VK_LEFT];
+        SW = keys[KeyEvent.VK_NUMPAD1];
+        W = keys[KeyEvent.VK_RIGHT];
+        NW = keys[KeyEvent.VK_NUMPAD7];
+    }
+
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        keys[e.getKeyCode()] = true;
+        System.out.println(e.getKeyCode());
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        N = false;
+        keys[e.getKeyCode()] = false;
+
+    }
+
+
+}
