@@ -15,7 +15,7 @@ public abstract class Entity {
     public static final float DEFAULT_SPEED = 3.0f;
 
     protected float speed;
-    protected float xMove, yMove;
+    protected float xVelocity, yVelocity;
     protected Controller controller;
     protected float x,y;
     protected int width, height;
@@ -62,5 +62,43 @@ public abstract class Entity {
 
     public void setHeight(int height) {
         this.height = height;
+    }
+
+    public float getyVelocity() {
+        return yVelocity;
+    }
+
+    public void setyVelocity(float yVelocity) {
+        this.yVelocity = yVelocity;
+    }
+
+    public float getxVelocity() {
+        return xVelocity;
+    }
+
+    public void setxVelocity(float xVelocity) {
+        this.xVelocity = xVelocity;
+    }
+
+
+    public void move(){
+        moveX();
+        moveY();
+    }
+
+    public void moveX(){
+        x += xVelocity;
+    }
+
+    public void moveY(){
+        y += yVelocity;
+    }
+
+    public float getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(float speed) {
+        this.speed = speed;
     }
 }
