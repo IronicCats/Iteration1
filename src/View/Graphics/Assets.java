@@ -18,7 +18,7 @@ public class Assets {
         SpriteSheet grassSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/GrassTile.jpg"));
         SpriteSheet mountainSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/MountainTile.png"));
         SpriteSheet waterSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/WaterTile.png"));
-        SpriteSheet avatarSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/PlaceHolderCharSprite.png"));
+        SpriteSheet avatarSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/PlaceholderCharSprite.png"));
 
         avatar = avatarSheet.crop(0, 0, width, height);
         grass = grassSheet.crop(0, 0, width, height);
