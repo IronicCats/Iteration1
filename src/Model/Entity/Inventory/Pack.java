@@ -3,7 +3,7 @@ package Model.Entity.Inventory;
 /**
  * Created by broskj on 2/1/16.
  */
-public class Pack {
+public class Pack {/*
     private int size;
     private Item[] items;
     private final int cap;
@@ -18,7 +18,7 @@ public class Pack {
         this.size = size;
         this.items = items;
         this.cap = cap;
-    } // end constructor
+    } // end constructor*/
 
 
 } // end class Pack

@@ -13,7 +13,7 @@ public class Inventory {
         this.pack = pack;
         this.equipment = equipment;
     } // end constructor
-
+/*
     public void store(Takeable item) {
 
     } // end store
@@ -28,5 +28,5 @@ public class Inventory {
 
     public void equipItem(Equippable item) {
 
-    } // end equipItem
+    } // end equipItem*/
 } // end class Inventory
