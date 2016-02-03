@@ -13,38 +13,30 @@ import View.Graphics.Camera;
  */
 public class GameState extends State {
 
-    //Need Entity Avatar, World
-
     private Map map;
     private Camera camera;
     private Player player;
 
     public GameState(Controller controller) {
         super(controller);
-        camera = new Camera(controller.getGame().getWidth(), controller.getGame().getHeight());
-        controller.setCamera(camera);
-
         map = new Map(controller);
-        player = new Player(controller,0,0);
+        controller.setMap(map);
+        camera = new Camera(controller.getGame().getWidth(), controller.getGame().getHeight(),map);
+        controller.setCamera(camera);
+        player = new Player(controller,64,128);
 
     }
 
     public void tick() {
         player.tick();
+
+    }
+    public void render (Graphics g){
         camera.centerOnPlayer(player);
-        //camera.centerOnPlayer(player.getLocation());
+        map.render(g);
+        player.render(g);
 
-        //System.out.println("Tick GameState");
-        //tick world
-        //tick entity
     }
-        public void render (Graphics g){
-            //System.out.println("Render GameState");
-
-            map.render(g);
-            player.render(g);
-            //render entity
-        }
-    }
+}
 
 

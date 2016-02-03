@@ -9,6 +9,5 @@ import View.Graphics.Assets;
 public class Mountain extends Tile {
     public Mountain(Location location ) {
         super(Assets.mountain, location, true);
-        System.out.println("MOUNTAIN");
     }
 }

@@ -15,12 +15,12 @@ public abstract class Tile {
 
     private Location location;
     private BufferedImage texture;
-    public boolean isWalkable;
+    public boolean isUnWalkable;
 
-    public  Tile(BufferedImage texture, Location location, boolean isWalkable) {
+    public  Tile(BufferedImage texture, Location location, boolean isUnWalkable) {
         this.location = location;
         this.texture = texture;
-        this.isWalkable = isWalkable;
+        this.isUnWalkable = isUnWalkable;
     }
 
     public void render(Graphics g,int x, int y) {

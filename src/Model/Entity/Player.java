@@ -5,7 +5,8 @@ import Model.Game;
 import View.Graphics.Assets;
 import com.sun.xml.internal.bind.v2.TODO;
 
-import java.awt.Graphics;
+import java.awt.*;
+
 /**
  * Created by Aidan on 1/31/2016.
  */
@@ -18,6 +19,11 @@ public class Player extends Entity {
     public Player(Controller controller,float x, float y) {
         super(controller, x, y, DEFAULT_CREATURE_WIDTH, DEFAULT_CREATURE_HEIGHT);
         speed = DEFAULT_SPEED;
+
+        /*bounds.x = 0;
+        bounds.y = 0;
+        bounds.width = DEFAULT_CREATURE_WIDTH;
+        bounds.height = DEFAULT_CREATURE_HEIGHT;*/
     }
 
 
@@ -58,6 +64,8 @@ public class Player extends Entity {
                 height,
                 null
         );
+        //g.setColor(Color.red);
+        //g.fillRect((int)(getX() + bounds.x - controller.getCamera().getxOffset()), (int)(getY() + bounds.y - controller.getCamera().getyOffset()), bounds.width, bounds.height);
     }
 
 }
