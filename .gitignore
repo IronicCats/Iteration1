@@ -1,6 +1,9 @@
 .idea/
 .idea
 Iteration1.iml
+.out/
+out
+_mac
 out/
 ironiccats.iml
 debugger.renderers.xml

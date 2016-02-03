@@ -1,7 +1,7 @@
 package Model.Entity;
 
 import Model.Entity.Stats.Stats;
-import Model.Entity.Equipment.Equipment;
+import Model.Entity.Inventory.Equipment.Equipment;
 
 /**
  * Created by broskj on 2/1/16.

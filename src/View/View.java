@@ -14,6 +14,7 @@ public class View extends JFrame implements Runnable {
 
     private Canvas canvas;
     private String title;
+
     private int width, height;
 
     private BufferStrategy bs;
@@ -98,6 +99,5 @@ public class View extends JFrame implements Runnable {
     public synchronized void start() {
         new Thread(this).start();
     }
-
 
 }
