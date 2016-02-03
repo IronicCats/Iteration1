@@ -7,6 +7,7 @@ import Model.Map.Tiles.Mountain;
 import Model.Map.Tiles.Tile;
 import Model.Map.Tiles.Water;
 
+import Controller.Controller;
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -21,8 +22,10 @@ public class Map {
     private Tile[][] tiles;
     private Location spawn;
     private int width, height;
+    private Controller controller;
 
-    public Map() {
+    public Map(Controller controller) {
+        this.controller = controller;
         makeMap();
     }
 
@@ -83,10 +86,17 @@ public class Map {
 
 
     public void render(Graphics g) {
-     //   System.out.println("Render Map");
-        for(int y = 0; y <  height; ++y){
-            for (int x = 0; x < width; ++x) {
-                getTile(x, y).render(g);
+        int startX = Math.max(0, (int)controller.getCamera().getxOffset() / Tile.TILEWIDTH);
+        int startY = Math.max(0, (int)controller.getCamera().getyOffset() / Tile.TILEHEIGHT);
+        int endX = Math.min(controller.getGame().getWidth(), (int)controller.getCamera().getxOffset() / Tile.TILEWIDTH);
+        int endY = Math.min(controller.getGame().getHeight(), (int)controller.getCamera().getyOffset() / Tile.TILEHEIGHT);
+
+        for(int y = 0; y <  10; ++y){
+            for (int x = 0; x < 10; ++x) {
+                getTile(x, y).render(g,
+                        (int)(x * Tile.TILEWIDTH - controller.getCamera().getxOffset()),
+                        (int)(y * Tile.TILEHEIGHT - controller.getCamera().getyOffset())
+                );
             }
         }
     }

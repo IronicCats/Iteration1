@@ -11,8 +11,8 @@ import java.awt.Graphics;
  */
 public class Player extends Entity {
     public static final float DEFAULT_SPEED = 3.0f;
-    public static final int DEFAULT_CREATURE_WIDTH = 32,
-            DEFAULT_CREATURE_HEIGHT = 32;
+    public static final int DEFAULT_CREATURE_WIDTH = 64,
+            DEFAULT_CREATURE_HEIGHT = 64;
 
 
     public Player(Controller controller,float x, float y) {
@@ -51,14 +51,13 @@ public class Player extends Entity {
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.avatar, (int)getX(),(int)getY(), width, height, null);
-
+        g.drawImage(Assets.avatar,
+                (int) (getX() - controller.getCamera().getxOffset()),
+                (int) (getY() - controller.getCamera().getyOffset()),
+                width,
+                height,
+                null
+        );
     }
-    //GETTERS SETTERS
-
-
-
-
-
 
 }

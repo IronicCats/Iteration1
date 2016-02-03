@@ -19,8 +19,11 @@ public class Game implements Runnable {
     private State gameState;
     private State menuState;
     private InputManager inputManager;
+    private int width, height;
 
-    public Game(InputManager inputManager) {
+    public Game(InputManager inputManager, int width, int height) {
+        this.width = width;
+        this.height = height;
         this.inputManager = inputManager;
     }
 
@@ -30,8 +33,10 @@ public class Game implements Runnable {
     public void init() {
         //START STATES HERE
         controller = new Controller(this, inputManager);
+
         gameState = new GameState(controller);
         menuState = new MenuState(controller);
+
         State.setState(gameState);
 
     }
@@ -42,6 +47,22 @@ public class Game implements Runnable {
         if(State.getState() != null ) {
             State.getState().tick();
         }
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
     }
 
     public void run() {

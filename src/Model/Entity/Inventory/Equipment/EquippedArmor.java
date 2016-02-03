@@ -32,6 +32,5 @@ public class EquippedArmor {/*
                 break;
         }
     } // end equipArmor
-
     public int getTotalDefense() { return totalDefense; }*/
 } // end class EquippedArmor
