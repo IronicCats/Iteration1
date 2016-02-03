@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Game;
+import Model.Map.Map;
 import View.Graphics.Camera;
 import View.View;
 
@@ -12,12 +13,11 @@ public class Controller {
     private Game game;
     private InputManager inputManager;
     private Camera camera;
-
+    private Map map;
 
     public Controller(Game game, InputManager inputManager) {
         this.game = game;
         this.inputManager = inputManager;
-
     }
 
     public InputManager getInputManager() {
@@ -42,5 +42,13 @@ public class Controller {
 
     public void setCamera(Camera camera) {
         this.camera = camera;
+    }
+
+    public Map getMap() {
+        return map;
+    }
+
+    public void setMap(Map map) {
+        this.map = map;
     }
 }

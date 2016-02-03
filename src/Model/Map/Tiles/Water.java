@@ -9,6 +9,5 @@ import View.Graphics.Assets;
 public class Water extends Tile {
     public Water(Location location ) {
         super(Assets.water, location, true);
-        System.out.println("WATER");
     }
 }

@@ -20,8 +20,10 @@ import java.io.IOException;
 public class Map {
 
     private Tile[][] tiles;
-    private Location spawn;
-    private int width, height;
+   private Location spawn;
+    private int width;
+
+    private int height;
     private Controller controller;
 
     public Map(Controller controller) {
@@ -81,6 +83,9 @@ public class Map {
     }
 
     public Tile getTile(int x , int y) {
+        if(x < 0 || y < 0 || x >= width || y >= height){
+            return tiles[2][2];
+        }
         return tiles[x][y];
     }
 
@@ -91,14 +96,30 @@ public class Map {
         int endX = Math.min(controller.getGame().getWidth(), (int)controller.getCamera().getxOffset() / Tile.TILEWIDTH);
         int endY = Math.min(controller.getGame().getHeight(), (int)controller.getCamera().getyOffset() / Tile.TILEHEIGHT);
 
-        for(int y = 0; y <  10; ++y){
-            for (int x = 0; x < 10; ++x) {
+        for(int y = 0; y <  height; ++y){
+            for (int x = 0; x < width; ++x) {
                 getTile(x, y).render(g,
                         (int)(x * Tile.TILEWIDTH - controller.getCamera().getxOffset()),
                         (int)(y * Tile.TILEHEIGHT - controller.getCamera().getyOffset())
                 );
             }
         }
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
     }
 
 }
