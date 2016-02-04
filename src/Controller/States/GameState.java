@@ -6,6 +6,7 @@ import Model.Entity.Entity;
 import Model.Entity.Player;
 import Model.Location;
 import Model.Map.Map;
+import Model.Map.Tiles.Tile;
 import View.Graphics.Camera;
 
 /**
@@ -23,7 +24,7 @@ public class GameState extends State {
         controller.setMap(map);
         camera = new Camera(controller.getGame().getWidth(), controller.getGame().getHeight(),map);
         controller.setCamera(camera);
-        player = new Player(controller,64,128);
+        player = new Player(controller,1 * (Tile.TILEWIDTH ),1 * (Tile.TILEHEIGHT));
 
     }
 
