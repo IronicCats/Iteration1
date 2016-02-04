@@ -1,4 +1,4 @@
-package Model.Entity.Item;
+package Model.Item;
 
 import Model.Entity.Stats.Effect;
 import Model.Location;

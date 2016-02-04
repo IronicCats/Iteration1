@@ -1,4 +1,4 @@
-package Model.Entity.Item;
+package Model.Item;
 
 /**
  * Created by Wimberley on 2/3/16.
