@@ -12,11 +12,9 @@ public abstract class Equippable extends Takeable {
 
     public boolean isEquipped;
 
-    // constructor in Item
     public Equippable(BufferedImage image, int id, Location location, ItemsEnum type, String name, String description, Effect[] effects) {
         super(image, id, location, type, name, description, effects);
     }
-
 
     public void equipItem(){
         // equip

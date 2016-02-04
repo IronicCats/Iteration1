@@ -16,37 +16,5 @@ public class Effect {
     private int modification;
     private StatsEnum stat;
 
-    /*Default Constructor*/
-    public Effect(){
-        stats = null;
-        duration = 0;
-        description = null;
-    }
 
-    /*Used for items*/
-    public Effect(int id, String description, long duration){
-        this.description = description;
-        this.duration = duration;
-
-        determineEffect(id, duration);
-        // calls modify stat from statstructure and adds parameter adjustment to current value of stat
-        stats.modifyStat(stat, stats.getStat(stat) +  modification);
-    }
-
-    /*Constructor*/
-    public Effect(StatsEnum stat, String description, int adjustment, long duration ){
-        this.stat = stat;
-        this.duration = duration;
-        this.description = description;
-    }
-
-    private void determineEffect(int id, double duration){
-        switch(id){
-            case(20): stat = StatsEnum.LIFE; // Lowers health by -5 (oneShot)
-                      modification = -5;
-                      break;
-            default: // no action
-                      break;
-        }
-    }
 }
