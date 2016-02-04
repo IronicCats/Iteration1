@@ -1,49 +1,56 @@
 package Model.Item;
 
-import Model.Location;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import Model.Entity.Stats.Effect;
+import Model.Location;
 
 /**
  * Created by Wimberley on 2/2/16.
  */
 public abstract class Item {
 
-    //Same as Assets.width, Assets.height
-    public static int ITEMWIDTH, ITEMHEIGHT;
+    public static int ITEMWIDTH, ITEMHEIGHT = 28; // height and width of item
 
-    private BufferedImage image;
+    private BufferedImage image; // image used for item
 
-    /* id used to determine type of item
-    0-19 --> takeable
-        0-9 --> useable
-        10-19 --> equippable
-    20-29 --> oneshot
-    30-39 --> interactable
-    40-49 --> obstacle
-     */
-    public int id;
-    public String name;
-    public String description;
-    public Location location;
+    private ItemsEnum type;
+    private int id;
+    private String name;
+    private String description;
+    protected Location location;
+    private Effect [] effects; // array of effects item can hold
 
-    //Default Constructor
-    public Item(){
-        this.id = -1;
-        this.name = null;
-        this.description = null;
-        this.location = null;
-    }
-
-    //Location and ID constructor
-    public Item(int id , Location location){
+    // constructor--> sets all variables except height and width
+    public Item(BufferedImage image, int id, Model.Location location, ItemsEnum type, String name, String description, Effect [] effects){
+        this.image = image;
         this.id = id;
-        this.location =  location;
-        this.name = null;
-        this.description = null;
+        this.location = location;
+        this.type = type;
+        this.name = name;
+        this.description = description;
+        this.effects = effects;
     }
-    public abstract void onInteract(); // Do something
+
+    /* getter functions */
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Effect[] getEffects() {
+        return effects;
+    }
+
+    public ItemsEnum getType() {
+        return type;
+    }
+    /* end getter functions */
+
+    public abstract void onInteract(); // varies depending on item
 
     public void render(Graphics g,int x, int y) { // render image of item
         g.drawImage( image, x , y, ITEMWIDTH, ITEMHEIGHT, null);
