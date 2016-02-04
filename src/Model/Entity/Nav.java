@@ -52,12 +52,48 @@ public class Nav {
             if(Obstaclecheck) {
                 goalY = location.getY() + Tile.TILEHEIGHT;
             }
-            } else/*3*/ {
+            } else if(direction == 3) {
             if (controller.getTiles((location.getX() - 64) / 64, (location.getY()) / 64).isUnWalkable) {
                 Obstaclecheck = false;
             }
             if (Obstaclecheck) {
                 goalX = location.getX() - Tile.TILEWIDTH;
+            }
+        }
+        else if(direction == 4){
+            if(controller.getTiles((location.getX() + 64)/ 64,(location.getY() - 64) / 64).isUnWalkable){
+                Obstaclecheck = false;
+            }
+            if(Obstaclecheck){
+                goalX = location.getX() + Tile.TILEWIDTH;
+                goalY = location.getY() - Tile.TILEHEIGHT;
+            }
+        }
+        else if(direction == 5){
+            if(controller.getTiles((location.getX() - 64)/ 64,(location.getY() - 64) / 64).isUnWalkable){
+                Obstaclecheck = false;
+            }
+            if(Obstaclecheck){
+                goalX = location.getX() - Tile.TILEWIDTH;
+                goalY = location.getY() - Tile.TILEHEIGHT;
+            }
+        }
+        else if(direction == 6){
+            if(controller.getTiles((location.getX() - 64)/ 64,(location.getY() + 64) / 64).isUnWalkable){
+                Obstaclecheck = false;
+            }
+            if(Obstaclecheck){
+                goalX = location.getX() - Tile.TILEWIDTH;
+                goalY = location.getY() + Tile.TILEHEIGHT;
+            }
+        }
+        else if(direction == 7){
+            if(controller.getTiles((location.getX() + 64)/ 64,(location.getY() + 64) / 64).isUnWalkable){
+                Obstaclecheck = false;
+            }
+            if(Obstaclecheck){
+                goalX = location.getX() + Tile.TILEWIDTH;
+                goalY = location.getY() + Tile.TILEHEIGHT;
             }
         }
         }

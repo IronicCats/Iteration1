@@ -59,6 +59,18 @@ public class Player extends Entity {
             //navigation.setxVelocity(-(speed));
             navigation.move(3);
         }
+        else if(controller.getInputManager().NE){
+            navigation.move(4);
+        }
+        else if(controller.getInputManager().NW){
+            navigation.move(5);
+        }
+        else if(controller.getInputManager().SW){
+            navigation.move(6);
+        }
+        else if(controller.getInputManager().SE){
+            navigation.move(7);
+        }
 
     }
 
