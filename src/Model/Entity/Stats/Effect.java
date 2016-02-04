@@ -11,7 +11,7 @@ public class Effect {
 
     /*Variables*/
     public StatStructure modification;
-    public double duration;
+    public long duration;
     public String description;
 
     /*Default Constructor*/
@@ -29,7 +29,7 @@ public class Effect {
     }
 
     /*Constructor*/
-    Effect(StatStructure modification , double duration , String description){
+    Effect(StatStructure modification , long duration , String description){
         this.modification = modification;
         this.duration = duration;
         this.description = description;

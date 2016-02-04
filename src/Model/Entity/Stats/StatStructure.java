@@ -3,6 +3,7 @@ package Model.Entity.Stats;
 
 import java.util.EnumMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by broskj on 1/31/16.
@@ -46,4 +47,8 @@ public class StatStructure {
     public int getStat(StatsEnum stat) {
         return map.get(stat);
     } // end getStat
+
+    public Set<StatsEnum> getKeySet() { return map.keySet(); } // end getKeyset
+
+    public int getSize() { return map.size(); }
 } // end class StatStructure

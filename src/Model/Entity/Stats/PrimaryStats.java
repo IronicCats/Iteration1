@@ -1,17 +1,19 @@
 package Model.Entity.Stats;
 
+import Model.Entity.EquipmentStats;
+
 /**
  * Created by broskj on 1/31/16.
  */
 public class PrimaryStats {
-    private int livesLeft,
-            strength,
-            agility,
-            intellect,
-            hardiness,
-            experience,
-            movement,
-            equipmentStats;
+    private int livesLeft;
+    private int strength;
+    private int agility;
+    private int intellect;
+    private int hardiness;
+    private int experience;
+    private int movement;
+    private EquipmentStats equipmentStats;
     private int baseLives,
             baseStr,
             baseAgi,
@@ -48,7 +50,7 @@ public class PrimaryStats {
         /*
         reset experience, modify xp threshhold, reset lives remaining
          */
-        experience = 0;
+        experience = experience - xpThreshhold;
         xpThreshhold *= xpMultiplier;
         livesLeft = baseLives;
 
@@ -73,6 +75,26 @@ public class PrimaryStats {
     public int getExperience() { return experience; }
     public int getMovement() { return movement; }
     public int getBaseMovement() { return baseMovement; }
-    public int getEquipmentStats() { return equipmentStats; }
+    public EquipmentStats getEquipmentStats() { return equipmentStats; }
+
+    public void setLivesLeft(int livesLeft) { this.livesLeft = livesLeft; }
+    public void setStrength(int strength) { this.strength = strength; }
+    public void setAgility(int agility) { this.agility = agility; }
+    public void setIntellect(int intellect) { this.intellect = intellect; }
+    public void setHardiness(int hardiness) { this.hardiness = hardiness; }
+    public void setExperience(int experience) { this.experience = experience; }
+    public void setMovement(int movement) { this.movement = movement; }
+
+    public void modifyLivesLeft(int livesLeft) {
+        this.livesLeft += livesLeft;
+        if(livesLeft > baseLives)
+            livesLeft = baseLives;
+    }
+    public void modifyStrength(int strength) { this.strength += strength; }
+    public void modifyAgility(int agility) { this.agility += agility; }
+    public void modifyIntellect(int intellect) { this.intellect += intellect; }
+    public void modifyHardiness(int hardiness) { this.hardiness += hardiness; }
+    public void modifyExperience(int experience) { this.experience += experience; }
+    public void modifyMovement(int movement) { this.movement += movement; }
 
 } // end class PrimaryStats
