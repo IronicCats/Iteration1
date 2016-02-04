@@ -21,3 +21,10 @@ project.default.xml
 u.lnf.xml
 vsc.xml
 web-browsers.xml
+inspection/
+.inspection/
+/inspection
+colors.scheme.xml
+editor.xml
+Intellij.xml
+

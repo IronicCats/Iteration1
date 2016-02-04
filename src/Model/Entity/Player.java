@@ -4,6 +4,7 @@ import Controller.Controller;
 import Model.Game;
 import View.Graphics.Assets;
 import com.sun.xml.internal.bind.v2.TODO;
+import Model.Entity.Nav;
 
 import java.awt.*;
 
@@ -11,46 +12,45 @@ import java.awt.*;
  * Created by Aidan on 1/31/2016.
  */
 public class Player extends Entity {
+    private Nav navigation;
+
     public static final float DEFAULT_SPEED = 3.0f;
     public static final int DEFAULT_CREATURE_WIDTH = 64,
-            DEFAULT_CREATURE_HEIGHT = 64;
-
+                            DEFAULT_CREATURE_HEIGHT = 64;
 
     public Player(Controller controller,float x, float y) {
         super(controller, x, y, DEFAULT_CREATURE_WIDTH, DEFAULT_CREATURE_HEIGHT);
         speed = DEFAULT_SPEED;
-
-        /*bounds.x = 0;
+        bounds.x = 0;
         bounds.y = 0;
+        navigation = new Nav(location,bounds,controller);
         bounds.width = DEFAULT_CREATURE_WIDTH;
-        bounds.height = DEFAULT_CREATURE_HEIGHT;*/
+        bounds.height = DEFAULT_CREATURE_HEIGHT;
     }
 
 
     @Override
     public void tick() {
         getInput();
-        move();
+        navigation.move(navigation.getxVelocity(),navigation.getyVelocity());
     }
 
     public void getInput(){
-        yVelocity = 0;
-        xVelocity = 0;
+        navigation.setyVelocity(0);
+        navigation.setxVelocity(0);
         //TODO: Add the numpad movement options
         if(controller.getInputManager().N) {
-            yVelocity = -(speed);
+            navigation.setyVelocity(-(speed));
         }
         if(controller.getInputManager().E) {
-            xVelocity = (speed);
+            navigation.setxVelocity((speed));
 
         }
         if(controller.getInputManager().S) {
-            yVelocity = (speed);
-
+            navigation.setyVelocity((speed));
         }
         if(controller.getInputManager().W) {
-            xVelocity = -(speed);
-
+            navigation.setxVelocity(-(speed));
         }
 
     }
