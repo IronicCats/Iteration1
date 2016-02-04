@@ -1,5 +1,6 @@
 package Model.Item;
 
+import Model.Entity.Player;
 import Model.Entity.Stats.Effect;
 import Model.Location;
 
@@ -24,10 +25,11 @@ public class OneShot extends Item {
     public OneShot(int id, Location location){
         this.id = id; // id --> 20-29
         this.location = location;
+        this.effect = new Effect(id, "null", 0);// initialize effect based on id
     }
 
 
-    public void onInteract(){
-        effect = new Effect(id, "null", 0);// initialize effect based on id
+    public void onInteract(Player player) {
+        //player.stats.applyEffect(effect);
     }
 }

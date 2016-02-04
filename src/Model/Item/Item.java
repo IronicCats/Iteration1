@@ -1,5 +1,6 @@
 package Model.Item;
 
+import Model.Entity.Player;
 import Model.Location;
 
 import java.awt.*;
@@ -28,7 +29,7 @@ public abstract class Item {
     public String description;
     public Location location;
 
-    public abstract void onInteract(); // Do something
+    public abstract void onInteract(Player player); // Do something
 
     public void render(Graphics g,int x, int y) { // render image of item
         g.drawImage( image, x , y, ITEMWIDTH, ITEMHEIGHT, null);

@@ -1,5 +1,7 @@
 package Model.Item;
 
+import Model.Entity.Player;
+
 import java.awt.image.BufferedImage;
 
 /**
@@ -13,7 +15,7 @@ public class Interactable extends Item {
     private BufferedImage image;
 
     // needs access to player stats for requirements check
-    public void onInteract(){
+    public void onInteract(Player player){
 
     }
 
