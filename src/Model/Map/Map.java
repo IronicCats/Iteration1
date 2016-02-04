@@ -64,7 +64,7 @@ public class Map {
                         tile = new Water(new Location(x, y, 0));
                         break;
                     default:
-                        tile = new Grass(new Location(x, y, 0));
+                        tile = new Mountain(new Location(x, y, 0));
                         break;
                 }
                 tiles[x][y] = tile;

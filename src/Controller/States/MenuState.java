@@ -8,7 +8,9 @@ import Controller.Controller;
 public class MenuState extends State {
 
     public MenuState(Controller controller) {
+
         super(controller);
+        //INITALIZE CANVAS TO HAVE BUTTONS init();
     }
 
     public void tick() {
@@ -16,7 +18,7 @@ public class MenuState extends State {
     }
 
     public void render(Graphics g) {
-
+        //RENDER THIS INTERFACE (NOT GAME INTERFACE
     }
 
 }
