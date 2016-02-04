@@ -17,13 +17,13 @@ public class InputManager implements KeyListener{
     }
 
     public void tick() {
-        N = keys[KeyEvent.VK_UP];
+        N = keys[KeyEvent.VK_NUMPAD8];
         NE = keys[KeyEvent.VK_NUMPAD9];
-        E = keys[KeyEvent.VK_RIGHT];
+        E = keys[KeyEvent.VK_NUMPAD6];
         SE = keys[KeyEvent.VK_NUMPAD3];
-        S = keys[KeyEvent.VK_DOWN];
+        S = keys[KeyEvent.VK_NUMPAD2];
         SW = keys[KeyEvent.VK_NUMPAD1];
-        W = keys[KeyEvent.VK_LEFT];
+        W = keys[KeyEvent.VK_NUMPAD4];
         NW = keys[KeyEvent.VK_NUMPAD7];
     }
 
