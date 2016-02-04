@@ -21,4 +21,14 @@ public class Occupation {
                                             StatsEnum.INTELLECT, StatsEnum.HARDINESS, StatsEnum.EXPERIENCE, StatsEnum.MOVEMENT};
         initialStats = new StatStructure(stats, val);
     }
+
+    public String getName() {return name;}
+
+    public String getDescription() {return description;}
+
+    public StatStructure getInitialStats() {return initialStats;}
+
+    public void setStatMultiplier(StatStructure statMultiplier) {this.statMultiplier = statMultiplier;}
+
+
 }
