@@ -34,11 +34,17 @@ public class Nav {
             if (controller.getTiles((location.getX())/Tile.TILEWIDTH, (location.getY() - Tile.TILEHEIGHT) / Tile.TILEWIDTH).isUnWalkable) {
                 Obstaclecheck = false;
             }
+            else if(location.getY() - Tile.TILEHEIGHT == -Tile.TILEHEIGHT){
+                Obstaclecheck = false;
+            }
             if (Obstaclecheck) {
                 goalY = location.getY() - Tile.TILEHEIGHT;
             }
         }else if (direction == 1) {
                 if (controller.getTiles((location.getX() + Tile.TILEWIDTH) / Tile.TILEWIDTH, (location.getY()) / Tile.TILEHEIGHT).isUnWalkable) {
+                    Obstaclecheck = false;
+                }
+                else if(location.getX() + Tile.TILEWIDTH == (controller.getMap().getWidth() * Tile.TILEWIDTH)/2){
                     Obstaclecheck = false;
                 }
                 if (Obstaclecheck) {
@@ -48,11 +54,17 @@ public class Nav {
             if (controller.getTiles((location.getX()) / Tile.TILEWIDTH, (location.getY() + Tile.TILEHEIGHT) / Tile.TILEHEIGHT).isUnWalkable) {
                 Obstaclecheck = false;
             }
+            else if(location.getY() == (controller.getMap().getHeight() * Tile.TILEHEIGHT)/2 - Tile.TILEHEIGHT){
+                Obstaclecheck = false;
+            }
             if(Obstaclecheck) {
                 goalY = location.getY() + Tile.TILEHEIGHT;
             }
             } else if(direction == 3) {
             if (controller.getTiles((location.getX() - Tile.TILEWIDTH) / Tile.TILEWIDTH, (location.getY()) / Tile.TILEHEIGHT).isUnWalkable) {
+                Obstaclecheck = false;
+            }
+            else if(location.getX() - Tile.TILEWIDTH == -Tile.TILEWIDTH){
                 Obstaclecheck = false;
             }
             if (Obstaclecheck) {
@@ -61,6 +73,9 @@ public class Nav {
         }
         else if(direction == 4){
             if(controller.getTiles((location.getX() + Tile.TILEWIDTH)/ Tile.TILEWIDTH,(location.getY() - Tile.TILEHEIGHT) / Tile.TILEHEIGHT).isUnWalkable){
+                Obstaclecheck = false;
+            }
+            else if(location.getY() - Tile.TILEHEIGHT == -Tile.TILEHEIGHT || location.getX() + Tile.TILEWIDTH == (controller.getMap().getWidth() * Tile.TILEWIDTH)/2 ){
                 Obstaclecheck = false;
             }
             if(Obstaclecheck){
@@ -72,6 +87,9 @@ public class Nav {
             if(controller.getTiles((location.getX() - Tile.TILEWIDTH)/ Tile.TILEWIDTH,(location.getY() - Tile.TILEHEIGHT) / Tile.TILEHEIGHT).isUnWalkable){
                 Obstaclecheck = false;
             }
+            else if(location.getY() - Tile.TILEHEIGHT == -Tile.TILEHEIGHT || location.getX() - Tile.TILEWIDTH == -Tile.TILEWIDTH){
+                Obstaclecheck = false;
+            }
             if(Obstaclecheck){
                 goalX = location.getX() - Tile.TILEWIDTH;
                 goalY = location.getY() - Tile.TILEHEIGHT;
@@ -81,6 +99,9 @@ public class Nav {
             if(controller.getTiles((location.getX() - Tile.TILEWIDTH)/ Tile.TILEWIDTH,(location.getY() + Tile.TILEHEIGHT) / Tile.TILEHEIGHT).isUnWalkable){
                 Obstaclecheck = false;
             }
+            else if(location.getY() == (controller.getMap().getHeight() * Tile.TILEHEIGHT)/2 - Tile.TILEHEIGHT || location.getX() - Tile.TILEWIDTH == -Tile.TILEWIDTH){
+                Obstaclecheck = false;
+            }
             if(Obstaclecheck){
                 goalX = location.getX() - Tile.TILEWIDTH;
                 goalY = location.getY() + Tile.TILEHEIGHT;
@@ -88,6 +109,9 @@ public class Nav {
         }
         else if(direction == 7){
             if(controller.getTiles((location.getX() + Tile.TILEWIDTH)/ Tile.TILEWIDTH,(location.getY() + Tile.TILEHEIGHT) / Tile.TILEHEIGHT).isUnWalkable){
+                Obstaclecheck = false;
+            }
+            else if(location.getY() == (controller.getMap().getHeight() * Tile.TILEHEIGHT)/2 - Tile.TILEHEIGHT || location.getX() + Tile.TILEWIDTH == (controller.getMap().getWidth() * Tile.TILEWIDTH)/2){
                 Obstaclecheck = false;
             }
             if(Obstaclecheck){
