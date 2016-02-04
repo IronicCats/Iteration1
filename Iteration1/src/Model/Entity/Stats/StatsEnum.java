@@ -1,0 +1,8 @@
+package Model.Entity.Stats;
+
+/**
+ * Created by broskj on 1/31/16.
+ */
+public enum StatsEnum {
+    LIVES_LEFT, STRENGTH, AGILITY, INTELLECT, HARDINESS, EXPERIENCE, MOVEMENT, LEVEL, LIFE, MANA, OFFENSIVE_RATING, DEFENSIVE_RATING, ARMOR_RATING;
+}
