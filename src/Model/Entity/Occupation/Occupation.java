@@ -28,7 +28,7 @@ public class Occupation {
 
     public StatStructure getInitialStats() {return initialStats;}
 
-    public StatStructure setStatMultiplier(StatStructure statMultiplier) {return statMultiplier;}
+    public StatStructure getStatMultiplier() {return statMultiplier;}
 
 
 }
