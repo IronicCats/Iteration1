@@ -37,7 +37,11 @@ public abstract class Tile {
     public void render(Graphics g,int x, int y) {
         //System.out.println("Render Tile");
         g.drawImage( texture, x , y, TILEWIDTH, TILEHEIGHT, null); //TILEWIDTH and TILEHEIGHT
-}
+    }
 
-
+/*
+    public String toString() {
+        return "location: " + location.getX() + ", " + location.getY();
+    }
+    */
 }

@@ -60,7 +60,7 @@ public class Nav {
                 goalX = location.getX() - Tile.TILEWIDTH;
             }
         }
-        }
+    }
 
     public void move() {
         if(location.getY() == goalY && location.getX() == goalX) {
