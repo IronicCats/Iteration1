@@ -10,11 +10,17 @@ package Model.Entity.Stats;
 public class Effect {
 
     /*Variables*/
+<<<<<<< HEAD
+    public StatStructure modification;
+    public long duration;
+    public String description;
+=======
     public StatStructure stats; // Structure containing map with stat, value pair
     public double duration; // duration of effect
     private String description; // description of effect (not required)
     private int modification;
     StatsEnum stat;
+>>>>>>> master
 
     /*Default Constructor*/
     public Effect(){
@@ -34,8 +40,13 @@ public class Effect {
     }
 
     /*Constructor*/
+<<<<<<< HEAD
+    Effect(StatStructure modification , long duration , String description){
+        this.modification = modification;
+=======
     public Effect(StatsEnum stat, String description, int adjustment, double duration ){
         this.stat = stat;
+>>>>>>> master
         this.duration = duration;
         this.description = description;
     }
