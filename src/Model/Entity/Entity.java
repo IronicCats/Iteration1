@@ -1,7 +1,7 @@
 package Model.Entity;
 
 import Controller.Controller;
-import Model.Game;
+import Model.Entity.Stats.Stats;
 import Model.Location;
 import Model.Map.Tiles.Tile;
 
@@ -15,6 +15,9 @@ import java.awt.*;
 
 public abstract class Entity {
 
+    public static final float DEFAULT_SPEED = 3.0f;
+
+    private Stats stats;
     protected float speed;
     protected float xVelocity, yVelocity;
     protected Controller controller;
@@ -22,13 +25,18 @@ public abstract class Entity {
     protected Location location;
     protected Rectangle bounds;
 
-    public Entity(Controller controller, float x, float y, int width, int height){
+    public Entity(Controller controller, float x, float y, int width, int height) {
         location = new Location((int)x, (int)y, 0);
         this.controller = controller;
         this.width = width;
         this.height = height;
 
         bounds = new Rectangle(0, 0, width , height);
+    }
+
+    public Entity(Controller controller, float x, float y, int width, int height, int direction) {
+        this(controller, x, y, width, height);
+        location.setDir(direction);
     }
 
     public abstract void tick();
@@ -66,9 +74,6 @@ public abstract class Entity {
     public void setHeight(int height) {
         this.height = height;
     }
-
-
-
 
     public float getSpeed() {
         return speed;
