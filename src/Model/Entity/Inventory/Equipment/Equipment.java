@@ -10,7 +10,7 @@ public class Equipment {
     private EquippedArmor armor;
     private EquipmentStats equipmentStats;
 
-    public Equipment() {
+    Equipment() {
 
     } // end constructor
 } // end class Equipment
