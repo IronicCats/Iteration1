@@ -2,6 +2,7 @@ package Controller;
 
 import Model.Game;
 import Model.Map.Map;
+import Model.Map.Tiles.Tile;
 import View.Graphics.Camera;
 import View.View;
 
@@ -50,5 +51,9 @@ public class Controller {
 
     public void setMap(Map map) {
         this.map = map;
+    }
+
+    public Tile getTiles(int x, int y) {
+        return map.getTile(x, y);
     }
 }
