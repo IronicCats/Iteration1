@@ -1,4 +1,4 @@
-package Model.Entity.Item;
+package Model.Item;
 
 import Model.Location;
 
@@ -28,6 +28,21 @@ public abstract class Item {
     public String description;
     public Location location;
 
+    //Default Constructor
+    public Item(){
+        this.id = -1;
+        this.name = null;
+        this.description = null;
+        this.location = null;
+    }
+
+    //Location and ID constructor
+    public Item(int id , Location location){
+        this.id = id;
+        this.location =  location;
+        this.name = null;
+        this.description = null;
+    }
     public abstract void onInteract(); // Do something
 
     public void render(Graphics g,int x, int y) { // render image of item
