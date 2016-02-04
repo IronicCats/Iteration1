@@ -10,11 +10,11 @@ package Model.Entity.Stats;
 public class Effect {
 
     /*Variables*/
-    public StatStructure stats; // Structure containing map with stat, value pair
-    public double duration; // duration of effect
+    private StatStructure stats; // Structure containing map with stat, value pair
+    private long duration; // duration of effect
     private String description; // description of effect (not required)
     private int modification;
-    StatsEnum stat;
+    private StatsEnum stat;
 
     /*Default Constructor*/
     public Effect(){
@@ -24,7 +24,7 @@ public class Effect {
     }
 
     /*Used for items*/
-    public Effect(int id, String description, double duration){
+    public Effect(int id, String description, long duration){
         this.description = description;
         this.duration = duration;
 
@@ -34,7 +34,7 @@ public class Effect {
     }
 
     /*Constructor*/
-    public Effect(StatsEnum stat, String description, int adjustment, double duration ){
+    public Effect(StatsEnum stat, String description, int adjustment, long duration ){
         this.stat = stat;
         this.duration = duration;
         this.description = description;
@@ -44,6 +44,8 @@ public class Effect {
         switch(id){
             case(20): stat = StatsEnum.LIFE; // Lowers health by -5 (oneShot)
                       modification = -5;
+                      break;
+            default: // no action
                       break;
         }
     }
