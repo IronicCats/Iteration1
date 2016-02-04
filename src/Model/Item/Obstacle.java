@@ -6,7 +6,7 @@ import Model.Location;
 import java.awt.image.BufferedImage;
 
 /**
- * Created by Wimberley on 2/3/16.
+ * Created by Peter Camejo on 2/3/16.
  */
 public class Obstacle extends Item{
 

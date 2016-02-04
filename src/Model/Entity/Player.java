@@ -31,26 +31,33 @@ public class Player extends Entity {
 
     @Override
     public void tick() {
-        getInput();
-        navigation.move(navigation.getxVelocity(),navigation.getyVelocity());
+        if(!navigation.isMoving) {
+            getMovementInput();
+        }else {
+            navigation.move();
+        }
+        //navigation.move(navigation.getxVelocity(),navigation.getyVelocity());
     }
 
-    public void getInput(){
-        navigation.setyVelocity(0);
-        navigation.setxVelocity(0);
+    public void getMovementInput(){
+       // navigation.setyVelocity(0);
+        //navigation.setxVelocity(0);
         //TODO: Add the numpad movement options
-        if(controller.getInputManager().N) {
-            navigation.setyVelocity(-(speed));
-        }
-        if(controller.getInputManager().E) {
-            navigation.setxVelocity((speed));
+        if (controller.getInputManager().N) {
+            //navigation.setyVelocity(-(speed)]]);
+            //location.setY(location.getY() - 64);
+            navigation.move(0);
+        } else if (controller.getInputManager().E) {
+            //navigation.setxVelocity((speed));
+            //location.setX(location.getX() + 64);
+            navigation.move(1);
 
-        }
-        if(controller.getInputManager().S) {
-            navigation.setyVelocity((speed));
-        }
-        if(controller.getInputManager().W) {
-            navigation.setxVelocity(-(speed));
+        } else if (controller.getInputManager().S) {
+            //navigation.setyVelocity((speed));
+            navigation.move(2);
+        } else if (controller.getInputManager().W) {
+            //navigation.setxVelocity(-(speed));
+            navigation.move(3);
         }
 
     }

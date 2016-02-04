@@ -15,13 +15,77 @@ public class Nav {
     protected static Controller controller;
     protected static Location location;
     protected static Rectangle bounds;
+    protected int goalX;
+    protected int goalY;
+
+    protected boolean isMoving = false;
 
     public Nav(Location location,Rectangle bounds, Controller controller){
+        goalX = location.getX();
+        goalY = location.getY();
         this.location = location;
         this.bounds = bounds;
         this.controller = controller;
     }
 
+    public void move(int direction) {
+        isMoving = true;
+        boolean Obstaclecheck = true;
+        if (direction == 0) {
+            if (controller.getTiles((location.getX())/64, (location.getY() - 64) / 64).isUnWalkable) {
+                Obstaclecheck = false;
+            }
+            if (Obstaclecheck) {
+                goalY = location.getY() - Tile.TILEHEIGHT;
+            }
+        }else if (direction == 1) {
+                if (controller.getTiles((location.getX() + 64) / 64, (location.getY()) / 64).isUnWalkable) {
+                    Obstaclecheck = false;
+                }
+                if (Obstaclecheck) {
+                    goalX = location.getX() + Tile.TILEWIDTH;
+                }
+            } else if (direction == 2) {
+            if (controller.getTiles((location.getX()) / 64, (location.getY() + 64) / 64).isUnWalkable) {
+                Obstaclecheck = false;
+            }
+            if(Obstaclecheck) {
+                goalY = location.getY() + Tile.TILEHEIGHT;
+            }
+            } else/*3*/ {
+            if (controller.getTiles((location.getX() - 64) / 64, (location.getY()) / 64).isUnWalkable) {
+                Obstaclecheck = false;
+            }
+            if (Obstaclecheck) {
+                goalX = location.getX() - Tile.TILEWIDTH;
+            }
+        }
+    }
+
+    public void move() {
+        if(location.getY() == goalY && location.getX() == goalX) {
+            isMoving = false;
+        }else {
+            //TWEEN TO LOCATION
+            if(location.getX() != goalX) {
+                if(location.getX() > goalX) {
+                    location.setX(location.getX() - 2);
+                }else {
+                    location.setX(location.getX() + 2);
+                }
+            }
+            if(location.getY() != goalY) {
+                if (location.getY() > goalY) {
+                    location.setY(location.getY() - 2);
+                } else {
+                    location.setY(location.getY() + 2);
+                }
+            }
+        }
+    }
+
+
+/*
     public float getyVelocity() {
         return yVelocity;
     }
@@ -49,7 +113,7 @@ public class Nav {
 
             if(!collisionWithTile(tx, (int) (location.getY() + bounds.y) / Tile.TILEHEIGHT) &&
                     !collisionWithTile(tx, (int) (location.getY() + bounds.y + bounds.height) / Tile.TILEHEIGHT)){
-                location.setX(location.getX() + (int)xVelocity);
+                location.setX((location.getX() + (int)xVelocity));
             }else{
                 location.setX(tx * Tile.TILEWIDTH - bounds.x - bounds.width - 1);
             }
@@ -96,6 +160,6 @@ public class Nav {
     }
 
 
-
+*/
 
 }

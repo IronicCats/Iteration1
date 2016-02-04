@@ -18,7 +18,7 @@ public abstract class Item {
     private int id;
     private String name;
     private String description;
-    protected Model.Location location;
+    protected Location location;
     private Effect [] effects; // array of effects item can hold
 
     // constructor--> sets all variables except height and width
@@ -54,6 +54,6 @@ public abstract class Item {
 
     public void render(Graphics g,int x, int y) { // render image of item
         g.drawImage( image, x , y, ITEMWIDTH, ITEMHEIGHT, null);
-    } // render item
+    }
 
 }
