@@ -38,9 +38,9 @@ public class Game implements Runnable {
 
 
 
-        //gameState = new GameState(controller);
+        gameState = new GameState(controller);
 
-        State.setState(menuState);
+        State.setState(gameState);
 
     }
 
