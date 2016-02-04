@@ -1,6 +1,9 @@
 .idea/
 .idea
 Iteration1.iml
+.out/
+out
+_mac
 out/
 ironiccats.iml
 debugger.renderers.xml
@@ -18,3 +21,10 @@ project.default.xml
 u.lnf.xml
 vsc.xml
 web-browsers.xml
+inspection/
+.inspection/
+/inspection
+colors.scheme.xml
+editor.xml
+Intellij.xml
+
