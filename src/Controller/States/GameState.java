@@ -40,6 +40,12 @@ public class GameState extends State {
                 System.out.println("Resume Game");
                 setState(GameState.game);
                 break;
+            case Inventory:
+                System.out.println("Inventory Selection ");
+                break;
+            case Gear:
+                System.out.println("Inventory Selection ");
+                break;
             case Pause:
                 View.view.removeKeyListener(MenuState.menu);
                 View.view.removeKeyListener(this);
@@ -76,6 +82,10 @@ public class GameState extends State {
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {
             switchState(States.Pause);
+        }
+
+        if(e.getKeyCode() == KeyEvent.VK_I) {
+            switchState(States.Inventory);
         }
     }
 
