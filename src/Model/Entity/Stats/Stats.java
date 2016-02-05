@@ -40,4 +40,33 @@ public class Stats {
     public int getDefensiveRating() { return derivedStats.getDefensiveRating(); }
     public int getArmorRating() { return derivedStats.getArmorRating(); }
 
+    public String toString()
+    {
+        String statString;
+        statString = Integer.toString(getLivesLeft()) + " ";
+        statString = statString + Integer.toString(getBaseLives()) + " ";
+        statString = statString + Integer.toString(getStrength()) + " ";
+        statString = statString + Integer.toString(getBaseStr()) + " ";
+        statString = statString + Integer.toString(getAgility()) + " ";
+        statString = statString + Integer.toString(getBaseAgi()) + " ";
+        statString = statString + Integer.toString(getIntellect()) + " ";
+        statString = statString + Integer.toString(getBaseIntel()) + " ";
+        statString = statString + Integer.toString(getHardiness()) + " ";
+        statString = statString + Integer.toString(getBaseHard()) + " ";
+        statString = statString + Integer.toString(getExperience()) + " ";
+        statString = statString + Integer.toString(getMovement()) + " ";
+        statString = statString + Integer.toString(getBaseMovement()) + " ";
+        statString = statString + Integer.toString(getEquipmentStats()) + " ";
+        statString = statString + Integer.toString(getLevel()) + " ";
+        statString  = statString + Integer.toString(getLife()) + " ";
+        statString = statString + Integer.toString(getBaseLife()) + " ";
+        statString = statString + Integer.toString(getMana()) + " ";
+        statString = statString + Integer.toString(getBaseMana()) + " ";
+        statString = statString + Integer.toString(getOffensiveRating()) + " ";
+        statString = statString + Integer.toString(getDefensiveRating()) + " ";
+        statString = statString + Integer.toString(getArmorRating()) + " \n";
+
+        return statString;
+    }
+
 } // end class Stats

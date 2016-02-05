@@ -39,4 +39,10 @@ public class Obstacle extends Item {
         return;
 
     }
+    public String toString()
+    {
+        String string;
+        string = (this.id + " " + this.location.getX() + " " + this.location.getY() + "\n");
+        return string;
+    }
 }

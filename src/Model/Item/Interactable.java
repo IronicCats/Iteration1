@@ -17,4 +17,11 @@ public class Interactable extends Item {
 
     }
 
+    public String toString()
+    {
+        String string;
+        string = "";
+        return string;
+    }
+
 }

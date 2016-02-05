@@ -35,4 +35,11 @@ public class Location {
     public void setDir(int dir) {
         this.dir = dir;
     }
+
+
+    public String toString(){
+        String locString;
+        locString = (this.x + " " + this.y + "\n");
+        return locString;
+    }
 }

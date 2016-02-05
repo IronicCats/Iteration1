@@ -90,4 +90,6 @@ public abstract class Entity {
     public void setLocation(Location location) {
         this.location = location;
     }
+
+    public Stats getStats(){return stats;}
 }

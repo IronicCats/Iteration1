@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Entity.Player;
 import Model.Game;
 import Model.Map.Map;
 import Model.Map.Tiles.Tile;
@@ -15,6 +16,7 @@ public class Controller {
     private InputManager inputManager;
     private Camera camera;
     private Map map;
+    private Player player;
 
     public Controller(Game game, InputManager inputManager) {
         this.game = game;
@@ -56,4 +58,9 @@ public class Controller {
     public Tile getTiles(int x, int y) {
         return map.getTile(x, y);
     }
+
+    public void setPlayer(Player player){this.player = player;}
+
+    public Player getPlayer(){return player;}
+
 }

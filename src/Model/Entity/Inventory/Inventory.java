@@ -2,6 +2,8 @@ package Model.Entity.Inventory;
 
 import Model.Entity.Inventory.Equipment.Equipment;
 
+import java.util.ArrayList;
+
 /**
  * Created by broskj on 2/1/16.
  */
@@ -13,6 +15,15 @@ public class Inventory {
         this.pack = pack;
         this.equipment = equipment;
     } // end constructor
+
+    public Pack getPack(){return pack;}
+    public Equipment getEquipment(){return equipment;}
+
+    public void saveInventory(ArrayList<Object> saveFile){
+        saveFile.add(pack);
+        saveFile.add(equipment);
+
+    }
 /*
     public void store(Takeable item) {
 

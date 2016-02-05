@@ -25,7 +25,8 @@ public class GameState extends State {
         camera = new Camera(controller.getGame().getWidth(), controller.getGame().getHeight(),map);
         controller.setCamera(camera);
         player = new Player(controller,1 * (Tile.TILEWIDTH ),1 * (Tile.TILEHEIGHT));
-
+        controller.setPlayer(player);
+        SaveState.writeFile(player,"Player test.txt");
     }
 
     public void tick() {
@@ -38,6 +39,11 @@ public class GameState extends State {
         player.render(g);
 
     }
+
+    //the game state needs to be able to save the player, the camera
+    //The player needs to be able to save it's stats and inventory
+    //items need to be able to save charge
+    //needs to be able to pass the current saved game state to the save state
 }
 
 

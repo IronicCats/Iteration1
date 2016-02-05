@@ -30,4 +30,11 @@ public class OneShot extends Item {
     public void onInteract(){
         effect = new Effect(id, "null", 0);// initialize effect based on id
     }
+
+    public String toString()
+    {
+        String string;
+        string = (this.location.getX() + " " + this.location.getY() +"\n");
+        return string;
+    }
 }

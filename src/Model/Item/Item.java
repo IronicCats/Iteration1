@@ -49,4 +49,9 @@ public abstract class Item {
         g.drawImage( image, x , y, ITEMWIDTH, ITEMHEIGHT, null);
     }
 
+    public abstract String toString();
+
+
+
+
 }
