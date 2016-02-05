@@ -39,7 +39,6 @@ public class Player extends Entity {
         }else {
             navigation.move();
         }
-        System.out.println(controller.getTiles(location.getX()/64,location.getY()/64).HasItem);
         if(controller.getTiles(location.getX()/64,location.getY()/64).HasItem){
             inventory.store(controller.getTiles(location.getX()/64,location.getY()/64).removeItem());
         }
