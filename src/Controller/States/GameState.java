@@ -61,9 +61,6 @@ public class GameState extends State {
             case Inventory:
                 System.out.println("Inventory Selection ");
                 break;
-            case Gear:
-                System.out.println("Inventory Selection ");
-                break;
             case Pause:
                 View.view.removeKeyListener(MenuState.menu);
                 View.view.removeKeyListener(this);

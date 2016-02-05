@@ -68,16 +68,8 @@ public class MenuState extends State implements KeyListener {
 
         if(e.getKeyCode() == 10) {
             switchState(menuView.getSelection());
-            menuView.previous();
         }
-        if(e.getKeyCode() == KeyEvent.VK_DOWN) {
-            menuView.next();
-            System.out.println("Down M");
-        }
-
-        if(e.getKeyCode() == 10) {
-            switchState(menuView.getSelection());
-        }
+        
     }
 
     @Override
