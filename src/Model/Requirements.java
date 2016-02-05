@@ -1,17 +1,30 @@
 package Model;
 
 import Model.Entity.Player;
-import Model.Entity.Stats.StatStructure;
-import Model.Entity.Stats.StatsEnum;
+import Model.Item.Interactable;
 
 /**
  * Created by Wimberley on 2/4/16.
  */
 public class Requirements {
 
-    StatStructure stats = new StatStructure();
+    private int requiredLevel;
+    private Interactable requiredItem;
+
+    public Requirements(int requiredLevel, Interactable requiredItem){
+        this.requiredLevel = requiredLevel;
+        this.requiredItem = requiredItem;
+    }
 
     public boolean meetsLevel(Player player){
-        player.getStats()
+        if(requiredLevel >= player.getStats().getLevel()){
+            return true;
+        }
+        else{return false;}
+    }
+
+    public boolean hasItem(Player player){
+        //if(requiredItem == player.) //TODO: UPDATE BASED ON INVENTORY METHODS
+        return false;
     }
 }

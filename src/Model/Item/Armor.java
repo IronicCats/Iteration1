@@ -3,7 +3,6 @@ package Model.Item;
 import Model.Entity.Player;
 import Model.Entity.Stats.Effect;
 import Model.Location;
-import Model.Entity.Player;
 
 import java.awt.image.BufferedImage;
 

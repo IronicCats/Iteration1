@@ -22,8 +22,4 @@ public abstract class Takeable extends Item{
     public void setLocation(Location location) {
         this.location = location;
     }
-
-    public void moveToInventory(){
-        // move
-    }
 }

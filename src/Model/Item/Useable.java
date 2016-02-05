@@ -2,8 +2,7 @@ package Model.Item;
 
 import Model.Entity.Player;
 import Model.Entity.Stats.Effect;
-import Model.Location;
-import Model.Entity.Player;
+import Model.Location;;
 
 import java.awt.image.BufferedImage;
 
