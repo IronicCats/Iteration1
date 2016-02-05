@@ -3,6 +3,7 @@ package Model.Entity.Stats;
 
 import java.util.EnumMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by broskj on 1/31/16.
@@ -12,16 +13,16 @@ import java.util.Map;
 public class StatStructure {
     private Map<StatsEnum, Integer> map;
 
-    public StatStructure() {
+    StatStructure() {
         map = new EnumMap<>(StatsEnum.class);
     } // end default constructor
 
-    public StatStructure(StatsEnum stat, int val) {
+    StatStructure(StatsEnum stat, int val) {
         map = new EnumMap<>(StatsEnum.class);
         map.put(stat, val);
     } // end single constructor
 
-    public StatStructure(StatsEnum[] stats, int[] vals){
+    StatStructure(StatsEnum[] stats, int[] vals){
         map = new EnumMap<>(StatsEnum.class);
 
         try{
@@ -46,4 +47,8 @@ public class StatStructure {
     public int getStat(StatsEnum stat) {
         return map.get(stat);
     } // end getStat
+
+    public Set<StatsEnum> getKeySet() { return map.keySet(); } // end getKeyset
+
+    public int getSize() { return map.size(); }
 } // end class StatStructure
