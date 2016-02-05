@@ -13,8 +13,8 @@ public class Effect {
     private StatStructure stats; // Structure containing map with stat, value pair
     private long duration; // duration of effect
     private String description; // description of effect (not required)
-    private int modification;
     private StatsEnum stat;
+
 
 
 }

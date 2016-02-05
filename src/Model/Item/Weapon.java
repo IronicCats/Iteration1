@@ -2,6 +2,7 @@ package Model.Item;
 
 import Model.Entity.Stats.Effect;
 import Model.Location;
+import Model.Entity.Player;
 
 import java.awt.image.BufferedImage;
 
@@ -16,7 +17,7 @@ public class Weapon extends Equippable {
     }
 
     @Override
-    public void onInteract() {
+    public void onInteract(Player player) {
         // swing weapon?
     }
 }

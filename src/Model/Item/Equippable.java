@@ -4,6 +4,7 @@ import Model.Entity.Stats.Effect;
 import Model.Location;
 
 import java.awt.image.BufferedImage;
+import Model.Entity.Player;
 
 /**
  * Created by Wimberley on 2/4/16.
@@ -16,7 +17,7 @@ public abstract class Equippable extends Takeable {
         super(image, id, location, type, name, description, effects);
     }
 
-    public void equipItem(){
+    public void equipItem(Player player){
         // equip
     }
 }

@@ -3,6 +3,7 @@ package Model.Item;
 
 import Model.Entity.Stats.Effect;
 import Model.Location;
+import Model.Entity.Player;
 
 import java.awt.image.BufferedImage;
 
@@ -18,8 +19,7 @@ public class OneShot extends Item {
 
 
     @Override
-    public void onInteract() {
-        // apply effect
+    public void onInteract(Player player) {
         location = null;
     }
 

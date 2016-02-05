@@ -2,6 +2,7 @@ package Model.Item;
 
 import Model.Entity.Stats.Effect;
 import Model.Location;
+import Model.Entity.Player;
 
 import java.awt.image.BufferedImage;
 
@@ -15,7 +16,7 @@ public class Useable extends Takeable{
         super(image, id, location, type, name, description, effects);
     }
 
-    public void onInteract(){
+    public void onInteract(Player player){
         // apply effect
     }
 }
