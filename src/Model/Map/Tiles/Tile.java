@@ -1,6 +1,7 @@
 package Model.Map.Tiles;
 
 import Model.Entity.Player;
+
 import Model.Item.Item;
 import Model.Location;
 import View.Graphics.Assets;
@@ -22,9 +23,11 @@ public abstract class Tile {
     private BufferedImage texture;
     public boolean isUnWalkable;
     private Player player;
-    public Item[] items = new Item[10];
     private int NumberofItems; // should be private
     public boolean HasItem;
+
+    private Item items[] = new Item[10];
+
 
 
     public  Tile(BufferedImage texture, Location location, boolean isUnWalkable, Item[] items) {
@@ -36,6 +39,7 @@ public abstract class Tile {
     }
 
     public void render(Graphics g,int x, int y) {
+
         if(NumberofItems == 0) {
             g.drawImage(texture, x, y, TILEWIDTH, TILEHEIGHT, null); //TILEWIDTH and TILEHEIGHT
         }
@@ -76,4 +80,8 @@ public abstract class Tile {
             }
         return null;
     }
+
+
+    
+
 }
