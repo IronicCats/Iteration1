@@ -2,6 +2,8 @@ package Model.Item;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import Model.Entity.Stats.Effect;
+import Model.Location;
 
 import Model.Entity.Player;
 import Model.Entity.Stats.Effect;

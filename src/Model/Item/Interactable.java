@@ -18,8 +18,7 @@ public class Interactable extends Item {
     public Interactable(BufferedImage image, int id, Location location, ItemsEnum type, String name, String description, Effect[] effects) {
         super(image, id, location, type, name, description, effects);
     }    // needs access to player stats for requirements check
-    public void onInteract(Player player){
 
-    }
+    public void onInteract(Player player){}
 
 }

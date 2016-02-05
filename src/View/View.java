@@ -51,6 +51,8 @@ public class View extends JFrame implements Runnable {
 
     }
 
+    
+
     public Canvas getCanvas() {
         return canvas;
     }
