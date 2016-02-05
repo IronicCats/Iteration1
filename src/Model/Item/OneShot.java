@@ -3,7 +3,7 @@ package Model.Item;
 import Model.Entity.Player;
 import Model.Entity.Stats.Effect;
 import Model.Location;
-import Model.Entity.Player;
+import Model.Entity.Stats.Stats;
 
 import java.awt.image.BufferedImage;
 
@@ -18,7 +18,7 @@ public class OneShot extends Item {
 
     @Override
     public void onInteract(Player player) {
-        player.
+        player.getStats().applyEffect(this.getEffects());
         location = null;
     }
 
