@@ -1,7 +1,6 @@
 package View.Views;
 
 
-
 import Controller.States.States;
 
 import javax.swing.*;
@@ -16,8 +15,8 @@ public class MainMenu  {
 
     private String[] menuItems = {"Create Game", "Load Game", "Exit Game"};
     private States[] menuStates = {States.Game, States.Load, States.Exit};
-    private int currentItem = 0;
 
+    private int currentItem = 0;
     public MainMenu(int width, int height) {
         this.width = width;
         this.height = height;

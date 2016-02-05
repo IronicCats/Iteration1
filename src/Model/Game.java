@@ -35,7 +35,10 @@ public class Game implements Runnable {
     public void init() {
         //START STATES HERE
         controller = new Controller(this, inputManager);
+
+
         menuState = new MenuState(controller, width, height);
+
 
         gameState = new GameState(controller);
         pauseState = new PauseState(controller, width, height);
