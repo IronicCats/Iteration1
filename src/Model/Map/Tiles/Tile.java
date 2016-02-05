@@ -1,5 +1,6 @@
 package Model.Map.Tiles;
 
+import Model.Item.Item;
 import Model.Location;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import sun.awt.image.BufferedImageDevice;
@@ -14,11 +15,10 @@ public abstract class Tile {
     //Same as Assets.width, Assets.height
     public static final int TILEWIDTH = 64, TILEHEIGHT = 64;
 
-
+    private Item items[] = new Item[10];
     private Location location;
     private BufferedImage texture;
     public boolean isUnWalkable;
-    public Model.Item.Item[] items = new Model.Item.Item[10];
 
     //Constructor
     public Tile(BufferedImage texture, Location location , boolean isUnWalkable){
@@ -35,13 +35,8 @@ public abstract class Tile {
     }
 
     public void render(Graphics g,int x, int y) {
-        //System.out.println("Render Tile");
         g.drawImage( texture, x , y, TILEWIDTH, TILEHEIGHT, null); //TILEWIDTH and TILEHEIGHT
     }
 
-/*
-    public String toString() {
-        return "location: " + location.getX() + ", " + location.getY();
-    }
-    */
+    
 }
