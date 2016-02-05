@@ -6,6 +6,10 @@ import Model.Entity.Stats.Effect;
 import Model.Location;
 import Model.Entity.Player;
 
+import Model.Entity.Player;
+import Model.Entity.Stats.Effect;
+import Model.Location;
+
 /**
  * Created by Wimberley on 2/2/16.
  */
@@ -52,6 +56,7 @@ public abstract class Item {
     /* end getter functions */
 
     public abstract void onInteract(Player player); // OneShot, useable
+
 
     public void render(Graphics g,int x, int y) { // render image of item
         g.drawImage( image, x , y, ITEMWIDTH, ITEMHEIGHT, null);
