@@ -2,6 +2,7 @@ package Model.Item;
 
 import Model.Entity.Stats.Effect;
 import Model.Location;
+import Model.Requirements;
 
 import java.awt.image.BufferedImage;
 
@@ -12,18 +13,13 @@ public abstract class Takeable extends Item{
 
     protected Location location;
 
-    // constructor in Item
-    public Takeable(BufferedImage image, int id, Location location, ItemsEnum type, String name, String description, Effect[] effects) {
-        super(image, id, location, type, name, description, effects);
+    public Takeable(BufferedImage image, int id, Location location, ItemsEnum type, String name, String description, Effect[] effects, Requirements requirements) {
+        super(image, id, location, type, name, description, effects, requirements);
     }
 
 
     // Used when added to inventory, dropped, or used by player
     public void setLocation(Location location) {
         this.location = location;
-    }
-
-    public void moveToInventory(){
-        // move
     }
 }

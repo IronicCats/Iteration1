@@ -3,7 +3,7 @@ package Model.Item;
 import Model.Entity.Player;
 import Model.Entity.Stats.Effect;
 import Model.Location;
-import Model.Entity.Player;
+import Model.Requirements;
 
 import java.awt.image.BufferedImage;
 
@@ -12,9 +12,9 @@ import java.awt.image.BufferedImage;
  */
 public class Weapon extends Equippable {
 
-    // constructor in Item
-    public Weapon(BufferedImage image, int id, Location location, ItemsEnum type, String name, String description, Effect[] effects) {
-        super(image, id, location, type, name, description, effects);
+
+    public Weapon(BufferedImage image, int id, Location location, ItemsEnum type, String name, String description, Effect[] effects, Requirements requirements) {
+        super(image, id, location, type, name, description, effects, requirements);
     }
 
     @Override
