@@ -1,7 +1,9 @@
 package Model.Map.Tiles;
 
 import Model.Entity.Player;
+import Model.Item.Item;
 import Model.Location;
+import View.Graphics.Assets;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import sun.awt.image.BufferedImageDevice;
 
@@ -20,22 +22,27 @@ public abstract class Tile {
     private BufferedImage texture;
     public boolean isUnWalkable;
     private Player player;
-    public Model.Item.Item[] items = new Model.Item.Item[10];
+    public Item[] items = new Item[10];
+    private int NumberofItems;
+    public boolean HasItem;
 
-    public Tile(BufferedImage texture, Location location , boolean isUnWalkable){
+
+    public  Tile(BufferedImage texture, Location location, boolean isUnWalkable, Item[] items) {
         this.location = location;
         this.texture = texture;
         this.isUnWalkable = isUnWalkable;
-    }
-    public  Tile(BufferedImage texture, Location location, boolean isUnWalkable, Model.Item.Item[] items) {
-        this.location = location;
-        this.texture = texture;
-        this.isUnWalkable = isUnWalkable;
-        this.items = items;
+        //this.items = items;
+        HasItem = false;
     }
 
     public void render(Graphics g,int x, int y) {
-        g.drawImage( texture, x , y, TILEWIDTH, TILEHEIGHT, null); //TILEWIDTH and TILEHEIGHT
+        if(NumberofItems == 0) {
+            g.drawImage(texture, x, y, TILEWIDTH, TILEHEIGHT, null); //TILEWIDTH and TILEHEIGHT
+        }
+        if (NumberofItems > 0) {
+            items[NumberofItems -1].render(g, x, y);
+
+        }
     }
 
     public void addPlayer(Player player){
@@ -48,4 +55,29 @@ public abstract class Tile {
         this.player = null;
     }
 
+    public void addItem(Item item){
+        HasItem = true;
+        items[NumberofItems] = item;
+        NumberofItems++;
+        System.out.println(NumberofItems);
+    }
+
+    public Item removeItem(){
+        System.out.println(NumberofItems);
+        if(!hasPlayer) {
+            if(NumberofItems > 0) {
+                Item temp = items[NumberofItems - 1];
+                System.out.println("going in");
+                items[NumberofItems] = null;
+                NumberofItems--;
+                if (NumberofItems == 0) {
+                    HasItem = false;
+                }
+                hasPlayer = true;
+                return temp;
+            }
+        }
+        return null;
+
+    }
 }

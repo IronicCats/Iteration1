@@ -1,6 +1,8 @@
 package Model.Entity.Inventory;
 
 import Model.Entity.Inventory.Equipment.Equipment;
+import Model.Item.Item;
+import Model.Item.Takeable;
 
 /**
  * Created by broskj on 2/1/16.
@@ -9,14 +11,16 @@ public class Inventory {
     private Pack pack;
     private Equipment equipment;
 
-    Inventory(Pack pack, Equipment equipment) {
+    public Inventory(Pack pack, Equipment equipment) {
         this.pack = pack;
         this.equipment = equipment;
     } // end constructor
-/*
-    public void store(Takeable item) {
 
+    public void store(Item item) {
+        if(pack.size != pack.cap){
+        pack.items[pack.size] = item;
     } // end store
+    /*
 
     public void drop(Takeable item) {
 
@@ -30,3 +34,4 @@ public class Inventory {
 
     } // end equipItem*/
 } // end class Inventory
+ }

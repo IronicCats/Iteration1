@@ -10,7 +10,7 @@ import Model.Location;
  */
 public abstract class Item {
 
-    public static int ITEMWIDTH, ITEMHEIGHT = 28; // height and width of item
+    public static final int ITEMWIDTH = 64, ITEMHEIGHT = 64 ;// height and width of item
 
     private BufferedImage image; // image used for item
 
@@ -53,7 +53,7 @@ public abstract class Item {
     public abstract void onInteract(); // varies depending on item
 
     public void render(Graphics g,int x, int y) { // render image of item
-        g.drawImage( image, x , y, ITEMWIDTH, ITEMHEIGHT, null);
+        g.drawImage(image, x , y, ITEMWIDTH, ITEMHEIGHT, null);
     }
 
 }
