@@ -1,44 +1,29 @@
 package Model.Item;
 
+import Model.Entity.Player;
+import Model.Entity.Stats.Effect;
 import Model.Location;
 
-import javax.swing.*;
+import java.awt.image.BufferedImage;
 
 /**
  * Created by Peter Camejo on 2/3/16.
  */
-public class Obstacle extends Item {
+public class Obstacle extends Item{
 
-    private int id;   //Valid inputs 40-49
-    private Location location;
-    private String message;
+    int ITEMHEIGHT = 128; // Guesstimates
+    int ITEMWIDTH = 128;
 
-    //Defualt Constructor
-    public Obstacle() {
-        id = 0;
-        location = null;
-        message = null;
+    public Obstacle(BufferedImage image, int id, Location location, ItemsEnum type, String name, String description, Effect[] effects) {
+        super(image, id, location, type, name, description, effects);
     }
 
-    //Default Message Constructor
-    public Obstacle(int id, Location location){
-        this.id = id;
-        this.location = location;
-        message = "An obstacle blocks your path.";
-    }
 
-    //Full Constructor
-    public Obstacle(int id , Location location , String message){
-        this.id = id;
-        this.location = location;
-        this.message = message;
-    }
-
-    public void onInteract(){
-        javax.swing.JOptionPane.showMessageDialog(null , message);
-        return;
+    // needs access to player stats for requirements check
+    public void onInteract(Player player){
 
     }
+
     public String toString()
     {
         String string;
@@ -46,3 +31,4 @@ public class Obstacle extends Item {
         return string;
     }
 }
+

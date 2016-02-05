@@ -45,24 +45,28 @@ public class Player extends Entity {
     }
 
     public void getMovementInput(){
-       // navigation.setyVelocity(0);
-        //navigation.setxVelocity(0);
         //TODO: Add the numpad movement options
         if (controller.getInputManager().N) {
-            //navigation.setyVelocity(-(speed)]]);
-            //location.setY(location.getY() - 64);
             navigation.move(0);
         } else if (controller.getInputManager().E) {
-            //navigation.setxVelocity((speed));
-            //location.setX(location.getX() + 64);
             navigation.move(1);
 
         } else if (controller.getInputManager().S) {
-            //navigation.setyVelocity((speed));
             navigation.move(2);
         } else if (controller.getInputManager().W) {
-            //navigation.setxVelocity(-(speed));
             navigation.move(3);
+        }
+        else if(controller.getInputManager().NE){
+            navigation.move(4);
+        }
+        else if(controller.getInputManager().NW){
+            navigation.move(5);
+        }
+        else if(controller.getInputManager().SW){
+            navigation.move(6);
+        }
+        else if(controller.getInputManager().SE){
+            navigation.move(7);
         }
 
     }
@@ -76,8 +80,6 @@ public class Player extends Entity {
                 height,
                 null
         );
-        //g.setColor(Color.red);
-        //g.fillRect((int)(getX() + bounds.x - controller.getCamera().getxOffset()), (int)(getY() + bounds.y - controller.getCamera().getyOffset()), bounds.width, bounds.height);
     }
 
     public Inventory getInventory(){return inventory;}

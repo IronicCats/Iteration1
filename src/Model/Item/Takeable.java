@@ -1,22 +1,32 @@
 package Model.Item;
 
+import Model.Entity.Stats.Effect;
+import Model.Location;
+
+import java.awt.image.BufferedImage;
+
 /**
  * Created by Wimberley on 2/3/16.
  */
-public class Takeable {
 
-    private int usesLeft;
-    private int id;
-    public Takeable(int id, int usesLeft)
-    {
-        this.id = id;
-        this.usesLeft = usesLeft;
+public abstract class Takeable extends Item{
+
+    private Location location;
+
+    // constructor in Item
+    public Takeable(BufferedImage image, int id, Location location, ItemsEnum type, String name, String description, Effect[] effects) {
+        super(image, id, location, type, name, description, effects);
     }
 
-    public String toString()
-    {
-        String string;
-        string = (this.id + " " + this.usesLeft + "\n");
-        return string;
+
+    // Used when added to inventory, dropped, or used by player
+    public void setLocation(Location location) {
+        this.location = location;
     }
+
+    public void moveToInventory(){
+        // move
+
+    }
+    public abstract String toString();
 }

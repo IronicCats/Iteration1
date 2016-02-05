@@ -91,5 +91,8 @@ public abstract class Entity {
         this.location = location;
     }
 
+
     public Stats getStats(){return stats;}
+
+
 }

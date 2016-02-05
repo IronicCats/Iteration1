@@ -1,5 +1,6 @@
 package Model.Item;
 
+import Model.Entity.Player;
 import Model.Entity.Stats.Effect;
 import Model.Location;
 
@@ -9,27 +10,17 @@ import java.awt.image.BufferedImage;
  * Created by Wimberley on 2/2/16.
  */
 public class OneShot extends Item {
-
-    int ITEMHEIGHT = 28; // Guesstimates
-    int ITEMWIDTH = 28;
-    Effect effect;
-
-    private int id;
-    private Location location;
-
-
-    private BufferedImage image;
-
-    // constructor
-    public OneShot(int id, Location location){
-        this.id = id; // id --> 20-29
-        this.location = location;
+    // constructor in Item
+    public OneShot(BufferedImage image, int id, Location location, ItemsEnum type, String name, String description, Effect[] effects) {
+        super(image, id, location, type, name, description, effects);
     }
 
-
-    public void onInteract(){
-        effect = new Effect(id, "null", 0);// initialize effect based on id
+    @Override
+    public void onInteract(Player player) {
+        // apply effect
+        location = null;
     }
+
 
     public String toString()
     {
@@ -37,4 +28,5 @@ public class OneShot extends Item {
         string = (this.location.getX() + " " + this.location.getY() +"\n");
         return string;
     }
+
 }
