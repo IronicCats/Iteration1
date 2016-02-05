@@ -20,7 +20,7 @@ import java.io.IOException;
 public class Map {
 
     private Tile[][] tiles;
-   private Location spawn;
+    private Location spawn;
     private int width;
 
     private int height;
@@ -44,6 +44,7 @@ public class Map {
             System.out.println(e);
 
         }
+
         String[] tokens = builder.toString().split("\\s+");
         width = parseInt(tokens[0]);
         height = parseInt(tokens[1]);
