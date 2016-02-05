@@ -4,6 +4,7 @@ import Controller.Controller;
 import Controller.InputManager;
 import Controller.States.GameState;
 import Controller.States.MenuState;
+import Controller.States.PauseState;
 import Controller.States.State;
 import jdk.internal.util.xml.impl.Input;
 
@@ -18,6 +19,7 @@ public class Game implements Runnable {
 
     private State gameState;
     private State menuState;
+    private State pauseState;
     private InputManager inputManager;
     private int width, height;
 
@@ -33,12 +35,10 @@ public class Game implements Runnable {
     public void init() {
         //START STATES HERE
         controller = new Controller(this, inputManager);
-
         menuState = new MenuState(controller, width, height);
 
-
-
         gameState = new GameState(controller);
+        pauseState = new PauseState(controller, width, height);
 
         State.setState(menuState);
 
