@@ -1,6 +1,7 @@
 package View.Views;
 
 
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -11,8 +12,7 @@ public class MainMenu  {
 
     int width, height;
     private String[] menuItems = {"Create Game", "Load Game", "Exit Game"};
-    private int currentItem = 0;
-
+    private int currentItem = 1;
 
     public MainMenu(int width, int height) {
         this.width = width;
@@ -20,21 +20,42 @@ public class MainMenu  {
     }
 
     public void render(Graphics g) {
+        g.setColor(new Color(38, 166, 91));
+        g.fillRect(0, 0, width, height);
+
         for(int i = 0; i < menuItems.length; ++i) {
-            if(i == currentItem){
-                g.setColor(Color.PINK);
-            }else {
-                g.setColor(Color.GREEN);
-            }
-            //g.drawLine(width, height);
             g.setFont(new Font("Arial", Font.PLAIN, 54));
             FontMetrics fm = g.getFontMetrics();
             int totalWidth = (fm.stringWidth(menuItems[i]));
             int x = (width - totalWidth) / 2;
-            System.out.println(x);
             int y = (height / 2) - 100 + 100 * i;
+            if(i == currentItem){
+                g.setColor(Color.ORANGE);
+                g.fillRect(x, y - fm.getHeight() + (fm.getHeight() / 4), totalWidth, fm.getHeight() );
+                g.setColor(Color.PINK);
+            }else {
+                g.setColor(Color.GREEN);
+            }
             g.drawString(menuItems[i], x, y);
         }
+    }
+
+    public void next() {
+        ++currentItem;
+        if(currentItem > menuItems.length - 1){
+            currentItem = 0;
+        }
+    }
+
+    public void previous() {
+        --currentItem;
+        if(currentItem < 0){
+            currentItem = menuItems.length - 1;
+        }
+    }
+
+    public int getSelection() {
+        return currentItem;
     }
 
 }
