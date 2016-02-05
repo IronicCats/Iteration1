@@ -23,7 +23,7 @@ public abstract class Tile {
     public boolean isUnWalkable;
     private Player player;
     public Item[] items = new Item[10];
-    private int NumberofItems;
+    private int NumberofItems; // should be private
     public boolean HasItem;
 
 
@@ -46,16 +46,16 @@ public abstract class Tile {
     }
 
     public void addPlayer(Player player){
-        hasPlayer = true;
+        this.hasPlayer = true;
         this.player = player;
     }
 
     public void removePlayer(Player player){
-        hasPlayer = false;
+        this.hasPlayer = false;
         this.player = null;
     }
 
-    public void addItem(Item item){
+    public void addItem(Item item) {
         HasItem = true;
         items[NumberofItems] = item;
         NumberofItems++;
@@ -63,8 +63,8 @@ public abstract class Tile {
     }
 
     public Item removeItem(){
-        if(!hasPlayer) {
             if(NumberofItems > 0) {
+                System.out.println(NumberofItems);
                 Item temp = items[NumberofItems - 1];
                 System.out.println("going in");
                 items[NumberofItems] = null;
@@ -72,11 +72,8 @@ public abstract class Tile {
                 if (NumberofItems == 0) {
                     HasItem = false;
                 }
-                hasPlayer = true;
                 return temp;
             }
-        }
         return null;
-
     }
 }
