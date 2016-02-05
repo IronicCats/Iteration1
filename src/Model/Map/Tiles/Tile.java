@@ -63,7 +63,6 @@ public abstract class Tile {
     }
 
     public Item removeItem(){
-        System.out.println(NumberofItems);
         if(!hasPlayer) {
             if(NumberofItems > 0) {
                 Item temp = items[NumberofItems - 1];
