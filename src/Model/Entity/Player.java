@@ -23,7 +23,7 @@ public class Player extends Entity {
         speed = DEFAULT_SPEED;
         bounds.x = 0;
         bounds.y = 0;
-        navigation = new Nav(location,bounds,controller);
+        navigation = new Nav(location,bounds,controller,this);
         bounds.width = DEFAULT_CREATURE_WIDTH;
         bounds.height = DEFAULT_CREATURE_HEIGHT;
     }
