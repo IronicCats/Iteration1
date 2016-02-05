@@ -28,7 +28,11 @@ public class GameState extends State {
         controller.setCamera(camera);
         player = new Player(controller,1 * (Tile.TILEWIDTH ),1 * (Tile.TILEHEIGHT));
         controller.setPlayer(player);
+        //TESTING
+
         SaveState.writeFile(player,"Player test.txt");
+        LoadState.loadFile("Player test.txt");
+        //TESTING
     }
 
     public void tick() {

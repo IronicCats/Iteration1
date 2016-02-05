@@ -45,6 +45,10 @@ public abstract class Item {
         return description;
     }
 
+    public int getId(){return id;}
+
+    public Location getLocation(){return location;}
+
     public Effect[] getEffects() {
         return effects;
     }

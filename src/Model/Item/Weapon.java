@@ -20,4 +20,11 @@ public class Weapon extends Equippable {
     public void onInteract(Player player) {
         // swing weapon?
     }
+
+    public String toString(){
+        String string;
+        string = (this.getId() + " " + this.getLocation().getX() + " " + this.getLocation().getY() + "\n");
+        return string;
+
+    }
 }

@@ -14,6 +14,7 @@ public class Obstacle extends Item{
     int ITEMHEIGHT = 128; // Guesstimates
     int ITEMWIDTH = 128;
 
+
     public Obstacle(BufferedImage image, int id, Location location, ItemsEnum type, String name, String description, Effect[] effects) {
         super(image, id, location, type, name, description, effects);
     }
@@ -27,7 +28,7 @@ public class Obstacle extends Item{
     public String toString()
     {
         String string;
-        string = (this.id + " " + this.location.getX() + " " + this.location.getY() + "\n");
+        string = (this.location.getX() + " " + this.location.getY() + "\n");
         return string;
     }
 }

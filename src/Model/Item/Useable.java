@@ -19,4 +19,10 @@ public class Useable extends Takeable{
     public void onInteract(Player player){
         // apply effect
     }
+    public String toString()
+    {
+        String string;
+        string = (this.getId() + " " + this.getLocation().getX() + " " + this.getLocation().getY()+  "\n");
+        return string;
+    }
 }
