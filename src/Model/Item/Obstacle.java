@@ -1,5 +1,6 @@
 package Model.Item;
 
+import Model.Entity.Player;
 import Model.Entity.Stats.Effect;
 import Model.Location;
 
@@ -19,7 +20,7 @@ public class Obstacle extends Item{
 
 
     // needs access to player stats for requirements check
-    public void onInteract(){
+    public void onInteract(Player player){
 
     }
 }

@@ -1,5 +1,6 @@
 package Model.Item;
 
+import Model.Entity.Player;
 import Model.Entity.Stats.Effect;
 import Model.Location;
 
@@ -16,7 +17,7 @@ public class Armor extends Equippable{
     }
 
     @Override
-    public void onInteract() {
+    public void onInteract(Player player) {
         // if armor is hit?
     }
 }
