@@ -34,13 +34,13 @@ public class Game implements Runnable {
         //START STATES HERE
         controller = new Controller(this, inputManager);
 
-        menuState = new MenuState(controller);
+        menuState = new MenuState(controller, width, height);
 
 
 
         gameState = new GameState(controller);
 
-        State.setState(gameState);
+        State.setState(menuState);
 
     }
 
