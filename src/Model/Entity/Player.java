@@ -40,7 +40,6 @@ public class Player extends Entity {
     }
 
     public void getMovementInput(){
-        //TODO: Add the numpad movement options
         if (controller.getInputManager().N) {
             navigation.move(0);
         } else if (controller.getInputManager().E) {
@@ -76,5 +75,4 @@ public class Player extends Entity {
                 null
         );
     }
-
 }
