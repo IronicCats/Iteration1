@@ -53,7 +53,7 @@ public abstract class Item {
         return type;
     }
     /* end getter functions */
-
+    
     public abstract void onInteract(Player player); // OneShot, useable
 
 

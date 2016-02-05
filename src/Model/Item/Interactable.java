@@ -24,6 +24,14 @@ public class Interactable extends Item {
 
     // needs access to player stats for requirements check
     public void onInteract(Player player) {
+        if(this.requirements.hasItem(player) || this.requirements.meetsLevel(player)){ //If player has item or meets level
+            //apply effect ?
+            System.out.println("Player meets requirements to interact with Item");
+            return;
+        }else{
+            System.out.println("Player does not meet Item's requirements");
+            return;
+        }
 
     }
 }

@@ -22,6 +22,7 @@ public class Obstacle extends Item{
 
     // needs access to player stats for requirements check
     public void onInteract(Player player){
-
+        //do nothing
+        return;
     }
 }
