@@ -2,7 +2,8 @@ package Model.Item;
 
 import Model.Entity.Player;
 import Model.Entity.Stats.Effect;
-import Model.Location;;
+import Model.Location;
+import Model.Requirements;;
 
 import java.awt.image.BufferedImage;
 
@@ -11,9 +12,9 @@ import java.awt.image.BufferedImage;
  */
 public class Useable extends Takeable{
 
-    // constructor in Item
-    public Useable(BufferedImage image, int id, Location location, ItemsEnum type, String name, String description, Effect[] effects) {
-        super(image, id, location, type, name, description, effects);
+
+    public Useable(BufferedImage image, int id, Location location, ItemsEnum type, String name, String description, Effect[] effects, Requirements requirements) {
+        super(image, id, location, type, name, description, effects, requirements);
     }
 
     public void onInteract(Player player){
