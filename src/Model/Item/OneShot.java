@@ -18,6 +18,7 @@ public class OneShot extends Item {
 
     @Override
     public void onInteract(Player player) {
+        player.
         location = null;
     }
 
