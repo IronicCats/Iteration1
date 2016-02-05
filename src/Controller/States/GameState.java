@@ -14,12 +14,14 @@ import View.Graphics.Camera;
  */
 public class GameState extends State {
 
+    public static GameState game;
     private Map map;
     private Camera camera;
     private Player player;
 
     public GameState(Controller controller) {
         super(controller);
+        game = this;
         map = new Map(controller);
         controller.setMap(map);
         camera = new Camera(controller.getGame().getWidth(), controller.getGame().getHeight(),map);
