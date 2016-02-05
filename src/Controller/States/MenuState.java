@@ -2,15 +2,18 @@ package Controller.States;
 
 import java.awt.*;
 import Controller.Controller;
+import View.Views.MainMenu;
+
 /**
  * Created by jlkegley on 1/31/2016.
  */
 public class MenuState extends State {
-
-    public MenuState(Controller controller) {
+    MainMenu menu;
+    public MenuState(Controller controller, int width, int height) {
 
         super(controller);
-        //INITALIZE CANVAS TO HAVE BUTTONS init();
+        menu = new MainMenu(width, height);
+
     }
 
     public void tick() {
@@ -18,6 +21,7 @@ public class MenuState extends State {
     }
 
     public void render(Graphics g) {
+        menu.render(g);
         //RENDER THIS INTERFACE (NOT GAME INTERFACE
     }
 
