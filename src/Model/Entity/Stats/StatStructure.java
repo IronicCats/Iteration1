@@ -13,16 +13,16 @@ import java.util.Set;
 public class StatStructure {
     private Map<StatsEnum, Integer> map;
 
-    StatStructure() {
+    public StatStructure() {
         map = new EnumMap<>(StatsEnum.class);
     } // end default constructor
 
-    StatStructure(StatsEnum stat, int val) {
+    public StatStructure(StatsEnum stat, int val) {
         map = new EnumMap<>(StatsEnum.class);
         map.put(stat, val);
     } // end single constructor
 
-    StatStructure(StatsEnum[] stats, int[] vals){
+    public StatStructure(StatsEnum[] stats, int[] vals){
         map = new EnumMap<>(StatsEnum.class);
 
         try{
