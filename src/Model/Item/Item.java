@@ -6,10 +6,6 @@ import Model.Entity.Stats.Effect;
 import Model.Location;
 import Model.Entity.Player;
 
-import Model.Entity.Player;
-import Model.Entity.Stats.Effect;
-import Model.Location;
-
 /**
  * Created by Wimberley on 2/2/16.
  */

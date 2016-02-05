@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
  */
 public abstract class Takeable extends Item{
 
-    private Location location;
+    protected Location location;
 
     // constructor in Item
     public Takeable(BufferedImage image, int id, Location location, ItemsEnum type, String name, String description, Effect[] effects) {

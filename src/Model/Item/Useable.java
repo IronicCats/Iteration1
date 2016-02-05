@@ -18,6 +18,7 @@ public class Useable extends Takeable{
     }
 
     public void onInteract(Player player){
-        // apply effect
+        player.getStats().applyEffect(this.getEffects());
+        location = null;
     }
 }
