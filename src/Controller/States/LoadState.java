@@ -1,5 +1,6 @@
 package Controller.States;
 
+
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -48,4 +49,4 @@ public class LoadState extends State{
         }
 
     }
-}
+

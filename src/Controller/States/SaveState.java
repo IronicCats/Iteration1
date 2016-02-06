@@ -1,5 +1,6 @@
 package Controller.States;
 
+
 import java.awt.*;
 
 import java.io.File;
@@ -26,19 +27,16 @@ public class SaveState extends State {
         //INITALIZE CANVAS TO HAVE BUTTONS init();
     }
 
-    public void tick()
-    {
+    public void tick() {
 
     }
 
-    public void render(Graphics g)
-    {
+    public void render(Graphics g) {
 
     }
 
 
-    public static void writeFile(Player player,String filepath)
-    {
+    public static void writeFile(Player player, String filepath) {
         File outputFile;
         BufferedWriter outputWriter;
 
@@ -53,18 +51,18 @@ public class SaveState extends State {
             //then pack, pack should save individual items
             //then equipment
             //also current map status??
-            for(int i = 0; i < savefile.size(); i++){
+            for (int i = 0; i < savefile.size(); i++) {
                 outputWriter.write(Objects.toString(savefile.get(i)));
             }
             outputWriter.close();
             //so I need a Tostring for Location, a ToString for Stats, a toString for pack(maybe individually for items), and to string for equipment
             //outputWriter.write(Objects.toString(savefile));
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
 
     }
-
-
 }
+
+
