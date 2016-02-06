@@ -22,30 +22,24 @@ public class Camera {
         xOffset = 100;
     }
 
-    public void move(int x, int y) {
-        xOffset += x;
-        yOffset += y;
-        keepCameraonMap();
-    }
-
     public void keepCameraonMap(){
         if(xOffset < 0){
             setxOffset(0);
         }
-        else if(getxOffset() > (map.getWidth() * (Tile.TILEWIDTH/2) - gameWidth) ) {
-            setxOffset(map.getWidth() * (Tile.TILEWIDTH/2) - gameWidth);
+        else if(xOffset > (map.getWidth() * (Tile.TILEWIDTH) - gameWidth) ) {
+            xOffset = map.getWidth() * (Tile.TILEWIDTH) - gameWidth;
         }
-        if(getyOffset() < 0){
-            setyOffset(0);
+        if(yOffset < 0){
+            yOffset = 0;
         }
-        else if(getyOffset() > (map.getHeight() * Tile.TILEHEIGHT/2) - gameHeight + 100){
-            setyOffset(map.getHeight() * (Tile.TILEWIDTH/2) - gameHeight + 100);
+        else if(yOffset > ((map.getHeight() * Tile.TILEHEIGHT)- gameHeight)){
+            yOffset = (map.getHeight() * Tile.TILEHEIGHT) - gameHeight;
         }
     }
 
     public void centerOnPlayer(Player player) {
-        xOffset = player.getLocation().getX() - gameWidth / 2 + player.getWidth() / 2;
-        yOffset = player.getLocation().getY() - gameHeight / 2 + player.getHeight() / 2;
+        xOffset = player.getLocation().getX() - gameWidth/2 + player.getWidth()/2;
+        yOffset = player.getLocation().getY() - gameHeight/2 + player.getHeight()/2;
         keepCameraonMap();
     }
 
@@ -65,5 +59,6 @@ public class Camera {
 
     public void setyOffset(float yOffset) {
         this.yOffset = yOffset;
+        keepCameraonMap();
     }
 }
