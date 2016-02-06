@@ -17,7 +17,7 @@ public class Stats {
 
     } // end constructor
 
-    Stats(StatStructure ss) {
+    public Stats(StatStructure ss) {
         primaryStats = new PrimaryStats(ss);
         derivedStats = new DerivedStats(primaryStats);
         effects = new ArrayList<>();

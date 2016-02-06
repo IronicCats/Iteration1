@@ -103,8 +103,9 @@ public class GameState extends State {
 
         if(e.getKeyCode() == KeyEvent.VK_I) {
             switchState(States.Inventory);
-        } ,
+        }
     }
+
 
     @Override
     public void keyReleased(KeyEvent e) {

@@ -1,6 +1,7 @@
 package Model.Entity;
 
 import Controller.Controller;
+import Model.Entity.Occupation.Smasher;
 import Model.Entity.Inventory.Inventory;
 import Model.Game;
 import View.Graphics.Assets;
@@ -19,11 +20,10 @@ public class Player extends Entity {
     public static final float DEFAULT_SPEED = 3.0f;
     public static final int DEFAULT_CREATURE_WIDTH = 64,
                             DEFAULT_CREATURE_HEIGHT = 64;
-    boolean PlayerIsHoldingButton;
-    boolean PlayerIsSittingonTile = false;
+
 
     public Player(Controller controller,float x, float y, Inventory inventory) {
-        super(controller, x, y, DEFAULT_CREATURE_WIDTH, DEFAULT_CREATURE_HEIGHT);
+        super(controller, x, y, DEFAULT_CREATURE_WIDTH, DEFAULT_CREATURE_HEIGHT, new Smasher());
         speed = DEFAULT_SPEED;
         bounds.x = 0;
         bounds.y = 0;
@@ -31,27 +31,26 @@ public class Player extends Entity {
         bounds.width = DEFAULT_CREATURE_WIDTH;
         bounds.height = DEFAULT_CREATURE_HEIGHT;
         this.inventory = inventory;
-        PlayerIsHoldingButton = false;
     }
 
 
     @Override
     public void tick() {
         controller.getTiles(location.getX()/64,location.getY()/64).addPlayer(this);
+        if(controller.getTiles(location.getX()/64,location.getY()/64).HasItem){
+            System.out.println("There is an item here!");
+        }
         if(!navigation.isMoving) {
-            getMovementInput();
+            getInput();
         }else {
             navigation.move();
         }
-        if(controller.getTiles(location.getX()/64,location.getY()/64).HasItem && !PlayerIsSittingonTile){
-            System.out.println("This tile has an item!");
-            inventory.store(controller.getTiles(location.getX()/64,location.getY()/64).removeItem());
-            PlayerIsSittingonTile = true;
-        }
-
     }
 
-    public void getMovementInput(){
+
+    public void getInput(){
+        //TODO: Add the numpad movement options
+
         if (controller.getInputManager().N) {
             controller.getTiles(location.getX()/64,location.getY()/64).removePlayer(this);
             navigation.move(0);
@@ -82,14 +81,10 @@ public class Player extends Entity {
             controller.getTiles(location.getX()/64,location.getY()/64).removePlayer(this);
             navigation.move(7);
         }
-        else if(controller.getInputManager().drop) {
-            if (!PlayerIsHoldingButton) {
-                controller.getTiles(location.getX() / 64, location.getY() / 64).addItem(inventory.drop());
-                PlayerIsHoldingButton = true;
+        else if(controller.getInputManager().PickUpItem) {
+            if(controller.getTiles(location.getX()/64,location.getY()/64).HasItem) {
+                inventory.store(controller.getTiles(location.getX() / 64, location.getY() / 64).removeItem());
             }
-        }
-        if(!controller.getInputManager().drop && PlayerIsHoldingButton){
-            PlayerIsHoldingButton = false;
         }
     }
 
