@@ -15,7 +15,7 @@ public class EquippedWeapon {
         damage = 0;//weapon.getStat();
     }
 
-    public void equipWeapon(Item weapon) {
+    public void equipWeapon(Weapon weapon) {
         this.weapon = weapon;
         this.damage=weapon.getStat();
     }

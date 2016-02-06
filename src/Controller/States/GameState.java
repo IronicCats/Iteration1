@@ -46,10 +46,13 @@ public class GameState extends State {
         inventory = new Inventory(controller,pack,null);
         player = new Player(controller,1 * (Tile.TILEWIDTH ),1 * (Tile.TILEHEIGHT),inventory);
         location = new Location(3,3,0);
+        for(int i = 0; i < 17; ++i) {
+            potion = new Useable(Assets.potion,1,location, ItemsEnum.USEABLE,"Potion","heals",null);
+            map.getTile(5,5).addItem(potion);
+        }
 
-        potion = new Useable(Assets.potion,1,location, ItemsEnum.USEABLE,"Potion","heals",null);
 
-        map.getTile(5,5).addItem(potion);
+
         controller.setPlayer(player);
 
     }

@@ -27,7 +27,7 @@ public class EquippedArmor {
         totalDefense = 0;
     } // end constructor
 
-    public void equipArmor(Item armor) {
+    public void equipArmor(Armor armor) {
         switch(armor.getArmorType()) {
             case HEAD:
                 head=armor;
@@ -55,9 +55,9 @@ public class EquippedArmor {
         }
         totalDefense+=armor.getStat();
     }
-    public Armor unequipArmor(int offset){
+    public Armor unequipArmor(int index){
         Armor temp=null;
-        switch(offset) {
+        switch(index) {
             case 0:
                 if(head==null)break;
                 temp=new Armor(head);

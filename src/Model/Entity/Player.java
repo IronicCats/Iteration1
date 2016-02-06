@@ -35,8 +35,8 @@ public class Player extends Entity {
     @Override
     public void tick() {
         controller.getTiles(location.getX()/64,location.getY()/64).addPlayer(this);
-        if(controller.getTiles(location.getX()/64,location.getY()/64).HasItem){
-            System.out.println("There is an item here!");
+        if(controller.getTiles(location.getX()/64,location.getY()/64).hasItem()){
+            System.out.println("There is an item here!" +  Integer.toString(controller.getTiles(location.getX() / 64, location.getY()/64).getItems().size()));
         }
         if(!navigation.isMoving) {
             getInput();
@@ -80,8 +80,8 @@ public class Player extends Entity {
             navigation.move(7);
         }
         else if(controller.getInputManager().PickUpItem) {
-            if(controller.getTiles(location.getX()/64,location.getY()/64).HasItem) {
-                inventory.store(controller.getTiles(location.getX() / 64, location.getY() / 64).removeItem());
+            if(controller.getTiles(location.getX()/64,location.getY()/64).hasItem()) {
+                inventory.store(controller.getTiles(location.getX() / 64, location.getY() / 64).getItems());
             }
         }
     }
