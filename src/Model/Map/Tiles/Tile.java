@@ -44,7 +44,10 @@ public abstract class Tile {
             g.drawImage(texture, x, y, TILEWIDTH, TILEHEIGHT, null); //TILEWIDTH and TILEHEIGHT
         }
         if (NumberofItems > 0) {
-            items[NumberofItems -1].render(g, x, y);
+            g.drawImage(texture, x, y, TILEWIDTH, TILEHEIGHT, null); //TILEWIDTH and TILEHEIGHT
+            items[NumberofItems - 1].render(g, x, y);
+
+
 
         }
     }
