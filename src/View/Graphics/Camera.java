@@ -39,13 +39,13 @@ public class Camera {
             setyOffset(0);
         }
         else if(getyOffset() > (map.getHeight() * Tile.TILEHEIGHT/2) - gameHeight){
-            setyOffset((map.getHeight() * Tile.TILEWIDTH/2) - gameHeight);
+            setyOffset((map.getHeight() * Tile.TILEWIDTH/2) - gameHeight + 100);
         }
     }
 
     public void centerOnPlayer(Player player) {
         xOffset = player.getLocation().getX() - gameWidth / 2 + player.getWidth() / 2;
-        yOffset = player.getLocation().getY() - gameHeight / 2 + player.getHeight() / 2;
+        yOffset = player.getLocation().getY() - gameHeight / 2 + player.getHeight() / 2 + 75;
         keepCameraonMap();
     }
 

@@ -41,13 +41,10 @@ public class GameState extends State {
     private Location location;
     private Inventory inventory;
     private Pack pack;
-<<<<<<< HEAD
-    boolean onePress = true;
-=======
+
     private StatusView statusView;
     private Stats stats;
     private Occupation occupation;
->>>>>>> 610ba40df5e0ef7bea10c9050f2def29516aadb0
 
     public GameState(Controller controller) {
         super(controller);
@@ -124,7 +121,6 @@ public class GameState extends State {
             switchState(States.Inventory);
         }
 
-<<<<<<< HEAD
         if(e.getKeyCode() == KeyEvent.VK_Q){
             controller.getPlayer().PickUpItem();
         }
@@ -161,12 +157,11 @@ public class GameState extends State {
             controller.getPlayer().move(7);
 
         }
-=======
+
         if(e.getKeyCode() == KeyEvent.VK_K) {
             player.getStats().applyEffect(new Effect(new StatStructure(StatsEnum.LIFE, -1), 0, "Take Damage"));
         }
 
->>>>>>> 610ba40df5e0ef7bea10c9050f2def29516aadb0
     }
 
 
