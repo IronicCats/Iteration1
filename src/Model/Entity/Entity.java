@@ -1,6 +1,11 @@
 package Model.Entity;
 
 import Controller.Controller;
+import Model.Entity.Inventory.Inventory;
+import Model.Entity.Occupation.Occupation;
+import Model.Entity.Occupation.Smasher;
+import Model.Entity.Occupation.Sneak;
+import Model.Entity.Occupation.Summoner;
 import Model.Entity.Stats.Stats;
 import Model.Location;
 import Model.Map.Tiles.Tile;
@@ -11,31 +16,50 @@ import java.awt.*;
  * Created by broskj on 1/31/16.
  */
 
-
-
 public abstract class Entity {
 
     public static final float DEFAULT_SPEED = 3.0f;
 
     private Stats stats;
+    private Occupation occupation;
+    private Location location;
+    private Inventory inventory;
+    private Nav nav;
+
+
     protected float speed;
     protected float xVelocity, yVelocity;
     protected Controller controller;
     protected int width, height;
-    protected Location location;
     protected Rectangle bounds;
 
-    public Entity(Controller controller, float x, float y, int width, int height) {
-        location = new Location((int)x, (int)y, 0);
+    public Entity(Controller controller, float x, float y, int width, int height, String occupationName) {
+        this.location = new Location((int)x, (int)y, 0);
         this.controller = controller;
         this.width = width;
         this.height = height;
-
-        bounds = new Rectangle(0, 0, width , height);
+        if(occupationName == "Smasher")
+        {
+            this.occupation = new Smasher();
+        }
+        else if(occupationName == "Summoner")
+        {
+            this.occupation = new Summoner();
+        }
+        else if(occupationName == "Sneak")
+        {
+            this.occupation = new Sneak();
+        }
+        else
+        {
+            //throw exception
+        }
+        this.stats = new Stats(occupation.getInitialStats());
+        this.bounds = new Rectangle(0, 0, width , height);
     }
 
-    public Entity(Controller controller, float x, float y, int width, int height, int direction) {
-        this(controller, x, y, width, height);
+    public Entity(Controller controller, float x, float y, int width, int height, String occupationName, int direction) {
+        this(controller, x, y, width, height, occupationName);
         location.setDir(direction);
     }
 
@@ -90,4 +114,19 @@ public abstract class Entity {
     public void setLocation(Location location) {
         this.location = location;
     }
+
+    public void useItem(){}
+
+    public void equipItem(){}
+
+    public void uneuquipItem(){}
+
+    public void dropItem(){}
+
+    public void pause(){}
+
+    public void openInventory(){}
+
+    public void openMenu(){}
+
 }

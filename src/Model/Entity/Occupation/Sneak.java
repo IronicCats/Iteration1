@@ -5,7 +5,7 @@ package Model.Entity.Occupation;
  */
 public class Sneak extends Occupation {
 
-    Sneak()
+    public Sneak()
     {
         super("Sneak", "Specializes in ranged weapons,evading detection, and removing traps ", new int [] {});
     }

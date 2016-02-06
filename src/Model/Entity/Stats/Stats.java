@@ -7,7 +7,7 @@ public class Stats {
     private PrimaryStats primaryStats;
     private DerivedStats derivedStats;
 
-    Stats(StatStructure ss) {
+    public Stats(StatStructure ss) {
         primaryStats = new PrimaryStats(ss);
         derivedStats = new DerivedStats(primaryStats);
     } // end constructor
