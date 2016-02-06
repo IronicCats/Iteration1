@@ -6,6 +6,7 @@ import java.lang.management.ManagementFactory;
 
 import Controller.Controller;
 import Model.Entity.Entity;
+import Model.Entity.Inventory.Equipment.Equipment;
 import Model.Entity.Inventory.Inventory;
 import Model.Entity.Inventory.Pack;
 import Model.Entity.Occupation.Occupation;
@@ -54,16 +55,19 @@ public class GameState extends State {
         camera = new Camera(controller.getGame().getWidth(), controller.getGame().getHeight(),map);
         controller.setCamera(camera);
         pack = new Pack(10);
-        inventory = new Inventory(pack,null);
+        inventory = new Inventory(controller);
         occupation = new Smasher();
         stats = new Stats(occupation.getInitialStats());
         player = new Player(controller,new Location(1 * (Tile.TILEWIDTH ),1 * (Tile.TILEHEIGHT), 0),inventory, occupation, stats);
 
         location = new Location(3,3,0);
+        for(int i = 0; i < 17; ++i) {
+            potion = new Useable(Assets.potion,1,location, ItemsEnum.USEABLE,"Potion","heals",null);
+            map.getTile(5,5).addItem(potion);
+        }
 
-        potion = new Useable(Assets.potion,1,location, ItemsEnum.USEABLE,"Potion","heals",null);
 
-        map.getTile(5,5).addItem(potion);
+
         controller.setPlayer(player);
         statusView = new StatusView(controller);
 

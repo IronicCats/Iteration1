@@ -13,8 +13,11 @@ import java.awt.image.BufferedImage;
 public class Weapon extends Equippable {
 
 
-    public Weapon(BufferedImage image, int id, Location location, ItemsEnum type, String name, String description, Effect[] effects, Requirements requirements) {
-        super(image, id, location, type, name, description, effects, requirements);
+    public Weapon(BufferedImage image, int id, Location location, ItemsEnum type, String name, String description, Effect[] effects, Requirements requirements, int stat) {
+        super(image, id, location, type, name, description, effects, requirements, stat);
+    }
+    public Weapon(Weapon old){
+        super(old);
     }
 
     @Override

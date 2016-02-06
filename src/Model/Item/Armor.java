@@ -12,9 +12,12 @@ import java.awt.image.BufferedImage;
  */
 public class Armor extends Equippable{
 
-
-    public Armor(BufferedImage image, int id, Location location, ItemsEnum type, String name, String description, Effect[] effects, Requirements requirements) {
-        super(image, id, location, type, name, description, effects, requirements);
+    //private
+    public Armor(BufferedImage image, int id, Location location, ItemsEnum type, String name, String description, Effect[] effects, Requirements requirements, int stat) {
+        super(image, id, location, type, name, description, effects, requirements, stat);
+    }
+    public Armor(Armor old){
+        super(old);
     }
 
     @Override
