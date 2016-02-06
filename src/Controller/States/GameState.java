@@ -41,6 +41,7 @@ public class GameState extends State {
     private Location location;
     private Inventory inventory;
     private Pack pack;
+
     private StatusView statusView;
     private Stats stats;
     private Occupation occupation;
@@ -118,6 +119,43 @@ public class GameState extends State {
 
         if(e.getKeyCode() == KeyEvent.VK_I) {
             switchState(States.Inventory);
+        }
+
+        if(e.getKeyCode() == KeyEvent.VK_Q){
+            controller.getPlayer().PickUpItem();
+        }
+
+        if((e.getKeyCode() == KeyEvent.VK_NUMPAD8 || e.getKeyCode() == KeyEvent.VK_UP)){
+            controller.getPlayer().move(0);
+        }
+        if((e.getKeyCode() == KeyEvent.VK_NUMPAD6 || e.getKeyCode() == KeyEvent.VK_RIGHT)){
+            controller.getPlayer().move(1);
+
+        }
+        if((e.getKeyCode() == KeyEvent.VK_NUMPAD2 || e.getKeyCode() == KeyEvent.VK_DOWN)){
+            controller.getPlayer().move(2);
+
+        }
+        if((e.getKeyCode() == KeyEvent.VK_NUMPAD4 || e.getKeyCode() == KeyEvent.VK_LEFT)){
+            controller.getPlayer().move(3);
+
+        }
+
+        if(e.getKeyCode() == KeyEvent.VK_NUMPAD9){
+            controller.getPlayer().move(4);
+
+        }
+        if(e.getKeyCode() == KeyEvent.VK_NUMPAD3){
+            controller.getPlayer().move(5);
+
+        }
+        if(e.getKeyCode() == KeyEvent.VK_NUMPAD1){
+            controller.getPlayer().move(6);
+
+        }
+       if(e.getKeyCode() == KeyEvent.VK_NUMPAD7){
+            controller.getPlayer().move(7);
+
         }
 
         if(e.getKeyCode() == KeyEvent.VK_K) {

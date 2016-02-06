@@ -46,9 +46,6 @@ public abstract class Tile {
         if (NumberofItems > 0) {
             g.drawImage(texture, x, y, TILEWIDTH, TILEHEIGHT, null); //TILEWIDTH and TILEHEIGHT
             items[NumberofItems - 1].render(g, x, y);
-
-
-
         }
     }
 
@@ -73,7 +70,6 @@ public abstract class Tile {
             if(NumberofItems > 0) {
                 System.out.println(NumberofItems);
                 Item temp = items[NumberofItems - 1];
-                System.out.println("going in");
                 items[NumberofItems] = null;
                 NumberofItems--;
                 if (NumberofItems == 0) {

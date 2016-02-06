@@ -38,8 +38,8 @@ public class Camera {
         if(getyOffset() < 0){
             setyOffset(0);
         }
-        else if(getyOffset() > (map.getHeight() * Tile.TILEHEIGHT/2) - gameHeight){
-            setyOffset((map.getHeight() * Tile.TILEWIDTH/2) - gameHeight);
+        else if(getyOffset() > (map.getHeight() * Tile.TILEHEIGHT/2) - gameHeight + 100){
+            setyOffset(map.getHeight() * (Tile.TILEWIDTH/2) - gameHeight + 100);
         }
     }
 
