@@ -46,6 +46,10 @@ public abstract class Item {
         return description;
     }
 
+    public int getId(){return id;}
+
+    public Location getLocation(){return location;}
+
     public Effect[] getEffects() {
         return effects;
     }
@@ -56,12 +60,7 @@ public abstract class Item {
     public BufferedImage getImage(){
         return image;
     }
-    public int getId(){
-        return id;
-    }
-    public Location getLocation(){
-        return location;
-    }
+
     public Requirements getRequirements(){
         return requirements;
     }
@@ -74,6 +73,9 @@ public abstract class Item {
         g.drawImage(image, x + Tile.TILEWIDTH/2 - ITEMWIDTH/2 , y + Tile.TILEHEIGHT/2 - ITEMHEIGHT/2, ITEMWIDTH, ITEMHEIGHT, null);
     }
 
+    public abstract String toString();
+
 
 
 }
+

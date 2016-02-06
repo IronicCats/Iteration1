@@ -69,4 +69,5 @@ public class Controller {
     }
 
     public Tile getTiles(Location location) {return map.getTile(location);}
+
 }

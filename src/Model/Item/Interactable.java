@@ -22,8 +22,18 @@ public class Interactable extends Item {
     // constructor in Item
 
 
+
+    public String toString()
+    {
+        String string;
+        string = "";
+        return string;
+    }
+
+
     // needs access to player stats for requirements check
     public void onInteract(Player player) {
 
     }
+
 }

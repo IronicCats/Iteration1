@@ -7,10 +7,12 @@ import Model.Item.Takeable;
  * Created by broskj on 2/1/16.
  */
 
+
 public class Pack {
     protected int size;
     protected Takeable[] items;
     protected final int cap;
+
 
     public Pack(int cap) {
         this.size = 0;
@@ -33,6 +35,18 @@ public class Pack {
 
 
     }
+
+
+    public String toString()
+    {
+        String packString = "";
+        for(int i = 0; i < items.length; i++)
+        {
+            packString = packString + items[i].toString();
+        }
+        return packString;
+    }
+
 
 
 } // end class Pack

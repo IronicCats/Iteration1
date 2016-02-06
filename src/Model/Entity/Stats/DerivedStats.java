@@ -83,6 +83,8 @@ public class DerivedStats {
     public void setOffensiveRating(int offensiveRating) { this.offensiveRating = offensiveRating; }
     public void setDefensiveRating(int defensiveRating) { this.defensiveRating = defensiveRating; }
     public void setArmorRating(int armorRating) { this.armorRating = armorRating; }
+    public void setBaseLife(int life){this.life = life;}
+    public void setBaseMana(int mana){this.mana = mana;}
 
     public void modifyLevel(int level) { this.level += level; }
     public void modifyLife(int life) { this.life += life; }
