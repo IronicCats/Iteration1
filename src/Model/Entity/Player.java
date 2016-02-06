@@ -1,6 +1,7 @@
 package Model.Entity;
 
 import Controller.Controller;
+import Model.Entity.Occupation.Smasher;
 import Model.Entity.Inventory.Inventory;
 import Model.Game;
 import View.Graphics.Assets;
@@ -20,8 +21,9 @@ public class Player extends Entity {
     public static final int DEFAULT_CREATURE_WIDTH = 64,
                             DEFAULT_CREATURE_HEIGHT = 64;
 
+
     public Player(Controller controller,float x, float y, Inventory inventory) {
-        super(controller, x, y, DEFAULT_CREATURE_WIDTH, DEFAULT_CREATURE_HEIGHT);
+        super(controller, x, y, DEFAULT_CREATURE_WIDTH, DEFAULT_CREATURE_HEIGHT, new Smasher());
         speed = DEFAULT_SPEED;
         bounds.x = 0;
         bounds.y = 0;
