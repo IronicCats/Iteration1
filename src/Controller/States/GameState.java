@@ -8,7 +8,13 @@ import Controller.Controller;
 import Model.Entity.Entity;
 import Model.Entity.Inventory.Inventory;
 import Model.Entity.Inventory.Pack;
+import Model.Entity.Occupation.Occupation;
+import Model.Entity.Occupation.Smasher;
 import Model.Entity.Player;
+import Model.Entity.Stats.Effect;
+import Model.Entity.Stats.StatStructure;
+import Model.Entity.Stats.Stats;
+import Model.Entity.Stats.StatsEnum;
 import Model.Item.Item;
 import Model.Item.ItemsEnum;
 import Model.Item.Useable;
@@ -20,6 +26,7 @@ import View.Graphics.Assets;
 import View.Graphics.Camera;
 import View.View;
 import View.Views.PauseMenu;
+import View.Views.StatusView;
 
 /**
  * Created by jlkegley on 1/31/2016.
@@ -34,7 +41,13 @@ public class GameState extends State {
     private Location location;
     private Inventory inventory;
     private Pack pack;
+<<<<<<< HEAD
     boolean onePress = true;
+=======
+    private StatusView statusView;
+    private Stats stats;
+    private Occupation occupation;
+>>>>>>> 610ba40df5e0ef7bea10c9050f2def29516aadb0
 
     public GameState(Controller controller) {
         super(controller);
@@ -45,13 +58,17 @@ public class GameState extends State {
         controller.setCamera(camera);
         pack = new Pack(10);
         inventory = new Inventory(pack,null);
-        player = new Player(controller,1 * (Tile.TILEWIDTH ),1 * (Tile.TILEHEIGHT),inventory);
+        occupation = new Smasher();
+        stats = new Stats(occupation.getInitialStats());
+        player = new Player(controller,new Location(1 * (Tile.TILEWIDTH ),1 * (Tile.TILEHEIGHT), 0),inventory, occupation, stats);
+
         location = new Location(3,3,0);
 
         potion = new Useable(Assets.potion,1,location, ItemsEnum.USEABLE,"Potion","heals",null);
 
         map.getTile(5,5).addItem(potion);
         controller.setPlayer(player);
+        statusView = new StatusView(controller);
 
     }
 
@@ -88,6 +105,7 @@ public class GameState extends State {
         camera.centerOnPlayer(player);
         map.render(g);
         player.render(g);
+        statusView.render(g);
 
     }
 
@@ -106,6 +124,7 @@ public class GameState extends State {
             switchState(States.Inventory);
         }
 
+<<<<<<< HEAD
         if(e.getKeyCode() == KeyEvent.VK_Q){
             controller.getPlayer().PickUpItem();
         }
@@ -142,6 +161,12 @@ public class GameState extends State {
             controller.getPlayer().move(7);
 
         }
+=======
+        if(e.getKeyCode() == KeyEvent.VK_K) {
+            player.getStats().applyEffect(new Effect(new StatStructure(StatsEnum.LIFE, -1), 0, "Take Damage"));
+        }
+
+>>>>>>> 610ba40df5e0ef7bea10c9050f2def29516aadb0
     }
 
 
