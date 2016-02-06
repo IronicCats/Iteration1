@@ -95,6 +95,10 @@ public class Map {
         return tiles[x][y];
     }
 
+    public Tile getTile(Location location) {
+        return getTile(location.getX(), location.getY());
+    }
+
 
     public void render(Graphics g) {
         int startX = Math.max(0, (int)controller.getCamera().getxOffset() / Tile.TILEWIDTH);
