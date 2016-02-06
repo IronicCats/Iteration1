@@ -17,7 +17,7 @@ public class Occupation {
     {
         this.name = name;
         this.description = description;
-        StatsEnum[] stats = new StatsEnum[]{StatsEnum.LIFE, StatsEnum.STRENGTH,StatsEnum.AGILITY,
+        StatsEnum[] stats = new StatsEnum[]{StatsEnum.LIVES_LEFT, StatsEnum.STRENGTH,StatsEnum.AGILITY,
                                             StatsEnum.INTELLECT, StatsEnum.HARDINESS, StatsEnum.EXPERIENCE, StatsEnum.MOVEMENT};
         initialStats = new StatStructure(stats, val);
     }

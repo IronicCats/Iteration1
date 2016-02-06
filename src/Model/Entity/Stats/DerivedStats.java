@@ -19,12 +19,13 @@ public class DerivedStats {
 
     DerivedStats (PrimaryStats ps) {
         primaryStats = ps;
+        double calculationLevel = Math.log10(ps.getXpThreshhold() / 10) / Math.log10(ps.getXpMultiplier());
+        level = (int) calculationLevel;
         //equipmentStats = ss.equipmentStats;
         baseLife = ps.getHardiness() + level;
         baseMana = ps.getIntellect() + level;
 
-        double calculationLevel = Math.log10(ps.getXpThreshhold() / 10) / Math.log10(ps.getXpMultiplier());
-        level = (int) calculationLevel;
+
 
         life = baseLife;
         mana = baseMana;
