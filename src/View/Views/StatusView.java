@@ -45,9 +45,10 @@ public class StatusView {
         g.setColor(Color.PINK);
         g.drawString("Health: ", x, y);
         //SET HEALTH BAR COLOR
-        int gr = 0;
+        int gr = (int)(255 * playerStats[0]) / 100;
         int red = (int)(255 * (100 - playerStats[0])) / 100;
-        int blu = (int)(255 * playerStats[0]) / 100;
+        int blu = 0;
+
 
         g.setColor(new Color(red, gr, blu));
         g.fillRect(x += totalWidth, y - 10, (int) playerStats[0] , fm.getHeight() - 1);
@@ -76,7 +77,7 @@ public class StatusView {
         //SET EXP BAR COLOR
         gr = (int)(255 * playerStats[6]) / 100;
         red = (int)(255 * (100 - playerStats[6])) / 100;
-        blu = 0;
+        blu = 100;
 
         g.setColor(new Color(red, gr, blu));
 
