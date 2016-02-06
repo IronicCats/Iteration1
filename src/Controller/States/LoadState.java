@@ -2,10 +2,8 @@ package Controller.States;
 
 
 import java.awt.*;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
+import java.awt.event.KeyEvent;
+import java.io.*;
 import java.util.ArrayList;
 
 import Controller.Controller;
@@ -41,17 +39,33 @@ public class LoadState extends State {
         try {
             inputFile = new File(filepath);
             inputReader = new BufferedReader(new FileReader(inputFile));
-            loadedfile.add(Integer.parseInt(inputReader.readLine()));
-            loadedfile.add(Integer.parseInt(inputReader.readLine()));
-            System.out.println(loadedfile.get(0));
-            System.out.println(loadedfile.get(1));
+            String s = inputFile.toString();
+
+
+
+            //TEST//
+            LineNumberReader lnr = new LineNumberReader(new FileReader(filepath));
+            lnr.skip(Long.MAX_VALUE);
+            int lineNum = lnr.getLineNumber(); //Add 1 because line index starts at 0
+            // Finally, the LineNumberReader object should be closed to prevent resource leak
+            lnr.close();
+            //TEST//
+
+            for(int i = 0; i <= lineNum-1; i++)
+            {
+                loadedfile.add(Integer.parseInt(inputReader.readLine()));
+               //System.out.println(loadedfile.get(i) + " " + i);
+            }
+
+
+
+
+
             //String fileText = inputReader.readLine();
             //System.out.println(loadedfile.get(0));
-            player.loadPlayer(loadedfile);
-           // loadedfile.add(Integer.parseInt(fileText));
-           // fileText = inputReader.readLine();
-           // loadedfile.add(Integer.parseInt(fileText));
-            //System.out.println(fileText);
+
+           player.loadPlayer(loadedfile);//TEMPORARY COMMENT, NEEDED
+
 
 
 
@@ -60,6 +74,21 @@ public class LoadState extends State {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
 
     }
 }

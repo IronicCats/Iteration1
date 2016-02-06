@@ -47,6 +47,13 @@ public class Controller {
         this.camera = camera;
     }
 
+    public void setPlayer(Player p) {
+        this.player = p;
+    }
+    public Player getPlayer() {
+        return player;
+    }
+
     public Map getMap() {
         return map;
     }
@@ -59,8 +66,6 @@ public class Controller {
         return map.getTile(x, y);
     }
 
-    public void setPlayer(Player player){this.player = player;}
 
-    public Player getPlayer(){return player;}
 
 }

@@ -19,12 +19,14 @@ public class DerivedStats {
 
     DerivedStats (PrimaryStats ps) {
         primaryStats = ps;
+        double calculationLevel = Math.log10(ps.getXpThreshhold() / 10) / Math.log10(ps.getXpMultiplier());
+        level = (int) calculationLevel;
         //equipmentStats = ss.equipmentStats;
         baseLife = ps.getHardiness() + level;
         baseMana = ps.getIntellect() + level;
 
-        level = Integer.parseInt(Double.toString(Math.log10(ps.getXpThreshhold()/10) /
-                Math.log10(ps.getXpMultiplier())));
+
+
         life = baseLife;
         mana = baseMana;
         //offensiveRating = equipmentStats.getWeaponStats() + primaryStats.strength + level;
@@ -71,6 +73,8 @@ public class DerivedStats {
     public void setOffensiveRating(int offensiveRating) { this.offensiveRating = offensiveRating; }
     public void setDefensiveRating(int defensiveRating) { this.defensiveRating = defensiveRating; }
     public void setArmorRating(int armorRating) { this.armorRating = armorRating; }
+    public void setBaseLife(int life){this.life = life;}
+    public void setBaseMana(int mana){this.mana = mana;}
 
     public void modifyLevel(int level) { this.level += level; }
     public void modifyLife(int life) { this.life += life; }

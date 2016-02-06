@@ -10,13 +10,13 @@ import java.security.KeyManagementException;
 public class InputManager implements KeyListener{
 
     private boolean[] keys;
-    public boolean N, NE, E, SE, S, SW, W, NW;
+    public boolean N, NE, E, SE, S, SW, W, NW, PickUpItem;
 
     public InputManager() {
         keys = new boolean[256];
     }
 
-    public void tick() {
+   /* public void tick() {
         N = keys[KeyEvent.VK_NUMPAD8] || keys[KeyEvent.VK_UP];
         NE = keys[KeyEvent.VK_NUMPAD9];
         E = keys[KeyEvent.VK_NUMPAD6]  || keys[KeyEvent.VK_RIGHT];;
@@ -25,7 +25,8 @@ public class InputManager implements KeyListener{
         SW = keys[KeyEvent.VK_NUMPAD1];
         W = keys[KeyEvent.VK_NUMPAD4] || keys[KeyEvent.VK_LEFT];;
         NW = keys[KeyEvent.VK_NUMPAD7];
-    }
+        PickUpItem = keys[KeyEvent.VK_Q];
+    }*/
 
 
     @Override

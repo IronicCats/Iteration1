@@ -3,6 +3,7 @@ package Controller.States;
 
 import java.awt.*;
 
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -37,6 +38,8 @@ public class SaveState extends State {
     }
 
 
+
+
     public static void writeFile(Player player, String filepath) {
         File outputFile;
         //BufferedWriter outputWriter;
@@ -64,6 +67,21 @@ public class SaveState extends State {
             e.printStackTrace();
         }
 
+
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
 
     }
 }

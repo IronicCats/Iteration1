@@ -8,6 +8,6 @@ import View.Graphics.Assets;
  */
 public class Mountain extends Tile {
     public Mountain(Location location ) {
-        super(Assets.mountain, location, true);
+        super(Assets.mountain, location, true,null);
     }
 }
