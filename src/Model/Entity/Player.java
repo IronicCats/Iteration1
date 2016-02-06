@@ -46,50 +46,24 @@ public class Player extends Entity {
     }
 
     public void move(int x){
-        if (x == 0) {
-            controller.getTiles(location.getX()/64,location.getY()/64).removePlayer(this);
-            navigation.move(x);
-            controller.getTiles(location.getX()/64,location.getY()/64).addPlayer(this);
-
-        } else if (x == 1) {
-            controller.getTiles(location.getX()/64,location.getY()/64).removePlayer(this);
-            navigation.move(x);
-            controller.getTiles(location.getX()/64,location.getY()/64).addPlayer(this);
-
-        } else if (x == 2) {
-            controller.getTiles(location.getX()/64,location.getY()/64).removePlayer(this);
-            navigation.move(x);
-            controller.getTiles(location.getX()/64,location.getY()/64).addPlayer(this);
-
-        } else if (x == 3) {
-            controller.getTiles(location.getX()/64,location.getY()/64).removePlayer(this);
-            navigation.move(x);
-            controller.getTiles(location.getX()/64,location.getY()/64).addPlayer(this);
-
-        }
-        else if(x == 4){
-            controller.getTiles(location.getX()/64,location.getY()/64).removePlayer(this);
-            navigation.move(x);
-            controller.getTiles(location.getX()/64,location.getY()/64).addPlayer(this);
-
-        }
-        else if(x == 5){
-            controller.getTiles(location.getX()/64,location.getY()/64).removePlayer(this);
-            navigation.move(x);
-            controller.getTiles(location.getX()/64,location.getY()/64).addPlayer(this);
-
-        }
-        else if(x == 6){
-            controller.getTiles(location.getX()/64,location.getY()/64).removePlayer(this);
-            navigation.move(x);
-            controller.getTiles(location.getX()/64,location.getY()/64).addPlayer(this);
-
-        }
-        else if(x == 7){
-            controller.getTiles(location.getX()/64,location.getY()/64).removePlayer(this);
-            navigation.move(x);
-            controller.getTiles(location.getX()/64,location.getY()/64).addPlayer(this);
-
+        if(!navigation.isMoving) {
+            if (x == 0) {
+                navigation.move(x);
+            } else if (x == 1) {
+                navigation.move(x);
+            } else if (x == 2) {
+                navigation.move(x);
+            } else if (x == 3) {
+                navigation.move(x);
+            } else if (x == 4) {
+                navigation.move(x);
+            } else if (x == 5) {
+                navigation.move(x);
+            } else if (x == 6) {
+                navigation.move(x);
+            } else if (x == 7) {
+                navigation.move(x);
+            }
         }
 
     }
@@ -103,5 +77,9 @@ public class Player extends Entity {
                 height,
                 null
         );
+    }
+
+    public Nav getNavigation(){
+        return this.navigation;
     }
 }

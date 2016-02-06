@@ -34,6 +34,7 @@ public class GameState extends State {
     private Location location;
     private Inventory inventory;
     private Pack pack;
+    boolean onePress = true;
 
     public GameState(Controller controller) {
         super(controller);
@@ -109,29 +110,37 @@ public class GameState extends State {
             controller.getPlayer().PickUpItem();
         }
 
-        if(e.getKeyCode() == KeyEvent.VK_NUMPAD8 || e.getKeyCode() == KeyEvent.VK_UP){
+        if((e.getKeyCode() == KeyEvent.VK_NUMPAD8 || e.getKeyCode() == KeyEvent.VK_UP)){
             controller.getPlayer().move(0);
         }
-        else if(e.getKeyCode() == KeyEvent.VK_NUMPAD6 || e.getKeyCode() == KeyEvent.VK_RIGHT){
+        if((e.getKeyCode() == KeyEvent.VK_NUMPAD6 || e.getKeyCode() == KeyEvent.VK_RIGHT)){
             controller.getPlayer().move(1);
+
         }
-        else if(e.getKeyCode() == KeyEvent.VK_NUMPAD2 || e.getKeyCode() == KeyEvent.VK_DOWN){
+        if((e.getKeyCode() == KeyEvent.VK_NUMPAD2 || e.getKeyCode() == KeyEvent.VK_DOWN)){
             controller.getPlayer().move(2);
+
         }
-        else if(e.getKeyCode() == KeyEvent.VK_NUMPAD4 || e.getKeyCode() == KeyEvent.VK_LEFT){
+        if((e.getKeyCode() == KeyEvent.VK_NUMPAD4 || e.getKeyCode() == KeyEvent.VK_LEFT)){
             controller.getPlayer().move(3);
+
         }
-        else if(e.getKeyCode() == KeyEvent.VK_NUMPAD9){
+
+        if(e.getKeyCode() == KeyEvent.VK_NUMPAD9){
             controller.getPlayer().move(4);
+
         }
-        else if(e.getKeyCode() == KeyEvent.VK_NUMPAD3){
+        if(e.getKeyCode() == KeyEvent.VK_NUMPAD3){
             controller.getPlayer().move(5);
+
         }
-        else if(e.getKeyCode() == KeyEvent.VK_NUMPAD1){
+        if(e.getKeyCode() == KeyEvent.VK_NUMPAD1){
             controller.getPlayer().move(6);
+
         }
-        else if(e.getKeyCode() == KeyEvent.VK_NUMPAD7){
+       if(e.getKeyCode() == KeyEvent.VK_NUMPAD7){
             controller.getPlayer().move(7);
+
         }
     }
 
