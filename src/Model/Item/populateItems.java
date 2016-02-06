@@ -36,7 +36,6 @@ public class populateItems {
                 setStatStruc(items); // method to store array in txt file
                 continue; // return to beginning of while loop
             }
-
             String a = items.next();
         }
     }
