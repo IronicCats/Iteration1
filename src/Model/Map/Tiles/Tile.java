@@ -73,7 +73,6 @@ public abstract class Tile {
             if(NumberofItems > 0) {
                 System.out.println(NumberofItems);
                 Item temp = items[NumberofItems - 1];
-                System.out.println("going in");
                 items[NumberofItems] = null;
                 NumberofItems--;
                 if (NumberofItems == 0) {

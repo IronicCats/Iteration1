@@ -34,56 +34,62 @@ public class Player extends Entity {
 
     @Override
     public void tick() {
-        controller.getTiles(location.getX()/64,location.getY()/64).addPlayer(this);
-        if(controller.getTiles(location.getX()/64,location.getY()/64).HasItem){
-            System.out.println("There is an item here!");
-        }
-        if(!navigation.isMoving) {
-            getInput();
-        }else {
-            navigation.move();
+        navigation.move();
+    }
+
+    public void PickUpItem(){
+        if(controller.getTiles(location.getX()/64,location.getY()/64).HasItem) {
+            inventory.store(controller.getTiles(location.getX() / 64, location.getY() / 64).removeItem());
         }
     }
 
+    public void move(int x){
+        if (x == 0) {
+            controller.getTiles(location.getX()/64,location.getY()/64).removePlayer(this);
+            navigation.move(x);
+            controller.getTiles(location.getX()/64,location.getY()/64).addPlayer(this);
 
-    public void getInput(){
-        //TODO: Add the numpad movement options
+        } else if (x == 1) {
+            controller.getTiles(location.getX()/64,location.getY()/64).removePlayer(this);
+            navigation.move(x);
+            controller.getTiles(location.getX()/64,location.getY()/64).addPlayer(this);
 
-        if (controller.getInputManager().N) {
+        } else if (x == 2) {
             controller.getTiles(location.getX()/64,location.getY()/64).removePlayer(this);
-            navigation.move(0);
-        } else if (controller.getInputManager().E) {
-            controller.getTiles(location.getX()/64,location.getY()/64).removePlayer(this);
-            navigation.move(1);
+            navigation.move(x);
+            controller.getTiles(location.getX()/64,location.getY()/64).addPlayer(this);
 
-        } else if (controller.getInputManager().S) {
+        } else if (x == 3) {
             controller.getTiles(location.getX()/64,location.getY()/64).removePlayer(this);
-            navigation.move(2);
-        } else if (controller.getInputManager().W) {
+            navigation.move(x);
+            controller.getTiles(location.getX()/64,location.getY()/64).addPlayer(this);
+
+        }
+        else if(x == 4){
             controller.getTiles(location.getX()/64,location.getY()/64).removePlayer(this);
-            navigation.move(3);
+            navigation.move(x);
+            controller.getTiles(location.getX()/64,location.getY()/64).addPlayer(this);
+
         }
-        else if(controller.getInputManager().NE){
+        else if(x == 5){
             controller.getTiles(location.getX()/64,location.getY()/64).removePlayer(this);
-            navigation.move(4);
+            navigation.move(x);
+            controller.getTiles(location.getX()/64,location.getY()/64).addPlayer(this);
+
         }
-        else if(controller.getInputManager().NW){
+        else if(x == 6){
             controller.getTiles(location.getX()/64,location.getY()/64).removePlayer(this);
-            navigation.move(5);
+            navigation.move(x);
+            controller.getTiles(location.getX()/64,location.getY()/64).addPlayer(this);
+
         }
-        else if(controller.getInputManager().SW){
+        else if(x == 7){
             controller.getTiles(location.getX()/64,location.getY()/64).removePlayer(this);
-            navigation.move(6);
+            navigation.move(x);
+            controller.getTiles(location.getX()/64,location.getY()/64).addPlayer(this);
+
         }
-        else if(controller.getInputManager().SE){
-            controller.getTiles(location.getX()/64,location.getY()/64).removePlayer(this);
-            navigation.move(7);
-        }
-        else if(controller.getInputManager().PickUpItem) {
-            if(controller.getTiles(location.getX()/64,location.getY()/64).HasItem) {
-                inventory.store(controller.getTiles(location.getX() / 64, location.getY() / 64).removeItem());
-            }
-        }
+
     }
 
     @Override

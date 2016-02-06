@@ -103,7 +103,36 @@ public class GameState extends State {
 
         if(e.getKeyCode() == KeyEvent.VK_I) {
             switchState(States.Inventory);
-        } 
+        }
+
+        if(e.getKeyCode() == KeyEvent.VK_Q){
+            controller.getPlayer().PickUpItem();
+        }
+
+        if(e.getKeyCode() == KeyEvent.VK_NUMPAD8 || e.getKeyCode() == KeyEvent.VK_UP){
+            controller.getPlayer().move(0);
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_NUMPAD6 || e.getKeyCode() == KeyEvent.VK_RIGHT){
+            controller.getPlayer().move(1);
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_NUMPAD2 || e.getKeyCode() == KeyEvent.VK_DOWN){
+            controller.getPlayer().move(2);
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_NUMPAD4 || e.getKeyCode() == KeyEvent.VK_LEFT){
+            controller.getPlayer().move(3);
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_NUMPAD9){
+            controller.getPlayer().move(4);
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_NUMPAD3){
+            controller.getPlayer().move(5);
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_NUMPAD1){
+            controller.getPlayer().move(6);
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_NUMPAD7){
+            controller.getPlayer().move(7);
+        }
     }
 
     @Override
