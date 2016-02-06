@@ -33,8 +33,11 @@ public class Stats {
         /*
         take in Effect and apply it to character
          */
-        effects.add(e);
-        finishTimes.add(System.currentTimeMillis() + e.duration);
+        if(e.duration > 0) {
+            effects.add(e);
+            finishTimes.add(System.currentTimeMillis() + e.duration);
+        }
+
 
         for(StatsEnum s : e.modification.getKeySet()) {
             switch (s){
@@ -155,19 +158,20 @@ public class Stats {
     } // end removeEffect
 
     public void tick() {
-        if(effects.isEmpty())
-            return;
-        for(int i = 0; i < effects.size(); i++) {
-            if(System.currentTimeMillis() >= finishTimes.get(i)) {
-                removeEffect(effects.get(i));
-                effects.remove(i);
-                finishTimes.remove(i);
+        if (!effects.isEmpty()) {
+            for (int i = 0; i < effects.size(); i++) {
+                if (System.currentTimeMillis() >= finishTimes.get(i)) {
+                    removeEffect(effects.get(i));
+                    effects.remove(i);
+                    finishTimes.remove(i);
+                }
             }
         }
-
         //check for level up
-        if(primaryStats.getExperience() >= primaryStats.getXpThreshhold())
+        if(primaryStats.getExperience() >= primaryStats.getXpThreshhold()) {
+            System.out.println("Leveling up");
             levelUp();
+        }
     } // end updateEffects
 
     public int getLivesLeft() { return primaryStats.getLivesLeft(); }
@@ -181,6 +185,7 @@ public class Stats {
     public int getHardiness() { return primaryStats.getHardiness(); }
     public int getBaseHard() { return primaryStats.getBaseHard(); }
     public int getExperience() { return primaryStats.getExperience(); }
+    public int getXpThreshold() { return primaryStats.getXpThreshhold(); }
     public int getMovement() { return primaryStats.getMovement(); }
     public int getBaseMovement() { return primaryStats.getBaseMovement(); }
     public int getLevel() { return derivedStats.getLevel(); }
