@@ -2,9 +2,11 @@ package Model.Item;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+
 import Model.Entity.Stats.Effect;
 import Model.Location;
 import Model.Entity.Player;
+import Model.Map.Tiles.Tile;
 import Model.Requirements;
 
 /**
@@ -12,7 +14,7 @@ import Model.Requirements;
  */
 public abstract class Item {
 
-    public static int ITEMWIDTH, ITEMHEIGHT = 28; // default height and width of item
+    public static int ITEMWIDTH = 28, ITEMHEIGHT = 28; // default height and width of item
 
     private BufferedImage image; // image used for item
 
@@ -21,11 +23,11 @@ public abstract class Item {
     private String name;
     private String description;
     protected Location location;
-    private Effect [] effects; // array of effects item can hold
+    private Effect []effects; // array of effects item can hold
     Requirements requirements; // used to tell if player can use/interact with item
 
     // constructor--> sets all variables except height and width
-    public Item(BufferedImage image, int id, Model.Location location, ItemsEnum type, String name, String description, Effect [] effects, Requirements requirements){
+    public Item(BufferedImage image, Model.Location location, ItemsEnum type, String name, String description, Effect []effects, Requirements requirements){
         this.image = image;
         this.id = id;
         this.location = location;
@@ -52,13 +54,17 @@ public abstract class Item {
     public ItemsEnum getType() {
         return type;
     }
+
+    public Location getLocation(){
+        return location;
+    }
     /* end getter functions */
 
     public abstract void onInteract(Player player); // OneShot, useable
 
 
     public void render(Graphics g,int x, int y) { // render image of item
-        g.drawImage( image, x , y, ITEMWIDTH, ITEMHEIGHT, null);
+        g.drawImage(image, x + Tile.TILEWIDTH/2 - ITEMWIDTH/2 , y + Tile.TILEHEIGHT/2 - ITEMHEIGHT/2, ITEMWIDTH, ITEMHEIGHT, null);
     }
 
 }

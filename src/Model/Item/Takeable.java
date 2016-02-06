@@ -13,8 +13,8 @@ public abstract class Takeable extends Item{
 
     protected Location location;
 
-    public Takeable(BufferedImage image, int id, Location location, ItemsEnum type, String name, String description, Effect[] effects, Requirements requirements) {
-        super(image, id, location, type, name, description, effects, requirements);
+    public Takeable(BufferedImage image, Location location, ItemsEnum type, String name, String description, Effect[] effects, Requirements requirements) {
+        super(image, location, type, name, description, effects, requirements);
     }
 
 

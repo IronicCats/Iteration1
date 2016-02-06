@@ -24,15 +24,8 @@ public class StatStructure {
 
     public StatStructure(StatsEnum[] stats, int[] vals){
         map = new EnumMap<>(StatsEnum.class);
-
-        try{
-            if(stats.length != vals.length)
-                throw new IllegalArgumentException();
-            for(int i = 0; i < stats.length; i++) {
-                map.put(stats[i], vals[i]);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        for(int i = 0; i < stats.length; i++) {
+            map.put(stats[i], vals[i]);
         }
     } // end multi constructor
 
