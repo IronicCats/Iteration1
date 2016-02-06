@@ -105,6 +105,12 @@ public class PrimaryStats {
     public void setHardiness(int hardiness) { this.hardiness = hardiness; }
     public void setExperience(int experience) { this.experience = experience; }
     public void setMovement(int movement) { this.movement = movement; }
+    public void setBaseLives(int baseLives){this.baseLives = baseLives;}
+    public void setBaseStr(int baseStr){this.baseStr = baseStr;}
+    public void setBaseAgi(int baseAgi){this.baseAgi = baseAgi;}
+    public void setBaseIntel(int intel){this.baseIntel = intel;}
+    public void setBaseHard(int hard){this.baseHard = hard;}
+    public void setBaseMovement(int move){this.baseMovement = move;}
 
     public void modifyLivesLeft(int livesLeft) {
         this.livesLeft += livesLeft;

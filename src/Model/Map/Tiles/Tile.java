@@ -50,7 +50,7 @@ public abstract class Tile {
         }
         else {
             g.drawImage(texture, x, y, TILEWIDTH, TILEHEIGHT, null);
-            g.drawImage(Assets.sack, x , y, Item.ITEMWIDTH, Item.ITEMHEIGHT, null);
+            g.drawImage(Assets.sack, x + Tile.TILEWIDTH/2 - Item.ITEMWIDTH/2 , y + Tile.TILEHEIGHT/2 - Item.ITEMHEIGHT/2, Item.ITEMWIDTH, Item.ITEMHEIGHT, null);
         }
     }
 
