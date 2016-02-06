@@ -46,7 +46,9 @@ public class GameState extends State {
         inventory = new Inventory(pack,null);
         player = new Player(controller,1 * (Tile.TILEWIDTH ),1 * (Tile.TILEHEIGHT),inventory);
         location = new Location(3,3,0);
+
         potion = new Useable(Assets.potion,1,location, ItemsEnum.USEABLE,"Potion","heals",null);
+
         map.getTile(5,5).addItem(potion);
         controller.setPlayer(player);
 
@@ -101,7 +103,7 @@ public class GameState extends State {
 
         if(e.getKeyCode() == KeyEvent.VK_I) {
             switchState(States.Inventory);
-        }
+        } 
     }
 
     @Override

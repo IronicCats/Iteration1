@@ -45,8 +45,10 @@ public class Player extends Entity {
         }
     }
 
+
     public void getInput(){
         //TODO: Add the numpad movement options
+
         if (controller.getInputManager().N) {
             controller.getTiles(location.getX()/64,location.getY()/64).removePlayer(this);
             navigation.move(0);
@@ -94,5 +96,4 @@ public class Player extends Entity {
                 null
         );
     }
-
 }
