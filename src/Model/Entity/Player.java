@@ -1,6 +1,7 @@
 package Model.Entity;
 
 import Controller.Controller;
+import Model.Entity.Occupation.Smasher;
 import Model.Game;
 import View.Graphics.Assets;
 import com.sun.xml.internal.bind.v2.TODO;
@@ -19,7 +20,7 @@ public class Player extends Entity {
                             DEFAULT_CREATURE_HEIGHT = 64;
 
     public Player(Controller controller,float x, float y) {
-        super(controller, x, y, DEFAULT_CREATURE_WIDTH, DEFAULT_CREATURE_HEIGHT);
+        super(controller, x, y, DEFAULT_CREATURE_WIDTH, DEFAULT_CREATURE_HEIGHT, new Smasher());
         speed = DEFAULT_SPEED;
         bounds.x = 0;
         bounds.y = 0;

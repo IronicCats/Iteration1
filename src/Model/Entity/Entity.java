@@ -22,7 +22,7 @@ public abstract class Entity {
 
     private Stats stats;
     private Occupation occupation;
-    private Location location;
+    protected Location location;
     private Inventory inventory;
     private Nav nav;
 
@@ -33,33 +33,17 @@ public abstract class Entity {
     protected int width, height;
     protected Rectangle bounds;
 
-    public Entity(Controller controller, float x, float y, int width, int height, String occupationName) {
+    public Entity(Controller controller, float x, float y, int width, int height, Occupation o) {
         this.location = new Location((int)x, (int)y, 0);
         this.controller = controller;
         this.width = width;
         this.height = height;
-        if(occupationName == "Smasher")
-        {
-            this.occupation = new Smasher();
-        }
-        else if(occupationName == "Summoner")
-        {
-            this.occupation = new Summoner();
-        }
-        else if(occupationName == "Sneak")
-        {
-            this.occupation = new Sneak();
-        }
-        else
-        {
-            //throw exception
-        }
-        this.stats = new Stats(occupation.getInitialStats());
+        this.occupation = o;
         this.bounds = new Rectangle(0, 0, width , height);
     }
 
-    public Entity(Controller controller, float x, float y, int width, int height, String occupationName, int direction) {
-        this(controller, x, y, width, height, occupationName);
+    public Entity(Controller controller, float x, float y, int width, int height, int direction, Occupation o) {
+        this(controller, x, y, width, height,o);
         location.setDir(direction);
     }
 

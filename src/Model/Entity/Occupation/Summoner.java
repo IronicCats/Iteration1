@@ -7,6 +7,6 @@ public class Summoner extends Occupation {
 
     public Summoner()
     {
-        super("Summoner", "Specializes in spell casting", new int [] {});
+        super("Summoner", "Specializes in spell casting", new int [] {5,5,5,5,5,5,5});
     }
 }
