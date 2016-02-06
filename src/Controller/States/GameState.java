@@ -47,9 +47,9 @@ public class GameState extends State {
         player = new Player(controller,1 * (Tile.TILEWIDTH ),1 * (Tile.TILEHEIGHT),inventory);
         location = new Location(3,3,0);
 
-        potion = new Useable(Assets.potion,1,location, ItemsEnum.USEABLE,"Potion","heals",null);
+        potion = new Useable(Assets.potion, location, ItemsEnum.USEABLE,"Potion","heals",null);
 
-        map.getTile(5,5).addItem(potion);
+        //map.getTile(5,5).addItem(potion);
         controller.setPlayer(player);
 
     }

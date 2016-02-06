@@ -66,7 +66,7 @@ public abstract class Tile {
         HasItem = true;
         items[NumberofItems] = item;
         NumberofItems++;
-        System.out.println(NumberofItems);
+        System.out.println("Test");
     }
 
     public Item removeItem(){
@@ -84,7 +84,9 @@ public abstract class Tile {
         return null;
     }
 
-
+    public Location getLocation(){
+        return location;
+    }
     
 
 }

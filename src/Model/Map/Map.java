@@ -2,16 +2,15 @@ package Model.Map;
 
 
 import Model.Item.Item;
-import Model.Item.ItemsEnum;
-import Model.Item.Useable;
 import Model.Location;
 import Model.Map.Tiles.Grass;
 import Model.Map.Tiles.Mountain;
 import Model.Map.Tiles.Tile;
 import Model.Map.Tiles.Water;
+import Model.Item.PopulateItems;
+import Model.Item.Item;
 
 import Controller.Controller;
-import View.Graphics.Assets;
 
 import java.awt.*;
 import java.io.BufferedReader;
@@ -30,8 +29,11 @@ public class Map {
     private Item potion;
     private int height;
     private Controller controller;
+    private PopulateItems populateItems = new PopulateItems();
+    private Item[] items = populateItems.getItems();
 
     public Map(Controller controller) {
+        //System.out.println(items[0].getLocation().getY());
         this.controller = controller;
         makeMap();
     }
@@ -58,22 +60,28 @@ public class Map {
         tiles = new Tile[width][height];
         for(int y = 0; y < height; ++y) {
             for(int x = 0; x < width; ++x){
-                Tile tile;
-                switch(parseInt(tokens[(x + y * width) + 4])) {
-                    case 0:
-                        tile = new Grass(new Location(x, y, 0));
-                        break;
-                    case 1:
-                        tile = new Mountain(new Location(x, y, 0));
-                        break;
-                    case 2:
-                        tile = new Water(new Location(x, y, 0));
-                        break;
-                    default:
-                        tile = new Mountain(new Location(x, y, 0));
-                        break;
+                for(int i = 0; i < items.length; i++) {
+                    Tile tile;
+                    switch (parseInt(tokens[(x + y * width) + 4])) {
+                        case 0:
+                            tile = new Grass(new Location(x, y, 0));
+                            break;
+                        case 1:
+                            tile = new Mountain(new Location(x, y, 0));
+                            break;
+                        case 2:
+                            tile = new Water(new Location(x, y, 0));
+                            break;
+                        default:
+                            tile = new Mountain(new Location(x, y, 0));
+                            break;
+                    }
+                    tiles[x][y] = tile;
+                    if(tile.getLocation().getX() == items[i].getLocation().getX() && tile.getLocation().getY() == items[i].getLocation().getY()){
+                        tile.addItem(items[i]);
+                        System.out.println("Add Item");
+                    }
                 }
-                tiles[x][y] = tile;
             }
         }
 
