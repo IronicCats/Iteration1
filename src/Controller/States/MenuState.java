@@ -12,12 +12,13 @@ import View.Views.MainMenu;
  * Created by jlkegley on 1/31/2016.
  */
 public class MenuState extends State implements KeyListener {
-    MainMenu menuView;
+    public MainMenu menuView;
     public static MenuState menu;
 
     public MenuState(Controller controller, int width, int height) {
 
         super(controller);
+        menu = this;
         View.view.addKeyListener(this);
         menuView = new MainMenu(width, height);
     }
@@ -36,7 +37,7 @@ public class MenuState extends State implements KeyListener {
                 setState(GameState.game);
                 break;
             case Exit:
-                System.out.println("Load Game");
+                System.out.println("Exit Game");
                 System.exit(0);
                 break;
         }
@@ -63,12 +64,12 @@ public class MenuState extends State implements KeyListener {
         }
         if(e.getKeyCode() == KeyEvent.VK_DOWN) {
             menuView.next();
-            System.out.println("Down M");
         }
 
         if(e.getKeyCode() == 10) {
             switchState(menuView.getSelection());
         }
+        
     }
 
     @Override

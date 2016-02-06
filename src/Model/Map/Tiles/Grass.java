@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
  */
 public class Grass extends Tile {
     public Grass(Location location ) {
-        super(Assets.grass, location, false);
+        super(Assets.grass, location, false,null);
     }
 
 }

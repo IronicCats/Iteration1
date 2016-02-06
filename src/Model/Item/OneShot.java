@@ -22,5 +22,4 @@ public class OneShot extends Item {
         player.getStats().applyEffect(this.getEffects());
         location = null;
     }
-
 }

@@ -1,6 +1,9 @@
 package Model.Map;
 
 
+import Model.Item.Item;
+import Model.Item.ItemsEnum;
+import Model.Item.Useable;
 import Model.Location;
 import Model.Map.Tiles.Grass;
 import Model.Map.Tiles.Mountain;
@@ -8,6 +11,8 @@ import Model.Map.Tiles.Tile;
 import Model.Map.Tiles.Water;
 
 import Controller.Controller;
+import View.Graphics.Assets;
+
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -20,9 +25,9 @@ import java.io.IOException;
 public class Map {
 
     private Tile[][] tiles;
-   private Location spawn;
+    private Location spawn;
     private int width;
-
+    private Item potion;
     private int height;
     private Controller controller;
 
@@ -44,6 +49,7 @@ public class Map {
             System.out.println(e);
 
         }
+
         String[] tokens = builder.toString().split("\\s+");
         width = parseInt(tokens[0]);
         height = parseInt(tokens[1]);

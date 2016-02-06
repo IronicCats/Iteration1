@@ -17,7 +17,7 @@ public class PauseMenu {
 
     private String[] menuItems = {"Resume Game","Save Game", "Load Game", "Exit Game"};
     private States[] menuStates = {States.Game, States.Save, States.Load, States.Exit};
-    private int currentItem = 1;
+    private int currentItem = 0;
 
     public PauseMenu(int width, int height) {
         this.width = width;
