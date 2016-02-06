@@ -6,6 +6,7 @@ import Model.Entity.Occupation.Occupation;
 import Model.Entity.Occupation.Smasher;
 import Model.Entity.Occupation.Sneak;
 import Model.Entity.Occupation.Summoner;
+import Model.Entity.Inventory.Pack;
 import Model.Entity.Stats.Stats;
 import Model.Location;
 import Model.Map.Tiles.Tile;
@@ -32,6 +33,7 @@ public abstract class Entity {
     protected Controller controller;
     protected int width, height;
     protected Rectangle bounds;
+    protected Pack pack;
 
     public Entity(Controller controller, float x, float y, int width, int height, Occupation o) {
         this.location = new Location((int)x, (int)y, 0);
@@ -40,6 +42,7 @@ public abstract class Entity {
         this.height = height;
         this.occupation = o;
         this.bounds = new Rectangle(0, 0, width , height);
+        bounds = new Rectangle(0, 0, width , height);
     }
 
     public Entity(Controller controller, float x, float y, int width, int height, int direction, Occupation o) {
