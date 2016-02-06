@@ -16,15 +16,17 @@ public class Nav {
     protected static Rectangle bounds;
     protected int goalX;
     protected int goalY;
+    protected Player player;
 
     protected boolean isMoving = false;
 
-    public Nav(Location location,Rectangle bounds, Controller controller){
+    public Nav(Location location,Rectangle bounds, Controller controller, Player player){
         goalX = location.getX();
         goalY = location.getY();
         this.location = location;
         this.bounds = bounds;
         this.controller = controller;
+        this.player = player;
     }
 
     public void move(int direction) {
@@ -39,6 +41,7 @@ public class Nav {
             }
             if (Obstaclecheck) {
                 goalY = location.getY() - Tile.TILEHEIGHT;
+                controller.getTiles(location.getX(),location.getY()).removePlayer(player);
             }
         }else if (direction == 1) {
                 if (controller.getTiles((location.getX() + Tile.TILEWIDTH) / Tile.TILEWIDTH, (location.getY()) / Tile.TILEHEIGHT).isUnWalkable) {
@@ -49,6 +52,7 @@ public class Nav {
                 }
                 if (Obstaclecheck) {
                     goalX = location.getX() + Tile.TILEWIDTH;
+                    controller.getTiles(location.getX(),location.getY()).removePlayer(player);
                 }
             } else if (direction == 2) {
             if (controller.getTiles((location.getX()) / Tile.TILEWIDTH, (location.getY() + Tile.TILEHEIGHT) / Tile.TILEHEIGHT).isUnWalkable) {
@@ -59,6 +63,7 @@ public class Nav {
             }
             if(Obstaclecheck) {
                 goalY = location.getY() + Tile.TILEHEIGHT;
+                controller.getTiles(location.getX(),location.getY()).removePlayer(player);
             }
             } else if(direction == 3) {
             if (controller.getTiles((location.getX() - Tile.TILEWIDTH) / Tile.TILEWIDTH, (location.getY()) / Tile.TILEHEIGHT).isUnWalkable) {
@@ -69,6 +74,7 @@ public class Nav {
             }
             if (Obstaclecheck) {
                 goalX = location.getX() - Tile.TILEWIDTH;
+                controller.getTiles(location.getX(),location.getY()).removePlayer(player);
             }
         }
         else if(direction == 4){
@@ -81,6 +87,7 @@ public class Nav {
             if(Obstaclecheck){
                 goalX = location.getX() + Tile.TILEWIDTH;
                 goalY = location.getY() - Tile.TILEHEIGHT;
+                controller.getTiles(location.getX(),location.getY()).removePlayer(player);
             }
         }
         else if(direction == 5){
@@ -93,6 +100,7 @@ public class Nav {
             if(Obstaclecheck){
                 goalX = location.getX() - Tile.TILEWIDTH;
                 goalY = location.getY() - Tile.TILEHEIGHT;
+                controller.getTiles(location.getX(),location.getY()).removePlayer(player);
             }
         }
         else if(direction == 6){
@@ -105,6 +113,7 @@ public class Nav {
             if(Obstaclecheck){
                 goalX = location.getX() - Tile.TILEWIDTH;
                 goalY = location.getY() + Tile.TILEHEIGHT;
+                controller.getTiles(location.getX(),location.getY()).removePlayer(player);
             }
         }
         else if(direction == 7){
@@ -117,6 +126,7 @@ public class Nav {
             if(Obstaclecheck){
                 goalX = location.getX() + Tile.TILEWIDTH;
                 goalY = location.getY() + Tile.TILEHEIGHT;
+                controller.getTiles(location.getX(),location.getY()).removePlayer(player);
             }
         }
         }
@@ -124,6 +134,7 @@ public class Nav {
     public void move() {
         if(location.getY() == goalY && location.getX() == goalX) {
             isMoving = false;
+            controller.getTiles(location.getX(),location.getY()).addPlayer(player);
         }else {
             //TWEEN TO LOCATION
             if(location.getX() != goalX) {
