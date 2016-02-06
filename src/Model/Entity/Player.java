@@ -31,26 +31,37 @@ public class Player extends Entity {
 
     @Override
     public void tick() {
-        getInput();
-        navigation.move(navigation.getxVelocity(),navigation.getyVelocity());
+        if(!navigation.isMoving) {
+            getMovementInput();
+        }else {
+            navigation.move();
+        }
+        //navigation.move(navigation.getxVelocity(),navigation.getyVelocity());
     }
 
-    public void getInput(){
-        navigation.setyVelocity(0);
-        navigation.setxVelocity(0);
+    public void getMovementInput(){
         //TODO: Add the numpad movement options
-        if(controller.getInputManager().N) {
-            navigation.setyVelocity(-(speed));
-        }
-        if(controller.getInputManager().E) {
-            navigation.setxVelocity((speed));
+        if (controller.getInputManager().N) {
+            navigation.move(0);
+        } else if (controller.getInputManager().E) {
+            navigation.move(1);
 
+        } else if (controller.getInputManager().S) {
+            navigation.move(2);
+        } else if (controller.getInputManager().W) {
+            navigation.move(3);
         }
-        if(controller.getInputManager().S) {
-            navigation.setyVelocity((speed));
+        else if(controller.getInputManager().NE){
+            navigation.move(4);
         }
-        if(controller.getInputManager().W) {
-            navigation.setxVelocity(-(speed));
+        else if(controller.getInputManager().NW){
+            navigation.move(5);
+        }
+        else if(controller.getInputManager().SW){
+            navigation.move(6);
+        }
+        else if(controller.getInputManager().SE){
+            navigation.move(7);
         }
 
     }
@@ -64,8 +75,6 @@ public class Player extends Entity {
                 height,
                 null
         );
-        //g.setColor(Color.red);
-        //g.fillRect((int)(getX() + bounds.x - controller.getCamera().getxOffset()), (int)(getY() + bounds.y - controller.getCamera().getyOffset()), bounds.width, bounds.height);
     }
 
 }

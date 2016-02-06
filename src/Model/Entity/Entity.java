@@ -129,4 +129,6 @@ public abstract class Entity {
 
     public void openMenu(){}
 
+    public Stats getStats() { return stats; }
+
 }

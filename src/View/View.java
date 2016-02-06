@@ -11,7 +11,7 @@ import java.awt.image.BufferStrategy;
  * Created by jlkegley on 1/31/2016.
  */
 public class View extends JFrame implements Runnable {
-
+    public static View view;
     private Canvas canvas;
     private String title;
 
@@ -22,6 +22,7 @@ public class View extends JFrame implements Runnable {
 
 
     public View(String title, int width, int height) {
+        view = this;
         this.title = title;
         this.width = width;
         this.height = height;
@@ -50,6 +51,8 @@ public class View extends JFrame implements Runnable {
         Assets.init();
 
     }
+
+    
 
     public Canvas getCanvas() {
         return canvas;
