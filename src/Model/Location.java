@@ -39,7 +39,7 @@ public class Location {
 
     public String toString(){
         String locString;
-        locString = (this.x + " " + this.y + "\n");
+        locString = (this.x + "\n" + this.y + "\n");
         return locString;
     }
 }

@@ -19,6 +19,7 @@ public class SaveState extends State {
 
 
     static ArrayList<Object> savefile = new ArrayList<Object>();
+    static BufferedWriter outputWriter;
     private Player player;
 
     public SaveState(Controller controller) {
@@ -38,7 +39,9 @@ public class SaveState extends State {
 
     public static void writeFile(Player player, String filepath) {
         File outputFile;
-        BufferedWriter outputWriter;
+        //BufferedWriter outputWriter;
+
+
 
         try {
             outputFile = new File(filepath);

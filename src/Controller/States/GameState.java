@@ -30,8 +30,8 @@ public class GameState extends State {
         controller.setPlayer(player);
         //TESTING
 
-        SaveState.writeFile(player,"Player test.txt");
-        LoadState.loadFile("Player test.txt");
+        //SaveState.writeFile(player,"Player test.txt");
+        LoadState.loadFile(player,"Player test.txt");
         //TESTING
     }
 

@@ -9,6 +9,8 @@ import com.sun.xml.internal.bind.v2.TODO;
 import Model.Entity.Nav;
 
 import java.awt.*;
+import java.io.BufferedReader;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -97,6 +99,29 @@ public class Player extends Entity {
         saveFile.add(this.getStats()); //okay as a note I should now be able to do getStats().(specific stat)
         //getInventory().saveInventory(saveFile); //fixme
 
+
+    }
+   /* public void loadPlayer(File input, BufferedReader read)
+    {
+        /*System.out.print("stuff is here");
+        try {
+            System.out.println("heeeeey");
+            Location l = new Location(Integer.parseInt(read.readLine()),Integer.parseInt(read.readLine()),0);
+            //read.close();
+            System.out.println("whhhhhhy");
+            this.setLocation(l);
+            System.out.println("whut up ");
+            System.out.print(Float.toString(this.getX()));
+            System.out.print(this.getY());
+
+
+        }catch(Exception e){}
+
+    }*/
+    public void loadPlayer(ArrayList<Object> saveFile)
+    {
+        Location l = new Location((int)saveFile.get(0),(int)saveFile.get(1),0);
+        this.setLocation(l);
 
     }
 
