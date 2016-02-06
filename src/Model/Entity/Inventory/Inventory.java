@@ -46,7 +46,7 @@ public class Inventory {
 
 
     public void store(ArrayList<Item> tileItems) {
-        for(int i = 0; i < tileItems.size(); ++i) {
+        for(int i = tileItems.size()-1; i >=0; --i) {
             ItemsEnum itemType = tileItems.get(i).getType();
             if(itemType == ItemsEnum.USEABLE || itemType == ItemsEnum.ARMOR || itemType == ItemsEnum.WEAPON) {
                 if(add((Takeable)tileItems.get(i))){
