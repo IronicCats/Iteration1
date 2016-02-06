@@ -13,17 +13,20 @@ public class Assets {
     public static BufferedImage mountain;
     public static BufferedImage water;
     public static BufferedImage avatar;
+    public static BufferedImage potion;
 
     public static void init() {
         SpriteSheet grassSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/GrassTile.jpg"));
         SpriteSheet mountainSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/MountainTile.png"));
         SpriteSheet waterSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/WaterTile.png"));
         SpriteSheet avatarSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/SwordSprite.png"));
+        SpriteSheet potionSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/PotionSprite.png"));
 
         avatar = avatarSheet.crop(0, 0, width, height);
         grass = grassSheet.crop(0, 0, width, height);
         mountain = mountainSheet.crop(0, 0, width, height);
         water = waterSheet.crop(0, 0, width, height);
+        potion = potionSheet.crop(0,0,width,height);
 
     }
 

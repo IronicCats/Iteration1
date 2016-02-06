@@ -12,7 +12,7 @@ import Model.Requirements;
  */
 public abstract class Item {
 
-    public static int ITEMWIDTH, ITEMHEIGHT = 28; // default height and width of item
+    public static int ITEMWIDTH = 28, ITEMHEIGHT = 28; // default height and width of item
 
     private BufferedImage image; // image used for item
 
@@ -58,7 +58,7 @@ public abstract class Item {
 
 
     public void render(Graphics g,int x, int y) { // render image of item
-        g.drawImage( image, x , y, ITEMWIDTH, ITEMHEIGHT, null);
+        g.drawImage(image, x , y, ITEMWIDTH, ITEMHEIGHT, null);
     }
 
 }
