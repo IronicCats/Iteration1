@@ -5,5 +5,5 @@ package Controller.States;
  */
 public class LoadState {
 
-    public void loadFile(String fileName){}
+    public static void loadFile(String fileName){}
 }

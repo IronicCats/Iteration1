@@ -7,5 +7,5 @@ import Model.Entity.Entity;
  */
 public class SaveState {
 
-    public void writeFile(Entity entity, String string){}
+    public static void writeFile(Entity entity, String string){}
 }
