@@ -10,6 +10,21 @@ public class Equipment {
     private EquippedArmor armor;
     private EquipmentStats equipmentStats;
 
+
+    public EquippedWeapon getWeapon() {
+        return weapon;
+    }
+
+    public EquippedArmor getArmor() {
+        return armor;
+    }
+
+    public EquipmentStats getEquipmentStats() {
+        return equipmentStats;
+    }
+
+
+
     Equipment() {
 
     } // end constructor

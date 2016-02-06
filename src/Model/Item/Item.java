@@ -52,6 +52,18 @@ public abstract class Item {
     public ItemsEnum getType() {
         return type;
     }
+    public BufferedImage getImage(){
+        return image;
+    }
+    public int getId(){
+        return id;
+    }
+    public Location getLocation(){
+        return location;
+    }
+    public Requirements getRequirements(){
+        return requirements;
+    }
     /* end getter functions */
 
     public abstract void onInteract(Player player); // OneShot, useable

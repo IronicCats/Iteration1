@@ -17,11 +17,18 @@ public class Pack {
         this.cap = cap;
     } // end constructor
 
-    Pack (int size, Item[] items, int cap) {
+    public Pack (int size, Item[] items, int cap) {
         this.size = size;
         this.items = items;
         this.cap = cap;
+        for(int i=0;i<cap;i++)
+            items[i]=null;
+
     } // end constructor
+    public void add(Item item){
+
+
+    }
 
 
 } // end class Pack

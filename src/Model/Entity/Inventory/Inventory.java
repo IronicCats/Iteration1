@@ -1,5 +1,7 @@
 package Model.Entity.Inventory;
 
+import Controller.Controller;
+import Model.Entity.Entity;
 import Model.Entity.Inventory.Equipment.Equipment;
 import Model.Item.Item;
 import Model.Item.Takeable;
@@ -11,9 +13,14 @@ public class Inventory {
     private Pack pack;
     private Equipment equipment;
 
-    public Inventory(Pack pack, Equipment equipment) {
+
+
+    private Controller controller;
+
+    public Inventory(Controller controller, Pack pack, Equipment equipment) {
         this.pack = pack;
         this.equipment = equipment;
+        this.controller = controller;
     }
 
     public void store(Item item) {
@@ -42,8 +49,41 @@ public class Inventory {
         return null;
     }
 
-        /*
 
+   // public void store(Item item){
+
+
+   // }
+    public void drop(int offset){
+    //controller.getTile
+    }
+    public void use(){
+
+    }
+    public void equip(int offset){
+        if(offset>=8){
+            equipment.getWeapon().equipWeapon(pack.items[offset]);
+        }
+        else{
+            equipment.getArmor().equipArmor(pack.items[offset]);
+        }
+    }
+    public void unequip(int offset){
+        if(offset>=8){
+            equipment.getWeapon().unequipWeapon();
+        }
+        else{
+            equipment.getArmor().unequipArmor(offset);
+        }
+    }
+
+     public Pack getPack() {
+        return pack;
+    }
+
+    public Equipment getEquipment() {
+        return equipment;
+    } /*
     public void use(Takeable item) {
 
     } // end use

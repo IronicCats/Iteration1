@@ -42,8 +42,8 @@ public class GameState extends State {
         controller.setMap(map);
         camera = new Camera(controller.getGame().getWidth(), controller.getGame().getHeight(),map);
         controller.setCamera(camera);
-        pack = new Pack(10);
-        inventory = new Inventory(pack,null);
+        pack = new Pack(16);
+        inventory = new Inventory(controller,pack,null);
         player = new Player(controller,1 * (Tile.TILEWIDTH ),1 * (Tile.TILEHEIGHT),inventory);
         location = new Location(3,3,0);
 
