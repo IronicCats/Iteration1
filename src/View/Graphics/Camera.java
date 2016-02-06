@@ -32,8 +32,8 @@ public class Camera {
         if(yOffset < 0){
             yOffset = 0;
         }
-        else if(yOffset > ((map.getHeight()/2 * Tile.TILEHEIGHT)- gameHeight) + 100){
-            yOffset = (map.getHeight()/2 * Tile.TILEHEIGHT) - gameHeight + 100;
+        else if(yOffset > ((map.getHeight()/2 * Tile.TILEHEIGHT)- gameHeight) + 20){
+            yOffset = (map.getHeight()/2 * Tile.TILEHEIGHT) - gameHeight + 20;
         }
     }
 

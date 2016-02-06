@@ -21,7 +21,7 @@ public class StatusView {
         this.width = controller.getGame().getWidth();
         this.height = controller.getGame().getHeight();
         barStartX = 0;
-        barStartY =height - 100;
+        barStartY = height - 100;
 
     }
 

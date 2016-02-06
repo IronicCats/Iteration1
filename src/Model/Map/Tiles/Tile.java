@@ -32,6 +32,7 @@ public abstract class Tile {
         this.location = location;
         this.texture = texture;
         this.isUnWalkable = isUnWalkable;
+
         this.items = new ArrayList<>();
 
     }
@@ -41,6 +42,8 @@ public abstract class Tile {
         if(items.size() == 0) {
             g.drawImage(texture, x, y, TILEWIDTH, TILEHEIGHT, null); //TILEWIDTH and TILEHEIGHT
         }
+
+
         else if(items.size() == 1) {
             g.drawImage(texture, x, y, TILEWIDTH, TILEHEIGHT, null); //TILEWIDTH and TILEHEIGHT
             items.get(0).render(g, x, y);
@@ -65,6 +68,11 @@ public abstract class Tile {
         items.add(item);
     }
 
+
+    public boolean HasItem(){
+        return items.size() > 0;
+    }
+    
     public ArrayList<Item> getItems() {
         return items;
     }
