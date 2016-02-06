@@ -34,6 +34,7 @@ public class Player extends Entity {
 
     @Override
     public void tick() {
+        getStats().tick();
         navigation.move();
     }
 

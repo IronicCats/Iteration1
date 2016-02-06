@@ -161,6 +161,9 @@ public class GameState extends State {
         if(e.getKeyCode() == KeyEvent.VK_K) {
             player.getStats().applyEffect(new Effect(new StatStructure(StatsEnum.LIFE, -1), 0, "Take Damage"));
         }
+        if(e.getKeyCode() == KeyEvent.VK_L) {
+            player.getStats().applyEffect(new Effect(new StatStructure(StatsEnum.EXPERIENCE, 1), 0, "At 1 EXP "));
+        }
 
     }
 

@@ -115,4 +115,6 @@ public abstract class Entity {
 
     public Stats getStats() { return stats; }
 
+    public Occupation getOccupation() { return occupation; }
+
 }

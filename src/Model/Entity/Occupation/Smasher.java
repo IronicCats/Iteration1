@@ -7,6 +7,6 @@ public class Smasher extends Occupation {
 
     public Smasher()
     {
-        super("Smasher", "Specializes in hand-to-hand combat", new int [] {5,5,5,5,5,5,5});
+        super("Smasher", "Specializes in hand-to-hand combat", new int [] {5,5,5,5,5,9,5});
     }
 }
