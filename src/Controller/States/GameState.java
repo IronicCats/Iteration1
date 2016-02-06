@@ -43,6 +43,7 @@ public class GameState extends State {
     private Inventory inventory;
     private Pack pack;
 
+
     private StatusView statusView;
     private Stats stats;
     private Occupation occupation;
