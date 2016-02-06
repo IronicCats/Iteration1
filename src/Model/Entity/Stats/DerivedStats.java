@@ -46,6 +46,13 @@ public class DerivedStats {
         mana = baseMana;
     } // end levelUp
 
+    public void kill() {
+        System.out.println("derived -> kill called: life: " + life + " baselift: " + baseLife);
+        life = baseLife;
+        mana = baseMana;
+        System.out.println("derived -> kill finished: life: " + life + " baselift: " + baseLife);
+    } // end kill
+
     public void update() {
         /*
         method to be called with each stat update
@@ -76,6 +83,8 @@ public class DerivedStats {
     public void setOffensiveRating(int offensiveRating) { this.offensiveRating = offensiveRating; }
     public void setDefensiveRating(int defensiveRating) { this.defensiveRating = defensiveRating; }
     public void setArmorRating(int armorRating) { this.armorRating = armorRating; }
+    public void setBaseLife(int life){this.life = life;}
+    public void setBaseMana(int mana){this.mana = mana;}
 
     public void modifyLevel(int level) { this.level += level; }
     public void modifyLife(int life) { this.life += life; }

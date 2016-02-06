@@ -3,11 +3,16 @@ package Model.Entity.Inventory;
 import Controller.Controller;
 import Model.Entity.Entity;
 import Model.Entity.Inventory.Equipment.Equipment;
+import Model.Item.Equippable;
+import Model.Item.Item;
+import Model.Item.Takeable;
 import Model.Item.*;
-
 import javax.lang.model.type.NullType;
 import java.awt.*;
 import java.util.ArrayList;
+
+
+
 
 /**
  * Created by broskj on 2/1/16.
@@ -23,6 +28,23 @@ public class Inventory {
         this.controller = controller;
     }
 
+    public Inventory(Pack pack, Equipment equipment) {
+        this.pack = pack;
+        this.equipment = equipment;
+
+    } // end constructor
+
+    public Pack getPack(){return pack;}
+    public Equipment getEquipment(){return equipment;}
+
+    public void saveInventory(ArrayList<Object> saveFile){
+        saveFile.add(pack);
+        saveFile.add(equipment);
+
+    }
+
+
+
     public void store(ArrayList<Item> tileItems) {
         for(int i = tileItems.size()-1; i >=0; --i) {
             ItemsEnum itemType = tileItems.get(i).getType();
@@ -35,6 +57,7 @@ public class Inventory {
     }
 
     private boolean add(Takeable takeableItem) {
+
         if (pack.size != pack.cap) {
             for(int i = 0; i < pack.cap; ++i) {
                 if(pack.items[i] == null) {
@@ -77,6 +100,8 @@ public class Inventory {
         }
     }
 
+
+
     public void equip(int i){
         if(pack.items[i].getType() == ItemsEnum.WEAPON) {
             equipment.getWeapon().equipWeapon((Weapon)pack.items[i]);
@@ -93,13 +118,7 @@ public class Inventory {
         add(unequipped);
     }
 
-     public Pack getPack() {
-        return pack;
-    }
 
-    public Equipment getEquipment() {
-        return equipment;
-    }
 
     public void tick() {
 

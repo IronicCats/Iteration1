@@ -28,8 +28,6 @@ public class StatusView {
     public void render(Graphics g) {
         double[] playerStats = calculatePercentages();
 
-        System.out.println("Life: " + controller.getPlayer().getStats().getLife() + " Hardiness: " + controller.getPlayer().getStats().getHardiness());
-        System.out.println("Base Life: " + controller.getPlayer().getStats().getBaseLife() + " Level: " + controller.getPlayer().getStats().getLevel());
         g.fillRect(barStartX, barStartY, width, 100);
         g.setColor(Color.YELLOW);
         g.fillRect(barStartX, barStartY, width, 5);

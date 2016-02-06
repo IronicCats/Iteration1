@@ -26,14 +26,14 @@ public class Camera {
         if(xOffset < 0){
             setxOffset(0);
         }
-        else if(xOffset > (map.getWidth() * (Tile.TILEWIDTH) - gameWidth) ) {
-            xOffset = map.getWidth() * (Tile.TILEWIDTH) - gameWidth;
+        else if(xOffset > (map.getWidth()/2 * (Tile.TILEWIDTH) - gameWidth) ) {
+            xOffset = map.getWidth()/2 * (Tile.TILEWIDTH) - gameWidth;
         }
         if(yOffset < 0){
             yOffset = 0;
         }
-        else if(yOffset > ((map.getHeight() * Tile.TILEHEIGHT)- gameHeight)){
-            yOffset = (map.getHeight() * Tile.TILEHEIGHT) - gameHeight;
+        else if(yOffset > ((map.getHeight()/2 * Tile.TILEHEIGHT)- gameHeight) + 100){
+            yOffset = (map.getHeight()/2 * Tile.TILEHEIGHT) - gameHeight + 100;
         }
     }
 
