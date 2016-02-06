@@ -1,12 +1,12 @@
 package Model.Entity;
 
 import Controller.Controller;
-import Model.Entity.Occupation.Smasher;
+import Model.Entity.Occupation.Occupation;
 import Model.Entity.Inventory.Inventory;
-import Model.Game;
+import Model.Entity.Stats.Stats;
+import Model.Location;
 import View.Graphics.Assets;
-import com.sun.xml.internal.bind.v2.TODO;
-import Model.Entity.Nav;
+
 
 import java.awt.*;
 
@@ -22,16 +22,14 @@ public class Player extends Entity {
                             DEFAULT_CREATURE_HEIGHT = 64;
 
 
-    public Player(Controller controller,float x, float y, Inventory inventory) {
-        super(controller, x, y, DEFAULT_CREATURE_WIDTH, DEFAULT_CREATURE_HEIGHT, new Smasher());
-        speed = DEFAULT_SPEED;
-        bounds.x = 0;
-        bounds.y = 0;
-        navigation = new Nav(location,bounds,controller,this);
-        bounds.width = DEFAULT_CREATURE_WIDTH;
-        bounds.height = DEFAULT_CREATURE_HEIGHT;
+    public Player(Controller controller, Location location, Inventory inventory, Occupation occupation, Stats stats) {
+        super(controller, location, DEFAULT_CREATURE_WIDTH, DEFAULT_CREATURE_HEIGHT, occupation, stats);
+        bounds.x = DEFAULT_CREATURE_WIDTH;
+        bounds.y = DEFAULT_CREATURE_HEIGHT;
+        navigation = new Nav(location, bounds, controller, this);
         this.inventory = inventory;
     }
+
 
 
     @Override
