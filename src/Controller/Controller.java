@@ -2,6 +2,7 @@ package Controller;
 
 import Model.Entity.Player;
 import Model.Game;
+import Model.Location;
 import Model.Map.Map;
 import Model.Map.Tiles.Tile;
 import View.Graphics.Camera;
@@ -50,6 +51,7 @@ public class Controller {
     public void setPlayer(Player p) {
         this.player = p;
     }
+
     public Player getPlayer() {
         return player;
     }
@@ -66,6 +68,6 @@ public class Controller {
         return map.getTile(x, y);
     }
 
-
+    public Tile getTiles(Location location) {return map.getTile(location);}
 
 }

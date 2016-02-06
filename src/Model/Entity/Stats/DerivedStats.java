@@ -19,8 +19,10 @@ public class DerivedStats {
 
     DerivedStats (PrimaryStats ps) {
         primaryStats = ps;
-        double calculationLevel = Math.log10(ps.getXpThreshhold() / 10) / Math.log10(ps.getXpMultiplier());
-        level = (int) calculationLevel;
+        //WTF IS THIS?!
+        //double calculationLevel = Math.log10(ps.getXpThreshhold() / 10) / Math.log10(ps.getXpMultiplier());
+        //level = (int) calculationLevel;
+        level = 1;
         //equipmentStats = ss.equipmentStats;
         baseLife = ps.getHardiness() + level;
         baseMana = ps.getIntellect() + level;
@@ -44,6 +46,13 @@ public class DerivedStats {
         mana = baseMana;
     } // end levelUp
 
+    public void kill() {
+        System.out.println("derived -> kill called: life: " + life + " baselift: " + baseLife);
+        life = baseLife;
+        mana = baseMana;
+        System.out.println("derived -> kill finished: life: " + life + " baselift: " + baseLife);
+    } // end kill
+
     public void update() {
         /*
         method to be called with each stat update
@@ -51,8 +60,9 @@ public class DerivedStats {
          */
         baseLife = primaryStats.getHardiness() + level;
         baseMana = primaryStats.getIntellect() + level;
-        level = Integer.parseInt(Double.toString(Math.log10(primaryStats.getXpThreshhold()/10) /
-                Math.log10(primaryStats.getXpMultiplier())));
+
+        //level = Integer.parseInt(Double.toString(Math.log10(primaryStats.getXpThreshhold()/10) /
+               // Math.log10(primaryStats.getXpMultiplier())));
         //offensiveRating = equipmentStats.getWeaponStats() + primaryStats.strength + level;
         defensiveRating = primaryStats.getAgility() + level;
         //armorRating = equipmentStats.getArmorStats() + primaryStats.hardiness;

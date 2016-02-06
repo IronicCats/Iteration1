@@ -24,6 +24,15 @@ public class PrimaryStats {
     private double xpMultiplier,
             statMultiplier;
 
+    PrimaryStats() {
+        this.livesLeft = 0;
+        this.strength = 0;
+        this.agility = 0;
+        this.intellect = 0;
+        this.hardiness = 0;
+
+    } // end constructor
+
     PrimaryStats (StatStructure ss) {
         baseLives = ss.getStat(StatsEnum.LIVES_LEFT);
         baseStr = ss.getStat(StatsEnum.STRENGTH);
@@ -50,6 +59,8 @@ public class PrimaryStats {
         /*
         reset experience, modify xp threshhold, reset lives remaining
          */
+        System.out.println("EXP: " + experience + "XPT: " + xpThreshhold);
+
         experience = experience - xpThreshhold;
         xpThreshhold *= xpMultiplier;
         livesLeft = baseLives;
@@ -58,7 +69,17 @@ public class PrimaryStats {
         agility *= statMultiplier;
         intellect *= statMultiplier;
         hardiness *= statMultiplier;
-    }
+    } // end levelUp
+
+    public void kill() {
+        livesLeft--;
+
+        strength = baseStr;
+        agility = baseAgi;
+        intellect = baseIntel;
+        hardiness = baseHard;
+        movement = baseMovement;
+    } // end kill
 
     public int getXpThreshhold() { return xpThreshhold; }
     public double getXpMultiplier() { return xpMultiplier; }

@@ -41,12 +41,13 @@ public class Player extends Entity {
 
     @Override
     public void tick() {
+        getStats().tick();
         navigation.move();
     }
 
     public void PickUpItem(){
-        if(controller.getTiles(location.getX()/64,location.getY()/64).HasItem) {
-            inventory.store(controller.getTiles(location.getX() / 64, location.getY() / 64).removeItem());
+        if(controller.getTiles(location.getX()/64,location.getY()/64).hasItem()) {
+            inventory.store(controller.getTiles(location.getX() / 64, location.getY() / 64).getItems());
         }
     }
 

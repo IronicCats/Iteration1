@@ -57,6 +57,13 @@ public abstract class Item {
     public ItemsEnum getType() {
         return type;
     }
+    public BufferedImage getImage(){
+        return image;
+    }
+
+    public Requirements getRequirements(){
+        return requirements;
+    }
     /* end getter functions */
 
     public abstract void onInteract(Player player); // OneShot, useable
@@ -66,9 +73,7 @@ public abstract class Item {
         g.drawImage(image, x + Tile.TILEWIDTH/2 - ITEMWIDTH/2 , y + Tile.TILEHEIGHT/2 - ITEMHEIGHT/2, ITEMWIDTH, ITEMHEIGHT, null);
     }
 
-
     public abstract String toString();
-
 
 
 

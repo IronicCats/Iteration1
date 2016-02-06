@@ -1,6 +1,7 @@
 package Model.Entity.Inventory;
 
 import Model.Item.Item;
+import Model.Item.Takeable;
 
 /**
  * Created by broskj on 2/1/16.
@@ -9,21 +10,31 @@ import Model.Item.Item;
 
 public class Pack {
     protected int size;
-    protected Item[] items;
+    protected Takeable[] items;
     protected final int cap;
 
 
     public Pack(int cap) {
         this.size = 0;
-        this.items = new Item[cap];
+        this.items = new Takeable[cap];
         this.cap = cap;
+        for(int i = 0; i < cap; ++i) {
+            items[i] = null;
+        }
     } // end constructor
 
-    Pack (int size, Item[] items, int cap) {
+    public Pack (int size, Takeable[] items, int cap) {
         this.size = size;
         this.items = items;
         this.cap = cap;
+        for(int i=0;i<cap;i++)
+            items[i]=null;
+
     } // end constructor
+    public void add(Item item){
+
+
+    }
 
 
     public String toString()

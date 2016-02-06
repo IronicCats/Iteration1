@@ -117,4 +117,6 @@ public abstract class Entity {
 
     public void setStats(Stats stats){this.stats = stats;}
 
+    public Occupation getOccupation() { return occupation; }
+
 }
