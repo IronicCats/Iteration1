@@ -50,6 +50,8 @@ public class PrimaryStats {
         /*
         reset experience, modify xp threshhold, reset lives remaining
          */
+        System.out.println("EXP: " + experience + "XPT: " + xpThreshhold);
+
         experience = experience - xpThreshhold;
         xpThreshhold *= xpMultiplier;
         livesLeft = baseLives;

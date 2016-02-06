@@ -71,9 +71,7 @@ public abstract class Tile {
 
     public boolean hasItem() {
         return (items.size() > 0);
+
     }
-
-
-    
 
 }

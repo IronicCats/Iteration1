@@ -51,6 +51,7 @@ public class Controller {
     public void setPlayer(Player p) {
         this.player = p;
     }
+
     public Player getPlayer() {
         return player;
     }

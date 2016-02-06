@@ -1,11 +1,12 @@
 package Model.Entity;
 
 import Controller.Controller;
+import Model.Entity.Occupation.Occupation;
 import Model.Entity.Inventory.Inventory;
-import Model.Game;
+import Model.Entity.Stats.Stats;
+import Model.Location;
 import View.Graphics.Assets;
-import com.sun.xml.internal.bind.v2.TODO;
-import Model.Entity.Nav;
+
 
 import java.awt.*;
 
@@ -20,70 +21,50 @@ public class Player extends Entity {
     public static final int DEFAULT_CREATURE_WIDTH = 64,
                             DEFAULT_CREATURE_HEIGHT = 64;
 
-    public Player(Controller controller,float x, float y, Inventory inventory) {
-        super(controller, x, y, DEFAULT_CREATURE_WIDTH, DEFAULT_CREATURE_HEIGHT);
-        speed = DEFAULT_SPEED;
-        bounds.x = 0;
-        bounds.y = 0;
-        navigation = new Nav(location,bounds,controller,this);
-        bounds.width = DEFAULT_CREATURE_WIDTH;
-        bounds.height = DEFAULT_CREATURE_HEIGHT;
+
+    public Player(Controller controller, Location location, Inventory inventory, Occupation occupation, Stats stats) {
+        super(controller, location, DEFAULT_CREATURE_WIDTH, DEFAULT_CREATURE_HEIGHT, occupation, stats);
+        bounds.x = DEFAULT_CREATURE_WIDTH;
+        bounds.y = DEFAULT_CREATURE_HEIGHT;
+        navigation = new Nav(location, bounds, controller, this);
         this.inventory = inventory;
     }
 
 
+
     @Override
     public void tick() {
-        controller.getTiles(location.getX()/64,location.getY()/64).addPlayer(this);
-        if(controller.getTiles(location.getX()/64,location.getY()/64).hasItem()){
-            System.out.println("There is an item here!" +  Integer.toString(controller.getTiles(location.getX() / 64, location.getY()/64).getItems().size()));
-        }
-        if(!navigation.isMoving) {
-            getInput();
-        }else {
-            navigation.move();
+        getStats().tick();
+        navigation.move();
+    }
+
+    public void PickUpItem(){
+        if(controller.getTiles(location.getX()/64,location.getY()/64).hasItem()) {
+            inventory.store(controller.getTiles(location.getX() / 64, location.getY() / 64).getItems());
         }
     }
 
-
-    public void getInput(){
-        //TODO: Add the numpad movement options
-
-        if (controller.getInputManager().N) {
-            controller.getTiles(location.getX()/64,location.getY()/64).removePlayer(this);
-            navigation.move(0);
-        } else if (controller.getInputManager().E) {
-            controller.getTiles(location.getX()/64,location.getY()/64).removePlayer(this);
-            navigation.move(1);
-
-        } else if (controller.getInputManager().S) {
-            controller.getTiles(location.getX()/64,location.getY()/64).removePlayer(this);
-            navigation.move(2);
-        } else if (controller.getInputManager().W) {
-            controller.getTiles(location.getX()/64,location.getY()/64).removePlayer(this);
-            navigation.move(3);
-        }
-        else if(controller.getInputManager().NE){
-            controller.getTiles(location.getX()/64,location.getY()/64).removePlayer(this);
-            navigation.move(4);
-        }
-        else if(controller.getInputManager().NW){
-            controller.getTiles(location.getX()/64,location.getY()/64).removePlayer(this);
-            navigation.move(5);
-        }
-        else if(controller.getInputManager().SW){
-            controller.getTiles(location.getX()/64,location.getY()/64).removePlayer(this);
-            navigation.move(6);
-        }
-        else if(controller.getInputManager().SE){
-            controller.getTiles(location.getX()/64,location.getY()/64).removePlayer(this);
-            navigation.move(7);
-        }
-        else if(controller.getInputManager().PickUpItem) {
-            if(controller.getTiles(location.getX()/64,location.getY()/64).hasItem()) {
-                inventory.store(controller.getTiles(location.getX() / 64, location.getY() / 64).getItems());
+    public void move(int x){
+        if(!navigation.isMoving) {
+            if (x == 0) {
+                navigation.move(x);
+            } else if (x == 1) {
+                navigation.move(x);
+            } else if (x == 2) {
+                navigation.move(x);
+            } else if (x == 3) {
+                navigation.move(x);
+            } else if (x == 4) {
+                navigation.move(x);
+            } else if (x == 5) {
+                navigation.move(x);
+            } else if (x == 6) {
+                navigation.move(x);
+            } else if (x == 7) {
+                navigation.move(x);
             }
         }
+
     }
 
     @Override
@@ -95,5 +76,9 @@ public class Player extends Entity {
                 height,
                 null
         );
+    }
+
+    public Nav getNavigation(){
+        return this.navigation;
     }
 }

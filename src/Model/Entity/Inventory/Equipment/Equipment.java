@@ -34,7 +34,7 @@ public class Equipment {
 
 
 
-    Equipment() {
+    public Equipment() {
 
     } // end constructor
 } // end class Equipment

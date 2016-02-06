@@ -17,9 +17,9 @@ public class Inventory {
     private Equipment equipment;
     private Controller controller;
 
-    public Inventory(Controller controller, Pack pack, Equipment equipment) {
-        this.pack = pack;
-        this.equipment = equipment;
+    public Inventory(Controller controller) {
+        this.pack = new Pack(16);
+        this.equipment = new Equipment();
         this.controller = controller;
     }
 

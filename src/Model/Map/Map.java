@@ -117,7 +117,8 @@ public class Map {
     }
 
     public int getWidth() {
-        return width;
+
+        return width * 2;
     }
 
     public void setWidth(int width) {
@@ -125,7 +126,7 @@ public class Map {
     }
 
     public int getHeight() {
-        return height;
+        return height * 2;
     }
 
     public void setHeight(int height) {
