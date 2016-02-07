@@ -27,7 +27,7 @@ public class Weapon extends Equippable {
 
     public String toString(){
         String string;
-        string = (this.getId() + " " + this.getLocation().getX() + " " + this.getLocation().getY() + "\n");
+        string = (this.getId() + "\n" + this.getLocation().getX() + "\n" + this.getLocation().getY() + "\n");
         return string;
 
     }

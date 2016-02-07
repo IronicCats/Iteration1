@@ -39,8 +39,13 @@ public class Inventory {
 
     public void saveInventory(ArrayList<Object> saveFile){
         saveFile.add(pack);
-        saveFile.add(equipment);
+        //saveFile.add(equipment); //fixme
 
+    }
+
+    public void loadInventory(ArrayList<Object> saveFile, int count){
+        Pack p = pack;
+        //this.getPack().
     }
 
 

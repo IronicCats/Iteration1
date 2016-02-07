@@ -1,7 +1,6 @@
 package Model.Entity.Inventory;
 
-import Model.Item.Item;
-import Model.Item.Takeable;
+import Model.Item.*;
 
 /**
  * Created by broskj on 2/1/16.
@@ -37,12 +36,29 @@ public class Pack {
     }
 
 
+
     public String toString()
     {
         String packString = "";
-        for(int i = 0; i < items.length; i++)
+        for(int i = 0; i < size; i++)
         {
-            packString = packString + items[i].toString();
+
+            //System.out.print(items[i]);
+            if(items[i].getType() == ItemsEnum.WEAPON)
+            {
+                System.out.println("A WEAPON TO SURPASS METAL GEAR");
+                packString = packString + ((Weapon)items[i]).toString();
+            }
+            else if(items[i].getType() == ItemsEnum.ARMOR){
+                System.out.println("so safe");
+                packString = packString + ((Armor)items[i]).toString();
+            }
+            else if(items[i].getType() == ItemsEnum.USEABLE)
+            {
+                System.out.println("don't do drugs kids" + i);
+                packString = packString + ((Useable)items[i]).toString();
+            }
+
         }
         return packString;
     }
