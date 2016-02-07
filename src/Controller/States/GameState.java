@@ -28,6 +28,7 @@ import Model.Map.Tiles.Tile;
 import View.Graphics.Assets;
 import View.Graphics.Camera;
 import View.View;
+import View.Views.CreateMenu;
 import View.Views.PauseMenu;
 import View.Views.StatusView;
 
@@ -39,42 +40,22 @@ public class GameState extends State {
     public static GameState game;
     private Map map;
     private Camera camera;
-    private Player player;
     private Useable potion;
     private Location location;
-    private Inventory inventory;
-    private Pack pack;
-    private Location spawn = new Location(64,64,2);
 
+    private Location spawn = new Location(64,64,0);
+    private Player player;
     private StatusView statusView;
-    private Stats stats;
-    private Occupation occupation;
     private AreaEffect areaEffect;
+
+
 
     public GameState(Controller controller) {
         super(controller);
         game = this;
-        map = new Map(controller,spawn);
-        controller.setMap(map);
-        camera = new Camera(controller.getGame().getWidth(), controller.getGame().getHeight(),map);
-        controller.setCamera(camera);
-
-
-
-        pack = new Pack(10);
-        inventory = new Inventory(controller);
-        occupation = new Smasher();
-        stats = new Stats(occupation.getInitialStats(),controller);
-        player = new Player(controller,spawn,inventory, occupation, stats);
 
         location = new Location(4,5,0); //Location is in wrong coordinates it should be in pixels not in tiles
 
-
-        areaEffect = new AreaEffect("Damage", "Damage", AreaEffectEnum.DAMAGE, new Location(7,8,0)); //Same with this one
-
-        map.getTile(2,6).addAreaEffect(areaEffect);
-
-        controller.setPlayer(player);
         statusView = new StatusView(controller);
 
     }
@@ -195,6 +176,20 @@ public class GameState extends State {
     //The player needs to be able to save it's stats and inventory
     //items need to be able to save charge
     //needs to be able to pass the current saved game state to the save state
+
+
+    //Initializes game state with Player/Map/Camera data from Create or Load states.
+    //Can't have this stuff in the Constructor since every State object made at same time.
+    public void init(){
+        player = controller.getPlayer();
+        camera = controller.getCamera();
+        map = controller.getMap();
+
+        //Test Code
+        areaEffect = new AreaEffect("Damage", "Damage", AreaEffectEnum.DAMAGE, new Location(7,8,0)); //Same with this one
+        map.getTile(2,6).addAreaEffect(areaEffect);
+        //End Test
+
+        return;
+    }
 }
-
-
