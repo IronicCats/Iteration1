@@ -13,7 +13,7 @@ public class Occupation {
     private StatStructure initialStats;
     private StatStructure statMultiplier;
 
-    Occupation(String name, String description, int[] val)
+    public Occupation(String name, String description, int[] val)
     {
         this.name = name;
         this.description = description;

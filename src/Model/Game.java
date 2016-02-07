@@ -48,7 +48,7 @@ public class Game implements Runnable {
     }
 
     public void tick() {
-        inputManager.tick();
+        //inputManager.tick();
 
         if(State.getState() != null ) {
             State.getState().tick();

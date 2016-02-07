@@ -1,6 +1,9 @@
 package Model.Entity.Stats;
 
+import Controller.States.MenuState;
+import Controller.States.State;
 import Model.Entity.EquipmentStats;
+import Model.Game;
 
 import java.util.ArrayList;
 
@@ -14,10 +17,13 @@ public class Stats {
     private ArrayList<Long> finishTimes;
 
     public Stats() {
-
+        this.primaryStats = new PrimaryStats();
+        this.derivedStats = new DerivedStats(primaryStats);
+        this.effects = new ArrayList<>();
+        this.finishTimes = new ArrayList<>();
     } // end constructor
 
-    Stats(StatStructure ss) {
+    public Stats(StatStructure ss) {
         primaryStats = new PrimaryStats(ss);
         derivedStats = new DerivedStats(primaryStats);
         effects = new ArrayList<>();
@@ -27,20 +33,53 @@ public class Stats {
     public void levelUp() {
         primaryStats.levelUp();
         derivedStats.levelUp();
-    }
+    } // end levelUp
+
+    public void kill() {
+        effects.clear();
+        finishTimes.clear();
+        primaryStats.kill();
+        derivedStats.kill();
+        if(primaryStats.getLivesLeft() <= 0)
+            State.setState(MenuState.menu);
+    } // end kill
 
     public void applyEffect(Effect e) {
         /*
         take in Effect and apply it to character
+
+        USAGE:
+            This method is passed an Effect (which contains a StatStructure array).  The StatStructure contains a list
+             of the skills which are to be modified and by how much.
+
+            The Effect's duration affects what happens when the Effect is applied.  If the duration is 0, then the
+             effect is meant to happen instantaneously and not persist.  This is the case for taking damage or using
+             mana, for example.  Other Effects with durations greater than zero are added to an ArrayList of Effects
+             and its finish time (calculated as System.currentTimeInMillis() + duration) is added to a parallel
+             ArrayList of system times.  The finish time is checked each game tick to check for expired Effects, and on
+             expiration, the effect is removed by adding its negative value to its respective stat.
+
+            The entire SS array is traversed (though its size is likely to be 1 outside of initial character creation),
+             and at each element a switch statement will execute code unique to that stat, i.e. a StatStructure with
+             one element containing the pair {Strength, 2} will add 2 to the Strength stat (with BaseStrength being
+             retained) for the duration of the effect.
+
+        DESIGNATED VALUES:
+            The following StatStructure StatsEnum/Value pairs are unique:
+                {StatsEnum.LEVEL, 1} -> Level Up (experience is set to 0)
+                {StatsEnum.LIVES_LEFT, -1} -> Kill Player
          */
-        effects.add(e);
-        finishTimes.add(System.currentTimeMillis() + e.duration);
+        if(e.duration > 0) {
+            effects.add(e);
+            finishTimes.add(System.currentTimeMillis() + e.duration);
+        }
 
         for(StatsEnum s : e.modification.getKeySet()) {
             switch (s){
                 // primary stats
                 case LIVES_LEFT:
-                    primaryStats.modifyLivesLeft(e.modification.getStat(s));
+                    for(int i = 0; i < Math.abs(e.modification.getStat(s)); i++)
+                        kill();
                     derivedStats.update();
                     break;
                 case STRENGTH:
@@ -60,7 +99,7 @@ public class Stats {
                     derivedStats.update();
                     break;
                 case EXPERIENCE:
-                    primaryStats.modifyExperience(e.modification.getStat(s));
+                        primaryStats.modifyExperience(e.modification.getStat(s));
                     derivedStats.update();
                     break;
                 case MOVEMENT:
@@ -69,10 +108,16 @@ public class Stats {
                     break;
                 // derived stats
                 case LEVEL:
-                    derivedStats.modifyLevel(e.modification.getStat(s));
+                    primaryStats.setExperience(0);
+                    for(int i = 0; i < e.modification.getStat(s); i++)
+                        levelUp();
                     break;
                 case LIFE:
-                    derivedStats.modifyLife(e.modification.getStat(s));
+                    if(e.modification.getStat(s) + derivedStats.getLife() <= 0) {
+                        kill();
+                    }
+                    else
+                        derivedStats.modifyLife(e.modification.getStat(s));
                     break;
                 case OFFENSIVE_RATING:
                     derivedStats.modifyOffensiveRating(e.modification.getStat(s));
@@ -155,20 +200,24 @@ public class Stats {
     } // end removeEffect
 
     public void tick() {
-        if(effects.isEmpty())
-            return;
-        for(int i = 0; i < effects.size(); i++) {
-            if(System.currentTimeMillis() >= finishTimes.get(i)) {
-                removeEffect(effects.get(i));
-                effects.remove(i);
-                finishTimes.remove(i);
+        if (!effects.isEmpty()) {
+            for (int i = 0; i < effects.size(); i++) {
+                if (System.currentTimeMillis() >= finishTimes.get(i)) {
+                    removeEffect(effects.get(i));
+                    effects.remove(i);
+                    finishTimes.remove(i);
+                }
             }
         }
-
         //check for level up
-        if(primaryStats.getExperience() >= primaryStats.getXpThreshhold())
+        if(primaryStats.getExperience() >= primaryStats.getXpThreshhold()) {
+            System.out.println("Leveling up");
             levelUp();
+        }
     } // end updateEffects
+
+    public PrimaryStats getPrimaryStats(){return primaryStats;}
+    public DerivedStats getDerivedStats(){return derivedStats;}
 
     public int getLivesLeft() { return primaryStats.getLivesLeft(); }
     public int getBaseLives() { return primaryStats.getBaseLives(); }
@@ -181,6 +230,7 @@ public class Stats {
     public int getHardiness() { return primaryStats.getHardiness(); }
     public int getBaseHard() { return primaryStats.getBaseHard(); }
     public int getExperience() { return primaryStats.getExperience(); }
+    public int getXpThreshold() { return primaryStats.getXpThreshhold(); }
     public int getMovement() { return primaryStats.getMovement(); }
     public int getBaseMovement() { return primaryStats.getBaseMovement(); }
     public int getLevel() { return derivedStats.getLevel(); }
@@ -193,4 +243,35 @@ public class Stats {
     public int getArmorRating() { return derivedStats.getArmorRating(); }
     public EquipmentStats getEquipmentStats() { return primaryStats.getEquipmentStats(); }
 
+
+    public String toString()
+    {
+        String statString;
+        statString = Integer.toString(getLivesLeft()) + "\n";
+        statString = statString + Integer.toString(getBaseLives()) + "\n";
+        statString = statString + Integer.toString(getStrength()) + "\n";
+        statString = statString + Integer.toString(getBaseStr()) + "\n";
+        statString = statString + Integer.toString(getAgility()) + "\n";
+        statString = statString + Integer.toString(getBaseAgi()) + "\n";
+        statString = statString + Integer.toString(getIntellect()) + "\n";
+        statString = statString + Integer.toString(getBaseIntel()) + "\n";
+        statString = statString + Integer.toString(getHardiness()) + "\n";
+        statString = statString + Integer.toString(getBaseHard()) + "\n";
+        statString = statString + Integer.toString(getExperience()) + "\n";
+        statString = statString + Integer.toString(getMovement()) + "\n";
+        statString = statString + Integer.toString(getBaseMovement()) + "\n";
+        statString = statString + Integer.toString(getLevel()) + "\n";
+        statString  = statString + Integer.toString(getLife()) + "\n";
+        statString = statString + Integer.toString(getBaseLife()) + "\n";
+        statString = statString + Integer.toString(getMana()) + "\n";
+        statString = statString + Integer.toString(getBaseMana()) + "\n";
+        statString = statString + Integer.toString(getOffensiveRating()) + "\n";
+        statString = statString + Integer.toString(getDefensiveRating()) + "\n";
+        statString = statString + Integer.toString(getArmorRating()) + "\n";
+        //statString = statString + Integer.toString(getEquipmentStats()) + " ";
+
+        return statString;
+    }
+
 } // end class Stats
+

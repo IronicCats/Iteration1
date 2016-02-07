@@ -19,7 +19,6 @@ public abstract class Item {
     private BufferedImage image; // image used for item
 
     private ItemsEnum type;
-    private static int id;
     private String name;
     private String description;
     protected Location location;
@@ -29,7 +28,6 @@ public abstract class Item {
     // constructor--> sets all variables except height and width
     public Item(BufferedImage image, Model.Location location, ItemsEnum type, String name, String description, Effect []effects, Requirements requirements){
         this.image = image;
-        this.id = id;
         this.location = location;
         this.type = type;
         this.name = name;
@@ -47,6 +45,8 @@ public abstract class Item {
         return description;
     }
 
+    public Location getLocation(){return location;}
+
     public Effect[] getEffects() {
         return effects;
     }
@@ -55,8 +55,12 @@ public abstract class Item {
         return type;
     }
 
-    public Location getLocation(){
-        return location;
+    public BufferedImage getImage(){
+        return image;
+    }
+
+    public Requirements getRequirements(){
+        return requirements;
     }
     /* end getter functions */
 
@@ -67,4 +71,9 @@ public abstract class Item {
         g.drawImage(image, x + Tile.TILEWIDTH/2 - ITEMWIDTH/2 , y + Tile.TILEHEIGHT/2 - ITEMHEIGHT/2, ITEMWIDTH, ITEMHEIGHT, null);
     }
 
+    public abstract String toString();
+
+
+
 }
+

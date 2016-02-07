@@ -5,8 +5,8 @@ package Model.Entity.Occupation;
  */
 public class Smasher extends Occupation {
 
-    Smasher()
+    public Smasher()
     {
-        super("Smasher", "Specializes in hand-to-hand combat", new int [] {});
+        super("Smasher", "Specializes in hand-to-hand combat", new int [] {5,5,5,5,5,0,5});
     }
 }

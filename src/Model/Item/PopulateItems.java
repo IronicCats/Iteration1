@@ -1,4 +1,4 @@
-package Model.Item;
+package Model;
 
 import java.util.Scanner;
 import java.io.File;
@@ -7,6 +7,9 @@ import java.util.ArrayList;
 
 import Model.Entity.Stats.StatStructure;
 import Model.Entity.Stats.StatsEnum;
+import Model.Item.Item;
+import Model.Item.ItemsEnum;
+import Model.Item.OneShot;
 import View.Graphics.Assets;
 import Model.Entity.Stats.Effect;
 import Model.Location;

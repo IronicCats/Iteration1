@@ -22,4 +22,12 @@ public class OneShot extends Item {
         player.getStats().applyEffect(this.getEffects());
         location = null;
     }
+
+    public String toString()
+    {
+        String string;
+        string = (this.location.getX() + " " + this.location.getY() +"\n");
+        return string;
+    }
+
 }

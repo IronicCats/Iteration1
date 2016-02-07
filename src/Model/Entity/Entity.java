@@ -1,6 +1,11 @@
 package Model.Entity;
 
 import Controller.Controller;
+import Model.Entity.Inventory.Inventory;
+import Model.Entity.Occupation.Occupation;
+import Model.Entity.Occupation.Smasher;
+import Model.Entity.Occupation.Sneak;
+import Model.Entity.Occupation.Summoner;
 import Model.Entity.Inventory.Pack;
 import Model.Entity.Stats.Stats;
 import Model.Location;
@@ -12,32 +17,34 @@ import java.awt.*;
  * Created by broskj on 1/31/16.
  */
 
-
-
 public abstract class Entity {
 
     public static final float DEFAULT_SPEED = 3.0f;
 
     private Stats stats;
+    private Occupation occupation;
+    protected Location location;
+    private Inventory inventory;
+    private Nav nav;
+
+
+
     protected float speed;
     protected float xVelocity, yVelocity;
     protected Controller controller;
     protected int width, height;
-    protected Location location;
     protected Rectangle bounds;
     protected Pack pack;
 
-    public Entity(Controller controller, float x, float y, int width, int height) {
-        location = new Location((int)x, (int)y, 0);
+    public Entity(Controller controller, Location location, int width, int height, Occupation o, Stats stats) {
+        this.location = location;
         this.controller = controller;
         this.width = width;
         this.height = height;
+        this.occupation = o;
+        this.stats = stats;
+        this.bounds = new Rectangle(0, 0, width , height);
         bounds = new Rectangle(0, 0, width , height);
-    }
-
-    public Entity(Controller controller, float x, float y, int width, int height, int direction) {
-        this(controller, x, y, width, height);
-        location.setDir(direction);
     }
 
     public abstract void tick();
@@ -92,5 +99,24 @@ public abstract class Entity {
         this.location = location;
     }
 
+    public void useItem(){}
+
+    public void equipItem(){}
+
+    public void uneuquipItem(){}
+
+    public void dropItem(){}
+
+    public void pause(){}
+
+    public void openInventory(){}
+
+    public void openMenu(){}
+
     public Stats getStats() { return stats; }
+
+    public void setStats(Stats stats){this.stats = stats;}
+
+    public Occupation getOccupation() { return occupation; }
+
 }
