@@ -46,6 +46,13 @@ public class DerivedStats {
         mana = baseMana;
     } // end levelUp
 
+    public void kill() {
+        System.out.println("derived -> kill called: life: " + life + " baselift: " + baseLife);
+        life = baseLife;
+        mana = baseMana;
+        System.out.println("derived -> kill finished: life: " + life + " baselift: " + baseLife);
+    } // end kill
+
     public void update() {
         /*
         method to be called with each stat update

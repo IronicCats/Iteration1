@@ -11,6 +11,8 @@ import sun.awt.image.BufferedImageDevice;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+
 
 /**
  * Created by jlkegley on 1/31/2016.
@@ -28,27 +30,31 @@ public abstract class Tile {
     public boolean HasItem;
     public boolean HasAreaEffect;
 
-    private Item items[] = new Item[10];
+    private ArrayList<Item> items = new ArrayList<>();
 
-
-
-    public  Tile(BufferedImage texture, Location location, boolean isUnWalkable, Item[] items) {
+    public  Tile(BufferedImage texture, Location location, boolean isUnWalkable) {
         this.location = location;
         this.texture = texture;
         this.isUnWalkable = isUnWalkable;
         //this.items = items;
         HasItem = false;
         HasAreaEffect = false;
+        this.items = new ArrayList<>();
+
     }
 
     public void render(Graphics g,int x, int y) {
 
-        if(NumberofItems == 0) {
+        if(items.size() == 0) {
             g.drawImage(texture, x, y, TILEWIDTH, TILEHEIGHT, null); //TILEWIDTH and TILEHEIGHT
         }
-        if (NumberofItems > 0) {
+        else if(items.size() == 1) {
             g.drawImage(texture, x, y, TILEWIDTH, TILEHEIGHT, null); //TILEWIDTH and TILEHEIGHT
-            items[NumberofItems - 1].render(g, x, y);
+            items.get(0).render(g, x, y);
+        }
+        else {
+            g.drawImage(texture, x, y, TILEWIDTH, TILEHEIGHT, null);
+            g.drawImage(Assets.sack, x , y, Item.ITEMWIDTH, Item.ITEMHEIGHT, null);
         }
 
     }
@@ -64,24 +70,16 @@ public abstract class Tile {
     }
 
     public void addItem(Item item) {
-        HasItem = true;
-        items[NumberofItems] = item;
-        NumberofItems++;
-        System.out.println(NumberofItems);
+        items.add(item);
     }
 
-    public Item removeItem(){
-            if(NumberofItems > 0) {
-                System.out.println(NumberofItems);
-                Item temp = items[NumberofItems - 1];
-                items[NumberofItems] = null;
-                NumberofItems--;
-                if (NumberofItems == 0) {
-                    HasItem = false;
-                }
-                return temp;
-            }
-        return null;
+    public ArrayList<Item> getItems() {
+        return items;
     }
-    
+
+    public boolean hasItem() {
+        return (items.size() > 0);
+
+    }
+
 }
