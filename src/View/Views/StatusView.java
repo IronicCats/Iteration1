@@ -120,21 +120,23 @@ public class StatusView {
     }
 
     public void renderItemsLists(Graphics g) {
-        int playerX = controller.getPlayer().getLocation().getX()/64;
-        int playerY = controller.getPlayer().getLocation().getY()/64;
-        Tile curTile = controller.getTiles((playerX), (int)(controller.getPlayer().getLocation().getY()/64));
+        int playerX = controller.getPlayer().getLocation().getX();
+        int playerY = controller.getPlayer().getLocation().getY() ;
+        Tile curTile = controller.getTiles(playerX, playerY);
         FontMetrics fm = g.getFontMetrics();
         int amountItems = controller.getTiles(playerX, playerY).getItems().size();
 
         if(curTile.hasItem()) {
-            g.drawRect(width - 150, height - 50, fm.stringWidth("1. xxxxxxxxxxxxxxxxxx"), (amountItems + 1) * (fm.getHeight() + 10) );
+            g.drawRect(width - 150, height - 50 - (10 *(amountItems + 1)), fm.stringWidth("1. xxxxxxxxxxxxxxxxxx"), (amountItems + 1) * (fm.getHeight()) );
             g.setColor(new Color(12, 12, 12, 150));
-            g.fillRect(width - 150, height - 50*(amountItems + 1), fm.stringWidth("1. xxxxxxxxxxxxxxxxxx"), (amountItems + 1) * (fm.getHeight() + 10));
-            ArrayList<Item> items = controller.getTiles((int)(controller.getPlayer().getLocation().getX()/64), (int)(controller.getPlayer().getLocation().getY()/64)).getItems();
-            g.setColor(Color.CYAN);
-            String itemname = curTile.getItems().toString();
+            g.fillRect(width - 150, height - 50 - (10 *(amountItems + 1)), fm.stringWidth("1. xxxxxxxxxxxxxxxxxx"), (amountItems + 1) * (fm.getHeight()));
 
-            g.drawString(itemname, width - 100, height - 100);
+            ArrayList<Item> items = controller.getTiles(playerX, playerY).getItems();
+            g.setColor(Color.CYAN);
+            for (int i = 0; i < items.size(); ++i) {
+                g.drawString(items.get(0).getName(), width - 140, (fm.getHeight()/2 + height - 50 - (10 *(i + 1)) - (i * 2)));
+            }
+
         }
     }
 
