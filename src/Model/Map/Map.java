@@ -129,7 +129,7 @@ public class Map {
                 for(int i = 0; i < items.length; i++) {
                     if(tile.getLocation().getX() == items[i].getLocation().getX() && tile.getLocation().getY() == items[i].getLocation().getY()){
                         tile.addItem(items[i]);
-                        System.out.println(items[i].getLocation().getX());
+                        System.out.println(items[i].getType().toString());
                     }
                 }
             }
