@@ -70,6 +70,8 @@ public class Assets {
         sack = sackSheet.crop(0,0,width,height);
         sword = swordSheet.crop(0,0,width,height);
         boots = bootsSheet.crop(0,0,width,height);
+
+        //Water Tiles
         water.add(waterSheet.crop(0, 0, width, height));
         water.add(waterSheet.crop(32, 0, width, height));
         water.add(waterSheet.crop(64, 0, width, height));
