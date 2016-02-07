@@ -1,5 +1,6 @@
 package View.Views;
 
+import javax.swing.*;
 import java.awt.*;
 
 /**
@@ -27,5 +28,9 @@ public class SaveScreen {
         int x = (width - totalWidth) / 2;
         int y = (height / 2) - 150;
         g.drawString("Name the game", x, y);
+
+        //text box for name
+
+
     }
 }
