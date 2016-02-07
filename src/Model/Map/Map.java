@@ -24,7 +24,6 @@ import java.io.IOException;
 public class Map {
 
     private Tile[][] tiles;
-    private Location MapStart;
     private int width;
     private int height;
     private Controller controller;
@@ -55,7 +54,7 @@ public class Map {
         String[] tokens = builder.toString().split("\\s+");
         width = parseInt(tokens[0]);
         height = parseInt(tokens[1]);
-        this.spawn = new Location(parseInt(tokens[2]), parseInt(tokens[3]), 2);
+        spawn = new Location(parseInt(tokens[2]), parseInt(tokens[3]), 2);
 
         tiles = new Tile[width][height];
         for(int y = 0; y < height; ++y) {
@@ -200,8 +199,8 @@ public class Map {
 
     public Location getSpawn()
     {
-        spawn.setX(spawn.getX() * 64);
-        spawn.setY(spawn.getY() * 64);
+        //System.out.println(spawn.getX());
+        //System.out.println(spawn.getY());
         return spawn;
     }
 
