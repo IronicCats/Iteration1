@@ -14,6 +14,7 @@ public class InventoryView {
     int currentItem=0;
     int width, height;
     boolean view;
+    int barStartX, barStartY;
 
     public void setS(int s) {
         this.s = s;
@@ -59,6 +60,102 @@ public class InventoryView {
             }
             else x+=74;
         }
+        double[] playerStats = calculatePercentages();
+
+        g.setFont(new Font("Arial", Font.BOLD, 12));
+        fm = g.getFontMetrics();
+
+
+        x = (barStartX) + 5;
+        y = height - fm.getHeight() + 5;
+
+
+
+
+        //SET HEALTH BAR COLOR
+        int gr,red,blu;
+        gr=255;red=255;blu=255;
+        g.setColor(new Color(red, gr, blu));
+        g.fillRect(130, height/3-40,  width/4 , fm.getHeight() + 1);
+
+
+        gr = (int)(255 * playerStats[0]) / 100;
+        red = (int)(255 * (100 - playerStats[0])) / 100;
+        blu = 0;
+
+
+        g.setColor(new Color(red, gr, blu));
+
+        g.fillRect(130, height/3-40,  (int)((playerStats[0]/100.0) * (width/4)) , fm.getHeight() + 1);
+
+
+
+        //SET HEALTH PERCENTAGE
+        g.setColor(Color.black);
+        //g.drawString("HEALTH: " + (int)playerStats[0] + "%", (width/8 - fm.stringWidth("HEALTH: 99%") / 2), y + 2);
+        g.drawString("HEALTH: " + (int)playerStats[0] + "%", 120+fm.stringWidth("HEALTH: 99%"), height/3-27);
+        x = x + 100 + 10;
+
+
+        //SET MANA BAR COLOR
+
+        g.setColor(Color.BLUE);
+        g.fillRect(130, height/3, (int)((playerStats[1]/100.0) * (width/4)) , fm.getHeight() + 1);
+
+        //SET MANA PERCENTAGE
+        g.setColor(Color.black);
+        g.drawString("MANA: " + (int)playerStats[1] + "%", 137 + fm.stringWidth("MANA: 99%"), height/3+13);
+        x = x + 100 + 10;
+
+
+        //SET EXP BAR COLOR
+        gr=255;red=255;blu=255;
+        g.setColor(new Color(red, gr, blu));
+        g.fillRect(130, height/3+40,  width/4 , fm.getHeight() + 1);
+
+        gr = (int)(255 * playerStats[6]) / 100;
+        red = (int)(255 * (100 - playerStats[6])) / 100;
+        blu = 100;
+
+        g.setColor(Color.GRAY);
+
+
+        //Making the EXP Bar fill the rest of the game screen
+        g.fillRect(130, height/3+40, (int) (playerStats[6]/100.0 * width/4) , fm.getHeight() + 1);
+        //SET EXP PERCENTAGE
+        g.setColor(Color.black);
+        g.drawString("EXP: " + (int)playerStats[4] + "/" + (int)playerStats[5]  ,120 + (fm.stringWidth("EXP: 220/099%")), height/3+53);
+        x = x + 100 + 10;
+
+        //g.setColor(Color.YELLOW);
+        //g.fillRect(barStartX, y + 5, width, 5);
+
+    }
+
+    public double[] calculatePercentages() {
+        double[] playerStats = new double[7];
+        //HEALTH
+        playerStats[0] = (double)controller.getPlayer().getStats().getLife() / controller.getPlayer().getStats().getBaseLife() * 100.0;
+        if(playerStats[0] <= 0) playerStats[0] = 0;
+        //MANA
+        playerStats[1] = (double)controller.getPlayer().getStats().getMana() / controller.getPlayer().getStats().getBaseMana() * 100.0;
+        if(playerStats[1] <= 0) playerStats[1] = 0;
+        //LEVEL
+        playerStats[2] = controller.getPlayer().getStats().getLevel();
+        //LIVES LEFT
+        playerStats[3] = controller.getPlayer().getStats().getLivesLeft();
+
+
+        //EXP
+        playerStats[4] = controller.getPlayer().getStats().getExperience();
+        if(playerStats[4] <= 0) playerStats[4] = 0;
+        //EXP TO LEVEL
+        playerStats[5] = controller.getPlayer().getStats().getXpThreshold();
+        //EXP divided by EXP TO LEVEL
+        playerStats[6] = (int) 100 * (playerStats[4]/ ( playerStats[5]));
+
+        return playerStats;
+
     }
 
     public void up() {

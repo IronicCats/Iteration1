@@ -12,7 +12,7 @@ public class EquipmentStats {
     private int armorStats;
     private int weaponStats;
 
-    EquipmentStats(Equipment equipment, int armorStats, int weaponStats, Stats stats) {
+    public EquipmentStats(Equipment equipment, int armorStats, int weaponStats, Stats stats) {
         this.equipment = equipment;
         this.armorStats = armorStats;
         this.weaponStats = weaponStats;

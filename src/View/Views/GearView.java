@@ -34,6 +34,9 @@ public class GearView {
     private int slot, currentItem;
     private int width, height;
     Controller controller;
+    private int s;
+    int barStartX, barStartY;
+    String itemNames[]={" ","Head"," ","Weapon", "Chest", "Gloves"," ", "Pants"," ","Accessory","Boots","Accessory"};
 
     public GearView (Controller controller, int width, int height) {
         this.controller = controller;
@@ -41,6 +44,7 @@ public class GearView {
         this.height = height;
         this.slot = 0;
         this.currentItem = 0;
+        s=1;
     } // end constructor
 
     public void render(Graphics g) {
@@ -54,10 +58,30 @@ public class GearView {
         int x = (width - totalWidth) / 2;
         int y = (height / 2) - 200;
         g.drawString("Gear", x, y);
-        x=width/2;
-        y=height/4;
+        x=width/2+25;
+        y=height/4-20;
+        int place=0;
+        g.setFont(new Font("Arial", Font.BOLD, 12));
+        fm = g.getFontMetrics();
+        for(int total=0;total<12;++total){
+            if(total!=0&&total!=2&&total!=6&&total!=8) {
+                //++place;
 
-        for (int i = 0; i < controller.getPlayer().getInventory().getPack().getCap(); ++i) {
+                if(s == total)
+                    controller.getPlayer().getInventory().getEquipment().render(total, g, x, y, true);
+                else
+                    controller.getPlayer().getInventory().getEquipment().render(total, g, x, y, false);
+                g.setColor(Color.WHITE);
+                //g.drawString("HEALTH: " + (int)playerStats[0] + "%", (width/8 - fm.stringWidth("HEALTH: 99%") / 2), y + 2);
+                g.drawString(itemNames[total], x+(64-fm.stringWidth(itemNames[total]))/2, y);
+
+            }
+            if ((total + 1) % 3 == 0 && total != 0) {
+                y += 94;
+                x = width / 2+25;
+            } else x += 94;
+        }
+        /*for (int i = 0; i < controller.getPlayer().getInventory().getPack().getCap(); ++i) {
             if(slot == i)
                 controller.getPlayer().getInventory().render(i, g, x, y, true);
             else
@@ -66,32 +90,126 @@ public class GearView {
                 y += 74;
                 x = width / 2;
             } else x += 74;
-        }
-    } // end render
+        }*/
+        double[] playerStats = calculatePercentages();
 
+
+
+
+        x = (barStartX) + 5;
+        y = height - fm.getHeight() + 5;
+
+
+
+
+        //SET HEALTH BAR COLOR
+        int gr,red,blu;
+        gr=255;red=255;blu=255;
+        g.setColor(new Color(red, gr, blu));
+        g.fillRect(130, height/3-40,  width/4 , fm.getHeight() + 1);
+
+
+        gr = (int)(255 * playerStats[0]) / 100;
+        red = (int)(255 * (100 - playerStats[0])) / 100;
+        blu = 0;
+
+
+        g.setColor(new Color(red, gr, blu));
+
+        g.fillRect(130, height/3-40,  (int)((playerStats[0]/100.0) * (width/4)) , fm.getHeight() + 1);
+
+
+
+        //SET HEALTH PERCENTAGE
+        g.setColor(Color.black);
+        //g.drawString("HEALTH: " + (int)playerStats[0] + "%", (width/8 - fm.stringWidth("HEALTH: 99%") / 2), y + 2);
+        g.drawString("HEALTH: " + (int)playerStats[0] + "%", 120+fm.stringWidth("HEALTH: 99%"), height/3-27);
+        x = x + 100 + 10;
+
+
+        //SET MANA BAR COLOR
+
+        g.setColor(Color.BLUE);
+        g.fillRect(130, height/3, (int)((playerStats[1]/100.0) * (width/4)) , fm.getHeight() + 1);
+
+        //SET MANA PERCENTAGE
+        g.setColor(Color.black);
+        g.drawString("MANA: " + (int)playerStats[1] + "%", 137 + fm.stringWidth("MANA: 99%"), height/3+13);
+        x = x + 100 + 10;
+
+
+        //SET EXP BAR COLOR
+        gr=255;red=255;blu=255;
+        g.setColor(new Color(red, gr, blu));
+        g.fillRect(130, height/3+40,  width/4 , fm.getHeight() + 1);
+
+        gr = (int)(255 * playerStats[6]) / 100;
+        red = (int)(255 * (100 - playerStats[6])) / 100;
+        blu = 100;
+
+        g.setColor(Color.GRAY);
+
+
+        //Making the EXP Bar fill the rest of the game screen
+        g.fillRect(130, height/3+40, (int) (playerStats[6]/100.0 * width/4) , fm.getHeight() + 1);
+        //SET EXP PERCENTAGE
+        g.setColor(Color.black);
+        g.drawString("EXP: " + (int)playerStats[4] + "/" + (int)playerStats[5]  ,120 + (fm.stringWidth("EXP: 220/099%")), height/3+53);
+        x = x + 100 + 10;
+
+        //g.setColor(Color.YELLOW);
+        //g.fillRect(barStartX, y + 5, width, 5);
+
+    } // end render
+    public double[] calculatePercentages() {
+        double[] playerStats = new double[7];
+        //HEALTH
+        playerStats[0] = (double)controller.getPlayer().getStats().getLife() / controller.getPlayer().getStats().getBaseLife() * 100.0;
+        if(playerStats[0] <= 0) playerStats[0] = 0;
+        //MANA
+        playerStats[1] = (double)controller.getPlayer().getStats().getMana() / controller.getPlayer().getStats().getBaseMana() * 100.0;
+        if(playerStats[1] <= 0) playerStats[1] = 0;
+        //LEVEL
+        playerStats[2] = controller.getPlayer().getStats().getLevel();
+        //LIVES LEFT
+        playerStats[3] = controller.getPlayer().getStats().getLivesLeft();
+
+
+        //EXP
+        playerStats[4] = controller.getPlayer().getStats().getExperience();
+        if(playerStats[4] <= 0) playerStats[4] = 0;
+        //EXP TO LEVEL
+        playerStats[5] = controller.getPlayer().getStats().getXpThreshold();
+        //EXP divided by EXP TO LEVEL
+        playerStats[6] = (int) 100 * (playerStats[4]/ ( playerStats[5]));
+
+        return playerStats;
+
+    }
     public void up() {
         /*
         move the selector up
          */
+        if(s==4||s==7||s==10){s-=3;}
 
     } // end up
     public void down() {
         /*
         move the selector down
          */
-
+        if(s==1||s==4||s==7){s+=3;}
     } // end down
     public void left() {
         /*
         move the selector left
          */
-
+        if(s==4||s==5||s==10||s==11){s-=1;}
     } // end left
     public void right() {
         /*
         move the selector right
          */
-
+        if(s==3||s==4||s==9||s==10){s+=1;}
     } // end right
     public void shift() {
         /*
@@ -103,6 +221,6 @@ public class GearView {
         /*
         unequip equipment
          */
-        return slot;
+        return s;
     } // end q
 }
