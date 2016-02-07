@@ -11,5 +11,6 @@ import java.awt.image.BufferedImage;
 public class Water extends Tile {
     public Water(BufferedImage image, Location location ) {
         super(image, location, true);
+
     }
 }
