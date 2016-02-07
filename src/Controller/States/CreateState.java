@@ -71,7 +71,7 @@ public class CreateState extends State implements KeyListener {
 
         //Create player with appropriate stats
         stats = new Stats(occupation.getInitialStats(),controller);
-        player = new Player(controller,map.getSpawn(),inventory, occupation, stats);
+        player = new Player(controller,new Location(map.getSpawn().getX(), map.getSpawn().getY(),map.getSpawn().getDir()),inventory, occupation, stats);
 
         //Controller updates
         controller.setPlayer(player);
