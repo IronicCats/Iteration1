@@ -67,7 +67,7 @@ public class GameState extends State {
         stats = new Stats(occupation.getInitialStats(),controller);
         player = new Player(controller,spawn,inventory, occupation, stats);
 
-        location = new Location(3,3,0); //Location is in wrong coordinates it should be in pixels not in tiles
+        location = new Location(4,5,0); //Location is in wrong coordinates it should be in pixels not in tiles
 
 
         areaEffect = new AreaEffect("Damage", "Damage", AreaEffectEnum.DAMAGE, new Location(7,8,0)); //Same with this one
@@ -86,16 +86,10 @@ public class GameState extends State {
                 setState(GameState.game);
                 break;
             case Inventory:
-                View.view.removeKeyListener(MenuState.menu);
-                View.view.removeKeyListener(this);
-                View.view.addKeyListener(InventoryState.inventory);
-                System.out.println("Inventory Selection ");
+                System.out.println("Inventory Selection");
                 setState(InventoryState.inventory);
                 break;
             case Gear:
-                View.view.removeKeyListener(MenuState.menu);
-                View.view.removeKeyListener(this);
-                View.view.addKeyListener(GearState.gear);
                 System.out.println("Gear selection");
                 setState(GearState.gear);
                 break;
