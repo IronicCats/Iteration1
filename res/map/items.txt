@@ -1,4 +1,4 @@
-Comment: This file initializes all items on map. The setup is as follows:
+wwComment: This file initializes all items on map. The setup is as follows:
 Comment: Position x position y Name Description StatEnum Adjustment
 Comment: SA = start array, EA = end array
 Comment: BD = begin description, ED = end description
