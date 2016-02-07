@@ -57,6 +57,9 @@ public class GameState extends State {
         controller.setMap(map);
         camera = new Camera(controller.getGame().getWidth(), controller.getGame().getHeight(),map);
         controller.setCamera(camera);
+
+
+
         pack = new Pack(10);
         inventory = new Inventory(controller);
         occupation = new Smasher();
@@ -69,8 +72,9 @@ public class GameState extends State {
             map.getTile(5,5).addItem(potion);
         }
 
-        //areaEffect = new AreaEffect("Damage", "Damage", AreaEffectEnum.DAMAGE, new Location(7,8,0));
-        // map.getTile(5,2).addAreaEffect(areaEffect);
+        areaEffect = new AreaEffect("Damage", "Damage", AreaEffectEnum.HEAL, new Location(7,8,0));
+        map.getTile(2,2).addAreaEffect(areaEffect);
+
 
         controller.setPlayer(player);
         statusView = new StatusView(controller);
@@ -99,6 +103,7 @@ public class GameState extends State {
                 System.exit(0);
                 break;
         }
+
     }
 
     public void tick() {
@@ -180,6 +185,11 @@ public class GameState extends State {
     public void keyReleased(KeyEvent e) {
 
     }
+
+    //the game state needs to be able to save the player, the camera
+    //The player needs to be able to save it's stats and inventory
+    //items need to be able to save charge
+    //needs to be able to pass the current saved game state to the save state
 }
 
 
