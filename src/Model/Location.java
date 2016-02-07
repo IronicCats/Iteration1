@@ -37,8 +37,7 @@ public class Location {
         return this.y;
     }
 
-
-    public void setPixelX(float x) {
+    public void setPixelX (float x){
         this.x = x;
     }
 
@@ -46,6 +45,7 @@ public class Location {
     public void setPixelY(float y) {
         this.y = y;
     }
+
 
 
     public int getDir() {

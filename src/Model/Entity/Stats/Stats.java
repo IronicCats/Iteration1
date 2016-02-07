@@ -64,10 +64,10 @@ public class Stats {
             State.setState(KillState.state);
         else{
             System.out.println("player is dead");
-            System.out.println(controller.getMap().getSpawn().getX());
-            System.out.println(controller.getMap().getSpawn().getY());
-            controller.getPlayer().setX(controller.getMap().getSpawn().getX());
-            controller.getPlayer().setY(controller.getMap().getSpawn().getY());
+            System.out.println(controller.getMap().getSpawnX());
+            System.out.println(controller.getMap().getSpawnY());
+            //controller.getPlayer().setPixelX(controller.getPlayer().);
+            //controller.getPlayer().setY(controller.getMap().getSpawnY());
             controller.getPlayer().getNavigation().setGoalX(controller.getMap().getSpawn().getPixelX());
             controller.getPlayer().getNavigation().setGoalY(controller.getMap().getSpawn().getPixelY());
         }

@@ -200,9 +200,17 @@ public class Map {
         }
     }
 
-    public Location getSpawn()
-    {
+    public Location getSpawn(){
         return spawn;
+    }
+
+    public int getSpawnX()
+    {
+        return spawn.getX();
+    }
+
+    public int getSpawnY(){
+        return spawn.getY();
     }
 
     public int getWidth() {
