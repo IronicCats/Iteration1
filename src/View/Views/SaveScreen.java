@@ -1,5 +1,6 @@
 package View.Views;
 
+import javax.swing.*;
 import java.awt.*;
 
 /**
@@ -32,11 +33,14 @@ public class SaveScreen {
         int totalWidth = (fm.stringWidth(savePrompt));
         int x = (width - totalWidth) / 2;
         int y = (height / 2) - 150;
-        g.drawString(savePrompt, x, y);
+        g.drawString("Name the game", x, y);
 
+        //text box for name
+        g.drawString(savePrompt, x, y);
         totalWidth = fm.stringWidth(currentSaveGameName);
         x = (width - totalWidth)/2;
         y = (height / 2);
         g.drawString(currentSaveGameName, x, y);
+
     }
 }
