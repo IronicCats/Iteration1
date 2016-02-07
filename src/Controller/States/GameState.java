@@ -66,7 +66,7 @@ public class GameState extends State {
         stats = new Stats(occupation.getInitialStats(),controller);
 
         player = new Player(controller,map.getSpawn(),inventory, occupation, stats);
-        areaEffect = new AreaEffect("Damage", "Damage", AreaEffectEnum.DAMAGE, new Location(7,8,0)); //Same with this one
+        areaEffect = new AreaEffect("Damage", "Damage", AreaEffectEnum.DAMAGE); //Same with this one
 
         map.getTile(2,6).addAreaEffect(areaEffect);
 
