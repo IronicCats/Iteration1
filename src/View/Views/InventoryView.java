@@ -23,7 +23,7 @@ public class InventoryView {
 
     public void render(Graphics g) {
         if(view) {
-            g.setColor(new Color(0, 0, 0));
+            g.setColor(new Color(0, 0, 0, 170));
             g.fillRect(width / 12, height / 12, 5 * width / 6, 5 * height / 6);
 
             g.setColor(new Color(38, 33, 191));
