@@ -4,6 +4,7 @@ import Model.Entity.Player;
 
 import Model.Item.Item;
 import Model.Location;
+import Model.Map.AreaEffect;
 import View.Graphics.Assets;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import sun.awt.image.BufferedImageDevice;
@@ -27,9 +28,12 @@ public abstract class Tile {
     private Player player;
 
     private ArrayList<Item> items = new ArrayList<>();
+    private AreaEffect tileAreaEffect;
+    private boolean HasAreaEffect;
 
     public  Tile(BufferedImage texture, Location location, boolean isUnWalkable) {
         this.location = location;
+        HasAreaEffect = false;
         this.texture = texture;
         this.isUnWalkable = isUnWalkable;
         this.items = new ArrayList<>();
@@ -47,13 +51,22 @@ public abstract class Tile {
         }
         else {
             g.drawImage(texture, x, y, TILEWIDTH, TILEHEIGHT, null);
-            g.drawImage(Assets.sack, x , y, Item.ITEMWIDTH, Item.ITEMHEIGHT, null);
+            g.drawImage(Assets.sack, x + Tile.TILEWIDTH/2 - Item.ITEMWIDTH/2 , y + Tile.TILEHEIGHT/2 - Item.ITEMHEIGHT/2, Item.ITEMWIDTH, Item.ITEMHEIGHT, null);
         }
+
+        if (HasAreaEffect) {
+            tileAreaEffect.render(g,x,y);
+        }
+
     }
 
     public void addPlayer(Player player){
         this.hasPlayer = true;
         this.player = player;
+        if(HasAreaEffect)
+        {
+            player.getStats().applyEffect(tileAreaEffect.getEffect());
+        }
     }
 
     public void removePlayer(Player player){
@@ -73,5 +86,15 @@ public abstract class Tile {
         return (items.size() > 0);
 
     }
+
+
+    public void addAreaEffect(AreaEffect effect)
+    {
+        HasAreaEffect = true;
+        tileAreaEffect = effect;
+    }
+
+
+
 
 }

@@ -8,6 +8,7 @@ import Model.Entity.Occupation.Occupation;
 import Model.Entity.Inventory.Inventory;
 import Model.Entity.Stats.Stats;
 import Model.Location;
+import Model.Map.Tiles.Tile;
 import View.Graphics.Assets;
 
 
@@ -25,8 +26,8 @@ public class Player extends Entity {
     private Inventory inventory;
 
     public static final float DEFAULT_SPEED = 3.0f;
-    public static final int DEFAULT_CREATURE_WIDTH = 64,
-                            DEFAULT_CREATURE_HEIGHT = 64;
+    public static final int DEFAULT_CREATURE_WIDTH = 52,
+                            DEFAULT_CREATURE_HEIGHT = 52;
 
 
     public Player(Controller controller, Location location, Inventory inventory, Occupation occupation, Stats stats) {
@@ -77,7 +78,7 @@ public class Player extends Entity {
     @Override
     public void render(Graphics g) {
         g.drawImage(Assets.avatar,
-                (int) (getX() - controller.getCamera().getxOffset()),
+                (int) (getX() - controller.getCamera().getxOffset()) + Tile.TILEWIDTH/2 - width/2,
                 (int) (getY() - controller.getCamera().getyOffset()),
                 width,
                 height,
