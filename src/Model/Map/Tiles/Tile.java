@@ -20,7 +20,6 @@ public abstract class Tile {
     //Same as Assets.width, Assets.height
     public static final int TILEWIDTH = 64, TILEHEIGHT = 64;
 
-    public boolean hasPlayer;
     private Location location;
     private BufferedImage texture;
     public boolean isUnWalkable;
@@ -55,12 +54,11 @@ public abstract class Tile {
     }
 
     public void addPlayer(Player player){
-        this.hasPlayer = true;
+        System.out.println("I have a player!");
         this.player = player;
     }
 
-    public void removePlayer(Player player){
-        this.hasPlayer = false;
+    public void removePlayer(){
         this.player = null;
     }
 

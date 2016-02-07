@@ -24,7 +24,7 @@ import java.util.Objects;
 public class Player extends Entity {
     private Nav navigation;
     private Inventory inventory;
-
+    private int LastDirection = 0;
     public static final float DEFAULT_SPEED = 3.0f;
     public static final int DEFAULT_CREATURE_WIDTH = 52,
                             DEFAULT_CREATURE_HEIGHT = 52;
@@ -53,14 +53,19 @@ public class Player extends Entity {
     }
 
     public void move(int x){
+       // controller.getTiles(location.getX(),location.getY()).addPlayer(this);
         if(!navigation.isMoving) {
             if (x == 0) {
+                LastDirection = 0;
                 navigation.move(x);
             } else if (x == 1) {
+                LastDirection = 1;
                 navigation.move(x);
             } else if (x == 2) {
+                LastDirection = 2;
                 navigation.move(x);
             } else if (x == 3) {
+                LastDirection = 3;
                 navigation.move(x);
             } else if (x == 4) {
                 navigation.move(x);
@@ -77,14 +82,44 @@ public class Player extends Entity {
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.avatar,
-                (int) (getX() - controller.getCamera().getxOffset()) + Tile.TILEWIDTH/2 - width/2,
-                (int) (getY() - controller.getCamera().getyOffset()),
-                width,
-                height,
-                null
-        );
+        if (LastDirection == 0) {
+            g.drawImage(Assets.avatar,
+                    (int) (getX() - controller.getCamera().getxOffset()) + Tile.TILEWIDTH / 2 - width / 2,
+                    (int) (getY() - controller.getCamera().getyOffset()),
+                    width,
+                    height,
+                    null
+            );
+        }
+        else if(LastDirection == 1){
+            g.drawImage(Assets.sword,
+                    (int) (getX() - controller.getCamera().getxOffset()) + Tile.TILEWIDTH / 2 - width / 2,
+                    (int) (getY() - controller.getCamera().getyOffset()),
+                    width,
+                    height,
+                    null
+            );
+        }
+        else if(LastDirection == 2){
+            g.drawImage(Assets.sack,
+                    (int) (getX() - controller.getCamera().getxOffset()) + Tile.TILEWIDTH / 2 - width / 2,
+                    (int) (getY() - controller.getCamera().getyOffset()),
+                    width,
+                    height,
+                    null
+            );
+        }
+        else if(LastDirection == 3){
+            g.drawImage(Assets.boots,
+                    (int) (getX() - controller.getCamera().getxOffset()) + Tile.TILEWIDTH / 2 - width / 2,
+                    (int) (getY() - controller.getCamera().getyOffset()),
+                    width,
+                    height,
+                    null
+            );
+        }
     }
+
 
     public Inventory getInventory(){return inventory;}
     public Nav getNavigation(){
