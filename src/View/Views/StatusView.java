@@ -120,13 +120,21 @@ public class StatusView {
     }
 
     public void renderItemsLists(Graphics g) {
-        Tile curTile = controller.getTiles((int)(controller.getPlayer().getLocation().getX()/64), (int)(controller.getPlayer().getLocation().getY()/64));
+        int playerX = controller.getPlayer().getLocation().getX()/64;
+        int playerY = controller.getPlayer().getLocation().getY()/64;
+        Tile curTile = controller.getTiles((playerX), (int)(controller.getPlayer().getLocation().getY()/64));
+        FontMetrics fm = g.getFontMetrics();
+        int amountItems = controller.getTiles(playerX, playerY).getItems().size();
+
         if(curTile.hasItem()) {
+            g.drawRect(width - 150, height - 50, fm.stringWidth("1. xxxxxxxxxxxxxxxxxx"), (amountItems + 1) * (fm.getHeight() + 10) );
+            g.setColor(new Color(12, 12, 12, 150));
+            g.fillRect(width - 150, height - 50*(amountItems + 1), fm.stringWidth("1. xxxxxxxxxxxxxxxxxx"), (amountItems + 1) * (fm.getHeight() + 10));
             ArrayList<Item> items = controller.getTiles((int)(controller.getPlayer().getLocation().getX()/64), (int)(controller.getPlayer().getLocation().getY()/64)).getItems();
             g.setColor(Color.CYAN);
             String itemname = curTile.getItems().toString();
 
-            g.drawString(itemname, width/2, height/2);
+            g.drawString(itemname, width - 100, height - 100);
         }
     }
 
