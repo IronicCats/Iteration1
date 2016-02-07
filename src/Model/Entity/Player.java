@@ -168,7 +168,7 @@ public class Player extends Entity {
         this.getStats().getDerivedStats().setDefensiveRating((int)saveFile.get(21));
         this.getStats().getDerivedStats().setArmorRating((int)saveFile.get(22));
 
-        count = 22;
+        count = 23;
 
         this.getInventory().loadInventory(saveFile, count);
 

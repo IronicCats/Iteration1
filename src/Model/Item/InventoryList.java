@@ -70,7 +70,7 @@ public class InventoryList {
     {
         //(image, location, type, name, description, effects, requirements, stat)
         Location l = new Location(-1,-1,0);
-        a = new Weapon(Assets.sword,l,ItemsEnum.WEAPON,"Sword","Sword with 5 attack",null,null,5,WeaponEnum.Sword);
+            a = new Weapon(Assets.sword,l,ItemsEnum.WEAPON,"Sword","Sword with 5 attack",null,null,5,WeaponEnum.SWORD);
         return a;
 
     }
