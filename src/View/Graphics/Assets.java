@@ -31,6 +31,16 @@ public class Assets {
     public static BufferedImage sword;
     public static BufferedImage boots;
     public static BufferedImage emptyInv;
+    public static BufferedImage pants;
+    public static BufferedImage accessory1;
+    public static BufferedImage accessory2;
+    public static BufferedImage glove;
+    public static BufferedImage manapotion;
+    public static BufferedImage menucursor;
+    public static BufferedImage chestArmor;
+    public static BufferedImage helmet;
+
+
 
     public static void init() {
         SpriteSheet grassSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/GrassTile.png"));
@@ -45,6 +55,14 @@ public class Assets {
         SpriteSheet swordSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/SwordSprite.png"));
         SpriteSheet bootsSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/BootsSprite.png"));
         SpriteSheet emptyInvSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/InventoryBlock.png"));
+        SpriteSheet pantsSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/pants.png"));
+        SpriteSheet accessory1Sheet = new SpriteSheet(new ImageLoader().loadImage("/textures/Accessory1.png"));
+        SpriteSheet accessory2Sheet = new SpriteSheet(new ImageLoader().loadImage("/textures/Accessory2.png"));
+        SpriteSheet gloveSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/Glove.png"));
+        SpriteSheet manapotionSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/ManaPotion.png"));
+        SpriteSheet menuCursorSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/MenuCursor.png"));
+        SpriteSheet chestSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/ChestArmorSprite.png"));
+        SpriteSheet helmetSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/Helmet.png"));
 
 
         water = new ArrayList<>(9);
@@ -71,6 +89,15 @@ public class Assets {
         redCross = crossSheet.crop(0, 0, 28, 28);
         goldStar = starSheet.crop(0, 0, 28, 28);
         emptyInv = emptyInvSheet.crop(0,0,width,height);
+        pants = pantsSheet.crop(0,0,width,height);
+        accessory1 = accessory1Sheet.crop(0,0,width,height);
+        accessory2 = accessory2Sheet.crop(0,0,width,height);
+        glove = gloveSheet.crop(0,0,width,height);
+        manapotion = manapotionSheet.crop(0,0,width,height);
+        menucursor = menuCursorSheet.crop(0,0,width,height);
+        chestArmor = chestSheet.crop(0,0,width,height);
+        helmet = helmetSheet.crop(0,0,width,height);
+
     }
 
 

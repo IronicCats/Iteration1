@@ -6,32 +6,25 @@ import java.awt.event.KeyListener;
 
 import Controller.Controller;
 import View.*;
-import View.Views.MainMenu;
+import View.Views.KillMenu;
 
-/**
- * Created by jlkegley on 1/31/2016.
- */
-public class MenuState extends State implements KeyListener {
-    public MainMenu menuView;
-    public static MenuState menu;
+public class KillState extends State implements KeyListener {
+    public KillMenu killMenu;
+    public static KillState state;
 
-    public MenuState(Controller controller, int width, int height) {
-
+    public KillState(Controller controller, int width, int height) {
         super(controller);
-        menu = this;
-        menuView = new MainMenu(width, height);
+        killMenu = new KillMenu(width, height);
+        System.out.println("Kill State");
+        state = this;
     }
 
     public void switchState(States stateNumber) {
         switch(stateNumber) {
-            case Game:
-                System.out.println("Create Game");
-                setState(GameState.game);
-                break;
-            case Load:
-                System.out.println("Load Game");
+            case Menu:
+                System.out.println("Main Menu");
                 //Add the Load Game state switch here
-                setState(LoadState.load);
+                setState(MenuState.menu);
                 break;
             case Exit:
                 System.out.println("Exit Game");
@@ -45,8 +38,7 @@ public class MenuState extends State implements KeyListener {
 
 
     public void render(Graphics g) {
-        menuView.render(g);
-        //RENDER THIS INTERFACE (NOT GAME INTERFACE
+        killMenu.render(g);
     }
 
     @Override
@@ -57,16 +49,18 @@ public class MenuState extends State implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_UP) {
-            menuView.previous();
+            System.out.println("Up");
+            killMenu.previous();
         }
         if(e.getKeyCode() == KeyEvent.VK_DOWN) {
-            menuView.next();
+            System.out.println("Down");
+            killMenu.next();
         }
 
         if(e.getKeyCode() == 10) {
-            switchState(menuView.getSelection());
+            switchState(killMenu.getSelection());
         }
-        
+
     }
 
     @Override

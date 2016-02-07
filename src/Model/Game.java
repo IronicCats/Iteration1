@@ -1,7 +1,13 @@
 package Model;
 
 import Controller.Controller;
-import Controller.States.*;
+import Controller.States.GameState;
+import Controller.States.MenuState;
+import Controller.States.PauseState;
+import Controller.States.State;
+import Controller.States.KillState;
+import Controller.States.InventoryState;
+
 
 
 /**
@@ -14,6 +20,7 @@ public class Game implements Runnable {
     private State gameState;
     private State menuState;
     private State pauseState;
+    private State killState;
     private State inventoryState;
 
 
@@ -30,16 +37,13 @@ public class Game implements Runnable {
     public void init() {
         //START STATES HERE
         controller = new Controller(this);
-
-
         menuState = new MenuState(controller, width, height);
-
-
         gameState = new GameState(controller);
         pauseState = new PauseState(controller, width, height);
+        killState = new KillState(controller, width, height);
         inventoryState = new InventoryState(controller, width, height);
 
-        State.setState(menuState);
+        State.setInitialState(menuState);
 
     }
 
