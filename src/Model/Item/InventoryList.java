@@ -47,31 +47,31 @@ public class InventoryList {
         a = new Useable(Assets.potion,l, ItemsEnum.USEABLE,"Potion","This heals 3 health",null,null);
         return a;
     }
-    public static Item createSword(Item a)
+    public static Weapon createSword(Weapon a)
     {
 
     }
-    public static Item createHelmet(Item a)
+    public static Armor createHelmet(Armor a)
     {
 
     }
-    public static Item createArmor(Item a)
+    public static Armor createArmor(Armor a)
     {
 
     }
-    public static Item createBoots(Item a)
+    public static Armor createBoots(Armor a)
     {
 
     }
-    public static Item createGauntlets(Item a)
+    public static Armor createGauntlets(Armor a)
     {
 
     }
-    public static Item createAccessoryA(Item a)
+    public static Armor createAccessoryA(Armor a)
     {
 
     }
-    public static Item createAccessoryB(Item b)
+    public static Armor createAccessoryB(Armor b)
     {
 
     }
