@@ -44,7 +44,7 @@ public class GameState extends State {
     private Location location;
     private Inventory inventory;
     private Pack pack;
-    private Location spawn = new Location(64,64,0);
+    private Location spawn = new Location(64,64,2);
 
     private StatusView statusView;
     private Stats stats;
