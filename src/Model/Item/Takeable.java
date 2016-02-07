@@ -12,12 +12,11 @@ import java.awt.image.BufferedImage;
 
 public abstract class Takeable extends Item{
 
-    protected Location location;
+    protected int stat;
 
     public Takeable(BufferedImage image, Location location, ItemsEnum type, String name, String description, Effect[] effects, Requirements requirements) {
         super(image, location, type, name, description, effects, requirements);
     }
-
 
     // Used when added to inventory, dropped, or used by player
     public void setLocation(Location location) {

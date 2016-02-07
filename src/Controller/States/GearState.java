@@ -1,29 +1,30 @@
 package Controller.States;
 
-import Controller.Controller;
 import View.View;
-import View.Views.InventoryView;
+import View.Views.GearView;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import Controller.Controller;
 
 /**
- * Created by Dartyx on 2/6/2016.
+ * Created by broskj on 2/7/16.
  */
-public class InventoryState extends State {
-    InventoryView inv;
-    public static InventoryState inventory;
+public class GearState extends State {
+    GearView gearView;
+    public static GearState gear;
 
-    public InventoryState(Controller controller, int width, int height){
+    public GearState(Controller controller, int width, int height) {
         super(controller);
-        inventory=this;
-        inv=new InventoryView(controller, width, height);
-    }
+        gear = this;
+        gearView = new GearView(controller, width, height);
+    } // end constructor
+
     public void switchState() {
-        System.out.println("Resume Game from Inventory");
+        System.out.println("Resume Game from Gear");
         setState(GameState.game);
-        inv.setS(0);
-    }
+    } // end switchState
+
     @Override
     public void tick() {
 
@@ -34,7 +35,7 @@ public class InventoryState extends State {
         controller.getCamera().centerOnPlayer(controller.getPlayer());
         controller.getMap().render(g);
         controller.getPlayer().render(g);
-        inv.render(g);
+        gearView.render(g);
     }
 
     @Override
@@ -45,33 +46,27 @@ public class InventoryState extends State {
     @Override
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_SHIFT) {
-            inv.shift();
+            gearView.shift();
         }
         if(e.getKeyCode() == KeyEvent.VK_UP) {
-            inv.up();
+            gearView.up();
         }
         if(e.getKeyCode() == KeyEvent.VK_DOWN) {
-            inv.down();
+            gearView.down();
             System.out.println("Down P");
         }
         if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-            inv.left();
+            gearView.left();
         }
         if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            inv.right();
+            gearView.right();
         }
         if(e.getKeyCode() == KeyEvent.VK_Q) {
-            int index=inv.q();
-            controller.getPlayer().getInventory().interact(index);
-            //else controller.getPlayer().getInventory().unequip(index);
+            int index=gearView.q();
+            controller.getPlayer().getInventory().getEquipment().getArmor().unequipArmor(index);
         }
-        if(e.getKeyCode() == KeyEvent.VK_D) {
-           int index=inv.d();
-            if(index!=-1)controller.getPlayer().getInventory().drop(index);
-        }
-        if(e.getKeyCode() == KeyEvent.VK_I || e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-          this.switchState();
-
+        if(e.getKeyCode() == KeyEvent.VK_G || e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            this.switchState();
         }
     }
 

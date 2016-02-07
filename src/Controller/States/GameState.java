@@ -64,12 +64,12 @@ public class GameState extends State {
         inventory = new Inventory(controller);
         occupation = new Smasher();
         stats = new Stats(occupation.getInitialStats(),controller);
+
         player = new Player(controller,map.getSpawn(),inventory, occupation, stats);
+
         areaEffect = new AreaEffect("Damage", "Damage", AreaEffectEnum.DAMAGE, new Location(7,8,0)); //Same with this one
 
         map.getTile(2,6).addAreaEffect(areaEffect);
-
-
 
         controller.setPlayer(player);
         statusView = new StatusView(controller);
@@ -83,11 +83,12 @@ public class GameState extends State {
                 setState(GameState.game);
                 break;
             case Inventory:
-                View.view.removeKeyListener(MenuState.menu);
-                View.view.removeKeyListener(this);
-                View.view.addKeyListener(InventoryState.inventory);
-                System.out.println("Inventory Selection ");
+                System.out.println("Inventory Selection");
                 setState(InventoryState.inventory);
+                break;
+            case Gear:
+                System.out.println("Gear selection");
+                setState(GearState.gear);
                 break;
             case Pause:
                 System.out.println("Pause Game");
@@ -128,6 +129,10 @@ public class GameState extends State {
 
         if(e.getKeyCode() == KeyEvent.VK_I) {
             switchState(States.Inventory);
+        }
+
+        if(e.getKeyCode() == KeyEvent.VK_G) {
+            switchState(States.Gear);
         }
 
         if(e.getKeyCode() == KeyEvent.VK_Q){
