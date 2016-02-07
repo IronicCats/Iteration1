@@ -32,12 +32,11 @@ public class PauseState extends State {
                 break;
             case Save:
                 System.out.println("Save Game");
-                //Add the Load Game state switch here
-                setState(GameState.game);
+                setState(SaveState.save);
                 break;
             case Load:
                 System.out.println("Load Game");
-                System.exit(0);
+                setState(LoadState.load);
                 break;
             case Exit:
                 System.out.println("Exit Game");
