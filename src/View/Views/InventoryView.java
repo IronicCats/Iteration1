@@ -11,7 +11,14 @@ public class InventoryView {
     int currentItem=0;
     int width, height;
     boolean view;
-    int s;
+
+    public void setS(int s) {
+        this.s = s;
+    }
+
+    private int s;
+    int sX;
+    int sY;
     Controller controller;
     private String[] menuItems = {"Resume Game","Save Game", "Load Game", "Exit Game"};
     public InventoryView(Controller controller, int width, int height){
@@ -19,6 +26,7 @@ public class InventoryView {
         this.width=width;
         view = true;
         this.controller=controller;
+        int s=0;
     }
 
     public void render(Graphics g) {
@@ -35,7 +43,8 @@ public class InventoryView {
             g.drawString("Inventory", x, y);
             x=width/2;
             y=height/4;
-
+            sX=x;
+            sY=y;
             for (int i = 0; i < controller.getPlayer().getInventory().getPack().getCap(); ++i) {
                 //g.setFont(new Font("Arial", Font.PLAIN, 36));
                 //fm = g.getFontMetrics();
@@ -49,7 +58,11 @@ public class InventoryView {
                 //} else {
                 //    g.setColor(Color.GREEN);
                 //}
-                controller.getPlayer().getInventory().render(i,g,x,y);
+                //System.out.print(s);
+                if(s==i){controller.getPlayer().getInventory().render(i,g,x,y,true);
+                    //System.out.print("it succeeded");
+                }
+                else controller.getPlayer().getInventory().render(i,g,x,y,false);
                 if((i+1)%4==0 && i!=0){
                     y+=74;
                     x=width/2;
@@ -106,7 +119,7 @@ public class InventoryView {
     }
     public void left() {
         if(view){
-            if(s-1>0){
+            if(s-1>=0){
                 s-=1;
             }
         }

@@ -31,6 +31,7 @@ public class Assets {
     public static BufferedImage sword;
     public static BufferedImage boots;
     public static BufferedImage emptyInv;
+    public static BufferedImage emptyInvSelect;
 
     public static void init() {
         SpriteSheet grassSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/GrassTile.png"));
@@ -45,7 +46,7 @@ public class Assets {
         SpriteSheet swordSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/SwordSprite.png"));
         SpriteSheet bootsSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/BootsSprite.png"));
         SpriteSheet emptyInvSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/InventoryBlock.png"));
-
+        SpriteSheet selectInvSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/InventoryBlockSelect.png"));
 
         water = new ArrayList<>(9);
 
@@ -71,6 +72,7 @@ public class Assets {
         redCross = crossSheet.crop(0, 0, 28, 28);
         goldStar = starSheet.crop(0, 0, 28, 28);
         emptyInv = emptyInvSheet.crop(0,0,width,height);
+        emptyInvSelect =selectInvSheet.crop(0,0,width,height);
     }
 
 

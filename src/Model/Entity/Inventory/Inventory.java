@@ -133,9 +133,10 @@ public class Inventory {
 
     }
 
-    public void render(int index,Graphics g,int x, int y) {
+    public void render(int index,Graphics g,int x, int y, boolean s) {
         //if(pack.items[index]==null){
-        g.drawImage(Assets.emptyInv,x,y,64,64,null);
+        if(s)g.drawImage(Assets.emptyInvSelect,x,y,64,64,null);
+        else g.drawImage(Assets.emptyInv,x,y,64,64,null);
             //System.out.print(index);
         //}
         //else{

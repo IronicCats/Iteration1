@@ -25,6 +25,7 @@ public class InventoryState extends State {
                 View.view.addKeyListener(GameState.game);
                 System.out.println("Resume Game");
                 setState(GameState.game);
+                inv.setS(0);
     }
     @Override
     public void tick() {
@@ -76,6 +77,7 @@ public class InventoryState extends State {
         }
         if(e.getKeyCode() == KeyEvent.VK_I) {
           this.switchState();
+
         }
     }
 
