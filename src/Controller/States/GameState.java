@@ -69,8 +69,8 @@ public class GameState extends State {
             map.getTile(5,5).addItem(potion);
         }
 
-        areaEffect = new AreaEffect("Damage", "Damage", AreaEffectEnum.DAMAGE, new Location(7,8,0));
-        map.getTile(4,4).addAreaEffect(areaEffect);
+        //areaEffect = new AreaEffect("Damage", "Damage", AreaEffectEnum.DAMAGE, new Location(7,8,0));
+        // map.getTile(5,2).addAreaEffect(areaEffect);
 
         controller.setPlayer(player);
         statusView = new StatusView(controller);
