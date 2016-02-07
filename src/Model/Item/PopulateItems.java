@@ -5,6 +5,7 @@ import java.io.File;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+import Model.Entity.Inventory.Inventory;
 import Model.Entity.Stats.StatStructure;
 import Model.Entity.Stats.StatsEnum;
 import View.Graphics.Assets;
@@ -38,6 +39,8 @@ public class PopulateItems {
     private ArmorEnum armorType;
 
     public PopulateItems(){
+
+        InventoryList.init();//added this to initialize all items
         readFile();
     }
 
@@ -178,11 +181,15 @@ public class PopulateItems {
 
     private void generateItems(){ // create items
         location = new Location(x,y,0);
+
         switch(type){
-            case 0: items.add(new OneShot(image, location, ItemsEnum.ONESHOT, name, description, effects.toArray(new Effect[effects.size()]), requirements));
-                    break;
-            case 1: items.add(new Useable(image, location, ItemsEnum.USEABLE, name, description, effects.toArray(new Effect[effects.size()]), requirements));
-                    break;
+            case 0:
+                items.add(new OneShot(image, location, ItemsEnum.ONESHOT, name, description, effects.toArray(new Effect[effects.size()]), requirements));
+                break;
+            case 1:
+                items.add(new Useable(image, location, ItemsEnum.USEABLE, name, description, effects.toArray(new Effect[effects.size()]), requirements));
+                //items.add(InventoryList.createHealthPotion(location));
+                break;
             case 2: items.add(new Obstacle(image, location, ItemsEnum.OBSTACLE, name, description, effects.toArray(new Effect[effects.size()]), requirements));
                     break;
             case 3: items.add(new Interactable(image, location, ItemsEnum.INTERACTABLE, name, description, effects.toArray(new Effect[effects.size()]), requirements));
@@ -197,6 +204,7 @@ public class PopulateItems {
     }
 
     public Item[] getItems(){
+
         return items.toArray(new Item[items.size()]);
     } // return items to map
 }

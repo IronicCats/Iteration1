@@ -28,13 +28,15 @@ public class Map {
     private int width;
     private int height;
     private Controller controller;
-    private PopulateItems populateItems = new PopulateItems();
-    private Item[] items = populateItems.getItems();
+    private PopulateItems populateItems;
+    private Item[] items;
     private Location spawn;
 
     public Map(Controller controller) {
         //System.out.println(items[0].getLocation().getY());
         this.controller = controller;
+        populateItems = new PopulateItems();
+        items = populateItems.getItems();
         makeMap();
     }
 
