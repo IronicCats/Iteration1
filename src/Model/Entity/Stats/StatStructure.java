@@ -57,23 +57,8 @@ public class StatStructure {
         constructor for multiple stat modifiers
          */
         map = new EnumMap<>(StatsEnum.class);
-<<<<<<< HEAD
-
-        try{
-            /*
-            throw error if number of stats != number of values
-             */
-            if(stats.length != vals.length)
-                throw new IllegalArgumentException();
-            for(int i = 0; i < stats.length; i++) {
-                map.put(stats[i], vals[i]);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-=======
         for(int i = 0; i < stats.length; i++) {
             map.put(stats[i], vals[i]);
->>>>>>> master
         }
     } // end multi constructor
 
