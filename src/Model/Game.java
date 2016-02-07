@@ -7,6 +7,7 @@ import Controller.States.PauseState;
 import Controller.States.State;
 import Controller.States.KillState;
 import Controller.States.InventoryState;
+import Controller.States.GearState;
 
 
 

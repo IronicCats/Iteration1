@@ -56,21 +56,21 @@ public class InventoryList {
         //image, location, type, name, description, effects, requirements
         //need to create effect
         Location l = new Location(-1,-1,0);
-        a = new Useable(Assets.potion,l, ItemsEnum.USEABLE,"Potion","This heals 3 health",null);
+        a = new Useable(Assets.potion,l, ItemsEnum.USEABLE,"Potion","This heals 3 health",null, null);
         return a;
     }
     public static Useable createManaPotion(Useable a)
     {
         //need to create effect
         Location l = new Location(-1,-1,0);
-        a = new Useable(Assets.manapotion,l, ItemsEnum.USEABLE,"Potion","This heals 3 health",null);
+        a = new Useable(Assets.manapotion,l, ItemsEnum.USEABLE,"Potion","This heals 3 health",null, null);
         return a;
     }
     public static Weapon createSword(Weapon a)
     {
         //(image, location, type, name, description, effects, requirements, stat)
         Location l = new Location(-1,-1,0);
-        a = new Weapon(Assets.sword,l,ItemsEnum.WEAPON,"Sword","Sword with 5 attack",null,null,5);
+        a = new Weapon(Assets.sword,l,ItemsEnum.WEAPON,"Sword","Sword with 5 attack",null,null,5, null);
         return a;
 
     }
