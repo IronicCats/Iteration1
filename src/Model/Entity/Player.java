@@ -47,8 +47,10 @@ public class Player extends Entity {
 
     public void PickUpItem(){
         if(controller.getTiles(location.getX()/64,location.getY()/64).hasItem()) {
+            System.out.println(location.getX()+"  "+location.getY());
             inventory.store(controller.getTiles(location.getX() / 64, location.getY() / 64).getItems());
         }
+        System.out.println(location.getX()+"  "+location.getY());
     }
 
     public void move(int x){
