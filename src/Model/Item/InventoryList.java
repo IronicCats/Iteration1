@@ -17,7 +17,7 @@ public class InventoryList {
     static Armor accessoryA;
     static Armor accessoryB;
     static Armor pants;
-    
+
 
 
     public static void init()

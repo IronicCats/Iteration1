@@ -8,19 +8,24 @@ import java.util.ArrayList;
 
 import Controller.Controller;
 import Model.Entity.Player;
+import View.Views.LoadMenu;
 
 /**
  * Created by Andy on 2/4/2016.
  */
 public class LoadState extends State {
+    public LoadMenu loadMenu;
+    public static LoadState load;
 
     static int count = 0;
     static ArrayList<Object> loadedfile = new ArrayList<Object>();
    // private  static Player player;
-    public LoadState(Controller controller) {
-        super(controller);
-       // player = controller.getPlayer();
 
+
+    public LoadState(Controller controller, int width, int height) {
+        super(controller);;
+        load = this;
+        loadMenu = new LoadMenu(width,height);
     }
 
     public void tick() {
@@ -28,7 +33,7 @@ public class LoadState extends State {
     }
 
     public void render(Graphics g) {
-
+        loadMenu.render(g);
     }
 
     public static void loadFile(Player player,String filepath) {
