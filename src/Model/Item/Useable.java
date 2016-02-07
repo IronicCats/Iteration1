@@ -21,6 +21,7 @@ public class Useable extends Takeable{
         super(image, location, type, name, description, effects, requirements);
     }
 
+
     public void onInteract(Player player){
         player.getStats().applyEffect(this.getEffects());
         location = null;
