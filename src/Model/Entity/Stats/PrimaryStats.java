@@ -34,6 +34,9 @@ public class PrimaryStats {
     } // end constructor
 
     PrimaryStats (StatStructure ss) {
+        /*
+        initialize stats
+         */
         baseLives = ss.getStat(StatsEnum.LIVES_LEFT);
         baseStr = ss.getStat(StatsEnum.STRENGTH);
         baseAgi = ss.getStat(StatsEnum.AGILITY);
@@ -50,6 +53,12 @@ public class PrimaryStats {
         movement = baseMovement;
         //equipmentStats = ;
 
+        /*
+        predefined multipliers
+            xpThreshhold: total amount of xp until level up
+            xpMultiplier: amount xpThreshhold is multiplied by on level up
+            statMultiplier: amount stats are multiplied by on level up
+         */
         xpThreshhold = 10;
         xpMultiplier = 1.5;
         statMultiplier = 1.2;
@@ -57,10 +66,9 @@ public class PrimaryStats {
 
     public void levelUp() {
         /*
-        reset experience, modify xp threshhold, reset lives remaining
+        reset experience and lives left, modify xp threshhold and stats
+            retain leftover experience
          */
-        System.out.println("EXP: " + experience + "XPT: " + xpThreshhold);
-
         experience = experience - xpThreshhold;
         xpThreshhold *= xpMultiplier;
         livesLeft = baseLives;
@@ -72,6 +80,9 @@ public class PrimaryStats {
     } // end levelUp
 
     public void kill() {
+        /*
+        kills the player; decrements lives, and resets boosted stats
+         */
         livesLeft--;
 
         strength = baseStr;
