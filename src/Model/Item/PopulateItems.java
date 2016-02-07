@@ -5,6 +5,7 @@ import java.io.File;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+import Model.Entity.Inventory.Inventory;
 import Model.Entity.Stats.StatStructure;
 import Model.Entity.Stats.StatsEnum;
 import View.Graphics.Assets;
@@ -178,11 +179,21 @@ public class PopulateItems {
 
     private void generateItems(){ // create items
         location = new Location(x,y,0);
+
         switch(type){
-            case 0: items.add(new OneShot(image, location, ItemsEnum.ONESHOT, name, description, effects.toArray(new Effect[effects.size()]), requirements));
-                    break;
-            case 1: items.add(new Useable(image, location, ItemsEnum.USEABLE, name, description, effects.toArray(new Effect[effects.size()]), requirements));
-                    break;
+            case 0:
+                items.add(new OneShot(image, location, ItemsEnum.ONESHOT, name, description, effects.toArray(new Effect[effects.size()]), requirements));
+                break;
+            case 1: //items.add(new Useable(image, location, ItemsEnum.USEABLE, name, description, effects.toArray(new Effect[effects.size()]), requirements));
+                //String des = "This potion heals 5 health";
+                //Effect[] e = {new Effect(new StatStructure(StatsEnum.LIFE,1),0,des)};
+                //items.add(new Useable(Assets.potion,location, ItemsEnum.USEABLE,"Health",des,e,null));
+                //Useable a = InventoryList.createHealthPotion(new Useable(Assets.potion,location, ItemsEnum.USEABLE,"Health",des,e,null));
+                Useable a = InventoryList.healthPotion;
+                a.setLocation(location);
+                System.out.println("a.tostring: " + a.toString());
+                items.add(a);
+                System.out.println("PopulateItems -> case 0");                    break;
             case 2: items.add(new Obstacle(image, location, ItemsEnum.OBSTACLE, name, description, effects.toArray(new Effect[effects.size()]), requirements));
                     break;
             case 3: items.add(new Interactable(image, location, ItemsEnum.INTERACTABLE, name, description, effects.toArray(new Effect[effects.size()]), requirements));
