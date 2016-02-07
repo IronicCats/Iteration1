@@ -1,10 +1,8 @@
 package Model;
 
 import Controller.Controller;
-import Controller.States.GameState;
-import Controller.States.MenuState;
-import Controller.States.PauseState;
-import Controller.States.State;
+import Controller.States.*;
+
 
 /**
  * Created by jlkegley on 1/31/2016.
@@ -16,6 +14,9 @@ public class Game implements Runnable {
     private State gameState;
     private State menuState;
     private State pauseState;
+    private State inventoryState;
+
+
     private int width, height;
 
     public Game(int width, int height) {
@@ -36,6 +37,7 @@ public class Game implements Runnable {
 
         gameState = new GameState(controller);
         pauseState = new PauseState(controller, width, height);
+        inventoryState = new InventoryState(controller, width, height);
 
         State.setState(menuState);
 

@@ -9,6 +9,7 @@ import Model.Item.Takeable;
 
 
 public class Pack {
+
     protected int size;
     protected Takeable[] items;
     protected final int cap;
@@ -47,6 +48,13 @@ public class Pack {
         return packString;
     }
 
+    public int getCap() {
+        return cap;
+    }
+
+    public int getSize() {
+        return size;
+    }
 
 
 } // end class Pack
