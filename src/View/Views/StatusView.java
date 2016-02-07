@@ -120,6 +120,7 @@ public class StatusView {
     }
 
     public void renderItemsLists(Graphics g) {
+
         Tile curTile = controller.getTiles((int)(controller.getPlayer().getLocation().getX()/64), (int)(controller.getPlayer().getLocation().getY()/64));
         if(curTile.hasItem()) {
             ArrayList<Item> items = controller.getTiles((int)(controller.getPlayer().getLocation().getX()/64), (int)(controller.getPlayer().getLocation().getY()/64)).getItems();
