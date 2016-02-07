@@ -3,6 +3,16 @@ package Model;
 import Controller.Controller;
 import Controller.States.*;
 
+import Controller.States.GameState;
+import Controller.States.MenuState;
+import Controller.States.PauseState;
+import Controller.States.State;
+import Controller.States.KillState;
+import Controller.States.InventoryState;
+import Controller.States.GearState;
+import Model.Item.InventoryList;
+
+
 
 /**
  * Created by jlkegley on 1/31/2016.
@@ -17,6 +27,7 @@ public class Game implements Runnable {
     private State killState;
     private State inventoryState;
     private State gearState;
+    private State createState;
 
 
     private int width, height;
@@ -32,6 +43,7 @@ public class Game implements Runnable {
     public void init() {
         //START STATES HERE
         controller = new Controller(this);
+        createState = new CreateState(controller, width, height);
         menuState = new MenuState(controller, width, height);
         gameState = new GameState(controller);
         pauseState = new PauseState(controller, width, height);
@@ -40,6 +52,8 @@ public class Game implements Runnable {
         gearState = new GearState(controller, width, height);
 
         State.setInitialState(menuState);
+
+        InventoryList.init();//added this to initialize all items
 
     }
 

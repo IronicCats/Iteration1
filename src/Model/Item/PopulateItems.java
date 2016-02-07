@@ -89,7 +89,7 @@ public class PopulateItems {
     private void setStatStruc(Scanner items){ // called to iterate through array of effect
         while(!items.hasNext("EA")){ // if not reached end of array
             convertEnum(items.next()); // assign string # i in stats (statEnum array) and assigns image
-            mod[stats.size()] = items.nextInt(); // assigns the corresponding value adjustment to mod array
+            mod[stats.size() - 1] = items.nextInt(); // assigns the corresponding value adjustment to mod array
         }
         items.next(); // move past end of array
         statStruc = new StatStructure(stats.toArray(new StatsEnum[stats.size()]), mod); // create new statStructure used to create effects array
@@ -175,6 +175,7 @@ public class PopulateItems {
 
     private void generateEffects(){
         effects.add(new Effect(statStruc, 0, description)); // create effects for 1 item. 5 max
+        //System.out.println(statStruc.getStat(StatsEnum.LIFE));
     }
 
     private void generateItems(){ // create items

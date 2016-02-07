@@ -55,6 +55,7 @@ public class SaveState extends State {
             outputWriter = new BufferedWriter(new FileWriter(outputFile));
 
             //okay so now it should call the Player's save method
+            
             player.savePlayer(savefile);
             //then Location object
             //then Stats object
