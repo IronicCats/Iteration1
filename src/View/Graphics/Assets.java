@@ -19,7 +19,7 @@ public class Assets {
 
     private static final int width = 32, height = 32;
 
-    public static BufferedImage grass;
+    public static ArrayList<BufferedImage> grass;
     public static ArrayList<BufferedImage> water;
     public static ArrayList<BufferedImage> mountain;
 
@@ -48,9 +48,11 @@ public class Assets {
 
 
     public static void init() {
-        SpriteSheet grassSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/GrassTile.png"));
+        SpriteSheet grassSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/GrassTiles.png"));
         SpriteSheet mountainSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/MountainTile.png"));
         SpriteSheet waterSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/WaterTile.png"));
+
+
         SpriteSheet avatarSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/CharSpriteSheet.png"));
         SpriteSheet potionSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/PotionSprite.png"));
         SpriteSheet skullAndBonesSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/Skull.png"));
@@ -72,13 +74,12 @@ public class Assets {
 
         water = new ArrayList<>(9);
         mountain = new ArrayList<>(9);
-
+        grass = new ArrayList<>(9);
 
         avatarFacingDown = avatarSheet.crop(0, 0, width, height);
         avatarFacingUp = avatarSheet.crop(32,0,width,height);
         avatarFacingLeft = avatarSheet.crop(64,0,width,height);
         avatarFacingRight = avatarSheet.crop(96,0,width,height);
-        grass = grassSheet.crop(0, 0, width, height);
         potion = potionSheet.crop(0,0,width,height);
         sack = sackSheet.crop(0,0,width,height);
         sword = swordSheet.crop(0,0,width,height);
@@ -105,6 +106,19 @@ public class Assets {
         mountain.add(mountainSheet.crop(0, 64, width, height));
         mountain.add(mountainSheet.crop(32, 64, width, height));
         mountain.add(mountainSheet.crop(64, 64, width, height));
+
+        //Grass Tiles
+        grass.add(grassSheet.crop(0, 0, width, height));
+        grass.add(grassSheet.crop(32, 0, width, height));
+        grass.add(grassSheet.crop(64, 0, width, height));
+        grass.add(grassSheet.crop(0, 32, width, height));
+        grass.add(grassSheet.crop(32, 32, width, height));
+        grass.add(grassSheet.crop(64, 32, width, height));
+        grass.add(grassSheet.crop(0, 64, width, height));
+        grass.add(grassSheet.crop(32, 64, width, height));
+        grass.add(grassSheet.crop(64, 64, width, height));
+
+
 
 
 
