@@ -1,5 +1,7 @@
 package Model.Entity.Stats;
 
+//import Controller.States.KillState;
+import Controller.States.KillState;
 import Controller.States.MenuState;
 import Controller.States.State;
 import Model.Entity.EquipmentStats;
@@ -41,7 +43,7 @@ public class Stats {
         primaryStats.kill();
         derivedStats.kill();
         if(primaryStats.getLivesLeft() <= 0)
-            State.setState(MenuState.menu);
+            State.setState(KillState.state);
     } // end kill
 
     public void applyEffect(Effect e) {

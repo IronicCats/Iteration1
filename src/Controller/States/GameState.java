@@ -73,6 +73,7 @@ public class GameState extends State {
         map.getTile(2,6).addAreaEffect(areaEffect);
 
 
+
         controller.setPlayer(player);
         statusView = new StatusView(controller);
 
@@ -88,9 +89,6 @@ public class GameState extends State {
                 System.out.println("Inventory Selection ");
                 break;
             case Pause:
-                View.view.removeKeyListener(MenuState.menu);
-                View.view.removeKeyListener(this);
-                View.view.addKeyListener(PauseState.pause);
                 System.out.println("Pause Game");
                 //Add the Load Game state switch here
                 setState(PauseState.pause);
