@@ -29,3 +29,4 @@ editor.xml
 Intellij.xml
 *.xml
 .DS_Store
+res/saveFiles/*.sav

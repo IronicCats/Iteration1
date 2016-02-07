@@ -24,9 +24,9 @@ public class MenuState extends State implements KeyListener {
 
     public void switchState(States stateNumber) {
         switch(stateNumber) {
-            case Game:
+            case Create:
                 System.out.println("Create Game");
-                setState(GameState.game);
+                setState(CreateState.createState);
                 break;
             case Load:
                 System.out.println("Load Game");
@@ -66,7 +66,7 @@ public class MenuState extends State implements KeyListener {
         if(e.getKeyCode() == 10) {
             switchState(menuView.getSelection());
         }
-        
+
     }
 
     @Override
