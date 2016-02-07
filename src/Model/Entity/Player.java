@@ -82,7 +82,7 @@ public class Player extends Entity {
     @Override
     public void render(Graphics g) {
         if (location.getDir() == 0) {
-            g.drawImage(Assets.avatar,
+            g.drawImage(Assets.avatarFacingUp,
                     (int) (getX() - controller.getCamera().getxOffset()) + Tile.TILEWIDTH / 2 - width / 2,
                     (int) (getY() - controller.getCamera().getyOffset()),
                     width,
@@ -91,7 +91,7 @@ public class Player extends Entity {
             );
         }
         else if(location.getDir() == 1){
-            g.drawImage(Assets.sword,
+            g.drawImage(Assets.avatarFacingRight,
                     (int) (getX() - controller.getCamera().getxOffset()) + Tile.TILEWIDTH / 2 - width / 2,
                     (int) (getY() - controller.getCamera().getyOffset()),
                     width,
@@ -100,7 +100,7 @@ public class Player extends Entity {
             );
         }
         else if(location.getDir() == 2){
-            g.drawImage(Assets.sack,
+            g.drawImage(Assets.avatarFacingDown,
                     (int) (getX() - controller.getCamera().getxOffset()) + Tile.TILEWIDTH / 2 - width / 2,
                     (int) (getY() - controller.getCamera().getyOffset()),
                     width,
@@ -109,7 +109,7 @@ public class Player extends Entity {
             );
         }
         else if(location.getDir() == 3){
-            g.drawImage(Assets.boots,
+            g.drawImage(Assets.avatarFacingLeft,
                     (int) (getX() - controller.getCamera().getxOffset()) + Tile.TILEWIDTH / 2 - width / 2,
                     (int) (getY() - controller.getCamera().getyOffset()),
                     width,
