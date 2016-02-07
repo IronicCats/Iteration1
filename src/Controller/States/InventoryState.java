@@ -52,7 +52,7 @@ public class InventoryState extends State {
         }
         if(e.getKeyCode() == KeyEvent.VK_DOWN) {
             inv.down();
-            System.out.println("Down P");
+            //System.out.println("Down P");
         }
         if(e.getKeyCode() == KeyEvent.VK_LEFT) {
             inv.left();
@@ -67,7 +67,7 @@ public class InventoryState extends State {
         }
         if(e.getKeyCode() == KeyEvent.VK_D) {
            int index=inv.d();
-            if(index!=-1)controller.getPlayer().getInventory().drop(index);
+            controller.getPlayer().getInventory().drop(index);
         }
         if(e.getKeyCode() == KeyEvent.VK_I || e.getKeyCode() == KeyEvent.VK_ESCAPE) {
           this.switchState();

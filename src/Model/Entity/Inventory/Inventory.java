@@ -7,6 +7,7 @@ import Model.Item.Equippable;
 import Model.Item.Item;
 import Model.Item.Takeable;
 import Model.Item.*;
+import Model.Location;
 import View.Graphics.Assets;
 
 import javax.lang.model.type.NullType;
@@ -75,6 +76,7 @@ public class Inventory {
             if(itemType == ItemsEnum.USEABLE || itemType == ItemsEnum.ARMOR || itemType == ItemsEnum.WEAPON) {
                 if(add((Takeable)tileItems.get(i))){
                     tileItems.remove(i);
+                    //((Takeable) tileItems.get(i)).setLocation(new Location(-1,-1,0));
                 }
             }
         }
@@ -87,6 +89,7 @@ public class Inventory {
                 if(pack.items[i] == null) {
                     pack.items[i] = takeableItem;
                     pack.size++;
+                    takeableItem.setLocation(new Location(-1,-1,0));
                     return true;
                 }
             }
@@ -113,6 +116,7 @@ public class Inventory {
         }
     }
     public void interact(int i){
+        if(pack.items[i]==null)return;
         if(pack.items[i].getType() == ItemsEnum.WEAPON ||(pack.items[i].getType() == ItemsEnum.ARMOR)){
             this.equip(i);
         }
@@ -137,10 +141,18 @@ public class Inventory {
 
     public void equip(int i){
         if(pack.items[i].getType() == ItemsEnum.WEAPON&&pack.items[i]!=null) {
+            System.out.println("This was a weapon");
             equipment.getWeapon().equipWeapon((Weapon)pack.items[i]);
+            pack.items[i]=null;
+
+
         }
         else if(pack.items[i].getType() == ItemsEnum.ARMOR&&pack.items[i]!=null){
+            System.out.println("This was a an armor");
             equipment.getArmor().equipArmor((Armor)pack.items[i]);
+            pack.items[i]=null;
+
+            //System.out.println("this was a armor");
         }
         else {
             System.out.println("Error: Trying to equip non-armor/weapon");

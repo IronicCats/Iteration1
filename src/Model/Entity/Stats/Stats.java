@@ -142,7 +142,9 @@ public class Stats {
                         levelUp();
                     break;
                 case LIFE:
-                    if(e.modification.getStat(s) + derivedStats.getLife() <= 0) {
+                    if(e.modification.getStat(s) + getLife() > getBaseLife())
+                        derivedStats.setLife(getBaseLife());
+                    else if(e.modification.getStat(s) + derivedStats.getLife() <= 0) {
                         kill();
                     }
                     else

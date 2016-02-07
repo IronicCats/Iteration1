@@ -53,7 +53,7 @@ public class GearState extends State {
         }
         if(e.getKeyCode() == KeyEvent.VK_DOWN) {
             gearView.down();
-            System.out.println("Down P");
+           // System.out.println("Down P");
         }
         if(e.getKeyCode() == KeyEvent.VK_LEFT) {
             gearView.left();
@@ -63,7 +63,7 @@ public class GearState extends State {
         }
         if(e.getKeyCode() == KeyEvent.VK_Q) {
             int index=gearView.q();
-            controller.getPlayer().getInventory().getEquipment().getArmor().unequipArmor(index);
+            controller.getPlayer().getInventory().unequip(index);
         }
         if(e.getKeyCode() == KeyEvent.VK_G || e.getKeyCode() == KeyEvent.VK_ESCAPE) {
             this.switchState();
