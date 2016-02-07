@@ -2,6 +2,8 @@ package View.Views;
 
 import Controller.Controller;
 import Model.Item.Item;
+import Model.Location;
+import Model.Map.Tiles.Tile;
 
 
 import java.awt.*;
@@ -118,10 +120,13 @@ public class StatusView {
     }
 
     public void renderItemsLists(Graphics g) {
-        if(controller.getTiles((int)(controller.getPlayer().getLocation().getX()/64), (int)(controller.getPlayer().getLocation().getY()/64)).hasItem()) {
+        Tile curTile = controller.getTiles((int)(controller.getPlayer().getLocation().getX()/64), (int)(controller.getPlayer().getLocation().getY()/64));
+        if(curTile.hasItem()) {
             ArrayList<Item> items = controller.getTiles((int)(controller.getPlayer().getLocation().getX()/64), (int)(controller.getPlayer().getLocation().getY()/64)).getItems();
             g.setColor(Color.CYAN);
-            g.drawString("Has Items", width/2, height/2);
+            String itemname = curTile.getItems().toString();
+
+            g.drawString(itemname, width/2, height/2);
         }
     }
 
