@@ -47,16 +47,16 @@ public class Pack {
             //System.out.print(items[i]);
             if(items[i].getType() == ItemsEnum.WEAPON)
             {
-                System.out.println("A WEAPON TO SURPASS METAL GEAR");
+                //System.out.println("A WEAPON TO SURPASS METAL GEAR");
                 packString = packString + ((Weapon)items[i]).toString();
             }
             else if(items[i].getType() == ItemsEnum.ARMOR){
-                System.out.println("so safe");
+                //System.out.println("so safe");
                 packString = packString + ((Armor)items[i]).toString();
             }
             else if(items[i].getType() == ItemsEnum.USEABLE)
             {
-                System.out.println("don't do drugs kids" + i);
+                //System.out.println("don't do drugs kids" + i);
                 packString = packString + ((Useable)items[i]).toString();
             }
 

@@ -78,14 +78,14 @@ public class InventoryList {
     {
         //(image, location, type, name, description, effects, requirements, stat);
         Location l = new Location(-1,-1,0);
-        a = new Armor(Assets.helmet,l,ItemsEnum.ARMOR,"Helmet","Helmet with 4 defense",null,null,4);
+        a = new Armor(Assets.helmet,l,ItemsEnum.ARMOR,"Helmet","Helmet with 4 defense",null,null,4,ArmorEnum.HEAD);
         return a;
 
     }
     public static Armor createChestPiece(Armor a)
     {
         Location l = new Location(-1,-1,0);
-        a = new Armor(Assets.chestPiece,l,ItemsEnum.ARMOR,"Chest Piece","Chest Piece with 6 defense",null,null,6);
+        a = new Armor(Assets.chestArmor,l,ItemsEnum.ARMOR,"Chest Piece","Chest Piece with 6 defense",null,null,6,ArmorEnum.CHEST);
         return a;
     }
     public static Armor createBoots(Armor a)
