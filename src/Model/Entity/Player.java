@@ -25,7 +25,6 @@ public class Player extends Entity {
     private Nav navigation;
     private Inventory inventory;
     private int LastDirection = 0;
-    public static final float DEFAULT_SPEED = 3.0f;
     public static final int DEFAULT_CREATURE_WIDTH = 52,
                             DEFAULT_CREATURE_HEIGHT = 52;
 
@@ -53,7 +52,6 @@ public class Player extends Entity {
     }
 
     public void move(int x){
-       // controller.getTiles(location.getX(),location.getY()).addPlayer(this);
         if(!navigation.isMoving) {
             if (x == 0) {
                 LastDirection = 0;
@@ -202,5 +200,8 @@ public class Player extends Entity {
 
 
 
+    }
+    public Location getLocation(){
+        return location;
     }
 }
