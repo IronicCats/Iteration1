@@ -33,4 +33,10 @@ public abstract class Equippable extends Takeable {
         // equip
     }
 
+    public String toString(){
+        String s;
+        s = Integer.toString(this.stat) + "\n";
+        return s;
+    }
+
 }

@@ -37,6 +37,8 @@ public class Assets {
     public static BufferedImage glove;
     public static BufferedImage manapotion;
     public static BufferedImage menucursor;
+    public static BufferedImage chestArmor;
+    public static BufferedImage helmet;
 
 
 
@@ -59,6 +61,8 @@ public class Assets {
         SpriteSheet gloveSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/Glove.png"));
         SpriteSheet manapotionSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/ManaPotion.png"));
         SpriteSheet menuCursorSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/MenuCursor.png"));
+        SpriteSheet chestSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/ChestArmorSprite.png"));
+        SpriteSheet helmetSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/Helmet.png"));
 
 
         water = new ArrayList<>(9);
@@ -91,7 +95,8 @@ public class Assets {
         glove = gloveSheet.crop(0,0,width,height);
         manapotion = manapotionSheet.crop(0,0,width,height);
         menucursor = menuCursorSheet.crop(0,0,width,height);
-
+        chestArmor = chestSheet.crop(0,0,width,height);
+        helmet = helmetSheet.crop(0,0,width,height);
 
     }
 
