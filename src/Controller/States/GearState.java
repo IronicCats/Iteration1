@@ -21,8 +21,6 @@ public class GearState extends State {
     } // end constructor
 
     public void switchState() {
-        View.view.removeKeyListener(this);
-        View.view.addKeyListener(GameState.game);
         System.out.println("Resume Game from Gear");
         setState(GameState.game);
     } // end switchState
@@ -67,7 +65,7 @@ public class GearState extends State {
             int index=gearView.q();
             controller.getPlayer().getInventory().getEquipment().getArmor().unequipArmor(index);
         }
-        if(e.getKeyCode() == KeyEvent.VK_G) {
+        if(e.getKeyCode() == KeyEvent.VK_G || e.getKeyCode() == KeyEvent.VK_ESCAPE) {
             this.switchState();
         }
     }

@@ -13,13 +13,22 @@ import java.awt.*;
 public class InventoryView {
     int currentItem=0;
     int width, height;
-    int s;
+    boolean view;
+
+    public void setS(int s) {
+        this.s = s;
+    }
+
+    private int s;
+    int sX;
+    int sY;
     Controller controller;
 
     public InventoryView(Controller controller, int width, int height){
         this.height=height;
         this.width=width;
         this.controller=controller;
+        int s=0;
     }
 
     public void render(Graphics g) {
@@ -40,7 +49,10 @@ public class InventoryView {
         y=height/4;
 
         for (int i = 0; i < controller.getPlayer().getInventory().getPack().getCap(); ++i) {
-            controller.getPlayer().getInventory().render(i,g,x,y);
+            if(s == i)
+                controller.getPlayer().getInventory().render(i,g,x,y, true);
+            else
+                controller.getPlayer().getInventory().render(i,g,x,y, false);
             if((i+1)%4==0 && i!=0){
                 y+=74;
                 x=width/2;
@@ -60,7 +72,7 @@ public class InventoryView {
         }
     }
     public void left() {
-        if(s-1>0){
+        if(s-1>=0){
             s-=1;
         }
     }
