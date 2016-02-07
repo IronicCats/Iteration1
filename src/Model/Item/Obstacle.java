@@ -17,7 +17,7 @@ public class Obstacle extends Item{
 
 
 
-    public Obstacle(BufferedImage image, int id, Location location, ItemsEnum type, String name, String description, Effect[] effects, Requirements requirements) {
+    public Obstacle(BufferedImage image, Location location, ItemsEnum type, String name, String description, Effect[] effects, Requirements requirements) {
         super(image, location, type, name, description, effects, requirements);
 
     }
