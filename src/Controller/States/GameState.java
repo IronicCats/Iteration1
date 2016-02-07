@@ -84,7 +84,11 @@ public class GameState extends State {
                 setState(GameState.game);
                 break;
             case Inventory:
+                View.view.removeKeyListener(MenuState.menu);
+                View.view.removeKeyListener(this);
+                View.view.addKeyListener(InventoryState.inventory);
                 System.out.println("Inventory Selection ");
+                setState(InventoryState.inventory);
                 break;
             case Pause:
                 View.view.removeKeyListener(MenuState.menu);

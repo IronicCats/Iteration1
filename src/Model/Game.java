@@ -2,10 +2,7 @@ package Model;
 
 import Controller.Controller;
 import Controller.InputManager;
-import Controller.States.GameState;
-import Controller.States.MenuState;
-import Controller.States.PauseState;
-import Controller.States.State;
+import Controller.States.*;
 import jdk.internal.util.xml.impl.Input;
 
 import javax.naming.ldap.Control;
@@ -20,6 +17,7 @@ public class Game implements Runnable {
     private State gameState;
     private State menuState;
     private State pauseState;
+    private State inventoryState;
     private InputManager inputManager;
     private int width, height;
 
@@ -42,6 +40,7 @@ public class Game implements Runnable {
 
         gameState = new GameState(controller);
         pauseState = new PauseState(controller, width, height);
+        inventoryState = new InventoryState(controller, width, height);
 
         State.setState(menuState);
 

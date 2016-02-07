@@ -75,7 +75,7 @@ public class Inventory {
     }
 
     public void drop(int i) {                    //Takes in argument of takeable item
-        if(i < pack.cap) {
+        if(i < pack.cap&&pack.items[i]!=null) {
             Takeable itemToDrop = pack.items[i];
             itemToDrop.setLocation(controller.getPlayer().getLocation());
             controller.getTiles(controller.getPlayer().getLocation()).addItem(itemToDrop);
@@ -86,9 +86,16 @@ public class Inventory {
             System.out.println("Trying to drop item at index greater than pack capacity");
         }
     }
-
+    public void interact(int i){
+        if(pack.items[i].getType() == ItemsEnum.WEAPON ||(pack.items[i].getType() == ItemsEnum.ARMOR)){
+            this.equip(i);
+        }
+        else if(pack.items[i].getType() == ItemsEnum.USEABLE) {
+            this.use(i);
+        }
+    }
     public void use(int i){
-        if( i < pack.cap) {
+        if( i < pack.cap&&pack.items[i]!=null) {
             if(pack.items[i].getType() == ItemsEnum.USEABLE) {
                 controller.getPlayer().getStats().applyEffect(pack.items[i].getEffects());
                 pack.items[i] = null;
@@ -103,10 +110,10 @@ public class Inventory {
 
 
     public void equip(int i){
-        if(pack.items[i].getType() == ItemsEnum.WEAPON) {
+        if(pack.items[i].getType() == ItemsEnum.WEAPON&&pack.items[i]!=null) {
             equipment.getWeapon().equipWeapon((Weapon)pack.items[i]);
         }
-        else if(pack.items[i].getType() == ItemsEnum.ARMOR){
+        else if(pack.items[i].getType() == ItemsEnum.ARMOR&&pack.items[i]!=null){
             equipment.getArmor().equipArmor((Armor)pack.items[i]);
         }
         else {
@@ -115,7 +122,7 @@ public class Inventory {
     }
     public void unequip(int i){
         Equippable unequipped = equipment.unEquip(i);
-        add(unequipped);
+        if(unequipped!=null)add(unequipped);
     }
 
 
