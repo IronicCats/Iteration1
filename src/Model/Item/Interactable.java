@@ -16,7 +16,7 @@ public class Interactable extends Item {
     int ITEMWIDTH = 64;
 
     public Interactable(BufferedImage image, int id, Location location, ItemsEnum type, String name, String description, Effect[] effects, Requirements requirements) {
-        super(image, id, location, type, name, description, effects, requirements);
+        super(image, location, type, name, description, effects, requirements);
     }
 
     // constructor in Item
