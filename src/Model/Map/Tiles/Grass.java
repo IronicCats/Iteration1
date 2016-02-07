@@ -10,8 +10,8 @@ import java.util.ArrayList;
  * Created by jlkegley on 1/31/2016.
  */
 public class Grass extends Tile {
-    public Grass(Location location ) {
-        super(Assets.grass, location, false);
+    public Grass(BufferedImage image, Location location ) {
+        super(image, location, false);
     }
 
 }
