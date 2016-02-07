@@ -30,6 +30,8 @@ public class Map {
     private PopulateItems populateItems;
     private Item[] items;
     private Location spawn;
+    private int spawnX;
+    private int spawnY;
 
     public Map(Controller controller) {
         //System.out.println(items[0].getLocation().getY());
@@ -58,7 +60,8 @@ public class Map {
         height = parseInt(tokens[1]);
         System.out.println(parseInt(tokens[2]));
         spawn = new Location(parseInt(tokens[2]), parseInt(tokens[3]), 2);
-
+        spawnX = parseInt(tokens[2]);
+        spawnY = parseInt(tokens[3]);
         tiles = new Tile[width][height];
         for(int y = 0; y < height; ++y) {
             for(int x = 0; x < width; ++x){
@@ -202,15 +205,6 @@ public class Map {
 
     public Location getSpawn(){
         return spawn;
-    }
-
-    public int getSpawnX()
-    {
-        return spawn.getX();
-    }
-
-    public int getSpawnY(){
-        return spawn.getY();
     }
 
     public int getWidth() {
