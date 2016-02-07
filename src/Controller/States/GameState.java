@@ -74,8 +74,6 @@ public class GameState extends State {
 
         map.getTile(2,6).addAreaEffect(areaEffect);
 
-
-
         controller.setPlayer(player);
         statusView = new StatusView(controller);
 
