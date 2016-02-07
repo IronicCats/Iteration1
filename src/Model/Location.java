@@ -13,19 +13,19 @@ public class Location {
     }
 
     public int getX() {
-        return x;
+        return x/64;
     }
 
     public void setX(int x) {
-        this.x = x;
+        this.x = x*64;
     }
 
     public int getY() {
-        return y;
+        return y/64;
     }
 
     public void setY(int y) {
-        this.y = y;
+        this.y = y*64;
     }
 
     public int getDir() {
