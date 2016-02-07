@@ -13,7 +13,7 @@ import java.awt.image.BufferedImage;
 public class OneShot extends Item {
 
 
-    public OneShot(BufferedImage image, int id, Location location, ItemsEnum type, String name, String description, Effect[] effects, Requirements requirements) {
+    public OneShot(BufferedImage image, Location location, ItemsEnum type, String name, String description, Effect[] effects, Requirements requirements) {
         super(image, location, type, name, description, effects, requirements);
     }
 

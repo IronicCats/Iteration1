@@ -18,6 +18,7 @@ public class Game implements Runnable {
     private State inventoryState;
     private State saveState;
     private State loadState;
+    private State gearState;
 
 
     private int width, height;
@@ -40,6 +41,7 @@ public class Game implements Runnable {
         inventoryState = new InventoryState(controller, width, height);
         saveState = new SaveState(controller, width, height);
         loadState = new LoadState(controller, width, height);
+        gearState = new GearState(controller, width, height);
 
         State.setInitialState(menuState);
 

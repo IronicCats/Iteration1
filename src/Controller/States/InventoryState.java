@@ -13,7 +13,6 @@ import java.awt.event.KeyEvent;
 public class InventoryState extends State {
     InventoryView inv;
     public static InventoryState inventory;
-    boolean invView=true;
 
     public InventoryState(Controller controller, int width, int height){
         super(controller);
@@ -23,7 +22,7 @@ public class InventoryState extends State {
     public void switchState() {
                 View.view.removeKeyListener(this);
                 View.view.addKeyListener(GameState.game);
-                System.out.println("Resume Game");
+                System.out.println("Resume Game from Inventory");
                 setState(GameState.game);
     }
     @Override
@@ -37,7 +36,6 @@ public class InventoryState extends State {
         controller.getMap().render(g);
         controller.getPlayer().render(g);
         inv.render(g);
-
     }
 
     @Override
@@ -48,8 +46,6 @@ public class InventoryState extends State {
     @Override
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_SHIFT) {
-            if(invView)invView=false;
-            else invView=true;
             inv.shift();
         }
         if(e.getKeyCode() == KeyEvent.VK_UP) {
@@ -67,8 +63,8 @@ public class InventoryState extends State {
         }
         if(e.getKeyCode() == KeyEvent.VK_Q) {
             int index=inv.q();
-            if(invView)controller.getPlayer().getInventory().interact(index);
-            else controller.getPlayer().getInventory().unequip(index);
+            controller.getPlayer().getInventory().interact(index);
+            //else controller.getPlayer().getInventory().unequip(index);
         }
         if(e.getKeyCode() == KeyEvent.VK_D) {
            int index=inv.d();
