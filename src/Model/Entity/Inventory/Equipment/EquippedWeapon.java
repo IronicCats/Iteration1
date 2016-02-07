@@ -16,9 +16,9 @@ public class EquippedWeapon {
     }
 
     public void equipWeapon(Weapon old) {
-        Weapon weapon=new Weapon(old);
-        this.weapon = weapon;
-        this.damage=weapon.getStat();
+        Weapon newWep=new Weapon(old);
+        this.weapon = newWep;
+        this.damage=newWep.getStat();
     }
     public Weapon unequipWeapon(){
         Weapon temp = new Weapon(weapon);

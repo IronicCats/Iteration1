@@ -145,7 +145,7 @@ public class Inventory {
 
         }
         else if(pack.items[i].getType() == ItemsEnum.ARMOR&&pack.items[i]!=null){
-            System.out.println("This was a weapon");
+            System.out.println("This was a an armor");
             equipment.getArmor().equipArmor((Armor)pack.items[i]);
             pack.items[i]=null;
 

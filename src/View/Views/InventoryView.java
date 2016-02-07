@@ -99,7 +99,7 @@ public class InventoryView {
 
         //SET MANA BAR COLOR
 
-        g.setColor(Color.GREEN);
+        g.setColor(Color.BLUE);
         g.fillRect(130, height/3, (int)((playerStats[1]/100.0) * (width/4)) , fm.getHeight() + 1);
 
         //SET MANA PERCENTAGE
@@ -117,18 +117,18 @@ public class InventoryView {
         red = (int)(255 * (100 - playerStats[6])) / 100;
         blu = 100;
 
-        g.setColor(new Color(red, gr, blu));
+        g.setColor(Color.GRAY);
 
 
         //Making the EXP Bar fill the rest of the game screen
         g.fillRect(130, height/3+40, (int) (playerStats[6]/100.0 * width/4) , fm.getHeight() + 1);
         //SET EXP PERCENTAGE
         g.setColor(Color.black);
-        g.drawString("LVL: " + (int)playerStats[2] + " - EXP: " + (int)playerStats[4] + "/" + (int)playerStats[5]  ,width/4 + (width/2 - (fm.stringWidth("LVL: 23 - EXP: 220/099%") / 2)), y + 2);
+        g.drawString("EXP: " + (int)playerStats[4] + "/" + (int)playerStats[5]  ,120 + (fm.stringWidth("EXP: 220/099%")), height/3+53);
         x = x + 100 + 10;
 
-        g.setColor(Color.YELLOW);
-        g.fillRect(barStartX, y + 5, width, 5);
+        //g.setColor(Color.YELLOW);
+        //g.fillRect(barStartX, y + 5, width, 5);
 
     }
 
