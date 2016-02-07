@@ -32,8 +32,6 @@ public abstract class Tile {
         this.location = location;
         this.texture = texture;
         this.isUnWalkable = isUnWalkable;
-        this.items = new ArrayList<>();
-
     }
 
     public void render(Graphics g,int x, int y) {
@@ -62,7 +60,9 @@ public abstract class Tile {
     }
 
     public void addItem(Item item) {
+        System.out.println("Test");
         items.add(item);
+        System.out.println(items.size());
     }
 
     public ArrayList<Item> getItems() {

@@ -4,4 +4,5 @@ Comment: SA = start array, EA = end array
 Comment: BD = begin description, ED = end description
 5 5 Health BD This potion gives the player 3 health ED SA Life 3 EA
 6 6 Health BD This potion gives the player 3 health ED SA Life 3 EA
-
+3 4 Health BD This potion gives the player 3 health ED SA Life 3 EA
+3 4 Health BD This potion gives the player 3 health ED SA Life 3 EA

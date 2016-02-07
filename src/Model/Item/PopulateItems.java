@@ -1,4 +1,4 @@
-package Model;
+package Model.Item;
 
 import java.util.Scanner;
 import java.io.File;
@@ -104,7 +104,7 @@ public class PopulateItems {
                     break;
                 case ("Level"):
                     stats.add(StatsEnum.LEVEL);
-                    //image = Assets.potion;
+                    image = Assets.sack;
                     break;
                 case ("Movement"):
                     stats.add(StatsEnum.MOVEMENT);

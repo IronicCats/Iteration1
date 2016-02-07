@@ -7,7 +7,7 @@ import Model.Map.Tiles.Grass;
 import Model.Map.Tiles.Mountain;
 import Model.Map.Tiles.Tile;
 import Model.Map.Tiles.Water;
-import Model.PopulateItems;
+import Model.Item.PopulateItems;
 
 import Controller.Controller;
 
@@ -59,26 +59,26 @@ public class Map {
         tiles = new Tile[width][height];
         for(int y = 0; y < height; ++y) {
             for(int x = 0; x < width; ++x){
+                Tile tile;
+                switch (parseInt(tokens[(x + y * width) + 4])) {
+                    case 0:
+                        tile = new Grass(new Location(x, y, 0));
+                        break;
+                    case 1:
+                        tile = new Mountain(new Location(x, y, 0));
+                        break;
+                    case 2:
+                        tile = new Water(new Location(x, y, 0));
+                        break;
+                    default:
+                        tile = new Mountain(new Location(x, y, 0));
+                        break;
+                }
+                tiles[x][y] = tile;
                 for(int i = 0; i < items.length; i++) {
-                    Tile tile;
-                    switch (parseInt(tokens[(x + y * width) + 4])) {
-                        case 0:
-                            tile = new Grass(new Location(x, y, 0));
-                            break;
-                        case 1:
-                            tile = new Mountain(new Location(x, y, 0));
-                            break;
-                        case 2:
-                            tile = new Water(new Location(x, y, 0));
-                            break;
-                        default:
-                            tile = new Mountain(new Location(x, y, 0));
-                            break;
-                    }
-                    tiles[x][y] = tile;
                     if(tile.getLocation().getX() == items[i].getLocation().getX() && tile.getLocation().getY() == items[i].getLocation().getY()){
                         tile.addItem(items[i]);
-                        System.out.println("Add Item");
+                        System.out.println(items[i].getLocation().getX());
                     }
                 }
             }
