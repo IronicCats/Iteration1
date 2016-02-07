@@ -35,9 +35,9 @@ public class Map {
     public Map(Controller controller) {
         //System.out.println(items[0].getLocation().getY());
         this.controller = controller;
-        makeMap();
         populateItems = new PopulateItems();
         items = populateItems.getItems();
+        makeMap();
     }
 
     public void makeMap() {

@@ -39,6 +39,8 @@ public class PopulateItems {
     private ArmorEnum armorType;
 
     public PopulateItems(){
+
+        InventoryList.init();//added this to initialize all items
         readFile();
     }
 
@@ -184,16 +186,10 @@ public class PopulateItems {
             case 0:
                 items.add(new OneShot(image, location, ItemsEnum.ONESHOT, name, description, effects.toArray(new Effect[effects.size()]), requirements));
                 break;
-            case 1: //items.add(new Useable(image, location, ItemsEnum.USEABLE, name, description, effects.toArray(new Effect[effects.size()]), requirements));
-                //String des = "This potion heals 5 health";
-                //Effect[] e = {new Effect(new StatStructure(StatsEnum.LIFE,1),0,des)};
-                //items.add(new Useable(Assets.potion,location, ItemsEnum.USEABLE,"Health",des,e,null));
-                //Useable a = InventoryList.createHealthPotion(new Useable(Assets.potion,location, ItemsEnum.USEABLE,"Health",des,e,null));
-                Useable a = InventoryList.healthPotion;
-                a.setLocation(location);
-                System.out.println("a.tostring: " + a.toString());
-                items.add(a);
-                System.out.println("PopulateItems -> case 0");                    break;
+            case 1:
+                items.add(new Useable(image, location, ItemsEnum.USEABLE, name, description, effects.toArray(new Effect[effects.size()]), requirements));
+                //items.add(InventoryList.createHealthPotion(location));
+                break;
             case 2: items.add(new Obstacle(image, location, ItemsEnum.OBSTACLE, name, description, effects.toArray(new Effect[effects.size()]), requirements));
                     break;
             case 3: items.add(new Interactable(image, location, ItemsEnum.INTERACTABLE, name, description, effects.toArray(new Effect[effects.size()]), requirements));
@@ -208,6 +204,7 @@ public class PopulateItems {
     }
 
     public Item[] getItems(){
+
         return items.toArray(new Item[items.size()]);
     } // return items to map
 }
