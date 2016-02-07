@@ -69,7 +69,9 @@ public class GameState extends State {
 
         location = new Location(3,3,0); //Location is in wrong coordinates it should be in pixels not in tiles
 
+
         areaEffect = new AreaEffect("Damage", "Damage", AreaEffectEnum.DAMAGE, new Location(7,8,0)); //Same with this one
+
         map.getTile(2,6).addAreaEffect(areaEffect);
 
         controller.setPlayer(player);
@@ -133,6 +135,7 @@ public class GameState extends State {
 
         if(e.getKeyCode() == KeyEvent.VK_Q){
             controller.getPlayer().PickUpItem();
+            SaveState.writeFile(player,"Player test.txt");
         }
 
         if((e.getKeyCode() == KeyEvent.VK_NUMPAD8 || e.getKeyCode() == KeyEvent.VK_UP)){

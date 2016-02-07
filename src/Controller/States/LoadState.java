@@ -62,16 +62,8 @@ public class LoadState extends State {
                //System.out.println(loadedfile.get(i) + " " + i);
             }
 
-
-
-
-
-            //String fileText = inputReader.readLine();
-            //System.out.println(loadedfile.get(0));
-
-           player.loadPlayer(loadedfile);//TEMPORARY COMMENT, NEEDED
-
-
+            int a = 0;
+           player.loadPlayer(loadedfile,a);//TEMPORARY COMMENT, NEEDED
 
 
             inputReader.close();
