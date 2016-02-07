@@ -23,7 +23,7 @@ public class Assets {
         SpriteSheet waterSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/WaterTile.png"));
         SpriteSheet avatarSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/SwordSprite.png"));
         SpriteSheet potionSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/PotionSprite.png"));
-        SpriteSheet skullAndBonesSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/SkullAndCrossBones.png"));
+        SpriteSheet skullAndBonesSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/SkullAndCrossBones.jpg"));
         SpriteSheet sackSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/ItemBag.png"));
 
         avatar = avatarSheet.crop(0, 0, width, height);
@@ -31,7 +31,7 @@ public class Assets {
         mountain = mountainSheet.crop(0, 0, width, height);
         water = waterSheet.crop(0, 0, width, height);
         potion = potionSheet.crop(0,0,width,height);
-        skullandbones = skullAndBonesSheet.crop(0,0,width,height);
+        skullandbones = skullAndBonesSheet.crop(0,0,28,28);
         sack = sackSheet.crop(0,0,width,height);
     }
 

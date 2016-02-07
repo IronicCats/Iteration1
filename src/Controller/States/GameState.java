@@ -21,6 +21,8 @@ import Model.Item.ItemsEnum;
 import Model.Item.Useable;
 import Model.Location;
 
+import Model.Map.AreaEffect;
+import Model.Map.AreaEffectEnum;
 import Model.Map.Map;
 import Model.Map.Tiles.Tile;
 import View.Graphics.Assets;
@@ -46,6 +48,7 @@ public class GameState extends State {
     private StatusView statusView;
     private Stats stats;
     private Occupation occupation;
+    private AreaEffect areaEffect;
 
     public GameState(Controller controller) {
         super(controller);
@@ -66,7 +69,8 @@ public class GameState extends State {
             map.getTile(5,5).addItem(potion);
         }
 
-
+        areaEffect = new AreaEffect("Damage", "Damage", AreaEffectEnum.DAMAGE, new Location(7,8,0));
+        map.getTile(4,4).addAreaEffect(areaEffect);
 
         controller.setPlayer(player);
         statusView = new StatusView(controller);
