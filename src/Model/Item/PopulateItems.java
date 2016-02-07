@@ -71,7 +71,17 @@ public class PopulateItems {
 
             type = scan.nextInt(); // read in int representing type
 
-            stat = scan.nextInt();
+            stat = scan.nextInt(); // read in stat associated with armor/weapon
+
+            if(type == 4){
+                setEquippableEnum(name);
+                generateItems();;
+            }
+
+            if(type == 5){
+                setEquippableEnum(name);
+                generateItems();
+            }
 
             if (scan.hasNext("SA")) { // start of array containing StatStructure code
                 scan.next(); // move to first string in array
@@ -91,8 +101,8 @@ public class PopulateItems {
         statStruc = new StatStructure(stats.toArray(new StatsEnum[stats.size()]), mod); // create new statStructure used to create effects array
         stats.clear();
         generateEffects();
-        effects.clear(); // empty effects array for next item
         generateItems();
+        effects.clear(); // empty effects array for next item
     }
 
     private void convertEnum(String Enum){ // assigns statEnum and image based on effect
@@ -123,6 +133,45 @@ public class PopulateItems {
         }
     }
 
+    public void setEquippableEnum(String equippable) {
+        switch (equippable) {
+            case ("Sword"):
+                weaponType = WeaponEnum.SWORD;
+                image = Assets.sword;
+                break;
+            case ("Axe"):
+                weaponType = WeaponEnum.AXE;
+                //image = Assets.Axe;
+                break;
+            case ("Spear"):
+                weaponType = WeaponEnum.SPEAR;
+                //image = Assets.spear;
+                break;
+            case ("Hammer"):
+                weaponType = WeaponEnum.HAMMER;
+                //image = Assets.hammer;
+                break;
+            case ("Pants"):
+                armorType = ArmorEnum.PANTS;
+                //image = Assets.Axe;
+                break;
+            case ("Head"):
+                armorType = ArmorEnum.HEAD;
+                //image = Assets.head;
+                break;
+            case ("Chest"):
+                armorType = ArmorEnum.CHEST;
+                image = Assets.chestArmor;
+                break;
+            case ("Boots"):
+                armorType = ArmorEnum.BOOTS;
+                image = Assets.boots;
+                break;
+            default:
+                break;
+        }
+    }
+
     private void generateEffects(){
         effects.add(new Effect(statStruc, 0, description)); // create effects for 1 item. 5 max
     }
@@ -138,9 +187,9 @@ public class PopulateItems {
                     break;
             case 3: items.add(new Interactable(image, location, ItemsEnum.INTERACTABLE, name, description, effects.toArray(new Effect[effects.size()]), requirements));
                     break;
-            case 4: items.add(new Armor(image, location, ItemsEnum.ARMOR, name, description, effects.toArray(new Effect[effects.size()]), requirements, stat, armorType));
+            case 4: items.add(new Armor(image, location, ItemsEnum.ARMOR, name, description, null, requirements, stat, armorType));
                     break;
-            case 5: items.add(new Weapon(image, location, ItemsEnum.WEAPON, name, description, effects.toArray(new Effect[effects.size()]), requirements, stat, weaponType));
+            case 5: items.add(new Weapon(image, location, ItemsEnum.WEAPON, name, description, null, requirements, stat, weaponType));
                     break;
             default:
                     break;

@@ -198,7 +198,10 @@ public class Map {
         }
     }
 
-    public Location getSpawn(){
+    public Location getSpawn()
+    {
+        spawn.setX(spawn.getX() * 64);
+        spawn.setY(spawn.getY() * 64);
         return spawn;
     }
 
