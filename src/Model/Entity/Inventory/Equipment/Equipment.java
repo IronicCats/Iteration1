@@ -10,6 +10,11 @@ public class Equipment {
     private EquippedWeapon weapon;
     private EquippedArmor armor;
     private EquipmentStats equipmentStats;
+    public Equipment() {
+        weapon = new EquippedWeapon();
+        armor = new EquippedArmor();
+        equipmentStats = new EquipmentStats(this, armor.getTotalDefense(),weapon.getDamage(),null);
+    }
 
     public Equippable unEquip(int i) {
         if(i < 8) {
@@ -34,7 +39,5 @@ public class Equipment {
 
 
 
-    public Equipment() {
-
-    } // end constructor
+    // end constructor
 } // end class Equipment

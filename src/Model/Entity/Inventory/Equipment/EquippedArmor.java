@@ -27,7 +27,8 @@ public class EquippedArmor {
         totalDefense = 0;
     } // end constructor
 
-    public void equipArmor(Armor armor) {
+    public void equipArmor(Armor old) {
+        Armor armor=new Armor(old);
         switch(armor.getArmorType()) {
             case HEAD:
                 head=armor;

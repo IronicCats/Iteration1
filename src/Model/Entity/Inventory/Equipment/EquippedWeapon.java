@@ -15,7 +15,8 @@ public class EquippedWeapon {
         damage = 0;//weapon.getStat();
     }
 
-    public void equipWeapon(Weapon weapon) {
+    public void equipWeapon(Weapon old) {
+        Weapon weapon=new Weapon(old);
         this.weapon = weapon;
         this.damage=weapon.getStat();
     }
@@ -24,7 +25,10 @@ public class EquippedWeapon {
         weapon=null;
         return temp;
     }
-
+    public boolean isEquipped(){
+        if(weapon!=null)return true;
+        else return false;
+    }
     public Weapon getWeapon() {
         return weapon;
     }

@@ -112,6 +112,7 @@ public class Inventory {
         }
     }
     public void interact(int i){
+        if(pack.items[i]==null)return;
         if(pack.items[i].getType() == ItemsEnum.WEAPON ||(pack.items[i].getType() == ItemsEnum.ARMOR)){
             this.equip(i);
         }
@@ -136,10 +137,18 @@ public class Inventory {
 
     public void equip(int i){
         if(pack.items[i].getType() == ItemsEnum.WEAPON&&pack.items[i]!=null) {
+            System.out.println("This was a weapon");
             equipment.getWeapon().equipWeapon((Weapon)pack.items[i]);
+            pack.items[i]=null;
+
+
         }
         else if(pack.items[i].getType() == ItemsEnum.ARMOR&&pack.items[i]!=null){
+            System.out.println("This was a weapon");
             equipment.getArmor().equipArmor((Armor)pack.items[i]);
+            pack.items[i]=null;
+
+            //System.out.println("this was a armor");
         }
         else {
             System.out.println("Error: Trying to equip non-armor/weapon");
