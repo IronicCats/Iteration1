@@ -2,6 +2,14 @@ package Model;
 
 import Controller.Controller;
 import Controller.States.*;
+import Controller.States.GameState;
+import Controller.States.MenuState;
+import Controller.States.PauseState;
+import Controller.States.State;
+import Controller.States.KillState;
+import Controller.States.InventoryState;
+import Controller.States.GearState;
+
 
 
 /**
