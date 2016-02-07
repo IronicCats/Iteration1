@@ -1,14 +1,14 @@
 package Model;
 
 import Controller.Controller;
-import Controller.InputManager;
 import Controller.States.GameState;
 import Controller.States.MenuState;
 import Controller.States.PauseState;
 import Controller.States.State;
-import jdk.internal.util.xml.impl.Input;
+import Controller.States.KillState;
+import Controller.States.InventoryState;
 
-import javax.naming.ldap.Control;
+
 
 /**
  * Created by jlkegley on 1/31/2016.
@@ -20,13 +20,15 @@ public class Game implements Runnable {
     private State gameState;
     private State menuState;
     private State pauseState;
-    private InputManager inputManager;
+    private State killState;
+    private State inventoryState;
+
+
     private int width, height;
 
-    public Game(InputManager inputManager, int width, int height) {
+    public Game(int width, int height) {
         this.width = width;
         this.height = height;
-        this.inputManager = inputManager;
     }
 
     private boolean running = false;
@@ -34,22 +36,18 @@ public class Game implements Runnable {
 
     public void init() {
         //START STATES HERE
-        controller = new Controller(this, inputManager);
-
-
+        controller = new Controller(this);
         menuState = new MenuState(controller, width, height);
-
-
         gameState = new GameState(controller);
         pauseState = new PauseState(controller, width, height);
+        killState = new KillState(controller, width, height);
+        inventoryState = new InventoryState(controller, width, height);
 
-        State.setState(menuState);
+        State.setInitialState(menuState);
 
     }
 
     public void tick() {
-        inputManager.tick();
-
         if(State.getState() != null ) {
             State.getState().tick();
         }
@@ -105,10 +103,6 @@ public class Game implements Runnable {
         }
 
         stop();
-    }
-
-    public InputManager getInputManager(){
-        return inputManager;
     }
 
 

@@ -41,7 +41,6 @@ public class Nav {
             }
             if (Obstaclecheck) {
                 goalY = location.getY() - Tile.TILEHEIGHT;
-                controller.getTiles(location.getX(),location.getY()).removePlayer(player);
             }
         }else if (direction == 1) {
                 if (controller.getTiles((location.getX() + Tile.TILEWIDTH) / Tile.TILEWIDTH, (location.getY()) / Tile.TILEHEIGHT).isUnWalkable) {
@@ -52,7 +51,6 @@ public class Nav {
                 }
                 if (Obstaclecheck) {
                     goalX = location.getX() + Tile.TILEWIDTH;
-                    controller.getTiles(location.getX(),location.getY()).removePlayer(player);
                 }
             } else if (direction == 2) {
             if (controller.getTiles((location.getX()) / Tile.TILEWIDTH, (location.getY() + Tile.TILEHEIGHT) / Tile.TILEHEIGHT).isUnWalkable) {
@@ -63,7 +61,6 @@ public class Nav {
             }
             if(Obstaclecheck) {
                 goalY = location.getY() + Tile.TILEHEIGHT;
-                controller.getTiles(location.getX(),location.getY()).removePlayer(player);
             }
             } else if(direction == 3) {
             if (controller.getTiles((location.getX() - Tile.TILEWIDTH) / Tile.TILEWIDTH, (location.getY()) / Tile.TILEHEIGHT).isUnWalkable) {
@@ -74,7 +71,6 @@ public class Nav {
             }
             if (Obstaclecheck) {
                 goalX = location.getX() - Tile.TILEWIDTH;
-                controller.getTiles(location.getX(),location.getY()).removePlayer(player);
             }
         }
         else if(direction == 4){
@@ -87,20 +83,18 @@ public class Nav {
             if(Obstaclecheck){
                 goalX = location.getX() + Tile.TILEWIDTH;
                 goalY = location.getY() - Tile.TILEHEIGHT;
-                controller.getTiles(location.getX(),location.getY()).removePlayer(player);
             }
         }
         else if(direction == 5){
-            if(controller.getTiles((location.getX() - Tile.TILEWIDTH)/ Tile.TILEWIDTH,(location.getY() - Tile.TILEHEIGHT) / Tile.TILEHEIGHT).isUnWalkable){
+            if(controller.getTiles((location.getX() + Tile.TILEWIDTH)/ Tile.TILEWIDTH,(location.getY() + Tile.TILEHEIGHT) / Tile.TILEHEIGHT).isUnWalkable){
                 Obstaclecheck = false;
             }
-            else if(location.getY() - Tile.TILEHEIGHT == -Tile.TILEHEIGHT || location.getX() - Tile.TILEWIDTH == -Tile.TILEWIDTH){
+            else if(location.getY() == (controller.getMap().getHeight() * Tile.TILEHEIGHT)/2 - Tile.TILEHEIGHT || location.getX() + Tile.TILEWIDTH == (controller.getMap().getWidth() * Tile.TILEWIDTH)/2){
                 Obstaclecheck = false;
             }
             if(Obstaclecheck){
-                goalX = location.getX() - Tile.TILEWIDTH;
-                goalY = location.getY() - Tile.TILEHEIGHT;
-                controller.getTiles(location.getX(),location.getY()).removePlayer(player);
+                goalX = location.getX() + Tile.TILEWIDTH;
+                goalY = location.getY() + Tile.TILEHEIGHT;
             }
         }
         else if(direction == 6){
@@ -113,29 +107,33 @@ public class Nav {
             if(Obstaclecheck){
                 goalX = location.getX() - Tile.TILEWIDTH;
                 goalY = location.getY() + Tile.TILEHEIGHT;
-                controller.getTiles(location.getX(),location.getY()).removePlayer(player);
             }
         }
         else if(direction == 7){
-            if(controller.getTiles((location.getX() + Tile.TILEWIDTH)/ Tile.TILEWIDTH,(location.getY() + Tile.TILEHEIGHT) / Tile.TILEHEIGHT).isUnWalkable){
+            if(controller.getTiles((location.getX() - Tile.TILEWIDTH)/ Tile.TILEWIDTH,(location.getY() - Tile.TILEHEIGHT) / Tile.TILEHEIGHT).isUnWalkable){
                 Obstaclecheck = false;
             }
-            else if(location.getY() == (controller.getMap().getHeight() * Tile.TILEHEIGHT)/2 - Tile.TILEHEIGHT || location.getX() + Tile.TILEWIDTH == (controller.getMap().getWidth() * Tile.TILEWIDTH)/2){
+            else if(location.getY() - Tile.TILEHEIGHT == -Tile.TILEHEIGHT || location.getX() - Tile.TILEWIDTH == -Tile.TILEWIDTH){
                 Obstaclecheck = false;
             }
             if(Obstaclecheck){
-                goalX = location.getX() + Tile.TILEWIDTH;
-                goalY = location.getY() + Tile.TILEHEIGHT;
-                controller.getTiles(location.getX(),location.getY()).removePlayer(player);
+                goalX = location.getX() - Tile.TILEWIDTH;
+                goalY = location.getY() - Tile.TILEHEIGHT;
             }
         }
         }
 
     public void move() {
         if(location.getY() == goalY && location.getX() == goalX) {
+            //System.out.println("Ive got a player");
+            if(isMoving) {
+                controller.getTiles(location.getX() / 64, location.getY() / 64).addPlayer(player);
+            }
             isMoving = false;
-            controller.getTiles(location.getX(),location.getY()).addPlayer(player);
+
         }else {
+            isMoving = true;
+            controller.getTiles(location.getX()/64, location.getY()/64).removePlayer();
             //TWEEN TO LOCATION
             if(location.getX() != goalX) {
                 if(location.getX() > goalX) {
@@ -152,5 +150,28 @@ public class Nav {
                 }
             }
         }
+    }
+
+    public boolean getIsmoving(){
+        return this.isMoving;
+    }
+    public void setIsmoving(boolean isMoving){
+        this.isMoving = isMoving;
+    }
+
+    public int getGoalX(){
+        return this.goalX;
+    }
+    public int getGoalY(){
+        return this.goalY;
+    }
+
+    public void setGoalX(int goalX){
+        this.goalX = goalX;
+
+    }
+
+    public void setGoalY(int goalY){
+        this.goalY = goalY;
     }
 }

@@ -22,7 +22,7 @@ public class Effect {
     }
 
     /*Constructor*/
-    Effect(StatStructure modification , long duration , String description){
+    public Effect(StatStructure modification , long duration , String description){
         this.modification = modification;
         this.duration = duration;
         this.description = description;

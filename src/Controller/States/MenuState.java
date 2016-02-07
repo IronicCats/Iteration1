@@ -19,15 +19,12 @@ public class MenuState extends State implements KeyListener {
 
         super(controller);
         menu = this;
-        View.view.addKeyListener(this);
         menuView = new MainMenu(width, height);
     }
 
     public void switchState(States stateNumber) {
         switch(stateNumber) {
             case Game:
-                View.view.removeKeyListener(this);
-                View.view.addKeyListener(GameState.game);
                 System.out.println("Create Game");
                 setState(GameState.game);
                 break;

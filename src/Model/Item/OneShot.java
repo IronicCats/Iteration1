@@ -14,7 +14,7 @@ public class OneShot extends Item {
 
 
     public OneShot(BufferedImage image, int id, Location location, ItemsEnum type, String name, String description, Effect[] effects, Requirements requirements) {
-        super(image, id, location, type, name, description, effects, requirements);
+        super(image, location, type, name, description, effects, requirements);
     }
 
     @Override
@@ -22,4 +22,12 @@ public class OneShot extends Item {
         player.getStats().applyEffect(this.getEffects());
         location = null;
     }
+
+    public String toString()
+    {
+        String string;
+        string = (this.location.getX() + " " + this.location.getY() +"\n");
+        return string;
+    }
+
 }
