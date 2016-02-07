@@ -24,7 +24,6 @@ import java.util.Objects;
 public class Player extends Entity {
     private Nav navigation;
     private Inventory inventory;
-    private int LastDirection = 0;
     public static final int DEFAULT_CREATURE_WIDTH = 52,
                             DEFAULT_CREATURE_HEIGHT = 52;
 
@@ -56,16 +55,16 @@ public class Player extends Entity {
     public void move(int x){
         if(!navigation.isMoving) {
             if (x == 0) {
-                LastDirection = 0;
+                location.setDir(0);
                 navigation.move(x);
             } else if (x == 1) {
-                LastDirection = 1;
+                location.setDir(1);
                 navigation.move(x);
             } else if (x == 2) {
-                LastDirection = 2;
+                location.setDir(2);
                 navigation.move(x);
             } else if (x == 3) {
-                LastDirection = 3;
+                location.setDir(3);
                 navigation.move(x);
             } else if (x == 4) {
                 navigation.move(x);
@@ -82,7 +81,7 @@ public class Player extends Entity {
 
     @Override
     public void render(Graphics g) {
-        if (LastDirection == 0) {
+        if (location.getDir() == 0) {
             g.drawImage(Assets.avatar,
                     (int) (getX() - controller.getCamera().getxOffset()) + Tile.TILEWIDTH / 2 - width / 2,
                     (int) (getY() - controller.getCamera().getyOffset()),
@@ -91,7 +90,7 @@ public class Player extends Entity {
                     null
             );
         }
-        else if(LastDirection == 1){
+        else if(location.getDir() == 1){
             g.drawImage(Assets.sword,
                     (int) (getX() - controller.getCamera().getxOffset()) + Tile.TILEWIDTH / 2 - width / 2,
                     (int) (getY() - controller.getCamera().getyOffset()),
@@ -100,7 +99,7 @@ public class Player extends Entity {
                     null
             );
         }
-        else if(LastDirection == 2){
+        else if(location.getDir() == 2){
             g.drawImage(Assets.sack,
                     (int) (getX() - controller.getCamera().getxOffset()) + Tile.TILEWIDTH / 2 - width / 2,
                     (int) (getY() - controller.getCamera().getyOffset()),
@@ -109,7 +108,7 @@ public class Player extends Entity {
                     null
             );
         }
-        else if(LastDirection == 3){
+        else if(location.getDir() == 3){
             g.drawImage(Assets.boots,
                     (int) (getX() - controller.getCamera().getxOffset()) + Tile.TILEWIDTH / 2 - width / 2,
                     (int) (getY() - controller.getCamera().getyOffset()),
@@ -137,13 +136,13 @@ public class Player extends Entity {
         //as a VERY possible possibility i can instead of getting an Object array, just get an array List of ints for location, stats, and maybe inventory
         saveFile.add(this.getLocation());
 
-        saveFile.add(this.getStats()); //okay as a note I should now be able to do getStats().(specific stat)
-        //getInventory().saveInventory(saveFile); //fixme
+        saveFile.add(this.getStats());
+        getInventory().saveInventory(saveFile); //fixme
 
 
     }
 
-    public void loadPlayer(ArrayList<Object> saveFile)
+    public void loadPlayer(ArrayList<Object> saveFile, int count)
     {
         Location l = new Location((int)saveFile.get(0),(int)saveFile.get(1),0);
         this.setLocation(l);
@@ -169,36 +168,9 @@ public class Player extends Entity {
         this.getStats().getDerivedStats().setDefensiveRating((int)saveFile.get(21));
         this.getStats().getDerivedStats().setArmorRating((int)saveFile.get(22));
 
-        System.out.println(this.getStats().toString());
+        count = 22;
 
-
-
-                /*
-                The Order it is read in.
-                public int getLivesLeft() { return primaryStats.getLivesLeft(); }
-                public int getBaseLives() { return primaryStats.getBaseLives(); }
-                 public int getStrength() { return primaryStats.getStrength(); }
-                public int getBaseStr() { return primaryStats.getBaseStr(); }
-                public int getAgility() { return primaryStats.getAgility(); }
-                public int getBaseAgi() { return primaryStats.getBaseAgi(); }
-    public int getIntellect() { return primaryStats.getIntellect(); }
-    public int getBaseIntel() { return primaryStats.getBaseIntel(); }
-    public int getHardiness() { return primaryStats.getHardiness(); }
-    public int getBaseHard() { return primaryStats.getBaseHard(); }
-    public int getExperience() { return primaryStats.getExperience(); }
-    public int getMovement() { return primaryStats.getMovement(); }
-    public int getBaseMovement() { return primaryStats.getBaseMovement(); }
-    public int getLevel() { return derivedStats.getLevel(); }
-    public int getLife() { return derivedStats.getLife(); }
-    public int getBaseLife() { return derivedStats.getBaseLife(); }
-    public int getMana() { return derivedStats.getMana(); }
-    public int getBaseMana() { return derivedStats.getBaseMana(); }
-    public int getOffensiveRating() { return derivedStats.getOffensiveRating(); }
-    public int getDefensiveRating() { return derivedStats.getDefensiveRating(); }
-    public int getArmorRating() { return derivedStats.getArmorRating(); }
-    public EquipmentStats getEquipmentStats() { return primaryStats.getEquipmentStats();
-
-                 */
+        this.getInventory().loadInventory(saveFile, count);
 
 
 

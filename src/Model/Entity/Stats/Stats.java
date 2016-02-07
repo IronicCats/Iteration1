@@ -1,5 +1,6 @@
 package Model.Entity.Stats;
 
+import Controller.States.KillState;
 import Controller.Controller;
 import Controller.States.MenuState;
 import Controller.States.State;
@@ -60,7 +61,7 @@ public class Stats {
         primaryStats.kill();
         derivedStats.kill();
         if(primaryStats.getLivesLeft() <= 0)
-            State.setState(MenuState.menu);
+            State.setState(KillState.state);
         else{
             System.out.println("player is dead");
             System.out.println(controller.getMap().getSpawn().getX());

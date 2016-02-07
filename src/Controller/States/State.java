@@ -4,7 +4,7 @@ import Controller.Controller;
 
 import java.awt.*;
 import java.awt.event.KeyListener;
-
+import View.View;
 /**
  * Created by jlkegley on 1/31/2016.
  */
@@ -15,7 +15,14 @@ public abstract class State implements KeyListener {
     private static State state = null;
 
     public static void setState(State thisState) {
+        View.view.removeKeyListener(state);
         state = thisState;
+        View.view.addKeyListener(state);
+    }
+
+    public static void setInitialState(State thisState) {
+        state = thisState;
+        View.view.addKeyListener(state);
     }
 
     public static State getState() {
