@@ -45,9 +45,9 @@ public class Player extends Entity {
     }
 
     public void PickUpItem(){
-        if(controller.getTiles(location.getX()/64,location.getY()/64).hasItem()) {
+        if(controller.getTiles(location.getX(),location.getY()).hasItem()) {
             System.out.println(location.getX()+"  "+location.getY());
-            inventory.store(controller.getTiles(location.getX() / 64, location.getY() / 64).getItems());
+            inventory.store(controller.getTiles(location.getX(), location.getY()).getItems());
         }
         System.out.println(location.getX()+"  "+location.getY());
     }

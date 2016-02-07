@@ -54,6 +54,7 @@ public class Map {
         String[] tokens = builder.toString().split("\\s+");
         width = parseInt(tokens[0]);
         height = parseInt(tokens[1]);
+        System.out.println(parseInt(tokens[2]));
         spawn = new Location(parseInt(tokens[2]), parseInt(tokens[3]), 2);
 
         tiles = new Tile[width][height];
