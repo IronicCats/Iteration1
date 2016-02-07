@@ -24,17 +24,18 @@ import java.io.IOException;
 public class Map {
 
     private Tile[][] tiles;
-    private Location spawn;
+    private Location MapStart;
     private int width;
-    private Item potion;
     private int height;
     private Controller controller;
     private PopulateItems populateItems = new PopulateItems();
     private Item[] items = populateItems.getItems();
+    private Location spawn;
 
-    public Map(Controller controller) {
+    public Map(Controller controller,Location spawn) {
         //System.out.println(items[0].getLocation().getY());
         this.controller = controller;
+        this.spawn = spawn;
         makeMap();
     }
 
@@ -55,7 +56,7 @@ public class Map {
         String[] tokens = builder.toString().split("\\s+");
         width = parseInt(tokens[0]);
         height = parseInt(tokens[1]);
-        spawn = new Location(parseInt(tokens[2]), parseInt(tokens[3]), 0);
+        MapStart = new Location(parseInt(tokens[2]), parseInt(tokens[3]), 0);
 
         tiles = new Tile[width][height];
         for(int y = 0; y < height; ++y) {
@@ -101,6 +102,7 @@ public class Map {
                 }
                 tiles[x][y] = tile;
                 for(int i = 0; i < items.length; i++) {
+                    System.out.println("this happened");
                     if(tile.getLocation().getX() == items[i].getLocation().getX() && tile.getLocation().getY() == items[i].getLocation().getY()){
                         tile.addItem(items[i]);
                         System.out.println(items[i].getType().toString());
@@ -146,6 +148,10 @@ public class Map {
                 );
             }
         }
+    }
+
+    public Location getSpawn(){
+        return spawn;
     }
 
     public int getWidth() {

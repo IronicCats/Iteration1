@@ -34,6 +34,9 @@ public class PopulateItems {
     private String description = ""; // storage variable for description read from file
     int x, y, type, stat; // used to store position, item type, and stats for armor and weapon
 
+    private WeaponEnum weaponType;
+    private ArmorEnum armorType;
+
     public PopulateItems(){
         readFile();
     }
@@ -121,7 +124,7 @@ public class PopulateItems {
     }
 
     private void generateEffects(){
-        effects.add(new Effect(statStruc, 0, "Description")); // create effects for 1 item. 5 max
+        effects.add(new Effect(statStruc, 0, description)); // create effects for 1 item. 5 max
     }
 
     private void generateItems(){ // create items
@@ -135,9 +138,9 @@ public class PopulateItems {
                     break;
             case 3: items.add(new Interactable(image, location, ItemsEnum.INTERACTABLE, name, description, effects.toArray(new Effect[effects.size()]), requirements));
                     break;
-            case 4: items.add(new Armor(image, location, ItemsEnum.ARMOR, name, description, effects.toArray(new Effect[effects.size()]), requirements, stat));
+            case 4: items.add(new Armor(image, location, ItemsEnum.ARMOR, name, description, effects.toArray(new Effect[effects.size()]), requirements, stat, armorType));
                     break;
-            case 5: items.add(new Weapon(image, location, ItemsEnum.WEAPON, name, description, effects.toArray(new Effect[effects.size()]), requirements, stat));
+            case 5: items.add(new Weapon(image, location, ItemsEnum.WEAPON, name, description, effects.toArray(new Effect[effects.size()]), requirements, stat, weaponType));
                     break;
             default:
                     break;
