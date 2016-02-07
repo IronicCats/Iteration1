@@ -1,5 +1,8 @@
 package Model.Item;
 
+import Model.Entity.Stats.Effect;
+import Model.Entity.Stats.StatStructure;
+import Model.Entity.Stats.StatsEnum;
 import Model.Location;
 import View.Graphics.Assets;
 
@@ -53,24 +56,36 @@ public class InventoryList {
 
     public static Useable createHealthPotion(Useable a)
     {
-        //image, location, type, name, description, effects, requirements
+        //image, location, type, name, description, effects
         //need to create effect
         Location l = new Location(-1,-1,0);
-        a = new Useable(Assets.potion,l, ItemsEnum.USEABLE,"Potion","This heals 3 health",null, null);
+        StatsEnum[] stats = new StatsEnum[]{StatsEnum.LIFE};
+        int[] val = {3};
+        StatStructure s = new StatStructure(stats, val);
+        Effect e = new Effect(s,0,"This heals 3 health");
+        Effect[] arrE = new Effect[]{e};
+        a = new Useable(Assets.potion,l, ItemsEnum.USEABLE,"Potion","This heals 3 health",arrE,null);
+
         return a;
     }
     public static Useable createManaPotion(Useable a)
     {
         //need to create effect
         Location l = new Location(-1,-1,0);
-        a = new Useable(Assets.manapotion,l, ItemsEnum.USEABLE,"Potion","This heals 3 health",null, null);
+        StatsEnum[] stats = new StatsEnum[]{StatsEnum.MANA};
+        int[] val = {3};
+        StatStructure s = new StatStructure(stats, val);
+        Effect e = new Effect(s,0,"This heals 3 mana");
+        Effect[] arrE = new Effect[]{e};
+        a = new Useable(Assets.manapotion,l, ItemsEnum.USEABLE,"Potion","This heals 3 mana",arrE,null);
+
         return a;
     }
     public static Weapon createSword(Weapon a)
     {
         //(image, location, type, name, description, effects, requirements, stat)
         Location l = new Location(-1,-1,0);
-        a = new Weapon(Assets.sword,l,ItemsEnum.WEAPON,"Sword","Sword with 5 attack",null,null,5, null);
+        a = new Weapon(Assets.sword,l,ItemsEnum.WEAPON,"Sword","Sword with 5 attack",null,null,5, WeaponEnum.Sword);
         return a;
 
     }
