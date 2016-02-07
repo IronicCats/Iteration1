@@ -66,9 +66,34 @@ public class Map {
                     case 0:
                         tile = new Grass(new Location(x, y, 0));
                         break;
-                    case 1:
-                        tile = new Mountain(new Location(x, y, 0));
+                    case 10:
+                        tile = new Mountain(Assets.mountain.get(0),new Location(x, y, 0));
                         break;
+                    case 11:
+                        tile = new Mountain(Assets.mountain.get(1), new Location(x, y, 0));
+                        break;
+                    case 12:
+                        tile = new Mountain(Assets.mountain.get(2), new Location(x, y, 0));
+                        break;
+                    case 13:
+                        tile = new Mountain(Assets.mountain.get(3), new Location(x, y, 0));
+                        break;
+                    case 14:
+                        tile = new Mountain(Assets.mountain.get(4), new Location(x, y, 0));
+                        break;
+                    case 15:
+                        tile = new Mountain(Assets.mountain.get(5), new Location(x, y, 0));
+                        break;
+                    case 16:
+                        tile = new Mountain(Assets.mountain.get(6), new Location(x, y, 0));
+                        break;
+                    case 17:
+                        tile = new Mountain(Assets.mountain.get(7), new Location(x, y, 0));
+                        break;
+                    case 18:
+                        tile = new Mountain(Assets.mountain.get(8), new Location(x, y, 0));
+                        break;
+
                     case 20:
                         tile = new Water(Assets.water.get(0),new Location(x, y, 0));
                         break;
@@ -97,12 +122,11 @@ public class Map {
                         tile = new Water(Assets.water.get(8),new Location(x, y, 0));
                         break;
                     default:
-                        tile = new Mountain(new Location(x, y, 0));
+                        tile = new Mountain(Assets.mountain.get(0), new Location(x, y, 0));
                         break;
                 }
                 tiles[x][y] = tile;
                 for(int i = 0; i < items.length; i++) {
-                    System.out.println("this happened");
                     if(tile.getLocation().getX() == items[i].getLocation().getX() && tile.getLocation().getY() == items[i].getLocation().getY()){
                         tile.addItem(items[i]);
                         System.out.println(items[i].getLocation().getX());
