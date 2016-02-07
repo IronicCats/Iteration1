@@ -45,6 +45,7 @@ public class Inventory {
 
     public void loadInventory(ArrayList<Object> saveFile, int count){
         Pack p = pack;
+       // Item a = new Item()
         //this.getPack().
     }
 

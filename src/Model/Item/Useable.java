@@ -17,7 +17,7 @@ public class Useable extends Takeable{
         super(image, id, location, type, name, description, effects, null);
     }
 
-    public Useable(BufferedImage image, int id, Location location, ItemsEnum type, String name, String description, Effect[] effects, Requirements requirements) {
+    public Useable(BufferedImage image,int id, Location location, ItemsEnum type, String name, String description, Effect[] effects, Requirements requirements) {
         super(image, id, location, type, name, description, effects, requirements);
     }
 
