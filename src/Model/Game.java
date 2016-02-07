@@ -27,8 +27,10 @@ public class Game implements Runnable {
     private State killState;
     private State inventoryState;
     private State gearState;
+    private State loadState;
     private State saveState;
     private State createState;
+
 
 
     private int width, height;
@@ -51,11 +53,10 @@ public class Game implements Runnable {
         killState = new KillState(controller, width, height);
         inventoryState = new InventoryState(controller, width, height);
         gearState = new GearState(controller, width, height);
+        loadState = new LoadState(controller, width, height);
         saveState = new SaveState(controller, width, height);
 
         State.setInitialState(menuState);
-
-        InventoryList.init();//added this to initialize all items
 
     }
 

@@ -89,8 +89,6 @@ public class GameState extends State {
     public void tick() {
 
         player.tick();
-        System.out.println("GameState: location=" + player.getX() + "," + player.getY());
-
     }
     public void render (Graphics g){
         camera.centerOnPlayer(player);
