@@ -13,7 +13,7 @@ public class InventoryList {
     static Useable healthPotion;
     static Useable manaPotion;
     static Armor helmet;
-    static Armor chestPiece;
+    static Armor chest;
     static Armor boots;
     static Armor gauntlets;
     static Weapon sword;
@@ -37,7 +37,7 @@ public class InventoryList {
         else if(itemname == manaPotion.getName()){a = manaPotion;}
         else if(itemname == sword.getName()){a=sword;}
         else if(itemname == helmet.getName()){a=helmet;}
-        else if(itemname == chestPiece.getName()){a=chestPiece;}
+        else if(itemname == chest.getName()){a=chest;}
         else if(itemname == boots.getName()){a=boots;}
         else if(itemname == gauntlets.getName()){a=gauntlets;}
         else if(itemname == accessoryA.getName()){a=accessoryA;}
@@ -83,8 +83,8 @@ public class InventoryList {
     public static Armor createChestPiece(Location l)
     {
         String description = "Chest piece: +4 armor rating";
-        chestPiece= new Armor(Assets.chestArmor,l,ItemsEnum.ARMOR,"Chest Piece",description,null,null,6,ArmorEnum.CHEST);
-        return chestPiece;
+        chest= new Armor(Assets.chestArmor,l,ItemsEnum.ARMOR,"Chest",description,null,null,6,ArmorEnum.CHEST);
+        return chest;
     }
     public static Armor createBoots(Location l)
     {
@@ -102,13 +102,13 @@ public class InventoryList {
     public static Armor createAccessoryA(Location l)
     {
         String description = "Accessory: +2 armor rating";
-        accessoryA = new Armor(Assets.accessory1,l,ItemsEnum.ARMOR,"Accessory A",description,null,null,2,ArmorEnum.ACCESSORY1);
+        accessoryA = new Armor(Assets.accessory1,l,ItemsEnum.ARMOR,"AccessoryA",description,null,null,2,ArmorEnum.ACCESSORY1);
         return accessoryA;
     }
     public static Armor createAccessoryB(Location l)
     {
         String description = "Accessory: +2 armor rating";
-        accessoryB = new Armor(Assets.accessory2,l,ItemsEnum.ARMOR,"Accessory B",description,null,null,2,ArmorEnum.ACCESSORY2);
+        accessoryB = new Armor(Assets.accessory2,l,ItemsEnum.ARMOR,"AccessoryB",description,null,null,2,ArmorEnum.ACCESSORY2);
         return accessoryB;
     }
     public static Armor createPants(Location l)
