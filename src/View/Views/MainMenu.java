@@ -32,6 +32,7 @@ public class MainMenu  {
             int totalWidth = (fm.stringWidth(menuItems[i]));
             int x = (width - totalWidth) / 2;
             int y = (height / 2) - 100 + 100 * i;
+
             if(i == currentItem){
                 g.setColor(Color.ORANGE);
                 g.fillRect(x, y - fm.getHeight() + (fm.getHeight() / 4), totalWidth, fm.getHeight() );
