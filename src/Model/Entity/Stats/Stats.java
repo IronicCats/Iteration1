@@ -63,7 +63,6 @@ public class Stats {
         if(primaryStats.getLivesLeft() <= 0)
             State.setState(KillState.state);
         else{
-            System.out.println("player is dead");
             System.out.println(controller.getMap().getSpawn().getX());
             System.out.println(controller.getMap().getSpawn().getY());
             controller.getPlayer().setX(controller.getMap().getSpawn().getX());
