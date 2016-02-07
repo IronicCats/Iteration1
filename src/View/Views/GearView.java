@@ -1,8 +1,12 @@
 package View.Views;
 
 import Controller.Controller;
+import Controller.States.GameState;
+import Controller.States.InventoryState;
+import Controller.States.States;
 
 import java.awt.*;
+import java.awt.font.GraphicAttribute;
 
 /**
  * Created by broskj on 2/7/16.
@@ -90,12 +94,12 @@ public class GearView {
         /*
         switch view to inventory view
          */
-
+        GameState.game.switchState(States.Inventory);
     } // end shift
     public int q() {
         /*
         unequip equipment
          */
-        return -1;
+        return slot;
     } // end q
 }

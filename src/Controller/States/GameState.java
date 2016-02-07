@@ -97,6 +97,7 @@ public class GameState extends State {
                 View.view.addKeyListener(GearState.gear);
                 System.out.println("Gear selection");
                 setState(GearState.gear);
+                break;
             case Pause:
                 View.view.removeKeyListener(MenuState.menu);
                 View.view.removeKeyListener(this);
