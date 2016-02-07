@@ -63,6 +63,10 @@ public abstract class Tile {
     public void addPlayer(Player player){
         this.hasPlayer = true;
         this.player = player;
+        if(HasAreaEffect)
+        {
+            player.getStats().applyEffect(tileAreaEffect.getEffect());
+        }
     }
 
     public void removePlayer(Player player){
