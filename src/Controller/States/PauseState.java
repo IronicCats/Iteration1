@@ -25,8 +25,6 @@ public class PauseState extends State {
     public void switchState(States stateNumber) {
         switch(stateNumber) {
             case Game:
-                View.view.removeKeyListener(this);
-                View.view.addKeyListener(GameState.game);
                 System.out.println("Resume Game");
                 setState(GameState.game);
                 break;
