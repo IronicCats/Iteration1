@@ -16,7 +16,7 @@ public class InputManager implements KeyListener{
         keys = new boolean[256];
     }
 
-    public void tick() {
+   /* public void tick() {
         N = keys[KeyEvent.VK_NUMPAD8] || keys[KeyEvent.VK_UP];
         NE = keys[KeyEvent.VK_NUMPAD9];
         E = keys[KeyEvent.VK_NUMPAD6]  || keys[KeyEvent.VK_RIGHT];;
@@ -26,7 +26,7 @@ public class InputManager implements KeyListener{
         W = keys[KeyEvent.VK_NUMPAD4] || keys[KeyEvent.VK_LEFT];;
         NW = keys[KeyEvent.VK_NUMPAD7];
         PickUpItem = keys[KeyEvent.VK_Q];
-    }
+    }*/
 
 
     @Override

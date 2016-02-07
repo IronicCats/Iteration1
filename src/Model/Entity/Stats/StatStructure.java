@@ -38,6 +38,7 @@ public class StatStructure {
     } // end removeStat
 
     public int getStat(StatsEnum stat) {
+        System.out.println(stat);
         return map.get(stat);
     } // end getStat
 

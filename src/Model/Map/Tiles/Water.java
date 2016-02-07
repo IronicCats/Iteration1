@@ -8,6 +8,6 @@ import View.Graphics.Assets;
  */
 public class Water extends Tile {
     public Water(Location location ) {
-        super(Assets.water, location, true,null);
+        super(Assets.water, location, true);
     }
 }

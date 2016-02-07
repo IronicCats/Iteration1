@@ -5,8 +5,8 @@ package Model.Entity.Occupation;
  */
 public class Summoner extends Occupation {
 
-    Summoner()
+    public Summoner()
     {
-        super("Summoner", "Specializes in spell casting", new int [] {});
+        super("Summoner", "Specializes in spell casting", new int [] {5,5,5,5,5,0,5});
     }
 }
