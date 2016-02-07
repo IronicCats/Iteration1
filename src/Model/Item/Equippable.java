@@ -12,19 +12,15 @@ import Model.Requirements;
  */
 public abstract class Equippable extends Takeable {
 
-    public boolean isEquipped;
     private int stat;
-
-
-
     ArmorEnum armorType;
 
-    public Equippable(BufferedImage image, int id, Location location, ItemsEnum type, String name, String description, Effect[] effects, Requirements requirements, int stat) {
-        super(image, id, location, type, name, description, effects, requirements);
-        this.stat=stat;
+    public Equippable(BufferedImage image, Location location, ItemsEnum type, String name, String description, Effect[] effects, Requirements requirements, int stat) {
+        super(image, location, type, name, description, effects, requirements);
     }
+
     public Equippable(Equippable old){
-        super(old.getImage(), old.getId(), old.getLocation(), old.getType(), old.getName(), old.getDescription(), old.getEffects(), old.getRequirements());
+        super(old.getImage(), old.getLocation(), old.getType(), old.getName(), old.getDescription(), old.getEffects(), old.getRequirements());
         this.stat=old.getStat();
         this.armorType=old.getArmorType();
     }

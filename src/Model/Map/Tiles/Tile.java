@@ -1,4 +1,7 @@
 package Model.Map.Tiles;
+import Model.Entity.Player;
+
+
 
 import Model.Entity.Player;
 
@@ -61,16 +64,15 @@ public abstract class Tile {
     }
 
     public void addPlayer(Player player){
-        this.hasPlayer = true;
         this.player = player;
+        System.out.println("Player is on tile" + location.getX() + " " + location.getY());
         if(HasAreaEffect)
         {
             player.getStats().applyEffect(tileAreaEffect.getEffect());
         }
     }
 
-    public void removePlayer(Player player){
-        this.hasPlayer = false;
+    public void removePlayer(){
         this.player = null;
     }
 
@@ -87,14 +89,14 @@ public abstract class Tile {
 
     }
 
+    public Location getLocation() {
+        return location;
+    }
 
     public void addAreaEffect(AreaEffect effect)
     {
         HasAreaEffect = true;
         tileAreaEffect = effect;
     }
-
-
-
-
 }
+

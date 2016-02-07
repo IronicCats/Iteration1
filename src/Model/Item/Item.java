@@ -2,6 +2,7 @@ package Model.Item;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+
 import Model.Entity.Stats.Effect;
 import Model.Location;
 import Model.Entity.Player;
@@ -18,17 +19,15 @@ public abstract class Item {
     private BufferedImage image; // image used for item
 
     private ItemsEnum type;
-    private static int id;
     private String name;
     private String description;
     protected Location location;
-    private Effect [] effects; // array of effects item can hold
+    private Effect []effects; // array of effects item can hold
     Requirements requirements; // used to tell if player can use/interact with item
 
     // constructor--> sets all variables except height and width
-    public Item(BufferedImage image, int id, Model.Location location, ItemsEnum type, String name, String description, Effect [] effects, Requirements requirements){
+    public Item(BufferedImage image, Model.Location location, ItemsEnum type, String name, String description, Effect []effects, Requirements requirements){
         this.image = image;
-        this.id = id;
         this.location = location;
         this.type = type;
         this.name = name;
@@ -46,8 +45,6 @@ public abstract class Item {
         return description;
     }
 
-    public int getId(){return id;}
-
     public Location getLocation(){return location;}
 
     public Effect[] getEffects() {
@@ -57,6 +54,7 @@ public abstract class Item {
     public ItemsEnum getType() {
         return type;
     }
+
     public BufferedImage getImage(){
         return image;
     }
