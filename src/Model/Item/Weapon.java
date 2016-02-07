@@ -13,8 +13,8 @@ import java.awt.image.BufferedImage;
 public class Weapon extends Equippable {
 
 
-    public Weapon(BufferedImage image, int id, Location location, ItemsEnum type, String name, String description, Effect[] effects, Requirements requirements, int stat) {
-        super(image, id, location, type, name, description, effects, requirements, stat);
+    public Weapon(BufferedImage image, Location location, ItemsEnum type, String name, String description, Effect[] effects, Requirements requirements, int stat) {
+        super(image, location, type, name, description, effects, requirements, stat);
     }
     public Weapon(Weapon old){
         super(old);
@@ -27,7 +27,9 @@ public class Weapon extends Equippable {
 
     public String toString(){
         String string;
-        string = (this.getId() + "\n" + this.getLocation().getX() + "\n" + this.getLocation().getY() + "\n");
+
+        string = (this.getName() + "\n");
+
         return string;
 
     }

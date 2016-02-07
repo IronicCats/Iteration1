@@ -45,7 +45,6 @@ public class StatusView {
 
 
         g.setColor(new Color(red, gr, blu));
-        System.out.println(playerStats[0]);
         g.fillRect(0, y - 10,  (int)((playerStats[0]/100.0) * (width/4)) , fm.getHeight() + 1);
 
         //SET HEALTH PERCENTAGE
@@ -91,6 +90,7 @@ public class StatusView {
         if(playerStats[0] <= 0) playerStats[0] = 0;
         //MANA
         playerStats[1] = (double)controller.getPlayer().getStats().getMana() / controller.getPlayer().getStats().getBaseMana() * 100.0;
+        if(playerStats[1] <= 0) playerStats[1] = 0;
         //LEVEL
         playerStats[2] = controller.getPlayer().getStats().getLevel();
         //LIVES LEFT
@@ -99,6 +99,7 @@ public class StatusView {
 
         //EXP
         playerStats[4] = controller.getPlayer().getStats().getExperience();
+        if(playerStats[4] <= 0) playerStats[4] = 0;
         //EXP TO LEVEL
         playerStats[5] = controller.getPlayer().getStats().getXpThreshold();
         //EXP divided by EXP TO LEVEL
