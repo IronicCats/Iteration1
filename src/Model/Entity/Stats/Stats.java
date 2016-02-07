@@ -1,5 +1,6 @@
 package Model.Entity.Stats;
 
+import Controller.Controller;
 import Controller.States.MenuState;
 import Controller.States.State;
 import Model.Entity.EquipmentStats;
@@ -15,6 +16,8 @@ public class Stats {
     private DerivedStats derivedStats;
     private ArrayList<Effect> effects;
     private ArrayList<Long> finishTimes;
+    public Controller controller;
+
 
     public Stats() {
         /*
@@ -27,7 +30,7 @@ public class Stats {
         this.finishTimes = new ArrayList<>();
     } // end constructor
 
-    public Stats(StatStructure ss) {
+    public Stats(StatStructure ss, Controller controller) {
         /*
         default constructor used in entity creation - must be initialized with a StatStructure
          */
@@ -35,6 +38,8 @@ public class Stats {
         derivedStats = new DerivedStats(primaryStats);
         effects = new ArrayList<>();
         finishTimes = new ArrayList<>();
+        this.controller = controller;
+       // this.controller = controller;
     } // end constructor
 
     public void levelUp() {
@@ -56,6 +61,14 @@ public class Stats {
         derivedStats.kill();
         if(primaryStats.getLivesLeft() <= 0)
             State.setState(MenuState.menu);
+        else{
+            System.out.println("player is dead");
+            System.out.println(controller.getMap().getSpawn().getX());
+            controller.getPlayer().setX(controller.getMap().getSpawn().getX()/64 + 64);
+            controller.getPlayer().setY(controller.getMap().getSpawn().getY()/64 + 64);
+            controller.getPlayer().getNavigation().setGoalX(controller.getMap().getSpawn().getX());
+            controller.getPlayer().getNavigation().setGoalY(controller.getMap().getSpawn().getY());
+        }
     } // end kill
 
     public void applyEffect(Effect e) {
