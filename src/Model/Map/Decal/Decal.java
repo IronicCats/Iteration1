@@ -34,6 +34,9 @@ public class Decal {
 
     public DecalEnum getType() {return type;}
 
+    public Location getLocation() {return location;}
+
+    //render methods
     public void render(Graphics g, int x, int y) { // render decal image
         g.drawImage(image, x + Tile.TILEWIDTH/2 - ITEMWIDTH/2 , y + Tile.TILEHEIGHT/2 - ITEMHEIGHT/2, ITEMWIDTH, ITEMHEIGHT, null);
     }

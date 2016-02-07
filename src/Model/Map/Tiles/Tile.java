@@ -4,6 +4,7 @@ import Model.Entity.Player;
 
 import Model.Item.Item;
 import Model.Location;
+import Model.Map.AreaEffect;
 import View.Graphics.Assets;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import sun.awt.image.BufferedImageDevice;
@@ -25,6 +26,7 @@ public abstract class Tile {
     private Player player;
     private int NumberofItems; // should be private
     public boolean HasItem;
+    public boolean HasAreaEffect;
 
     private Item items[] = new Item[10];
 
@@ -36,6 +38,7 @@ public abstract class Tile {
         this.isUnWalkable = isUnWalkable;
         //this.items = items;
         HasItem = false;
+        HasAreaEffect = false;
     }
 
     public void render(Graphics g,int x, int y) {
@@ -47,6 +50,7 @@ public abstract class Tile {
             g.drawImage(texture, x, y, TILEWIDTH, TILEHEIGHT, null); //TILEWIDTH and TILEHEIGHT
             items[NumberofItems - 1].render(g, x, y);
         }
+
     }
 
     public void addPlayer(Player player){
@@ -79,8 +83,5 @@ public abstract class Tile {
             }
         return null;
     }
-
-
     
-
 }
