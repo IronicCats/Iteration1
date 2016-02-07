@@ -8,6 +8,7 @@ import Model.Map.Tiles.Mountain;
 import Model.Map.Tiles.Tile;
 import Model.Map.Tiles.Water;
 import Model.Item.PopulateItems;
+import View.Graphics.Assets;
 
 import Controller.Controller;
 
@@ -67,8 +68,32 @@ public class Map {
                     case 1:
                         tile = new Mountain(new Location(x, y, 0));
                         break;
-                    case 2:
-                        tile = new Water(new Location(x, y, 0));
+                    case 20:
+                        tile = new Water(Assets.water.get(0),new Location(x, y, 0));
+                        break;
+                    case 21:
+                        tile = new Water(Assets.water.get(1),new Location(x, y, 0));
+                        break;
+                    case 22:
+                        tile = new Water(Assets.water.get(2),new Location(x, y, 0));
+                        break;
+                    case 23:
+                        tile = new Water(Assets.water.get(3),new Location(x, y, 0));
+                        break;
+                    case 24:
+                        tile = new Water(Assets.water.get(4),new Location(x, y, 0));
+                        break;
+                    case 25:
+                        tile = new Water(Assets.water.get(5),new Location(x, y, 0));
+                        break;
+                    case 26:
+                        tile = new Water(Assets.water.get(6),new Location(x, y, 0));
+                        break;
+                    case 27:
+                        tile = new Water(Assets.water.get(7),new Location(x, y, 0));
+                        break;
+                    case 28:
+                        tile = new Water(Assets.water.get(8),new Location(x, y, 0));
                         break;
                     default:
                         tile = new Mountain(new Location(x, y, 0));
