@@ -67,14 +67,9 @@ public class GameState extends State {
         player = new Player(controller,new Location(1 * (Tile.TILEWIDTH ),1 * (Tile.TILEHEIGHT), 0),inventory, occupation, stats);
 
         location = new Location(3,3,0);
-        for(int i = 0; i < 17; ++i) {
-            potion = new Useable(Assets.potion,1,location, ItemsEnum.USEABLE,"Potion","heals",null);
-            map.getTile(5,5).addItem(potion);
-        }
 
         areaEffect = new AreaEffect("Damage", "Damage", AreaEffectEnum.DAMAGE, new Location(7,8,0));
         map.getTile(2,2).addAreaEffect(areaEffect);
-
 
         controller.setPlayer(player);
         statusView = new StatusView(controller);
