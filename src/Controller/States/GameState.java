@@ -45,6 +45,7 @@ public class GameState extends State {
     private Inventory inventory;
     private Pack pack;
 
+
     private StatusView statusView;
     private Stats stats;
     private Occupation occupation;
@@ -69,7 +70,7 @@ public class GameState extends State {
         location = new Location(3,3,0);
 
         areaEffect = new AreaEffect("Damage", "Damage", AreaEffectEnum.DAMAGE, new Location(7,8,0));
-        map.getTile(5,2).addAreaEffect(areaEffect);
+        map.getTile(2,6).addAreaEffect(areaEffect);
 
         controller.setPlayer(player);
         statusView = new StatusView(controller);

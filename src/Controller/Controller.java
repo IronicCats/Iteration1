@@ -14,22 +14,12 @@ import View.View;
 public class Controller {
 
     private Game game;
-    private InputManager inputManager;
     private Camera camera;
     private Map map;
     private Player player;
 
-    public Controller(Game game, InputManager inputManager) {
+    public Controller(Game game) {
         this.game = game;
-        this.inputManager = inputManager;
-    }
-
-    public InputManager getInputManager() {
-        return inputManager;
-    }
-
-    public void setInputManager(InputManager inputManager) {
-        this.inputManager = inputManager;
     }
 
     public Game getGame() {
