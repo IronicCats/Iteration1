@@ -168,7 +168,7 @@ public class Player extends Entity {
         this.getStats().getDerivedStats().setDefensiveRating((int)saveFile.get(21));
         this.getStats().getDerivedStats().setArmorRating((int)saveFile.get(22));
 
-        count = 22;
+        count = 23;
 
         this.getInventory().loadInventory(saveFile, count);
 
@@ -176,6 +176,10 @@ public class Player extends Entity {
 
     }
     public Location getLocation(){
+        //System.out.println(location.getX());
+        //System.out.println(location.getY());
+        location.setX(getNavigation().location.getX());
+        location.setY(getNavigation().location.getY());
         return location;
     }
 }

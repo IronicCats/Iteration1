@@ -32,10 +32,9 @@ public class Map {
     private Item[] items = populateItems.getItems();
     private Location spawn;
 
-    public Map(Controller controller,Location spawn) {
+    public Map(Controller controller) {
         //System.out.println(items[0].getLocation().getY());
         this.controller = controller;
-        this.spawn = spawn;
         makeMap();
     }
 
@@ -56,7 +55,7 @@ public class Map {
         String[] tokens = builder.toString().split("\\s+");
         width = parseInt(tokens[0]);
         height = parseInt(tokens[1]);
-        MapStart = new Location(parseInt(tokens[2]), parseInt(tokens[3]), 0);
+        this.spawn = new Location(parseInt(tokens[2]), parseInt(tokens[3]), 2);
 
         tiles = new Tile[width][height];
         for(int y = 0; y < height; ++y) {
@@ -64,11 +63,61 @@ public class Map {
                 Tile tile;
                 switch (parseInt(tokens[(x + y * width) + 4])) {
                     case 0:
-                        tile = new Grass(new Location(x, y, 0));
+                        tile = new Grass(Assets.grass.get(0), new Location(x, y, 0));
                         break;
                     case 1:
-                        tile = new Mountain(new Location(x, y, 0));
+                        tile = new Grass(Assets.grass.get(1), new Location(x, y, 0));
                         break;
+                    case 2:
+                        tile = new Grass(Assets.grass.get(2), new Location(x, y, 0));
+                        break;
+                    case 3:
+                        tile = new Grass(Assets.grass.get(3), new Location(x, y, 0));
+                        break;
+                    case 4:
+                        tile = new Grass(Assets.grass.get(4), new Location(x, y, 0));
+                        break;
+                    case 5:
+                        tile = new Grass(Assets.grass.get(5), new Location(x, y, 0));
+                        break;
+                    case 6:
+                        tile = new Grass(Assets.grass.get(6), new Location(x, y, 0));
+                        break;
+                    case 7:
+                        tile = new Grass(Assets.grass.get(7), new Location(x, y, 0));
+                        break;
+                    case 8:
+                        tile = new Grass(Assets.grass.get(8), new Location(x, y, 0));
+                        break;
+
+                    case 10:
+                        tile = new Mountain(Assets.mountain.get(0),new Location(x, y, 0));
+                        break;
+                    case 11:
+                        tile = new Mountain(Assets.mountain.get(1), new Location(x, y, 0));
+                        break;
+                    case 12:
+                        tile = new Mountain(Assets.mountain.get(2), new Location(x, y, 0));
+                        break;
+                    case 13:
+                        tile = new Mountain(Assets.mountain.get(3), new Location(x, y, 0));
+                        break;
+                    case 14:
+                        tile = new Mountain(Assets.mountain.get(4), new Location(x, y, 0));
+                        break;
+                    case 15:
+                        tile = new Mountain(Assets.mountain.get(5), new Location(x, y, 0));
+                        break;
+                    case 16:
+                        tile = new Mountain(Assets.mountain.get(6), new Location(x, y, 0));
+                        break;
+                    case 17:
+                        tile = new Mountain(Assets.mountain.get(7), new Location(x, y, 0));
+                        break;
+                    case 18:
+                        tile = new Mountain(Assets.mountain.get(8), new Location(x, y, 0));
+                        break;
+
                     case 20:
                         tile = new Water(Assets.water.get(0),new Location(x, y, 0));
                         break;
@@ -97,7 +146,7 @@ public class Map {
                         tile = new Water(Assets.water.get(8),new Location(x, y, 0));
                         break;
                     default:
-                        tile = new Mountain(new Location(x, y, 0));
+                        tile = new Mountain(Assets.mountain.get(0), new Location(x, y, 0));
                         break;
                 }
                 tiles[x][y] = tile;
@@ -122,7 +171,7 @@ public class Map {
     }
 
     public Tile getTile(int x , int y) {
-        if(x < 0 || y < 0 || x >= width || y >= height){
+        if(x < 0 || y < 0 || x >= width  || y >= height){
             return tiles[2][2];
         }
         return tiles[x][y];
@@ -149,7 +198,10 @@ public class Map {
         }
     }
 
-    public Location getSpawn(){
+    public Location getSpawn()
+    {
+        spawn.setX(spawn.getX() * 64);
+        spawn.setY(spawn.getY() * 64);
         return spawn;
     }
 

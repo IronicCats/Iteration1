@@ -54,8 +54,7 @@ public class GameState extends State {
         super(controller);
         game = this;
 
-        location = new Location(4,5,0); //Location is in wrong coordinates it should be in pixels not in tiles
-
+        location = new Location(4,5,0); //Location is in wrong coordinates it should be in pixels not in tile
         statusView = new StatusView(controller);
 
     }
