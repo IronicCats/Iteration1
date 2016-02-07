@@ -89,15 +89,14 @@ public abstract class Tile {
 
     }
 
+    public Location getLocation() {
+        return location;
+    }
 
     public void addAreaEffect(AreaEffect effect)
     {
         HasAreaEffect = true;
         tileAreaEffect = effect;
     }
-
-
-
-
 }
 
