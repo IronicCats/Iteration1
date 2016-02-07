@@ -65,6 +65,7 @@ public abstract class Tile {
 
     public void addPlayer(Player player){
         this.player = player;
+        System.out.println("Player is on tile" + location.getX() + " " + location.getY());
         if(HasAreaEffect)
         {
             player.getStats().applyEffect(tileAreaEffect.getEffect());
