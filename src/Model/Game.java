@@ -9,7 +9,7 @@ import Controller.States.State;
 import Controller.States.KillState;
 import Controller.States.InventoryState;
 import Controller.States.GearState;
-
+import Model.Item.InventoryList;
 
 
 /**
@@ -52,6 +52,8 @@ public class Game implements Runnable {
         gearState = new GearState(controller, width, height);
 
         State.setInitialState(menuState);
+
+        InventoryList.init();
 
     }
 
