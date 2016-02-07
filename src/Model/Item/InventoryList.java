@@ -63,7 +63,7 @@ public class InventoryList {
     {
         //need to create effect
         Location l = new Location(-1,-1,0);
-        a = new Useable(Assets.potion,l, ItemsEnum.USEABLE,"Potion","This heals 3 health",null);
+        a = new Useable(Assets.manapotion,l, ItemsEnum.USEABLE,"Potion","This heals 3 health",null);
         return a;
     }
     public static Weapon createSword(Weapon a)
@@ -91,32 +91,32 @@ public class InventoryList {
     public static Armor createBoots(Armor a)
     {
         Location l = new Location(-1,-1,0);
-        a = new Armor(Assets.boots,l,ItemsEnum.ARMOR,"Boots","Boots with 3 defense",null,null,3);
+        a = new Armor(Assets.boots,l,ItemsEnum.ARMOR,"Boots","Boots with 3 defense",null,null,3,ArmorEnum.BOOTS);
         return a;
     }
     public static Armor createGauntlets(Armor a)
     {
         Location l = new Location(-1,-1,0);
-        a = new Armor(Assets.gauntlets,l,ItemsEnum.ARMOR,"Gauntlets","Gauntlets with 4 defense",null,null,4);
+        a = new Armor(Assets.glove,l,ItemsEnum.ARMOR,"Gauntlets","Gauntlets with 4 defense",null,null,4,ArmorEnum.GLOVES);
         return a;
 
     }
     public static Armor createAccessoryA(Armor a)
     {
         Location l = new Location(-1,-1,0);
-        a = new Armor(Assets.accessoryA,l,ItemsEnum.ARMOR,"Accessory A","Accessory with 2 defense",null,null,2);
+        a = new Armor(Assets.accessory1,l,ItemsEnum.ARMOR,"Accessory A","Accessory with 2 defense",null,null,2,ArmorEnum.ACCESSORY1);
         return a;
     }
     public static Armor createAccessoryB(Armor a)
     {
         Location l = new Location(-1,-1,0);
-        a = new Armor(Assets.accessoryB,l,ItemsEnum.ARMOR,"Accessory B","Accessory with 3 defense",null,null,3);
+        a = new Armor(Assets.accessory2,l,ItemsEnum.ARMOR,"Accessory B","Accessory with 3 defense",null,null,3,ArmorEnum.ACCESSORY2);
         return a;
     }
     public static Armor createPants(Armor a)
     {
         Location l = new Location(-1,-1,0);
-        a = new Armor(Assets.pants,l,ItemsEnum.ARMOR,"Pants","Pants with 3 defense",null,null,3);
+        a = new Armor(Assets.pants,l,ItemsEnum.ARMOR,"Pants","Pants with 3 defense",null,null,3,ArmorEnum.PANTS);
         return a;
     }
 

@@ -44,7 +44,7 @@ public class GameState extends State {
     private Location location;
     private Inventory inventory;
     private Pack pack;
-
+    private Location spawn = new Location(64,64,0);
 
     private StatusView statusView;
     private Stats stats;
@@ -54,7 +54,7 @@ public class GameState extends State {
     public GameState(Controller controller) {
         super(controller);
         game = this;
-        map = new Map(controller);
+        map = new Map(controller,spawn);
         controller.setMap(map);
         camera = new Camera(controller.getGame().getWidth(), controller.getGame().getHeight(),map);
         controller.setCamera(camera);
@@ -64,12 +64,13 @@ public class GameState extends State {
         pack = new Pack(10);
         inventory = new Inventory(controller);
         occupation = new Smasher();
-        stats = new Stats(occupation.getInitialStats());
-        player = new Player(controller,new Location(1 * (Tile.TILEWIDTH ),1 * (Tile.TILEHEIGHT), 0),inventory, occupation, stats);
+        stats = new Stats(occupation.getInitialStats(),controller);
+        player = new Player(controller,spawn,inventory, occupation, stats);
 
-        location = new Location(3,3,0);
+        location = new Location(3,3,0); //Location is in wrong coordinates it should be in pixels not in tiles
 
-        areaEffect = new AreaEffect("Damage", "Damage", AreaEffectEnum.DAMAGE, new Location(7,8,0));
+
+        areaEffect = new AreaEffect("Damage", "Damage", AreaEffectEnum.DAMAGE, new Location(7,8,0)); //Same with this one
 
         map.getTile(2,6).addAreaEffect(areaEffect);
 
@@ -87,12 +88,13 @@ public class GameState extends State {
                 setState(GameState.game);
                 break;
             case Inventory:
-                System.out.println("Inventory Selection ");
-                break;
-            case Pause:
                 View.view.removeKeyListener(MenuState.menu);
                 View.view.removeKeyListener(this);
-                View.view.addKeyListener(PauseState.pause);
+                View.view.addKeyListener(InventoryState.inventory);
+                System.out.println("Inventory Selection ");
+                setState(InventoryState.inventory);
+                break;
+            case Pause:
                 System.out.println("Pause Game");
                 //Add the Load Game state switch here
                 setState(PauseState.pause);
