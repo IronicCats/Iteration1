@@ -146,7 +146,7 @@ public class Map {
     }
 
     public Tile getTile(int x , int y) {
-        if(x < 0 || y < 0 || x >= width || y >= height){
+        if(x < 0 || y < 0 || x >= width  || y >= height){
             return tiles[2][2];
         }
         return tiles[x][y];

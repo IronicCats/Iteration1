@@ -176,6 +176,10 @@ public class Player extends Entity {
 
     }
     public Location getLocation(){
+        //System.out.println(location.getX());
+        //System.out.println(location.getY());
+        location.setX(getNavigation().location.getX());
+        location.setY(getNavigation().location.getY());
         return location;
     }
 }
