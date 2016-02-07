@@ -35,7 +35,9 @@ public class Armor extends Equippable{
 
     public String toString(){
         String string;
-        string = (this.getName()+ "\n");
+
+        string = (name + "\n");
+
         return string;
     }
 

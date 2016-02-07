@@ -1,10 +1,13 @@
 package View.Views;
 
 import Controller.Controller;
-
+import Model.Item.Item;
+import Model.Location;
+import Model.Map.Tiles.Tile;
 
 
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * Created by jlkegley on 2/5/2016.
@@ -82,6 +85,8 @@ public class StatusView {
         g.setColor(Color.YELLOW);
         g.fillRect(barStartX, y + 5, width, 5);
 
+        renderItemsLists(g);
+
     }
 
     public double[] calculatePercentages() {
@@ -110,6 +115,19 @@ public class StatusView {
 
     }
 
+    public void renderOptions(Graphics g) {
 
+    }
+
+    public void renderItemsLists(Graphics g) {
+        Tile curTile = controller.getTiles((int)(controller.getPlayer().getLocation().getX()/64), (int)(controller.getPlayer().getLocation().getY()/64));
+        if(curTile.hasItem()) {
+            ArrayList<Item> items = controller.getTiles((int)(controller.getPlayer().getLocation().getX()/64), (int)(controller.getPlayer().getLocation().getY()/64)).getItems();
+            g.setColor(Color.CYAN);
+            String itemname = curTile.getItems().toString();
+
+            g.drawString(itemname, width/2, height/2);
+        }
+    }
 
 }

@@ -89,7 +89,6 @@ public class GameState extends State {
     public void tick() {
 
         player.tick();
-
     }
     public void render (Graphics g){
         camera.centerOnPlayer(player);
