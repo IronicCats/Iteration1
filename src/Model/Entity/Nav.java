@@ -126,6 +126,7 @@ public class Nav {
     public void move() {
         if(location.getY() == goalY && location.getX() == goalX) {
             isMoving = false;
+            //System.out.println("Ive got a player");
             controller.getTiles(location.getX(),location.getY()).addPlayer(player);
         }else {
             isMoving = true;

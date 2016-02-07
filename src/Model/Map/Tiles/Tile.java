@@ -1,9 +1,11 @@
+
 package Model.Map.Tiles;
 
 import Model.Entity.Player;
 
 import Model.Item.Item;
 import Model.Location;
+import Model.Map.AreaEffect;
 import View.Graphics.Assets;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import sun.awt.image.BufferedImageDevice;
@@ -20,18 +22,21 @@ public abstract class Tile {
     //Same as Assets.width, Assets.height
     public static final int TILEWIDTH = 64, TILEHEIGHT = 64;
 
+    public boolean hasPlayer;
     private Location location;
     private BufferedImage texture;
     public boolean isUnWalkable;
     private Player player;
 
     private ArrayList<Item> items = new ArrayList<>();
+    private AreaEffect tileAreaEffect;
+    private boolean HasAreaEffect;
 
     public  Tile(BufferedImage texture, Location location, boolean isUnWalkable) {
         this.location = location;
+        HasAreaEffect = false;
         this.texture = texture;
         this.isUnWalkable = isUnWalkable;
-
         this.items = new ArrayList<>();
 
     }
@@ -41,8 +46,6 @@ public abstract class Tile {
         if(items.size() == 0) {
             g.drawImage(texture, x, y, TILEWIDTH, TILEHEIGHT, null); //TILEWIDTH and TILEHEIGHT
         }
-
-
         else if(items.size() == 1) {
             g.drawImage(texture, x, y, TILEWIDTH, TILEHEIGHT, null); //TILEWIDTH and TILEHEIGHT
             items.get(0).render(g, x, y);
@@ -51,14 +54,18 @@ public abstract class Tile {
             g.drawImage(texture, x, y, TILEWIDTH, TILEHEIGHT, null);
             g.drawImage(Assets.sack, x + Tile.TILEWIDTH/2 - Item.ITEMWIDTH/2 , y + Tile.TILEHEIGHT/2 - Item.ITEMHEIGHT/2, Item.ITEMWIDTH, Item.ITEMHEIGHT, null);
         }
+
+        if (HasAreaEffect) {
+            tileAreaEffect.render(g,x,y);
+        }
+
     }
 
     public void addPlayer(Player player){
-        System.out.println("I have a player!");
         this.player = player;
     }
 
-    public void removePlayer(){
+    public void removePlayer(Player player){
         this.player = null;
     }
 
@@ -66,11 +73,6 @@ public abstract class Tile {
         items.add(item);
     }
 
-
-    public boolean HasItem(){
-        return items.size() > 0;
-    }
-    
     public ArrayList<Item> getItems() {
         return items;
     }
@@ -80,4 +82,15 @@ public abstract class Tile {
 
     }
 
+
+    public void addAreaEffect(AreaEffect effect)
+    {
+        HasAreaEffect = true;
+        tileAreaEffect = effect;
+    }
+
+
+
+
 }
+
