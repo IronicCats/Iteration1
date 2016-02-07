@@ -17,8 +17,8 @@ public class CreateMenu {
 
         int width, height;
 
-        private String[] menuItems = {"Summoner" , "Smasher" , "Sneak"};
-        private States[] menuStates = {States.Game};  // Possibly States.MainMenu?
+        private String[] menuItems = {"Summoner" , "Smasher" , "Sneak" , "Back"};
+        private States[] menuStates = {States.Game,States.Game, States.Game, States.Menu};
 
         private int currentItem = 0;
         public CreateMenu(int width, int height) {
@@ -64,6 +64,9 @@ public class CreateMenu {
         public States getSelection() {
             return menuStates[currentItem];
         }
+
+        //Gets the Occupation a user selected (0 = Summoner, 1 = smasher, 2 = sneak)
+        public int getOccSelection() { return currentItem;}
 
 }
 
