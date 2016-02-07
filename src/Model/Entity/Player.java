@@ -13,6 +13,7 @@ import View.Graphics.Assets;
 
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.util.ArrayList;
@@ -81,42 +82,26 @@ public class Player extends Entity {
 
     @Override
     public void render(Graphics g) {
+        BufferedImage facing = Assets.avatarFacingDown;
         if (location.getDir() == 0) {
-            g.drawImage(Assets.avatarFacingUp,
-                    (int) (getX() - controller.getCamera().getxOffset()) + Tile.TILEWIDTH / 2 - width / 2,
-                    (int) (getY() - controller.getCamera().getyOffset()),
-                    width,
-                    height,
-                    null
-            );
+            facing = Assets.avatarFacingUp;
         }
         else if(location.getDir() == 1){
-            g.drawImage(Assets.avatarFacingRight,
-                    (int) (getX() - controller.getCamera().getxOffset()) + Tile.TILEWIDTH / 2 - width / 2,
-                    (int) (getY() - controller.getCamera().getyOffset()),
-                    width,
-                    height,
-                    null
-            );
+            facing = Assets.avatarFacingRight;
         }
         else if(location.getDir() == 2){
-            g.drawImage(Assets.avatarFacingDown,
-                    (int) (getX() - controller.getCamera().getxOffset()) + Tile.TILEWIDTH / 2 - width / 2,
-                    (int) (getY() - controller.getCamera().getyOffset()),
-                    width,
-                    height,
-                    null
-            );
+            facing = Assets.avatarFacingDown;
         }
         else if(location.getDir() == 3){
-            g.drawImage(Assets.avatarFacingLeft,
-                    (int) (getX() - controller.getCamera().getxOffset()) + Tile.TILEWIDTH / 2 - width / 2,
-                    (int) (getY() - controller.getCamera().getyOffset()),
-                    width,
-                    height,
-                    null
-            );
+            facing = Assets.avatarFacingLeft;
         }
+        g.drawImage(facing,
+                (int) (location.getPixelX() - controller.getCamera().getxOffset()) + Tile.TILEWIDTH / 2 - width / 2,
+                (int) (location.getPixelY() - controller.getCamera().getyOffset()),
+                width,
+                height,
+                null
+        );
 
     }
 
@@ -175,11 +160,11 @@ public class Player extends Entity {
 
 
     }
-    public Location getLocation(){
+    /*public Location getLocation(){
         //System.out.println(location.getX());
         //System.out.println(location.getY());
         location.setX(getNavigation().location.getX());
         location.setY(getNavigation().location.getY());
         return location;
-    }
+    }*/
 }

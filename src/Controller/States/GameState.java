@@ -42,8 +42,6 @@ public class GameState extends State {
     private Camera camera;
     private Useable potion;
     private Location location;
-
-    private Location spawn = new Location(64,64,0);
     private Player player;
     private StatusView statusView;
     private AreaEffect areaEffect;

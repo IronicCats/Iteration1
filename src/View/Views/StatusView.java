@@ -118,8 +118,8 @@ public class StatusView {
     }
 
     public void renderItemsLists(Graphics g) {
-        if(controller.getTiles((int)(controller.getPlayer().getLocation().getX()/64), (int)(controller.getPlayer().getLocation().getY()/64)).hasItem()) {
-            ArrayList<Item> items = controller.getTiles((int)(controller.getPlayer().getLocation().getX()/64), (int)(controller.getPlayer().getLocation().getY()/64)).getItems();
+        if(controller.getTiles((int)(controller.getPlayer().getLocation().getX()), (int)(controller.getPlayer().getLocation().getY())).hasItem()) {
+            ArrayList<Item> items = controller.getTiles((int)(controller.getPlayer().getLocation().getX()), (int)(controller.getPlayer().getLocation().getY())).getItems();
             g.setColor(Color.CYAN);
             g.drawString("Has Items", width/2, height/2);
         }

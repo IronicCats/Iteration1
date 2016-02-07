@@ -32,7 +32,6 @@ public class CreateState extends State implements KeyListener {
     private Occupation occupation;
     private Stats stats;
     private Player player;
-    private Location spawn = new Location(64,64,0);
 
     //Map/Camera Variabes
     private Map map;
@@ -72,13 +71,14 @@ public class CreateState extends State implements KeyListener {
 
         //Create player with appropriate stats
         stats = new Stats(occupation.getInitialStats(),controller);
-        player = new Player(controller,spawn,inventory, occupation, stats);
+        System.out.println(map.getSpawn().getX());
+        System.out.println(map.getSpawn().getY());
+        player = new Player(controller,map.getSpawn(),inventory, occupation, stats);
 
         //Controller updates
         controller.setPlayer(player);
         controller.setMap(map);
         controller.setCamera(camera);
-
         //Make sure GameState updates.
         GameState.game.init();
 

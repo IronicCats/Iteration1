@@ -200,8 +200,6 @@ public class Map {
 
     public Location getSpawn()
     {
-        //System.out.println(spawn.getX());
-        //System.out.println(spawn.getY());
         return spawn;
     }
 
