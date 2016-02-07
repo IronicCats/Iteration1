@@ -7,9 +7,6 @@ import java.util.ArrayList;
 
 import Model.Entity.Stats.StatStructure;
 import Model.Entity.Stats.StatsEnum;
-import Model.Item.Item;
-import Model.Item.ItemsEnum;
-import Model.Item.OneShot;
 import View.Graphics.Assets;
 import Model.Entity.Stats.Effect;
 import Model.Location;
@@ -33,10 +30,9 @@ public class PopulateItems {
     private Location location;
     private Requirements requirements = new Requirements(0); // test requirements
 
-    private String name;
-    private String description = "";
-    int x;
-    int y;
+    private String name; // storage variable for name read from file
+    private String description = ""; // storage variable for description read from file
+    int x, y, type, stat; // used to store position, item type, and stats for armor and weapon
 
     public PopulateItems(){
         readFile();
@@ -58,17 +54,21 @@ public class PopulateItems {
                 }
             }
 
-            x = scan.nextInt();
-            y = scan.nextInt();
+            x = scan.nextInt(); // read x postion
+            y = scan.nextInt(); // read y postion
 
-            name = scan.next();
+            name = scan.next(); // read name
 
-            if (scan.hasNext("BD")) {
+            if (scan.hasNext("BD")) { // read in description
                 while (!scan.hasNext("ED")) {
                     description.concat(scan.next() + "");
                 }
                 scan.next(); // move out of description
             }
+
+            type = scan.nextInt(); // read in int representing type
+
+            stat = scan.nextInt();
 
             if (scan.hasNext("SA")) { // start of array containing StatStructure code
                 scan.next(); // move to first string in array
@@ -126,7 +126,22 @@ public class PopulateItems {
 
     private void generateItems(){ // create items
         location = new Location(x,y,0);
-        items.add(new OneShot(image, 0, location, ItemsEnum.ONESHOT, name, description, effects.toArray(new Effect[effects.size()]), requirements));
+        switch(type){
+            case 0: items.add(new OneShot(image, location, ItemsEnum.ONESHOT, name, description, effects.toArray(new Effect[effects.size()]), requirements));
+                    break;
+            case 1: items.add(new Useable(image, location, ItemsEnum.ONESHOT, name, description, effects.toArray(new Effect[effects.size()]), requirements));
+                    break;
+            case 2: items.add(new Obstacle(image, location, ItemsEnum.ONESHOT, name, description, effects.toArray(new Effect[effects.size()]), requirements));
+                    break;
+            case 3: items.add(new Interactable(image, location, ItemsEnum.ONESHOT, name, description, effects.toArray(new Effect[effects.size()]), requirements));
+                    break;
+            case 4: items.add(new Armor(image, location, ItemsEnum.ONESHOT, name, description, effects.toArray(new Effect[effects.size()]), requirements, stat));
+                    break;
+            case 5: items.add(new Weapon(image, location, ItemsEnum.ONESHOT, name, description, effects.toArray(new Effect[effects.size()]), requirements, stat));
+                    break;
+            default:
+                    break;
+        }
     }
 
     public Item[] getItems(){
