@@ -28,6 +28,7 @@ public class Game implements Runnable {
     private State inventoryState;
     private State gearState;
     private State saveState;
+    private State createState;
 
 
     private int width, height;
@@ -43,6 +44,7 @@ public class Game implements Runnable {
     public void init() {
         //START STATES HERE
         controller = new Controller(this);
+        createState = new CreateState(controller, width, height);
         menuState = new MenuState(controller, width, height);
         gameState = new GameState(controller);
         pauseState = new PauseState(controller, width, height);
