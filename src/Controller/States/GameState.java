@@ -91,6 +91,12 @@ public class GameState extends State {
                 System.out.println("Inventory Selection ");
                 setState(InventoryState.inventory);
                 break;
+            case Gear:
+                View.view.removeKeyListener(MenuState.menu);
+                View.view.removeKeyListener(this);
+                View.view.addKeyListener(GearState.gear);
+                System.out.println("Gear selection");
+                setState(GearState.gear);
             case Pause:
                 View.view.removeKeyListener(MenuState.menu);
                 View.view.removeKeyListener(this);
@@ -133,6 +139,10 @@ public class GameState extends State {
 
         if(e.getKeyCode() == KeyEvent.VK_I) {
             switchState(States.Inventory);
+        }
+
+        if(e.getKeyCode() == KeyEvent.VK_G) {
+            switchState(States.Gear);
         }
 
         if(e.getKeyCode() == KeyEvent.VK_Q){
