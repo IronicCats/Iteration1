@@ -126,7 +126,7 @@ public class PopulateItems {
 
     private void generateItems(){ // create items
         location = new Location(x,y,0);
-        items.add(new OneShot(image, 0, location, ItemsEnum.ONESHOT, name, description, effects.toArray(new Effect[effects.size()]), requirements));
+        items.add(new Useable(image, location, ItemsEnum.USEABLE, name, description, effects.toArray(new Effect[effects.size()]), requirements));
     }
 
     public Item[] getItems(){
