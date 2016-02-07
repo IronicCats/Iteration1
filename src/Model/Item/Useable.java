@@ -24,7 +24,8 @@ public class Useable extends Takeable{
     public String toString()
     {
         String string;
-        string = (this.getLocation().getX() + " " + this.getLocation().getY()+  "\n");
+        string = (this.getName() + "\n");
+
         return string;
     }
 }
