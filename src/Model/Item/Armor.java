@@ -24,4 +24,11 @@ public class Armor extends Equippable{
     public void onInteract(Player player) {
         // if armor is hit?
     }
+
+    public String toString(){
+        String string;
+        string = (this.getId() + " " + this.getLocation().getX() + " " + this.getLocation().getY() + "\n");
+        return string;
+
+    }
 }

@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 /**
  * Created by Wimberley on 2/3/16.
  */
+
 public abstract class Takeable extends Item{
 
     protected Location location;
@@ -22,4 +23,7 @@ public abstract class Takeable extends Item{
     public void setLocation(Location location) {
         this.location = location;
     }
+
+    public abstract String toString();
+
 }
