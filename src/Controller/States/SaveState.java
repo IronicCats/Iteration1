@@ -15,9 +15,6 @@ import Model.Entity.Player;
 import View.Views.MainMenu;
 import View.Views.SaveScreen;
 
-/**
- * Created by Andy on 2/4/2016.
- */
 public class SaveState extends State {
     public SaveScreen saveScreen;
     public static SaveState save;
@@ -25,12 +22,15 @@ public class SaveState extends State {
     static ArrayList<Object> savefile = new ArrayList<Object>();
     static BufferedWriter outputWriter;
     private Player player;
+    private StringBuilder saveGameName = new StringBuilder();
 
     public SaveState(Controller controller, int width, int height) {
         super(controller);
         save = this;
         saveScreen = new SaveScreen(width, height);
         player = controller.getPlayer();
+        saveGameName.append("gameName");
+        saveScreen.setCurrentSaveGameName(saveGameName.toString());
         //INITALIZE CANVAS TO HAVE BUTTONS init();
     }
 
@@ -43,12 +43,9 @@ public class SaveState extends State {
     }
 
 
-
     public static void writeFile(Player player, String filepath) {
         File outputFile;
         //BufferedWriter outputWriter;
-
-
 
         try {
             outputFile = new File(filepath);
@@ -71,8 +68,10 @@ public class SaveState extends State {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
 
-
+    public String getSaveFilePath(String saveFileName) {
+        return (System.getProperty("user.dir") + File.separatorChar + "res" + File.separatorChar + "saveFiles" + File.separatorChar + saveFileName + ".sav");
     }
 
     @Override
@@ -82,7 +81,22 @@ public class SaveState extends State {
 
     @Override
     public void keyPressed(KeyEvent e) {
-
+        if(e.getKeyCode() >= KeyEvent.VK_A && e.getKeyCode() <= KeyEvent.VK_Z) {
+            saveGameName = saveGameName.append(e.getKeyChar());
+            saveScreen.setCurrentSaveGameName(saveGameName.toString());
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
+            if(saveGameName.length() > 0) {
+                saveGameName.deleteCharAt(saveGameName.length() - 1);
+            }
+            saveScreen.setCurrentSaveGameName(saveGameName.toString());
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+            System.out.println("Saving Game...");
+            writeFile(player, getSaveFilePath(saveGameName.toString()));
+            System.out.println("Saving Done.");
+            State.setState(GameState.game);
+        }
     }
 
     @Override
