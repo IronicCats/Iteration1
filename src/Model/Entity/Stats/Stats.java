@@ -49,8 +49,13 @@ public class Stats {
             State.setState(MenuState.menu);
         else{
             System.out.println("player is dead");
-            controller.getPlayer().getLocation().setX(controller.getMap().getSpawn().getX());
-            controller.getPlayer().getLocation().setY(controller.getMap().getSpawn().getY());
+            System.out.println(controller.getMap().getSpawn().getX());
+            controller.getPlayer().setX(controller.getMap().getSpawn().getX()/64 + 64);
+            controller.getPlayer().setY(controller.getMap().getSpawn().getY()/64 + 64);
+            controller.getPlayer().getNavigation().setGoalX(controller.getMap().getSpawn().getX());
+            controller.getPlayer().getNavigation().setGoalY(controller.getMap().getSpawn().getY());
+
+
         }
     } // end kill
 
