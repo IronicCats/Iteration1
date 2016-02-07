@@ -45,7 +45,12 @@ public class Inventory {
 
     public void loadInventory(ArrayList<Object> saveFile, int count){
         Pack p = pack;
-       // Item a = new Item()
+       Item a = InventoryList.checkItem((String)saveFile.get(count));
+        //I NEED THE PACK SIZE TO BE SAVED IN SAVE BEFORE THE NAMES START GOING OK
+        //THEN FOR LOOP THROUGH IT IN ORDER TO KNOW HOW LONG IT IS GOING
+        //ADD IT TO THE PACK IN THE LOOP
+        //OKAY
+
         //this.getPack().
     }
 
