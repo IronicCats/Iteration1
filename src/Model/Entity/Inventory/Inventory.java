@@ -7,6 +7,8 @@ import Model.Item.Equippable;
 import Model.Item.Item;
 import Model.Item.Takeable;
 import Model.Item.*;
+import View.Graphics.Assets;
+
 import javax.lang.model.type.NullType;
 import java.awt.*;
 import java.util.ArrayList;
@@ -131,8 +133,11 @@ public class Inventory {
 
     }
 
-    public void render(Graphics g) {
-
+    public void render(int index,Graphics g,int x, int y) {
+        if(pack.items[index]==null){
+        g.drawImage(Assets.emptyInv,x,y,64,64,null);
+            //System.out.print(index);
+        }
     }
 
     public void getInput() {

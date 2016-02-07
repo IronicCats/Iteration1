@@ -18,7 +18,7 @@ public class InventoryState extends State {
     public InventoryState(Controller controller, int width, int height){
         super(controller);
         inventory=this;
-        inv=new InventoryView(width, height);
+        inv=new InventoryView(controller, width, height);
     }
     public void switchState() {
                 View.view.removeKeyListener(this);

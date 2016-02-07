@@ -15,6 +15,7 @@ public class Assets {
     public static BufferedImage avatar;
     public static BufferedImage potion;
     public static BufferedImage sack;
+    public static BufferedImage emptyInv;
 
     public static void init() {
         SpriteSheet grassSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/GrassTile.jpg"));
@@ -23,6 +24,7 @@ public class Assets {
         SpriteSheet avatarSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/SwordSprite.png"));
         SpriteSheet potionSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/PotionSprite.png"));
         SpriteSheet sackSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/ItemBag.png"));
+        SpriteSheet emptyInvSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/InventoryBlock.png"));
 
         avatar = avatarSheet.crop(0, 0, width, height);
         grass = grassSheet.crop(0, 0, width, height);
@@ -30,7 +32,7 @@ public class Assets {
         water = waterSheet.crop(0, 0, width, height);
         potion = potionSheet.crop(0,0,width,height);
         sack = sackSheet.crop(0,0,width,height);
-
+        emptyInv = emptyInvSheet.crop(0,0,width,height);
     }
 
 
