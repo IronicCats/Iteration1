@@ -133,7 +133,7 @@ public class Nav {
 
         }else {
             isMoving = true;
-            controller.getTiles(location.getX(), location.getY()).removePlayer();
+            controller.getTiles(location.getX()/64, location.getY()/64).removePlayer();
             //TWEEN TO LOCATION
             if(location.getX() != goalX) {
                 if(location.getX() > goalX) {

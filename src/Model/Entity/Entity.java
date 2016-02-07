@@ -19,8 +19,6 @@ import java.awt.*;
 
 public abstract class Entity {
 
-    public static final float DEFAULT_SPEED = 3.0f;
-
     private Stats stats;
     private Occupation occupation;
     protected Location location;
@@ -30,11 +28,9 @@ public abstract class Entity {
 
 
     protected float speed;
-    protected float xVelocity, yVelocity;
     protected Controller controller;
     protected int width, height;
     protected Rectangle bounds;
-    protected Pack pack;
 
     public Entity(Controller controller, Location location, int width, int height, Occupation o, Stats stats) {
         this.location = location;
