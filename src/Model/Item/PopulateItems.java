@@ -129,15 +129,15 @@ public class PopulateItems {
         switch(type){
             case 0: items.add(new OneShot(image, location, ItemsEnum.ONESHOT, name, description, effects.toArray(new Effect[effects.size()]), requirements));
                     break;
-            case 1: items.add(new Useable(image, location, ItemsEnum.ONESHOT, name, description, effects.toArray(new Effect[effects.size()]), requirements));
+            case 1: items.add(new Useable(image, location, ItemsEnum.USEABLE, name, description, effects.toArray(new Effect[effects.size()]), requirements));
                     break;
-            case 2: items.add(new Obstacle(image, location, ItemsEnum.ONESHOT, name, description, effects.toArray(new Effect[effects.size()]), requirements));
+            case 2: items.add(new Obstacle(image, location, ItemsEnum.OBSTACLE, name, description, effects.toArray(new Effect[effects.size()]), requirements));
                     break;
-            case 3: items.add(new Interactable(image, location, ItemsEnum.ONESHOT, name, description, effects.toArray(new Effect[effects.size()]), requirements));
+            case 3: items.add(new Interactable(image, location, ItemsEnum.INTERACTABLE, name, description, effects.toArray(new Effect[effects.size()]), requirements));
                     break;
-            case 4: items.add(new Armor(image, location, ItemsEnum.ONESHOT, name, description, effects.toArray(new Effect[effects.size()]), requirements, stat));
+            case 4: items.add(new Armor(image, location, ItemsEnum.ARMOR, name, description, effects.toArray(new Effect[effects.size()]), requirements, stat));
                     break;
-            case 5: items.add(new Weapon(image, location, ItemsEnum.ONESHOT, name, description, effects.toArray(new Effect[effects.size()]), requirements, stat));
+            case 5: items.add(new Weapon(image, location, ItemsEnum.WEAPON, name, description, effects.toArray(new Effect[effects.size()]), requirements, stat));
                     break;
             default:
                     break;

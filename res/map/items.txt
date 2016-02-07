@@ -4,7 +4,7 @@ Comment: SA = start array, EA = end array
 Comment: BD = begin description, ED = end description
 Comment: Type--> 0 = OneShot, 1 = Useable, 2 = Obstacle, 3 = Interactable
 Comment:         4 = Armor, 5 = Weapon
-5 5 Health BD This potion gives the player 3 health ED 1 0 SA Life 3 EA
+5 5 Health BD This potion gives the player 3 health ED 1 1 SA Life 3 EA
 6 6 Health BD This potion gives the player 3 health ED 1 0 SA Life 3 EA
 3 4 Health BD This potion gives the player 3 health ED 1 0 SA Life 3 EA
 3 4 Health BD This potion gives the player 3 health ED 1 0 SA Life 3 EA
