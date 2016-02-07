@@ -16,14 +16,14 @@ public abstract class Item {
 
     public static int ITEMWIDTH = 28, ITEMHEIGHT = 28; // default height and width of item
 
-    private BufferedImage image; // image used for item
+    protected BufferedImage image; // image used for item
 
-    private ItemsEnum type;
-    private String name;
-    private String description;
+    protected ItemsEnum type;
+    protected String name;
+    protected String description;
     protected Location location;
-    private Effect []effects; // array of effects item can hold
-    Requirements requirements; // used to tell if player can use/interact with item
+    protected Effect []effects; // array of effects item can hold
+    protected Requirements requirements; // used to tell if player can use/interact with item
 
     // constructor--> sets all variables except height and width
     public Item(BufferedImage image, Model.Location location, ItemsEnum type, String name, String description, Effect []effects, Requirements requirements){
@@ -72,8 +72,5 @@ public abstract class Item {
     }
 
     public abstract String toString();
-
-
-
 }
 

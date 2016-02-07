@@ -44,7 +44,7 @@ public class GameState extends State {
     private Location location;
     private Inventory inventory;
     private Pack pack;
-    private Location spawn = new Location(64,64,0);
+    private Location spawn = new Location(64,64,2);
 
     private StatusView statusView;
     private Stats stats;
@@ -69,8 +69,11 @@ public class GameState extends State {
 
         location = new Location(3,3,0); //Location is in wrong coordinates it should be in pixels not in tiles
 
+
         areaEffect = new AreaEffect("Damage", "Damage", AreaEffectEnum.DAMAGE, new Location(7,8,0)); //Same with this one
+
         map.getTile(2,6).addAreaEffect(areaEffect);
+
 
 
         controller.setPlayer(player);
@@ -91,10 +94,14 @@ public class GameState extends State {
                 System.out.println("Inventory Selection ");
                 setState(InventoryState.inventory);
                 break;
-            case Pause:
+            case Gear:
                 View.view.removeKeyListener(MenuState.menu);
                 View.view.removeKeyListener(this);
-                View.view.addKeyListener(PauseState.pause);
+                View.view.addKeyListener(GearState.gear);
+                System.out.println("Gear selection");
+                setState(GearState.gear);
+                break;
+            case Pause:
                 System.out.println("Pause Game");
                 //Add the Load Game state switch here
                 setState(PauseState.pause);
@@ -135,8 +142,13 @@ public class GameState extends State {
             switchState(States.Inventory);
         }
 
+        if(e.getKeyCode() == KeyEvent.VK_G) {
+            switchState(States.Gear);
+        }
+
         if(e.getKeyCode() == KeyEvent.VK_Q){
             controller.getPlayer().PickUpItem();
+            SaveState.writeFile(player,"Player test.txt");
         }
 
         if((e.getKeyCode() == KeyEvent.VK_NUMPAD8 || e.getKeyCode() == KeyEvent.VK_UP)){

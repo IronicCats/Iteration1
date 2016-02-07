@@ -12,11 +12,6 @@ import java.awt.image.BufferedImage;
  */
 public class Useable extends Takeable{
 
-
-    public Useable(BufferedImage image, Location location, ItemsEnum type, String name, String description, Effect[] effects) {
-        super(image, location, type, name, description, effects, null);
-    }
-
     public Useable(BufferedImage image, Location location, ItemsEnum type, String name, String description, Effect[] effects, Requirements requirements) {
         super(image, location, type, name, description, effects, requirements);
     }
@@ -29,7 +24,8 @@ public class Useable extends Takeable{
     public String toString()
     {
         String string;
-        string = (this.getLocation().getX() + " " + this.getLocation().getY()+  "\n");
+        string = (this.getName() + "\n");
+
         return string;
     }
 }

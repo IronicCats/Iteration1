@@ -1,5 +1,6 @@
 package Model.Entity.Stats;
 
+import Controller.States.KillState;
 import Controller.Controller;
 import Controller.States.MenuState;
 import Controller.States.State;
@@ -20,6 +21,10 @@ public class Stats {
 
 
     public Stats() {
+        /*
+        constructor used for loading
+            on load game, need to create an instance of Stats then populate its components separately
+         */
         this.primaryStats = new PrimaryStats();
         this.derivedStats = new DerivedStats(primaryStats);
         this.effects = new ArrayList<>();
@@ -27,6 +32,9 @@ public class Stats {
     } // end constructor
 
     public Stats(StatStructure ss, Controller controller) {
+        /*
+        default constructor used in entity creation - must be initialized with a StatStructure
+         */
         primaryStats = new PrimaryStats(ss);
         derivedStats = new DerivedStats(primaryStats);
         effects = new ArrayList<>();
@@ -36,21 +44,31 @@ public class Stats {
     } // end constructor
 
     public void levelUp() {
+        /*
+        calls levelup methods of each of its members
+         */
         primaryStats.levelUp();
         derivedStats.levelUp();
     } // end levelUp
 
     public void kill() {
+        /*
+        kills the player; clears active effects (and finish times), calls kill methods of each of its members, and
+         exits game if player is out of lives
+         */
         effects.clear();
         finishTimes.clear();
         primaryStats.kill();
         derivedStats.kill();
         if(primaryStats.getLivesLeft() <= 0)
-            State.setState(MenuState.menu);
+            State.setState(KillState.state);
         else{
             System.out.println("player is dead");
-            controller.getPlayer().getLocation().setX(controller.getMap().getSpawn().getX());
-            controller.getPlayer().getLocation().setY(controller.getMap().getSpawn().getY());
+            System.out.println(controller.getMap().getSpawn().getX());
+            controller.getPlayer().setX(controller.getMap().getSpawn().getX()/64 + 64);
+            controller.getPlayer().setY(controller.getMap().getSpawn().getY()/64 + 64);
+            controller.getPlayer().getNavigation().setGoalX(controller.getMap().getSpawn().getX());
+            controller.getPlayer().getNavigation().setGoalY(controller.getMap().getSpawn().getY());
         }
     } // end kill
 
@@ -148,6 +166,7 @@ public class Stats {
     public void applyEffect(Effect[] e) {
         /*
         take in Effect(s) and apply them to character
+            passes to applyEffect(Effect e) one at a time
          */
         for(Effect i : e) {
             applyEffect(i);
@@ -155,6 +174,13 @@ public class Stats {
     } // end applyEffect
 
     public void removeEffect(Effect e) {
+        /*
+        removes the active effect
+
+        In each game tick when Stats.tick() is called, the ArrayList containing finishTimes is traversed (in reverse)
+         to check for expired Effects.  If the finishTime is greater than currentTimeInMillis, the effect is passed
+         here to subtract the modification amount from its respective stat(s).
+         */
         for(StatsEnum s : e.modification.getKeySet()) {
             switch (s){
                 // primary stats
@@ -210,8 +236,13 @@ public class Stats {
     } // end removeEffect
 
     public void tick() {
+        /*
+        Stats game tick.
+
+        Each tick, check for expired Effects and check if player's XP is greater than the threshhold to level up
+         */
         if (!effects.isEmpty()) {
-            for (int i = 0; i < effects.size(); i++) {
+            for (int i = effects.size()-1; i >= 0; --i) {
                 if (System.currentTimeMillis() >= finishTimes.get(i)) {
                     removeEffect(effects.get(i));
                     effects.remove(i);
@@ -256,6 +287,9 @@ public class Stats {
 
     public String toString()
     {
+        /*
+        toString method for saving
+         */
         String statString;
         statString = Integer.toString(getLivesLeft()) + "\n";
         statString = statString + Integer.toString(getBaseLives()) + "\n";

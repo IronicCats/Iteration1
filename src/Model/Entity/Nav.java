@@ -158,4 +158,20 @@ public class Nav {
     public void setIsmoving(boolean isMoving){
         this.isMoving = isMoving;
     }
+
+    public int getGoalX(){
+        return this.goalX;
+    }
+    public int getGoalY(){
+        return this.goalY;
+    }
+
+    public void setGoalX(int goalX){
+        this.goalX = goalX;
+
+    }
+
+    public void setGoalY(int goalY){
+        this.goalY = goalY;
+    }
 }

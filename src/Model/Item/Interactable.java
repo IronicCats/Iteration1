@@ -15,7 +15,7 @@ public class Interactable extends Item {
     int ITEMHEIGHT = 64; // Guesstimates
     int ITEMWIDTH = 64;
 
-    public Interactable(BufferedImage image, int id, Location location, ItemsEnum type, String name, String description, Effect[] effects, Requirements requirements) {
+    public Interactable(BufferedImage image, Location location, ItemsEnum type, String name, String description, Effect[] effects, Requirements requirements) {
         super(image, location, type, name, description, effects, requirements);
     }
 
