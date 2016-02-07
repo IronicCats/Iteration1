@@ -45,7 +45,6 @@ public class StatusView {
 
 
         g.setColor(new Color(red, gr, blu));
-        System.out.println(playerStats[0]);
         g.fillRect(0, y - 10,  (int)((playerStats[0]/100.0) * (width/4)) , fm.getHeight() + 1);
 
         //SET HEALTH PERCENTAGE
