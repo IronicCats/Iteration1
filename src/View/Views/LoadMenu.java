@@ -22,6 +22,15 @@ public class LoadMenu {
     {
         g.setColor(new Color(38, 166, 91));
         g.fillRect(0, 0, width, height);
+
+        g.setColor(new Color(38, 33, 191));
+        g.setFont(new Font("Arial", Font.PLAIN, 48));
+        FontMetrics fm = g.getFontMetrics();
+        int totalWidth = (fm.stringWidth("Pick a game to load"));
+        int x = (width - totalWidth) / 2;
+        int y = (height / 2) - 150;
+        g.drawString("Pick a game to load", x, y);
+
     }
 
     public void next()
