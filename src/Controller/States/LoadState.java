@@ -19,7 +19,7 @@ public class LoadState extends State {
 
     static int count = 0;
     static ArrayList<Object> loadedfile = new ArrayList<Object>();
-   // private  static Player player;
+   //private  static Player player;
 
 
     public LoadState(Controller controller, int width, int height) {
@@ -81,7 +81,18 @@ public class LoadState extends State {
 
     @Override
     public void keyPressed(KeyEvent e) {
+        if(e.getKeyCode() == KeyEvent.VK_UP) {
+            loadMenu.previous();
+        }
+        if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+            loadMenu.next();
+        }
 
+        if(e.getKeyCode() == 10) {
+            loadMenu.getSelection();
+            System.out.println(loadMenu.getSelection());
+            //later when load method is actually done call load.loadFile(player,loadMenu.getSelection)
+        }
     }
 
     @Override
