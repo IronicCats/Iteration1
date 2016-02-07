@@ -3,6 +3,16 @@ package Model;
 import Controller.Controller;
 import Controller.States.*;
 
+import Controller.States.GameState;
+import Controller.States.MenuState;
+import Controller.States.PauseState;
+import Controller.States.State;
+import Controller.States.KillState;
+import Controller.States.InventoryState;
+import Controller.States.GearState;
+import Model.Item.InventoryList;
+
+
 
 /**
  * Created by jlkegley on 1/31/2016.
@@ -40,6 +50,8 @@ public class Game implements Runnable {
         gearState = new GearState(controller, width, height);
 
         State.setInitialState(menuState);
+
+        InventoryList.init();//added this to initialize all items
 
     }
 

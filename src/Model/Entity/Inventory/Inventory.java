@@ -40,18 +40,29 @@ public class Inventory {
     public Equipment getEquipment(){return equipment;}
 
     public void saveInventory(ArrayList<Object> saveFile){
+        saveFile.add(Integer.toString(pack.getSize())+"\n");
         saveFile.add(pack);
         //saveFile.add(equipment); //fixme
 
     }
 
     public void loadInventory(ArrayList<Object> saveFile, int count){
+        //count should be at 23, 23 should have the pack size
+
         Pack p = pack;
-       Item a = InventoryList.checkItem((String)saveFile.get(count));
-        //I NEED THE PACK SIZE TO BE SAVED IN SAVE BEFORE THE NAMES START GOING OK
-        //THEN FOR LOOP THROUGH IT IN ORDER TO KNOW HOW LONG IT IS GOING
-        //ADD IT TO THE PACK IN THE LOOP
-        //OKAY
+        int packSize = (int)saveFile.get(count);
+
+
+        for(int i=0; i <= packSize;i++)
+        {
+            count++;
+            Item a = InventoryList.checkItem((String)saveFile.get(count));
+            p.add(a);
+        }
+
+        count++;
+
+
 
         //this.getPack().
     }
