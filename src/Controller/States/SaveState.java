@@ -12,19 +12,24 @@ import java.util.Objects;
 
 import Controller.Controller;
 import Model.Entity.Player;
+import View.Views.MainMenu;
+import View.Views.SaveScreen;
 
 /**
  * Created by Andy on 2/4/2016.
  */
 public class SaveState extends State {
-
+    public SaveScreen saveScreen;
+    public static SaveState save;
 
     static ArrayList<Object> savefile = new ArrayList<Object>();
     static BufferedWriter outputWriter;
     private Player player;
 
-    public SaveState(Controller controller) {
+    public SaveState(Controller controller, int width, int height) {
         super(controller);
+        save = this;
+        saveScreen = new SaveScreen(width, height);
         player = controller.getPlayer();
         //INITALIZE CANVAS TO HAVE BUTTONS init();
     }
@@ -34,9 +39,8 @@ public class SaveState extends State {
     }
 
     public void render(Graphics g) {
-
+        saveScreen.render(g);
     }
-
 
 
 
