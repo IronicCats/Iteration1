@@ -1,3 +1,4 @@
+
 package View.Graphics;
 
 import java.awt.image.BufferedImage;
@@ -15,6 +16,9 @@ public class Assets {
     public static BufferedImage avatar;
     public static BufferedImage potion;
     public static BufferedImage sack;
+    public static BufferedImage skullAndBones;
+    public static BufferedImage redCross;
+    public static BufferedImage goldStar;
 
     public static void init() {
         SpriteSheet grassSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/GrassTile.png"));
@@ -22,6 +26,9 @@ public class Assets {
         SpriteSheet waterSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/WaterTile.png"));
         SpriteSheet avatarSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/CharSpriteSheet.png"));
         SpriteSheet potionSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/PotionSprite.png"));
+        SpriteSheet skullAndBonesSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/Skull.png"));
+        SpriteSheet crossSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/RedCross.png"));
+        SpriteSheet starSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/Star.png"));
         SpriteSheet sackSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/ItemBag.png"));
 
         avatar = avatarSheet.crop(0, 0, width, height);
@@ -30,6 +37,9 @@ public class Assets {
         water = waterSheet.crop(0, 0, width, height);
         potion = potionSheet.crop(0,0,width,height);
         sack = sackSheet.crop(0,0,width,height);
+        skullAndBones = skullAndBonesSheet.crop(0, 0, 28, 28);
+        redCross = crossSheet.crop(0, 0, 28, 28);
+        goldStar = starSheet.crop(0, 0, 28, 28);
 
     }
 
