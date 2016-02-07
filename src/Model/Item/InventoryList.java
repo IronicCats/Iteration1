@@ -119,9 +119,4 @@ public class InventoryList {
         a = new Armor(Assets.pants,l,ItemsEnum.ARMOR,"Pants","Pants with 3 defense",null,null,3,ArmorEnum.PANTS);
         return a;
     }
-
-
-
-
-
 }

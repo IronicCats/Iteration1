@@ -8,5 +8,8 @@ Comment: 4 = Armor, 5 = Weapon
 10 5 Chest BD +5 defense ED 4 5
 5 10 Boots BD +5 defense ED 4 5
 6 6 Health BD +3 health ED 1 0 SA Life 3 EA
+20 15 Magic BD +3 Mana ED 1 0 SA Mana 3 EA
 3 4 Health BD +3 health ED 1 0 SA Life 3 EA
+1 1 Boots BD +5 defense ED 4 5
+10 10 House BD Obstacle ED 2 0
 

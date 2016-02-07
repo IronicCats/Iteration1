@@ -45,6 +45,7 @@ public class Assets {
     public static BufferedImage menucursor;
     public static BufferedImage chestArmor;
     public static BufferedImage helmet;
+    public static BufferedImage house;
 
 
     public static void init() {
@@ -69,6 +70,7 @@ public class Assets {
         SpriteSheet menuCursorSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/MenuCursor.png"));
         SpriteSheet chestSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/ChestArmorSprite.png"));
         SpriteSheet helmetSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/Helmet.png"));
+        SpriteSheet houseSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/House.png"));
 
         water = new ArrayList<>(9);
         mountain = new ArrayList<>(9);
@@ -83,6 +85,7 @@ public class Assets {
         sack = sackSheet.crop(0,0,width,height);
         sword = swordSheet.crop(0,0,width,height);
         boots = bootsSheet.crop(0,0,width,height);
+        house = houseSheet.crop(0,0,128,128);
 
         //Water Tiles
         water.add(waterSheet.crop(0, 0, width, height));
