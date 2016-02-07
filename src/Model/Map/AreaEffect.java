@@ -24,12 +24,11 @@ public class AreaEffect {
     Decal decal;
 
     //constructor
-    public AreaEffect(String name, String description, AreaEffectEnum areaEffect, Location location)
+    public AreaEffect(String name, String description, AreaEffectEnum areaEffect)
     {
        this.name = name;
        this.description = description;
        this.areaEffect = areaEffect;
-       this.location = location;
        if(areaEffect == AreaEffectEnum.DAMAGE)// if its damaging area effect
        {
            StatStructure modification = new StatStructure(StatsEnum.LIFE, -5);

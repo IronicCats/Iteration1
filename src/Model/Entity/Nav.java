@@ -14,15 +14,15 @@ public class Nav {
     protected static Controller controller;
     protected static Location location;
     protected static Rectangle bounds;
-    protected int goalX;
-    protected int goalY;
+    protected float goalX;
+    protected float goalY;
     protected Player player;
 
     protected boolean isMoving = false;
 
     public Nav(Location location,Rectangle bounds, Controller controller, Player player){
-        goalX = location.getX();
-        goalY = location.getY();
+        goalX = location.getPixelX();
+        goalY = location.getPixelY();
         this.location = location;
         this.bounds = bounds;
         this.controller = controller;
@@ -33,120 +33,122 @@ public class Nav {
         isMoving = true;
         boolean Obstaclecheck = true;
         if (direction == 0) {
-            if (controller.getTiles((location.getX())/Tile.TILEWIDTH, (location.getY() - Tile.TILEHEIGHT) / Tile.TILEWIDTH).isUnWalkable) {
+            if (controller.getTiles((location.getX()), (location.getY() - 1)).isUnWalkable) {
                 Obstaclecheck = false;
             }
-            else if(location.getY() - Tile.TILEHEIGHT == -Tile.TILEHEIGHT){
+            else if((location.getPixelY() - Tile.TILEHEIGHT) == -Tile.TILEHEIGHT){
                 Obstaclecheck = false;
             }
             if (Obstaclecheck) {
-                goalY = location.getY() - Tile.TILEHEIGHT;
+                goalY = location.getPixelY() - Tile.TILEHEIGHT;
             }
         }else if (direction == 1) {
-                if (controller.getTiles((location.getX() + Tile.TILEWIDTH) / Tile.TILEWIDTH, (location.getY()) / Tile.TILEHEIGHT).isUnWalkable) {
+                if (controller.getTiles((location.getX() + 1), (location.getY())).isUnWalkable) {
                     Obstaclecheck = false;
                 }
-                else if(location.getX() + Tile.TILEWIDTH == (controller.getMap().getWidth() * Tile.TILEWIDTH)/2){
+                else if(location.getPixelX() + Tile.TILEWIDTH == (controller.getMap().getWidth() * Tile.TILEWIDTH)/2){
                     Obstaclecheck = false;
                 }
                 if (Obstaclecheck) {
-                    goalX = location.getX() + Tile.TILEWIDTH;
+                    goalX = location.getPixelX() + Tile.TILEWIDTH;
                 }
             } else if (direction == 2) {
-            if (controller.getTiles((location.getX()) / Tile.TILEWIDTH, (location.getY() + Tile.TILEHEIGHT) / Tile.TILEHEIGHT).isUnWalkable) {
+            if (controller.getTiles((location.getX()), (location.getY() + 1)).isUnWalkable) {
                 Obstaclecheck = false;
             }
-            else if(location.getY() == (controller.getMap().getHeight() * Tile.TILEHEIGHT)/2 - Tile.TILEHEIGHT){
+            else if(location.getPixelY() == (controller.getMap().getHeight() * Tile.TILEHEIGHT)/2 - Tile.TILEHEIGHT){
                 Obstaclecheck = false;
             }
             if(Obstaclecheck) {
-                goalY = location.getY() + Tile.TILEHEIGHT;
+                goalY = location.getPixelY() + Tile.TILEHEIGHT;
             }
             } else if(direction == 3) {
-            if (controller.getTiles((location.getX() - Tile.TILEWIDTH) / Tile.TILEWIDTH, (location.getY()) / Tile.TILEHEIGHT).isUnWalkable) {
+            if (controller.getTiles((location.getX() - 1), (location.getY())).isUnWalkable) {
                 Obstaclecheck = false;
             }
-            else if(location.getX() - Tile.TILEWIDTH == -Tile.TILEWIDTH){
+            else if(location.getPixelX() - Tile.TILEWIDTH == -Tile.TILEWIDTH){
                 Obstaclecheck = false;
             }
             if (Obstaclecheck) {
-                goalX = location.getX() - Tile.TILEWIDTH;
+                goalX = location.getPixelX() - Tile.TILEWIDTH;
             }
-        }
+        }/*
         else if(direction == 4){
-            if(controller.getTiles((location.getX() + Tile.TILEWIDTH)/ Tile.TILEWIDTH,(location.getY() - Tile.TILEHEIGHT) / Tile.TILEHEIGHT).isUnWalkable){
+            if(controller.getTiles((location.getX() + 1),(location.getY() - 1)).isUnWalkable){
                 Obstaclecheck = false;
             }
-            else if(location.getY() - Tile.TILEHEIGHT == -Tile.TILEHEIGHT || location.getX() + Tile.TILEWIDTH == (controller.getMap().getWidth() * Tile.TILEWIDTH)/2 ){
+            else if(location.getPixelY() - Tile.TILEHEIGHT == -Tile.TILEHEIGHT || location.getPixelX() + Tile.TILEWIDTH == (controller.getMap().getWidth() * Tile.TILEWIDTH)/2 ){
                 Obstaclecheck = false;
             }
             if(Obstaclecheck){
-                goalX = location.getX() + Tile.TILEWIDTH;
-                goalY = location.getY() - Tile.TILEHEIGHT;
+                goalX = location.getPixelX() + Tile.TILEWIDTH;
+                goalY = location.getPixelY() - Tile.TILEHEIGHT;
             }
         }
         else if(direction == 5){
-            if(controller.getTiles((location.getX() + Tile.TILEWIDTH)/ Tile.TILEWIDTH,(location.getY() + Tile.TILEHEIGHT) / Tile.TILEHEIGHT).isUnWalkable){
+            if(controller.getTiles((location.getX() + Tile.TILEWIDTH),(location.getY() + Tile.TILEHEIGHT)).isUnWalkable){
                 Obstaclecheck = false;
             }
-            else if(location.getY() == (controller.getMap().getHeight() * Tile.TILEHEIGHT)/2 - Tile.TILEHEIGHT || location.getX() + Tile.TILEWIDTH == (controller.getMap().getWidth() * Tile.TILEWIDTH)/2){
+            else if(location.getPixelY() == (controller.getMap().getHeight() * Tile.TILEHEIGHT)/2 - Tile.TILEHEIGHT || location.getPixelX() + Tile.TILEWIDTH == (controller.getMap().getWidth() * Tile.TILEWIDTH)/2){
                 Obstaclecheck = false;
             }
             if(Obstaclecheck){
-                goalX = location.getX() + Tile.TILEWIDTH;
-                goalY = location.getY() + Tile.TILEHEIGHT;
+                goalX = location.getPixelX() + Tile.TILEWIDTH;
+                goalY = location.getPixelY() + Tile.TILEHEIGHT;
             }
         }
         else if(direction == 6){
-            if(controller.getTiles((location.getX() - Tile.TILEWIDTH)/ Tile.TILEWIDTH,(location.getY() + Tile.TILEHEIGHT) / Tile.TILEHEIGHT).isUnWalkable){
+            if(controller.getTiles((location.getX() - Tile.TILEWIDTH),(location.getY() + Tile.TILEHEIGHT)).isUnWalkable){
                 Obstaclecheck = false;
             }
-            else if(location.getY() == (controller.getMap().getHeight() * Tile.TILEHEIGHT)/2 - Tile.TILEHEIGHT || location.getX() - Tile.TILEWIDTH == -Tile.TILEWIDTH){
+            else if(location.getPixelY() == (controller.getMap().getHeight() * Tile.TILEHEIGHT)/2 - Tile.TILEHEIGHT || location.getX() - Tile.TILEWIDTH == -Tile.TILEWIDTH){
                 Obstaclecheck = false;
             }
             if(Obstaclecheck){
-                goalX = location.getX() - Tile.TILEWIDTH;
-                goalY = location.getY() + Tile.TILEHEIGHT;
+                goalX = location.getPixelX() - Tile.TILEWIDTH;
+                goalY = location.getPixelY() + Tile.TILEHEIGHT;
             }
         }
         else if(direction == 7){
-            if(controller.getTiles((location.getX() - Tile.TILEWIDTH)/ Tile.TILEWIDTH,(location.getY() - Tile.TILEHEIGHT) / Tile.TILEHEIGHT).isUnWalkable){
+            if(controller.getTiles((location.getX() - 1),(location.getY() - 1)).isUnWalkable){
                 Obstaclecheck = false;
             }
             else if(location.getY() - Tile.TILEHEIGHT == -Tile.TILEHEIGHT || location.getX() - Tile.TILEWIDTH == -Tile.TILEWIDTH){
                 Obstaclecheck = false;
             }
             if(Obstaclecheck){
-                goalX = location.getX() - Tile.TILEWIDTH;
-                goalY = location.getY() - Tile.TILEHEIGHT;
+                goalX = location.getPixelX() - Tile.TILEWIDTH;
+                goalY = location.getPixelY() - Tile.TILEHEIGHT;
             }
         }
-        }
+        */
+    }
 
     public void move() {
-        if(location.getY() == goalY && location.getX() == goalX) {
+        if(location.getPixelY() == goalY && location.getPixelX() == goalX) {
             //System.out.println("Ive got a player");
             if(isMoving) {
-                controller.getTiles(location.getX() / 64, location.getY() / 64).addPlayer(player);
+                controller.getTiles(location.getX(), location.getY()).addPlayer(player);
             }
             isMoving = false;
 
         }else {
+            System.out.println(goalX + " " + goalY);
             isMoving = true;
-            controller.getTiles(location.getX()/64, location.getY()/64).removePlayer();
+            controller.getTiles(location.getX(), location.getY()).removePlayer();
             //TWEEN TO LOCATION
-            if(location.getX() != goalX) {
-                if(location.getX() > goalX) {
-                    location.setX(location.getX() - 2);
+            if(location.getPixelX() != goalX) {
+                if(location.getPixelX() > goalX) {
+                    location.setPixelX(location.getPixelX() - 2);
                 }else {
-                    location.setX(location.getX() + 2);
+                    location.setPixelX(location.getPixelX() + 2);
                 }
             }
-            if(location.getY() != goalY) {
-                if (location.getY() > goalY) {
-                    location.setY(location.getY() - 2);
+            if(location.getPixelY() != goalY) {
+                if (location.getPixelY() > goalY) {
+                    location.setPixelY(location.getPixelY() - 2);
                 } else {
-                    location.setY(location.getY() + 2);
+                    location.setPixelY(location.getPixelY() + 2);
                 }
             }
         }
@@ -159,19 +161,19 @@ public class Nav {
         this.isMoving = isMoving;
     }
 
-    public int getGoalX(){
+    public float getGoalX(){
         return this.goalX;
     }
-    public int getGoalY(){
+    public float getGoalY(){
         return this.goalY;
     }
 
-    public void setGoalX(int goalX){
+    public void setGoalX(float goalX){
         this.goalX = goalX;
 
     }
 
-    public void setGoalY(int goalY){
+    public void setGoalY(float goalY){
         this.goalY = goalY;
     }
 }

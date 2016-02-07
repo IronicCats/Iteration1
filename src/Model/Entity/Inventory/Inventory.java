@@ -104,8 +104,8 @@ public class Inventory {
     public void drop(int i) {                    //Takes in argument of takeable item
         if(i < pack.cap&&pack.items[i]!=null) {
             Takeable itemToDrop = pack.items[i];
-            int x = controller.getPlayer().getLocation().getX()/64;
-            int y = controller.getPlayer().getLocation().getY()/64;
+            int x = controller.getPlayer().getLocation().getX();
+            int y = controller.getPlayer().getLocation().getY();
             itemToDrop.setLocation(controller.getPlayer().getLocation());
             controller.getTiles(x,y).addItem(itemToDrop);
             pack.items[i] = null;
