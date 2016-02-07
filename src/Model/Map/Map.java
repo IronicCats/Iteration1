@@ -32,10 +32,9 @@ public class Map {
     private Item[] items = populateItems.getItems();
     private Location spawn;
 
-    public Map(Controller controller,Location spawn) {
+    public Map(Controller controller) {
         //System.out.println(items[0].getLocation().getY());
         this.controller = controller;
-        this.spawn = spawn;
         makeMap();
     }
 
@@ -56,7 +55,7 @@ public class Map {
         String[] tokens = builder.toString().split("\\s+");
         width = parseInt(tokens[0]);
         height = parseInt(tokens[1]);
-        MapStart = new Location(parseInt(tokens[2]), parseInt(tokens[3]), 0);
+        this.spawn = new Location(parseInt(tokens[2]), parseInt(tokens[3]), 2);
 
         tiles = new Tile[width][height];
         for(int y = 0; y < height; ++y) {

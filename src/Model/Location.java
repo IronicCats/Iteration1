@@ -7,8 +7,8 @@ public class Location {
     private int x, y, dir;
 
     public Location(int x, int y, int dir) {
-        this.x = x;
-        this.y = y;
+        this.x = x * 64;
+        this.y = y * 64;
         this.dir = dir;
     }
 

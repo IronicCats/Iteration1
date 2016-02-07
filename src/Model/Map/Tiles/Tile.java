@@ -76,6 +76,7 @@ public abstract class Tile {
     }
 
     public void addItem(Item item) {
+        System.out.println("add at " + location.getX() + " " + location.getY());
         items.add(item);
     }
 
