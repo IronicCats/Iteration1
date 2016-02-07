@@ -45,6 +45,7 @@ public class Assets {
     public static BufferedImage menucursor;
     public static BufferedImage chestArmor;
     public static BufferedImage helmet;
+    public static BufferedImage house;
 
 
     public static void init() {
@@ -117,9 +118,6 @@ public class Assets {
         grass.add(grassSheet.crop(0, 64, width, height));
         grass.add(grassSheet.crop(32, 64, width, height));
         grass.add(grassSheet.crop(64, 64, width, height));
-
-
-
 
 
         potion = potionSheet.crop(0,0,width,height);

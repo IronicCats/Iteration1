@@ -76,20 +76,14 @@ public class PopulateItems {
 
             stat = scan.nextInt(); // read in stat associated with armor/weapon
 
-            if(type == 4){
-                setEquippableEnum(name);
-                generateItems();;
-            }
-
-            if(type == 5){
-                setEquippableEnum(name);
-                generateItems();
-            }
-
             if (scan.hasNext("SA")) { // start of array containing StatStructure code
                 scan.next(); // move to first string in array
                 setStatStruc(scan); // method to store array in txt file to statStruc
                 continue;
+            }
+            else{
+                setImage(name);
+                generateItems();
             }
         }
         scan.close(); // close scanner
@@ -98,7 +92,7 @@ public class PopulateItems {
     private void setStatStruc(Scanner items){ // called to iterate through array of effect
         while(!items.hasNext("EA")){ // if not reached end of array
             convertEnum(items.next()); // assign string # i in stats (statEnum array) and assigns image
-            mod[stats.size()] = items.nextInt(); // assigns the corresponding value adjustment to mod array
+            mod[stats.size() - 1] = items.nextInt(); // assigns the corresponding value adjustment to mod array
         }
         items.next(); // move past end of array
         statStruc = new StatStructure(stats.toArray(new StatsEnum[stats.size()]), mod); // create new statStructure used to create effects array
@@ -130,13 +124,17 @@ public class PopulateItems {
                     stats.add(StatsEnum.EXPERIENCE);
                     //image = Assets.potion;
                     break;
+                case ("Mana"):
+                    stats.add(StatsEnum.MANA);
+                    image = Assets.manapotion;
+                    break;
                 default:
                     break;
             }
         }
     }
 
-    public void setEquippableEnum(String equippable) {
+    public void setImage(String equippable) {
         switch (equippable) {
             case ("Sword"):
                 weaponType = WeaponEnum.SWORD;
@@ -170,6 +168,9 @@ public class PopulateItems {
                 armorType = ArmorEnum.BOOTS;
                 image = Assets.boots;
                 break;
+            case ("House"):
+                image = Assets.house;
+                break;
             default:
                 break;
         }
@@ -177,20 +178,18 @@ public class PopulateItems {
 
     private void generateEffects(){
         effects.add(new Effect(statStruc, 0, description)); // create effects for 1 item. 5 max
+        //System.out.println(statStruc.getStat(StatsEnum.LIFE));
     }
 
     private void generateItems(){ // create items
         location = new Location(x,y,0);
 
         switch(type){
-            case 0:
-                items.add(new OneShot(image, location, ItemsEnum.ONESHOT, name, description, effects.toArray(new Effect[effects.size()]), requirements));
-                break;
-            case 1:
-                items.add(new Useable(image, location, ItemsEnum.USEABLE, name, description, effects.toArray(new Effect[effects.size()]), requirements));
-                //items.add(InventoryList.createHealthPotion(location));
-                break;
-            case 2: items.add(new Obstacle(image, location, ItemsEnum.OBSTACLE, name, description, effects.toArray(new Effect[effects.size()]), requirements));
+            case 0: items.add(new OneShot(image, location, ItemsEnum.ONESHOT, name, description, effects.toArray(new Effect[effects.size()]), requirements));
+                    break;
+            case 1: items.add(new Useable(image, location, ItemsEnum.USEABLE, name, description, effects.toArray(new Effect[effects.size()]), requirements));
+                    break;
+            case 2: items.add(new Obstacle(image, location, ItemsEnum.OBSTACLE, name, description, null, null));
                     break;
             case 3: items.add(new Interactable(image, location, ItemsEnum.INTERACTABLE, name, description, effects.toArray(new Effect[effects.size()]), requirements));
                     break;
