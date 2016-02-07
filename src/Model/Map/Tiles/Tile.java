@@ -1,5 +1,7 @@
-
 package Model.Map.Tiles;
+import Model.Entity.Player;
+
+
 
 import Model.Entity.Player;
 
@@ -65,7 +67,7 @@ public abstract class Tile {
         this.player = player;
     }
 
-    public void removePlayer(Player player){
+    public void removePlayer(){
         this.player = null;
     }
 

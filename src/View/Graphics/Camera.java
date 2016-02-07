@@ -22,21 +22,20 @@ public class Camera {
         xOffset = 100;
     }
 
-    public void keepCameraonMap(){
-        if(xOffset < 0){
+    public void keepCameraonMap() {
+        if (xOffset < 0) {
             setxOffset(0);
+        } else if (xOffset > (map.getWidth() / 2 * (Tile.TILEWIDTH) - gameWidth)) {
+            xOffset = map.getWidth() / 2 * (Tile.TILEWIDTH) - gameWidth;
         }
-        else if(xOffset > (map.getWidth()/2 * (Tile.TILEWIDTH) - gameWidth) ) {
-            xOffset = map.getWidth()/2 * (Tile.TILEWIDTH) - gameWidth;
-        }
-        if(yOffset < 0){
+        if (yOffset < 0) {
             yOffset = 0;
         }
-        else if(yOffset > ((map.getHeight()/2 * Tile.TILEHEIGHT)- gameHeight) + 20){
-            yOffset = (map.getHeight()/2 * Tile.TILEHEIGHT) - gameHeight + 20;
+        else if (yOffset > ((map.getHeight() / 2 * Tile.TILEHEIGHT) - gameHeight) + 20) {
+            yOffset = (map.getHeight() / 2 * Tile.TILEHEIGHT) - gameHeight + 20;
+
         }
     }
-
     public void centerOnPlayer(Player player) {
         xOffset = player.getLocation().getX() - gameWidth/2 + player.getWidth()/2;
         yOffset = player.getLocation().getY() - gameHeight/2 + player.getHeight()/2;
