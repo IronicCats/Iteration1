@@ -12,19 +12,16 @@ import java.awt.image.BufferedImage;
  */
 public class Armor extends Equippable{
 
+    private ArmorEnum armorType;
 
-
-    ArmorEnum armorType;
-    //private
-    public Armor(BufferedImage image, Location location, ItemsEnum type, String name, String description, Effect[] effects, Requirements requirements, int stat, ArmorEnum ArmorType) {
+    public Armor(BufferedImage image, Location location, ItemsEnum type, String name, String description, Effect[] effects, Requirements requirements, int stat, ArmorEnum armorType) {
         super(image, location, type, name, description, effects, requirements, stat);
-        this.armorType=ArmorType;
-
+        this.armorType = armorType;
     }
 
     public Armor(Armor old){
         super(old);
-        this.armorType=old.getArmorType();
+        this.armorType = old.getArmorType();
     }
 
     @Override
@@ -32,13 +29,14 @@ public class Armor extends Equippable{
         // if armor is hit?
     }
 
+    public ArmorEnum getArmorType() {
+        return armorType;
+    }
+
     public String toString(){
         String string;
         string = (this.getLocation().getX() + " " + this.getLocation().getY() + "\n");
         return string;
+    }
 
-    }
-    public ArmorEnum getArmorType() {
-        return armorType;
-    }
 }

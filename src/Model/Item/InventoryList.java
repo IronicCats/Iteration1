@@ -64,7 +64,8 @@ public class InventoryList {
         StatStructure s = new StatStructure(stats, val);
         Effect e = new Effect(s,0,"This heals 3 health");
         Effect[] arrE = new Effect[]{e};
-        a = new Useable(Assets.potion,l, ItemsEnum.USEABLE,"Potion","This heals 3 health",arrE);
+        a = new Useable(Assets.potion,l, ItemsEnum.USEABLE,"Potion","This heals 3 health",arrE,null);
+
         return a;
     }
     public static Useable createManaPotion(Useable a)
@@ -76,14 +77,15 @@ public class InventoryList {
         StatStructure s = new StatStructure(stats, val);
         Effect e = new Effect(s,0,"This heals 3 mana");
         Effect[] arrE = new Effect[]{e};
-        a = new Useable(Assets.manapotion,l, ItemsEnum.USEABLE,"Potion","This heals 3 mana",null);
+        a = new Useable(Assets.manapotion,l, ItemsEnum.USEABLE,"Potion","This heals 3 mana",arrE,null);
+
         return a;
     }
     public static Weapon createSword(Weapon a)
     {
         //(image, location, type, name, description, effects, requirements, stat)
         Location l = new Location(-1,-1,0);
-        a = new Weapon(Assets.sword,l,ItemsEnum.WEAPON,"Sword","Sword with 5 attack",null,null,5);
+        a = new Weapon(Assets.sword,l,ItemsEnum.WEAPON,"Sword","Sword with 5 attack",null,null,5, WeaponEnum.Sword);
         return a;
 
     }

@@ -44,7 +44,7 @@ public class GameState extends State {
     private Location location;
     private Inventory inventory;
     private Pack pack;
-    private Location spawn = new Location(64,64,0);
+    private Location spawn = new Location(64,64,2);
 
     private StatusView statusView;
     private Stats stats;
@@ -74,8 +74,6 @@ public class GameState extends State {
 
         map.getTile(2,6).addAreaEffect(areaEffect);
 
-
-
         controller.setPlayer(player);
         statusView = new StatusView(controller);
 
@@ -93,6 +91,13 @@ public class GameState extends State {
                 View.view.addKeyListener(InventoryState.inventory);
                 System.out.println("Inventory Selection ");
                 setState(InventoryState.inventory);
+                break;
+            case Gear:
+                View.view.removeKeyListener(MenuState.menu);
+                View.view.removeKeyListener(this);
+                View.view.addKeyListener(GearState.gear);
+                System.out.println("Gear selection");
+                setState(GearState.gear);
                 break;
             case Pause:
                 System.out.println("Pause Game");
@@ -133,6 +138,10 @@ public class GameState extends State {
 
         if(e.getKeyCode() == KeyEvent.VK_I) {
             switchState(States.Inventory);
+        }
+
+        if(e.getKeyCode() == KeyEvent.VK_G) {
+            switchState(States.Gear);
         }
 
         if(e.getKeyCode() == KeyEvent.VK_Q){
