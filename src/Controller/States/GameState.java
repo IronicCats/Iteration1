@@ -44,7 +44,6 @@ public class GameState extends State {
     private Location location;
     private Inventory inventory;
     private Pack pack;
-    private Location spawn = new Location(64,64,2);
 
     private StatusView statusView;
     private Stats stats;
@@ -54,7 +53,7 @@ public class GameState extends State {
     public GameState(Controller controller) {
         super(controller);
         game = this;
-        map = new Map(controller,spawn);
+        map = new Map(controller);
         controller.setMap(map);
         camera = new Camera(controller.getGame().getWidth(), controller.getGame().getHeight(),map);
         controller.setCamera(camera);
@@ -65,10 +64,8 @@ public class GameState extends State {
         inventory = new Inventory(controller);
         occupation = new Smasher();
         stats = new Stats(occupation.getInitialStats(),controller);
-        player = new Player(controller,spawn,inventory, occupation, stats);
 
-        location = new Location(4,5,0); //Location is in wrong coordinates it should be in pixels not in tiles
-
+        player = new Player(controller,map.getSpawn(),inventory, occupation, stats);
 
         areaEffect = new AreaEffect("Damage", "Damage", AreaEffectEnum.DAMAGE, new Location(7,8,0)); //Same with this one
 
