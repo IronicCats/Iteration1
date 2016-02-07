@@ -59,8 +59,6 @@ public class GameState extends State {
         camera = new Camera(controller.getGame().getWidth(), controller.getGame().getHeight(),map);
         controller.setCamera(camera);
 
-
-
         pack = new Pack(10);
         inventory = new Inventory(controller);
         occupation = new Smasher();
@@ -88,16 +86,10 @@ public class GameState extends State {
                 setState(GameState.game);
                 break;
             case Inventory:
-                View.view.removeKeyListener(MenuState.menu);
-                View.view.removeKeyListener(this);
-                View.view.addKeyListener(InventoryState.inventory);
                 System.out.println("Inventory Selection ");
                 setState(InventoryState.inventory);
                 break;
             case Gear:
-                View.view.removeKeyListener(MenuState.menu);
-                View.view.removeKeyListener(this);
-                View.view.addKeyListener(GearState.gear);
                 System.out.println("Gear selection");
                 setState(GearState.gear);
                 break;

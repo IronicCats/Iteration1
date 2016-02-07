@@ -20,10 +20,8 @@ public class InventoryState extends State {
         inv=new InventoryView(controller, width, height);
     }
     public void switchState() {
-                View.view.removeKeyListener(this);
-                View.view.addKeyListener(GameState.game);
-                System.out.println("Resume Game from Inventory");
-                setState(GameState.game);
+        System.out.println("Resume Game from Inventory");
+        setState(GameState.game);
     }
     @Override
     public void tick() {

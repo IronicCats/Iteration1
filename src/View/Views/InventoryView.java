@@ -1,9 +1,7 @@
 package View.Views;
 
 import Controller.Controller;
-import Controller.States.GameState;
-import Controller.States.GearState;
-import Controller.States.States;
+import Controller.States.*;
 
 import java.awt.*;
 
@@ -71,7 +69,7 @@ public class InventoryView {
     }
     public void shift() {
         s=0;
-        GameState.game.switchState(States.Gear);
+        State.setState(GearState.gear);
     }
     public int d() {
         return s;

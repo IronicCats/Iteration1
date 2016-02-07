@@ -1,9 +1,7 @@
 package View.Views;
 
 import Controller.Controller;
-import Controller.States.GameState;
-import Controller.States.InventoryState;
-import Controller.States.States;
+import Controller.States.*;
 
 import java.awt.*;
 import java.awt.font.GraphicAttribute;
@@ -94,7 +92,8 @@ public class GearView {
         /*
         switch view to inventory view
          */
-        GameState.game.switchState(States.Inventory);
+        slot = 0;
+        State.setState(InventoryState.inventory);
     } // end shift
     public int q() {
         /*

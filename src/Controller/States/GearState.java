@@ -21,8 +21,6 @@ public class GearState extends State {
     } // end constructor
 
     public void switchState() {
-        View.view.removeKeyListener(this);
-        View.view.addKeyListener(GameState.game);
         System.out.println("Resume Game from Gear");
         setState(GameState.game);
     } // end switchState
