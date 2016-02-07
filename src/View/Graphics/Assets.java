@@ -23,7 +23,11 @@ public class Assets {
     public static ArrayList<BufferedImage> water;
     public static ArrayList<BufferedImage> mountain;
 
-    public static BufferedImage avatar;
+
+    public static BufferedImage avatarFacingDown;
+    public static BufferedImage avatarFacingUp;
+    public static BufferedImage avatarFacingLeft;
+    public static BufferedImage avatarFacingRight;
     public static BufferedImage potion;
     public static BufferedImage sack;
     public static BufferedImage skullAndBones;
@@ -70,7 +74,10 @@ public class Assets {
         mountain = new ArrayList<>(9);
 
 
-        avatar = avatarSheet.crop(0, 0, width, height);
+        avatarFacingDown = avatarSheet.crop(0, 0, width, height);
+        avatarFacingUp = avatarSheet.crop(32,0,width,height);
+        avatarFacingLeft = avatarSheet.crop(64,0,width,height);
+        avatarFacingRight = avatarSheet.crop(96,0,width,height);
         grass = grassSheet.crop(0, 0, width, height);
         potion = potionSheet.crop(0,0,width,height);
         sack = sackSheet.crop(0,0,width,height);
