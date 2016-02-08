@@ -97,7 +97,6 @@ public class MainMenu  {
     public void changeColor() {
         switch(state){
             case 0:
-                System.out.println("Green");
                 greenTitle += 5;
                 if(greenTitle == 255) {
                     state = 1;
@@ -105,14 +104,12 @@ public class MainMenu  {
                 break;
             case 1:
                 redTitle -=5;
-                System.out.println("-Red");
                 if( redTitle == 0){
                     state = 2;
                 }
                 break;
             case 2:
                 blueTitle += 5;
-                System.out.println("Blue");
 
                 if(blueTitle == 255) {
                     state = 3;

@@ -8,7 +8,6 @@ import View.View;
 public class Main {
 
     public static void main(String args[]) {
-        System.out.println("Hello World");
 
         int width = 800;
         int height = 600;

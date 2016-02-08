@@ -37,7 +37,6 @@ public class MapView {
         this.map = map;
         this.mapWidth = map.getWidth();
         this.mapHeight= map.getHeight();
-        System.out.println("Map Height: " + Integer.toString(mapHeight));
     }
 
     public void render(Graphics g) {
