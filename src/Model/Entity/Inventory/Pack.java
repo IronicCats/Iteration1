@@ -1,6 +1,7 @@
 package Model.Entity.Inventory;
 
 import Model.Item.*;
+import Model.Item.Takeable.Takeable;
 
 /**
  * Created by broskj on 2/1/16.

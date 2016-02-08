@@ -195,6 +195,9 @@ public class PopulateItems {
             case ("TreasureChest"):
                 image = Assets.chest;
                 break;
+            case ("House"):
+                image = Assets.house;
+                break;
             default:
                 break;
         }
