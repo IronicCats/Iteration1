@@ -34,7 +34,7 @@ Comment: Armor Items Follow
 1 1 Boots BD +5 defense ED 4 5 null 0
 1 1 Boots BD +5 defense ED 4 5 null 0
 1 1 Boots BD +5 defense ED 4 5 null 0
-<<<<<<< HEAD
+
 10 10 House BD Obstacle ED 2 0 null 0
 
 
