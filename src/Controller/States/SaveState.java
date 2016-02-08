@@ -69,14 +69,11 @@ public class SaveState extends State {
             outputWriter.close();
             fileWrite.close();
 
-
             //so I need a Tostring for Location, a ToString for Stats, a toString for pack(maybe individually for items), and to string for equipment
             //outputWriter.write(Objects.toString(saveFile));
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }
 
     public String getSaveFilePath(String saveFileName) {

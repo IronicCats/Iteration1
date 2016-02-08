@@ -57,8 +57,15 @@ public class Assets {
     public static BufferedImage diagonalLeftup;
     public static BufferedImage diagonalLeftdown;
 
+    public static BufferedImage title;
+    public static BufferedImage background;
+
 
     public static void init() {
+
+        title = new ImageLoader().loadImage("/textures/title.png");
+        background = new ImageLoader().loadImage("/textures/backgroundimage.png");
+
         SpriteSheet grassSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/GrassTiles.png"));
         SpriteSheet mountainSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/MountainTile.png"));
         SpriteSheet waterSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/WaterTile.png"));
@@ -96,10 +103,16 @@ public class Assets {
         SpriteSheet avatarSheetLeft = new SpriteSheet(new ImageLoader(). loadImage("/textures/DiagonalSpriteSheetLeft.png"));
 
 
+
+
+
         water = new ArrayList<>(9);
         mountain = new ArrayList<>(9);
         grass = new ArrayList<>(9);
         buttons = new ArrayList<>(4);
+
+
+
 
         avatarFacingDown = avatarSheet.crop(0, 0, width, height);
         avatarFacingUp = avatarSheet.crop(32,0,width,height);
