@@ -5,6 +5,7 @@ import Controller.States.States;
 import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Created by mazumderm on 2/6/2016.
@@ -13,6 +14,7 @@ public class LoadMenu {
 
     int width, height;
     private int currentItem = 0;
+    String [] fileName;
     String [] fileNames;
 
     public LoadMenu(int width, int height)
@@ -37,9 +39,22 @@ public class LoadMenu {
         g.drawString("Pick a game to load", x, y);
 
         //list all possible games
-        fileNames = new File("res/testLoadFiles").list();
+        fileName = new File("res/testLoadFiles").list();
+        int fileNamesInitialSize = fileName.length;
+        fileNames = new String[fileNamesInitialSize + 1];
+        for(int j = 0; j <= fileName.length; ++j)
+        {
+            if(j < fileNamesInitialSize)
+            {
+                fileNames[j] = fileName[j];
+            }
+            else if(j == fileNamesInitialSize)
+            {
+                fileNames[j] = "Back";
+            }
+        }
 
-
+        //go through the list
         for(int i = 0; i < fileNames.length ; ++i) {
             g.setFont(new Font("Arial", Font.PLAIN, 28));
             FontMetrics fm2 = g.getFontMetrics();
@@ -55,6 +70,7 @@ public class LoadMenu {
                 g.setColor(Color.GREEN);
             }
             g.drawString(fileNames[i], x2, y2);
+
         }
 
     }
@@ -62,7 +78,7 @@ public class LoadMenu {
     public void next()
     {
         ++currentItem;
-        if(currentItem > fileNames.length - 1){
+        if(currentItem > fileNames.length){
             currentItem = 0;
         }
     }
@@ -74,8 +90,18 @@ public class LoadMenu {
             currentItem = fileNames.length - 1;
         }
     }
-
-    public String getSelection()
+    public boolean checkSelectionStatus()
+    {
+       if(fileNames[currentItem] == "Back")
+       {
+           return true;
+       }
+        else
+       {
+           return false;
+       }
+    }
+    public String getSelectionString()
     {
         return fileNames[currentItem];
     }

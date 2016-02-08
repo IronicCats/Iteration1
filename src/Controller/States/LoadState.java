@@ -105,9 +105,15 @@ public class LoadState extends State {
         }
 
         if(e.getKeyCode() == 10) {
-            loadMenu.getSelection();
-            System.out.println(loadMenu.getSelection());
-            //later when load method is actually done call load.loadFile(player,loadMenu.getSelection)
+            if(loadMenu.checkSelectionStatus())//checking if back option has been selected
+            {
+                setState(MenuState.menu);
+            }
+            else
+            {
+                System.out.println(loadMenu.getSelectionString());
+                //later when load method is actually done call load.loadFile(player,loadMenu.getSelection)
+            }
         }
     }
 
