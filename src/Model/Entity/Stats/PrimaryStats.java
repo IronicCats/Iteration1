@@ -75,10 +75,15 @@ public class PrimaryStats {
         xpThreshhold *= xpMultiplier;
         livesLeft = baseLives;
 
-        strength *= statMultiplier;
-        agility *= statMultiplier;
-        intellect *= statMultiplier;
-        hardiness *= statMultiplier;
+        baseStr *= statMultiplier;
+        baseAgi*= statMultiplier;
+        baseIntel *= statMultiplier;
+        baseHard *= statMultiplier;
+
+        strength = baseStr;
+        agility = baseAgi;
+        intellect = baseIntel;
+        hardiness = baseHard;
     } // end levelUp
 
     public void kill() {
