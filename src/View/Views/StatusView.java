@@ -53,7 +53,7 @@ public class StatusView {
 
         //SET HEALTH PERCENTAGE
         g.setColor(Color.black);
-        g.drawString("HEALTH: " + (int)playerStats[0] + "%", (width/8 - fm.stringWidth("HEALTH: 99%") / 2), y + 2);
+        g.drawString("LIVES: " + (int)playerStats[3] + " - HEALTH: " + (int)playerStats[0] + "%", (width/8 - fm.stringWidth("Lives: 10 - HEALTH: 99%") / 2), y + 2);
         x = x + 100 + 10;
 
 
