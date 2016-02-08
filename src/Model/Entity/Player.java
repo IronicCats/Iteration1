@@ -71,12 +71,16 @@ public class Player extends Entity {
                 location.setDir(3);
                 navigation.move(x);
             } else if (x == 4) {
+                location.setDir(0);
                 navigation.move(x);
             } else if (x == 5) {
+                location.setDir(2);
                 navigation.move(x);
             } else if (x == 6) {
+                location.setDir(2);
                 navigation.move(x);
             } else if (x == 7) {
+                location.setDir(0);
                 navigation.move(x);
             }
         }

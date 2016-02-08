@@ -17,16 +17,12 @@ public class OneShot extends Item {
         super(image, location, type, name, description, effects, requirements);
     }
 
-    @Override
     public void onInteract(Player player) {
-        player.getStats().applyEffect(this.getEffects());
-        location = null;
     }
 
-    public String toString()
-    {
+    public String toString() {
         String string;
-        string = (this.location.getX() + " " + this.location.getY() +"\n");
+        string = (this.location.getX() + " " + this.location.getY() + "\n");
         return string;
     }
 
