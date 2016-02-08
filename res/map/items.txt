@@ -1,17 +1,47 @@
 Comment: This file initializes all items on map. The setup is as follows:
-Comment: Position x position y Name Description Type Stat reqItem reqLevel StatEnum Adjustment
+Comment: PositionX positionY Name Description Type Stat reqItem reqLevel StatEnum Adjustment
 Comment: SA = start array, EA = end array
 Comment: BD = begin description, ED = end description
+
 Comment: Type--> 0 = OneShot, 1 = Useable, 2 = Obstacle, 3 = Interactable
-Comment: 4 = Armor, 5 = Weapon
-5 5 Sword BD +5 attack ED 5 5 null 3
-10 5 Chest BD +5 defense ED 4 5 null 0
-5 10 Boots BD +5 defense ED 4 5 null 0
-6 6 Health BD +3 health ED 1 0 null 0 SA Life 3 EA
+Comment:         4 = Armor, 5 = Weapon
+
+Comment: OneShot Items Follow
+
+6 2 OneDamage BD -1 Health -1 Mana ED 0 0 null 0 SA Mana -1 Life -1 EA
+
+Comment: Useable Items Follow
+
 20 15 Mana BD +3 Mana ED 1 0 null 0 SA Mana 3 EA
+6 10 Health BD +3 health ED 1 0 null 0 SA Life 3 EA
+25 40 Health BD +3 health ED 1 0 null 0 SA Life 3 EA
 3 4 Health BD +3 health ED 1 0 null 0 SA Life 3 EA
+
+Comment: Obstacle Items Follow
+
+Comment: Interactable Items Follow
+
+Comment: Armor Items Follow
+
+1 25 Chest BD +6 defense ED 4 6 null 0
+40 10 Boots BD +3 defense ED 4 3 null 0
+2 18 Pants BD +4 defense ED 4 4 null 0
+30 42 Gloves BD +5 defense ED 4 5 null 0
+15 25 AccessoryA BD +5 defense ED 4 5 null 0
+30 30 AccessoryA BD +2 defense ED 4 2 null 0
+13 16 AccessoryB BD +2 defense ED 4 2 null 0
 1 1 Boots BD +5 defense ED 4 5 null 0
 1 1 Boots BD +5 defense ED 4 5 null 0
 1 1 Boots BD +5 defense ED 4 5 null 0
+<<<<<<< HEAD
 10 10 House BD Obstacle ED 2 0 null 0
+8 4 TreasureChest BD Chest ED 1 0 null 0
+=======
+
+Comment: Weapons Follow
+
+10 5 Sword BD +5 attack ED 5 5 null 3
+
+
+>>>>>>> master
 

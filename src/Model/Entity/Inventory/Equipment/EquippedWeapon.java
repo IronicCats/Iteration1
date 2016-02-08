@@ -36,4 +36,13 @@ public class EquippedWeapon {
     public int getDamage() {
         return damage;
     }
+
+   public String toString()
+    {
+        String string;
+
+        string = (weapon.getName() + "\n");
+
+        return string;
+    }
 }
