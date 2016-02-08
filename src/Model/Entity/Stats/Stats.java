@@ -5,6 +5,7 @@ import Controller.Controller;
 import Controller.States.MenuState;
 import Controller.States.State;
 import Model.Entity.EquipmentStats;
+import Model.Entity.Inventory.Equipment.Equipment;
 import Model.Game;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class Stats {
     private ArrayList<Effect> effects;
     private ArrayList<Long> finishTimes;
     public Controller controller;
+    private EquipmentStats equipmentStats;
 
 
     public Stats() {
@@ -29,6 +31,7 @@ public class Stats {
         this.derivedStats = new DerivedStats(primaryStats);
         this.effects = new ArrayList<>();
         this.finishTimes = new ArrayList<>();
+        this.equipmentStats = null;
     } // end constructor
 
     public Stats(StatStructure ss, Controller controller) {
@@ -41,6 +44,7 @@ public class Stats {
         finishTimes = new ArrayList<>();
         this.controller = controller;
        // this.controller = controller;
+        this.equipmentStats = null;
     } // end constructor
 
     public void levelUp() {
@@ -147,6 +151,15 @@ public class Stats {
                     }
                     else
                         derivedStats.modifyLife(e.modification.getStat(s));
+                    break;
+                case MANA:
+                    if(e.modification.getStat(s) + getMana() > getBaseMana())
+                        derivedStats.setMana(getBaseMana());
+                    else if(e.modification.getStat(s) + derivedStats.getMana() <= 0) {
+                        derivedStats.setMana(0);
+                    }
+                    else
+                        derivedStats.modifyMane(e.modification.getStat(s));
                     break;
                 case OFFENSIVE_RATING:
                     derivedStats.modifyOffensiveRating(e.modification.getStat(s));
@@ -256,6 +269,9 @@ public class Stats {
             System.out.println("Leveling up");
             levelUp();
         }
+
+        derivedStats.update();
+
     } // end updateEffects
 
     public PrimaryStats getPrimaryStats(){return primaryStats;}
@@ -284,6 +300,13 @@ public class Stats {
     public int getDefensiveRating() { return derivedStats.getDefensiveRating(); }
     public int getArmorRating() { return derivedStats.getArmorRating(); }
     public EquipmentStats getEquipmentStats() { return primaryStats.getEquipmentStats(); }
+
+    public void setEquipmentStats(EquipmentStats equipmentStats) {
+        this.equipmentStats = equipmentStats;
+        primaryStats.setEquipmentStats(equipmentStats);
+        derivedStats.setEquipmentStats(equipmentStats);
+        derivedStats.update();
+    }
 
 
     public String toString()

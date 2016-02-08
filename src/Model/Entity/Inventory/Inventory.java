@@ -164,6 +164,7 @@ public class Inventory {
             //System.out.println("This was a weapon");
             equipment.getWeapon().equipWeapon((Weapon)pack.items[i]);
             pack.items[i]=null;
+            pack.size--;
 
 
         }

@@ -45,6 +45,7 @@ public class Equipment {
         if (s) g.drawImage(Assets.emptyInvSelect, x, y, 64, 64, null);
         else g.drawImage(Assets.emptyInv, x, y, 64, 64, null);
         //System.out.print(index);
+
         if (index != 3 && armor.armorReturn(index) != null)
             g.drawImage(armor.armorReturn(index).getImage(), x, y, 64, 64, null);
         else if (index == 3 && weapon.getWeapon() != null)
@@ -76,10 +77,30 @@ public class Equipment {
             }
              g.setFont(new Font("Arial", Font.BOLD, 20));
         }
-
         g.drawString("*PRESS SHIFT TO VIEW INV",width/2,9*height/12+60);
         g.drawString("*PRESS G OR ESCAPE TO EXIT",width/2,9*height/12+85);
     }
+
+    public String toString()
+    {
+        String s = null;
+        if(getWeapon().isEquipped())
+        {
+            s = s + getWeapon().toString();
+        }
+        s = s + armor.getHead().toString();
+        s = s + armor.getChest().toString();
+        s = s + armor.getPants().toString();
+        s = s + armor.getBoots().toString();
+        s = s + armor.getGloves().toString();
+        s = s + armor.getAccessory1().toString();
+        s = s + armor.getAccessory2().toString();
+        return s;
+    }
+
+
+
+
 
     // end constructor
 } // end class Equipment
