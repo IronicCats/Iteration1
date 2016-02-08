@@ -1,15 +1,17 @@
 Comment: This file initializes all items on map. The setup is as follows:
-Comment: Position x position y Name Description Type Stat StatEnum Adjustment
+Comment: Position x position y Name Description Type Stat reqItem reqLevel StatEnum Adjustment
 Comment: SA = start array, EA = end array
 Comment: BD = begin description, ED = end description
 Comment: Type--> 0 = OneShot, 1 = Useable, 2 = Obstacle, 3 = Interactable
 Comment: 4 = Armor, 5 = Weapon
-5 5 Sword BD +5 attack ED 5 5
-10 5 Chest BD +5 defense ED 4 5
-5 10 Boots BD +5 defense ED 4 5
-6 6 Health BD +3 health ED 1 0 SA Life 3 EA
-20 15 Magic BD +3 Mana ED 1 0 SA Mana 3 EA
-3 4 Health BD +3 health ED 1 0 SA Life 3 EA
-1 1 Boots BD +5 defense ED 4 5
-10 10 House BD Obstacle ED 2 0
+5 5 Sword BD +5 attack ED 5 5 null 3
+10 5 Chest BD +5 defense ED 4 5 null 0
+5 10 Boots BD +5 defense ED 4 5 null 0
+6 6 Health BD +3 health ED 1 0 null 0 SA Life 3 EA
+20 15 Mana BD +3 Mana ED 1 0 null 0 SA Mana 3 EA
+3 4 Health BD +3 health ED 1 0 null 0 SA Life 3 EA
+1 1 Boots BD +5 defense ED 4 5 null 0
+1 1 Boots BD +5 defense ED 4 5 null 0
+1 1 Boots BD +5 defense ED 4 5 null 0
+10 10 House BD Obstacle ED 2 0 null 0
 

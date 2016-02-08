@@ -10,6 +10,7 @@ import View.Graphics.Assets;
  * Created by Andy on 2/6/2016.
  */
 public class InventoryList {
+
     static Useable healthPotion =null;
     static Useable manaPotion = null;
     static Armor helmet = null;
@@ -21,6 +22,7 @@ public class InventoryList {
     static Armor accessoryB = null;
     static Armor pants = null;
     static Location loc = null;
+
 
 
 
@@ -44,6 +46,7 @@ public class InventoryList {
         //System.out.println("Do i get here? 1 " + itemname);
         //System.out.println(healthPotion.getName());
         Item a = null;
+
         if(itemname.equalsIgnoreCase(healthPotion.getName())) {a = healthPotion;}
         else if(itemname.equalsIgnoreCase(manaPotion.getName())){a = manaPotion;}
         else if(itemname.equalsIgnoreCase(sword.getName())){a=sword;}
@@ -54,6 +57,7 @@ public class InventoryList {
         else if(itemname.equalsIgnoreCase(accessoryA.getName())){a=accessoryA;}
         else if(itemname.equalsIgnoreCase(accessoryB.getName())){a=accessoryB;}
         else if(itemname.equalsIgnoreCase(pants.getName())){a=pants;}
+
 
         return a;
     }
@@ -94,8 +98,10 @@ public class InventoryList {
     public static Armor createChestPiece(Location l)
     {
         String description = "Chest piece: +4 armor rating";
+
         chestPiece= new Armor(Assets.chestArmor,l,ItemsEnum.ARMOR,"Chest",description,null,null,6,ArmorEnum.CHEST);
         return chestPiece;
+
     }
     public static Armor createBoots(Location l)
     {

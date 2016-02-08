@@ -65,10 +65,11 @@ public class Stats {
         else{
             System.out.println("player is dead");
             System.out.println(controller.getMap().getSpawn().getX());
+            System.out.println(controller.getMap().getSpawn().getY());
             controller.getPlayer().setX(controller.getMap().getSpawn().getX());
             controller.getPlayer().setY(controller.getMap().getSpawn().getY());
-            controller.getPlayer().getNavigation().setGoalX(controller.getMap().getSpawn().getX());
-            controller.getPlayer().getNavigation().setGoalY(controller.getMap().getSpawn().getY());
+            controller.getPlayer().getNavigation().setGoalX(controller.getMap().getSpawn().getPixelX());
+            controller.getPlayer().getNavigation().setGoalY(controller.getMap().getSpawn().getPixelY());
         }
     } // end kill
 

@@ -109,8 +109,8 @@ public class Inventory {
     public void drop(int i) {                    //Takes in argument of takeable item
         if(i < pack.cap&&pack.items[i]!=null) {
             Takeable itemToDrop = pack.items[i];
-            int x = controller.getPlayer().getLocation().getX()/64;
-            int y = controller.getPlayer().getLocation().getY()/64;
+            int x = controller.getPlayer().getLocation().getX();
+            int y = controller.getPlayer().getLocation().getY();
             itemToDrop.setLocation(controller.getPlayer().getLocation());
             controller.getTiles(x,y).addItem(itemToDrop);
             pack.items[i] = null;
@@ -121,6 +121,7 @@ public class Inventory {
         }
     }
     public void interact(int i){
+        if(pack.items[i]==null)return;
         if(pack.items[i].getType() == ItemsEnum.WEAPON ||(pack.items[i].getType() == ItemsEnum.ARMOR)){
             this.equip(i);
         }
@@ -145,10 +146,18 @@ public class Inventory {
 
     public void equip(int i){
         if(pack.items[i].getType() == ItemsEnum.WEAPON&&pack.items[i]!=null) {
+            System.out.println("This was a weapon");
             equipment.getWeapon().equipWeapon((Weapon)pack.items[i]);
+            pack.items[i]=null;
+
+
         }
         else if(pack.items[i].getType() == ItemsEnum.ARMOR&&pack.items[i]!=null){
+            System.out.println("This was a an armor");
             equipment.getArmor().equipArmor((Armor)pack.items[i]);
+            pack.items[i]=null;
+
+            //System.out.println("this was a armor");
         }
         else {
             System.out.println("Error: Trying to equip non-armor/weapon");
