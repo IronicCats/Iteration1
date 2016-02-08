@@ -97,14 +97,7 @@ public class SaveState extends State {
             System.out.println("Saving Done.");
             State.setState(GameState.game);
         }
-
-        if(e.getKeyCode() == KeyEvent.VK_DOWN)
-        {
-            if(e.getKeyCode() == KeyEvent.VK_ENTER)
-            {
-                setState(PauseState.pause);
-            }
-        }
+        
     }
 
     @Override

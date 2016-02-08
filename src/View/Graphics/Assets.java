@@ -50,6 +50,7 @@ public class Assets {
     public static BufferedImage key;
     public static BufferedImage chest;
     public static BufferedImage oneShot;
+    public static BufferedImage damage;
 
     public static void init() {
         SpriteSheet grassSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/GrassTiles.png"));
@@ -79,6 +80,7 @@ public class Assets {
         SpriteSheet oneShotSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/OneShot.png"));
         SpriteSheet chestforKeySheet = new SpriteSheet(new ImageLoader().loadImage("/textures/Chest.png"));
         SpriteSheet buttonSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/buttons.png"));
+        SpriteSheet damageSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/damage.png"));
 
         water = new ArrayList<>(9);
         mountain = new ArrayList<>(9);
@@ -142,6 +144,7 @@ public class Assets {
         skullAndBones = skullAndBonesSheet.crop(0, 0, 28, 28);
         redCross = crossSheet.crop(0, 0, 32, 32);
         goldStar = starSheet.crop(0, 0, 32, 32);
+        damage = damageSheet.crop(0, 0, 32, 32);
         emptyInv = emptyInvSheet.crop(0,0,width,height);
         emptyInvSelect =selectInvSheet.crop(0,0,width,height);
         pants = pantsSheet.crop(0,0,width,height);
