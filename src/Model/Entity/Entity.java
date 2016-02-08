@@ -49,6 +49,8 @@ public abstract class Entity {
     public void initializeEquipmentStats(Equipment equipment) {
         this.equipmentStats = new EquipmentStats(equipment, 0, 0, this.stats);
         stats.setEquipmentStats(equipmentStats);
+        equipment.setEquipmentStats(equipmentStats);
+        equipmentStats.update();
     } // end initializeEquipmentStats
 
     public abstract void tick();

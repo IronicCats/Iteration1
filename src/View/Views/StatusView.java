@@ -169,6 +169,8 @@ public class StatusView {
             startX += 64;
         }
 
+        g.drawImage(Assets.buttons.get(4), startX, startY, 64, 64, null);
+        g.drawString("Map", startX + 64/2 - fm.stringWidth("Map")/2, startY + 64);
     }
 
     public Color getRGB(int r, int g, int b) {

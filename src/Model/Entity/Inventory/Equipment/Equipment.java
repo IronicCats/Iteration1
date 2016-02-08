@@ -151,6 +151,7 @@ public class Equipment {
         return s;
     }
 
+    public void setEquipmentStats(EquipmentStats equipmentStats) { this.equipmentStats = equipmentStats; }
 
 
 

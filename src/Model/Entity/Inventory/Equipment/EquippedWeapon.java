@@ -18,11 +18,12 @@ public class EquippedWeapon {
     public void equipWeapon(Weapon old) {
         Weapon newWep=new Weapon(old);
         this.weapon = newWep;
-        this.damage=newWep.getStat();
+        this.damage+=newWep.getStat();
     }
     public Weapon unequipWeapon(){
         if(weapon==null)return null;
         Weapon temp = new Weapon(weapon);
+        damage -= weapon.getStat();
         weapon=null;
         return temp;
     }

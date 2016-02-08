@@ -26,6 +26,11 @@ public class EquipmentStats {
         this.stats = stats;
     } // end constructor
 
+    public void update() {
+        this.armorStats = equipment.getArmor().getTotalDefense();
+        this.weaponStats = equipment.getWeapon().getDamage();
+    }
+
     public Equipment getEquipment() { return equipment; }
     public Stats getStats() { return stats; }
     public int getArmorStats() { return armorStats; }

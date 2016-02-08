@@ -189,6 +189,8 @@ public class Inventory {
     public void equip(int i){
         if(pack.items[i].getType() == ItemsEnum.WEAPON&&pack.items[i]!=null) {
             //System.out.println("This was a weapon");
+            if(equipment.getWeapon().isEquipped())
+                unequip(3);
             equipment.getWeapon().equipWeapon((Weapon)pack.items[i]);
             pack.items[i]=null;
             pack.size--;
@@ -197,6 +199,9 @@ public class Inventory {
         }
         else if(pack.items[i].getType() == ItemsEnum.ARMOR&&pack.items[i]!=null){
             //System.out.println("This was a an armor");
+            Armor temp = (Armor)pack.items[i];
+            if(equipment.getArmor().isEquipped(temp.getArmorType()))
+                unequip(temp.getArmorType());
             equipment.getArmor().equipArmor((Armor)pack.items[i]);
             pack.items[i]=null;
             pack.size--;
@@ -212,6 +217,41 @@ public class Inventory {
         if(unequipped!=null)add(unequipped);
     }
 
+    public void unequip(ArmorEnum a) {
+        Equippable unequipped;
+        switch (a) {
+            case HEAD:
+                unequipped = equipment.unEquip(1);
+                if(unequipped!=null)add(unequipped);
+                break;
+            case CHEST:
+                unequipped = equipment.unEquip(4);
+                if(unequipped!=null)add(unequipped);
+                break;
+            case PANTS:
+                unequipped = equipment.unEquip(7);
+                if(unequipped!=null)add(unequipped);
+                break;
+            case GLOVES:
+                unequipped = equipment.unEquip(5);
+                if(unequipped!=null)add(unequipped);
+                break;
+            case BOOTS:
+                unequipped = equipment.unEquip(10);
+                if(unequipped!=null)add(unequipped);
+                break;
+            case ACCESSORY1:
+                unequipped = equipment.unEquip(9);
+                if(unequipped!=null)add(unequipped);
+                break;
+            case ACCESSORY2:
+                unequipped = equipment.unEquip(11);
+                if(unequipped!=null)add(unequipped);
+                break;
+            default:
+                break;
+        }
+    } // end unequip
 
 
     public void tick() {

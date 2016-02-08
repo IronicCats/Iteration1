@@ -271,9 +271,13 @@ public class Stats {
             levelUp();
         }
 
-        derivedStats.update();
-
+        update();
     } // end updateEffects
+
+    public void update() {
+        equipmentStats.update();
+        derivedStats.update();
+    } // end update
 
     public PrimaryStats getPrimaryStats(){return primaryStats;}
     public DerivedStats getDerivedStats(){return derivedStats;}
