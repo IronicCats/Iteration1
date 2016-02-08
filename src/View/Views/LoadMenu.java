@@ -15,6 +15,7 @@ public class LoadMenu {
 
     int width, height;
     private int currentItem = 0;
+    int numberOfSaveFilesToDisplay = 3;
     String [] fileName;
     String [] fileNames;
     States previousState;
@@ -41,7 +42,7 @@ public class LoadMenu {
         g.drawString("Pick a game to load", x, y);
 
         //list all possible games
-        fileName = new File("res/testLoadFiles").list();
+        fileName = new File("res/saveFiles").list();
         int fileNamesInitialSize = fileName.length;
         fileNames = new String[fileNamesInitialSize + 1];
         for(int j = 0; j <= fileName.length; ++j)
@@ -57,7 +58,13 @@ public class LoadMenu {
         }
 
         //go through the list
-        for(int i = 0; i < fileNames.length ; ++i) {
+        if(fileNames.length > 3) {
+            numberOfSaveFilesToDisplay = 3;
+        }
+        else {
+            numberOfSaveFilesToDisplay = fileNames.length;
+        }
+        for(int i = 0; i < numberOfSaveFilesToDisplay; ++i) {
             g.setFont(new Font("Arial", Font.PLAIN, 28));
             FontMetrics fm2 = g.getFontMetrics();
             int totalWidth2 = (fm.stringWidth(fileNames[i]));
