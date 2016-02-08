@@ -69,7 +69,7 @@ Defense +4 ED
 
 30 42 Gloves
 Defense +5 ED
-4 5 null 0
+4 3 null 0
 
 15 25 AccessoryA
 Defense +2 ED
@@ -95,7 +95,7 @@ Comment: Weapons Follow
 
 10 5 Sword
 +5 attack ED
-5 5 null 3
+3 5 null 3
 
 Comment: Pickupable Follows
 
