@@ -48,6 +48,7 @@ public class Assets {
     public static BufferedImage helmet;
     public static BufferedImage house;
     public static BufferedImage key;
+    public static BufferedImage chest;
     public static BufferedImage oneShot;
 
     public static void init() {
@@ -76,6 +77,7 @@ public class Assets {
         SpriteSheet helmetSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/Helmet.png"));
         SpriteSheet keysheet = new SpriteSheet(new ImageLoader().loadImage("/textures/KeySprite.png"));
         SpriteSheet oneShotSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/OneShot.png"));
+        SpriteSheet chestforKeySheet = new SpriteSheet(new ImageLoader().loadImage("/textures/Chest.png"));
         SpriteSheet buttonSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/buttons.png"));
 
         water = new ArrayList<>(9);
@@ -151,6 +153,8 @@ public class Assets {
         chestArmor = chestSheet.crop(0,0,width,height);
         helmet = helmetSheet.crop(0,0,width,height);
         key = keysheet.crop(0,0,width,height);
+        chest = chestforKeySheet.crop(0,0,width,height);
         oneShot = oneShotSheet.crop(0,0,width,height);
+
     }
 }
