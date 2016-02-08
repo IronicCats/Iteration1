@@ -41,23 +41,36 @@ public class Pack {
     public String toString()
     {
         String packString = "";
+        int position = 0;
         for(int i = 0; i < size; i++)
         {
 
-            //System.out.print(items[i]);
-            if(items[i].getType() == ItemsEnum.WEAPON)
+
+            System.out.println(position);
+            if(items[position] == null)
             {
-                //System.out.println("A WEAPON TO SURPASS METAL GEAR");
-                packString = packString + ((Weapon)items[i]).toString();
+                System.out.println(position + " out loop");
+                while(items[position] == null)
+                {
+                    System.out.println(position + " in loop");
+                    position++;
+                }
             }
-            else if(items[i].getType() == ItemsEnum.ARMOR){
-                //System.out.println("so safe");
-                packString = packString + ((Armor)items[i]).toString();
-            }
-            else if(items[i].getType() == ItemsEnum.USEABLE)
+            if(items[position].getType() == ItemsEnum.WEAPON)
             {
-                //System.out.println("don't do drugs kids" + i);
-                packString = packString + ((Useable)items[i]).toString();
+                packString = packString + ((Weapon)items[position]).toString();
+                position++;
+            }
+            else if(items[position].getType() == ItemsEnum.ARMOR){
+
+                packString = packString + ((Armor)items[position]).toString();
+                position++;
+            }
+            else if(items[position].getType() == ItemsEnum.USEABLE)
+            {
+
+                packString = packString + ((Useable)items[position]).toString();
+                position++;
             }
 
         }
