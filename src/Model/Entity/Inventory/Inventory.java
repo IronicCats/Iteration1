@@ -51,14 +51,19 @@ public class Inventory {
         //count should be at 23, 23 should have the pack size
 
         Pack p = pack;
+        Inventory b = new Inventory(pack,equipment);
+        //System.out.print(saveFile.get(count) + "THIS IS WHAT IS AT 23");
         int packSize = (int)saveFile.get(count);
+        //System.out.println(packSize +  " HEY THERE IS THIS MAN");
 
 
-        for(int i=0; i <= packSize;i++)
+        for(int i=0; i <= packSize-1;i++)
         {
             count++;
             Item a = InventoryList.checkItem((String)saveFile.get(count));
-            p.add(a);
+            System.out.println(a.getName() +" This is what is at " + count);
+           // p.;
+            b.add((Takeable)a);
         }
 
         count++;
@@ -115,6 +120,21 @@ public class Inventory {
             System.out.println("Trying to drop item at index greater than pack capacity");
         }
     }
+
+    public void dropAll(){
+        for(int i = 0; i < pack.cap; i++){
+            if(pack.items[i]!=null){
+                Takeable itemToDrop = pack.items[i];
+                int x = controller.getPlayer().getLocation().getX();
+                int y = controller.getPlayer().getLocation().getY();
+                itemToDrop.setLocation(controller.getPlayer().getLocation());
+                controller.getTiles(x,y).addItem(itemToDrop);
+                pack.items[i] = null;
+                pack.size--;
+            }
+        }
+    }
+
     public void interact(int i){
         if(pack.items[i]==null)return;
         if(pack.items[i].getType() == ItemsEnum.WEAPON ||(pack.items[i].getType() == ItemsEnum.ARMOR)){

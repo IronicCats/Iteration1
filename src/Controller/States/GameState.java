@@ -51,7 +51,6 @@ public class GameState extends State {
     public GameState(Controller controller) {
         super(controller);
         game = this;
-        location = new Location(4,5,0); //Location is in wrong coordinates it should be in pixels not in tile
         statusView = new StatusView(controller);
 
     }
@@ -108,6 +107,7 @@ public class GameState extends State {
 
         if(e.getKeyCode() == KeyEvent.VK_I) {
             switchState(States.Inventory);
+            //SaveState.writeFile(player,"Player test.txt");
         }
 
         if(e.getKeyCode() == KeyEvent.VK_G) {
@@ -116,7 +116,8 @@ public class GameState extends State {
 
         if(e.getKeyCode() == KeyEvent.VK_Q){
             controller.getPlayer().PickUpItem();
-            SaveState.writeFile(player,"Player test.txt");
+            //SaveState.writeFile(player,"Player test.txt");
+            //LoadState.loadFile(player,"Player test.txt");
         }
 
         if((e.getKeyCode() == KeyEvent.VK_NUMPAD8 || e.getKeyCode() == KeyEvent.VK_UP)){
