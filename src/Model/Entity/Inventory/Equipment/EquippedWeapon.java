@@ -21,6 +21,7 @@ public class EquippedWeapon {
         this.damage=newWep.getStat();
     }
     public Weapon unequipWeapon(){
+        if(weapon==null)return null;
         Weapon temp = new Weapon(weapon);
         weapon=null;
         return temp;
