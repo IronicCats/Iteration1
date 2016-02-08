@@ -1,13 +1,12 @@
 package View.Views;
 
-import Controller.States.State;
 import Controller.States.States;
 
 import java.awt.*;
 import java.io.File;
 import java.io.FilenameFilter;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  * Created by mazumderm on 2/6/2016.
@@ -17,9 +16,8 @@ public class LoadMenu {
     int width, height;
     private int currentItem = 0;
     int numberOfSaveFilesToDisplay = 3;
-    String [] fileName;
     String [] fileNames;
-    States previousState;
+    ArrayList<String> menuOptions = new ArrayList<>();
 
     public LoadMenu(int width, int height)
     {
@@ -43,37 +41,22 @@ public class LoadMenu {
         g.drawString("Pick a game to load", x, y);
 
         //list all possible games
-        fileName = new File("res/saveFiles").list(new FilenameFilter() {
+        fileNames = new File("res/saveFiles").list(new FilenameFilter() {
             @Override
             public boolean accept(File dir, String name) {
                 return name.endsWith(".sav");
             }
         });
-        int fileNamesInitialSize = fileName.length;
-        fileNames = new String[fileNamesInitialSize + 1];
-        for(int j = 0; j <= fileName.length; ++j)
-        {
-            if(j < fileNamesInitialSize)
-            {
-                fileNames[j] = fileName[j];
-            }
-            else if(j == fileNamesInitialSize)
-            {
-                fileNames[j] = "Back";
-            }
-        }
 
-        //go through the list
-        if(fileNames.length > 3) {
-            numberOfSaveFilesToDisplay = 3;
+        for(int i = 0; i < ((fileNames.length > numberOfSaveFilesToDisplay)? numberOfSaveFilesToDisplay : fileNames.length); ++i) {
+            menuOptions.add(fileNames[i]);
         }
-        else {
-            numberOfSaveFilesToDisplay = fileNames.length;
-        }
-        for(int i = 0; i < numberOfSaveFilesToDisplay; ++i) {
+        menuOptions.add("Back");
+        
+        for(int i = 0; i < menuOptions.size(); ++i) {
             g.setFont(new Font("Arial", Font.PLAIN, 28));
             FontMetrics fm2 = g.getFontMetrics();
-            int totalWidth2 = (fm.stringWidth(fileNames[i]));
+            int totalWidth2 = (fm.stringWidth(menuOptions.get(i)));
             int x2 = (width - totalWidth2) / 2;
             int y2 = (height / 2) - 100 + 100 * i;
 
@@ -84,9 +67,10 @@ public class LoadMenu {
             }else {
                 g.setColor(Color.GREEN);
             }
-            g.drawString(fileNames[i], x2, y2);
+            g.drawString(menuOptions.get(i), x2, y2);
 
         }
+        menuOptions.clear();
 
     }
 
