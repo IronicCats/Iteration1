@@ -60,6 +60,7 @@ public abstract class Item {
     }
 
     public Requirements getRequirements(){
+        System.out.println("getRequirements -> " + requirements);
         return requirements;
     }
     /* end getter functions */

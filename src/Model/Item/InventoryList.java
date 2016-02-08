@@ -3,8 +3,12 @@ package Model.Item;
 import Model.Entity.Stats.Effect;
 import Model.Entity.Stats.StatStructure;
 import Model.Entity.Stats.StatsEnum;
+import Model.Item.Takeable.Takeable;
 import Model.Location;
+import Model.Requirements;
 import View.Graphics.Assets;
+
+import java.util.Locale;
 
 /**
  * Created by Andy on 2/6/2016.
@@ -22,6 +26,8 @@ public class InventoryList {
     static Armor accessoryB = null;
     static Armor pants = null;
     static Location loc = null;
+    static Pickupable key = null;
+    static Interactable treasureChest = null;
 
 
 
@@ -39,6 +45,8 @@ public class InventoryList {
         createAccessoryA(loc);
         createAccessoryB(loc);
         createPants(loc);
+        createKey(loc);
+        createTreasureChest(loc);
         System.out.println("This should be initialized.");
     }
     public static Item checkItem(String itemname)
@@ -57,6 +65,8 @@ public class InventoryList {
         else if(itemname.equalsIgnoreCase(accessoryA.getName())){a=accessoryA;}
         else if(itemname.equalsIgnoreCase(accessoryB.getName())){a=accessoryB;}
         else if(itemname.equalsIgnoreCase(pants.getName())){a=pants;}
+        else if(itemname.equalsIgnoreCase(key.getName())) {a = key;}
+        else if(itemname.equalsIgnoreCase(treasureChest.getName())) {a = treasureChest;}
 
 
         return a;
@@ -133,5 +143,17 @@ public class InventoryList {
         String description = "Pants: +4 armor rating";
         pants = new Armor(Assets.pants,l,ItemsEnum.ARMOR,"Pants",description,null,null,4,ArmorEnum.PANTS);
         return pants;
+    }
+    public static Pickupable createKey(Location l) {
+        String description = "A key for a chest";
+        key = new Pickupable(Assets.key,l,ItemsEnum.PICKUPABLE,"Key",description,null);
+        return key;
+    }
+    public static Interactable createTreasureChest(Location l) {
+        String description = "A chest that needs a key to open";
+        Takeable requiredItem = new Pickupable(Assets.key,loc,ItemsEnum.PICKUPABLE,"Key","A key for a chest",null);
+        Requirements requirement = new Requirements(requiredItem);
+        treasureChest = new Interactable(Assets.chest,l,ItemsEnum.INTERACTABLE,"TreasureChest",description,null,requirement);
+        return treasureChest;
     }
 }
