@@ -82,6 +82,8 @@ public class PopulateItems {
 
             reqLevel = scan.nextInt(); // required level
 
+            //requirements = new Requirements(reqLevel, reqItem);
+
             if (scan.hasNext("SA")) { // start of array containing StatStructure code
                 scan.next(); // move to first string in array
                 setStatStruc(scan); // method to store array in txt file to statStruc
@@ -97,8 +99,16 @@ public class PopulateItems {
 
     private void setStatStruc(Scanner items){ // called to iterate through array of effect
         while(!items.hasNext("EA")){ // if not reached end of array
-            convertEnum(items.next()); // assign string # i in stats (statEnum array) and assigns image
+            convertEnum(items.next()); // assign stats (statEnum array) and assigns image
             mod[stats.size() - 1] = items.nextInt(); // assigns the corresponding value adjustment to mod array
+        }
+        if(stats.size() >= 1){
+            if(type == 0){
+                image = Assets.oneShot;
+            }
+            else{
+                //image = Assets.somePic;
+            }
         }
         items.next(); // move past end of array
         statStruc = new StatStructure(stats.toArray(new StatsEnum[stats.size()]), mod); // create new statStructure used to create effects array
@@ -109,34 +119,29 @@ public class PopulateItems {
     }
 
     private void convertEnum(String Enum){ // assigns statEnum and image based on effect
-        if(stats.size() >= 1){
-            // apply image for item with multiple effects
-        }
-        else { // apply image for for item with just one effect
-            switch (Enum) {
-                case ("Life"):
-                    stats.add(StatsEnum.LIFE);
-                    image = Assets.potion;
-                    break;
-                case ("Level"):
-                    stats.add(StatsEnum.LEVEL);
-                    image = Assets.sack;
-                    break;
-                case ("Movement"):
-                    stats.add(StatsEnum.MOVEMENT);
-                    //image = Assets.potion;
-                    break;
-                case ("Experience"):
-                    stats.add(StatsEnum.EXPERIENCE);
-                    //image = Assets.potion;
-                    break;
-                case ("Mana"):
-                    stats.add(StatsEnum.MANA);
-                    image = Assets.manapotion;
-                    break;
-                default:
-                    break;
-            }
+        switch (Enum) {
+            case ("Life"):
+                stats.add(StatsEnum.LIFE);
+                image = Assets.potion;
+                break;
+            case ("Level"):
+                stats.add(StatsEnum.LEVEL);
+                image = Assets.sack;
+                break;
+            case ("Movement"):
+                stats.add(StatsEnum.MOVEMENT);
+                //image = Assets.potion;
+                break;
+            case ("Experience"):
+                stats.add(StatsEnum.EXPERIENCE);
+                //image = Assets.potion;
+                break;
+            case ("Mana"):
+                stats.add(StatsEnum.MANA);
+                image = Assets.manapotion;
+                break;
+            default:
+                break;
         }
     }
 
@@ -160,7 +165,7 @@ public class PopulateItems {
                 break;
             case ("Pants"):
                 armorType = ArmorEnum.PANTS;
-                //image = Assets.Axe;
+                image = Assets.pants;
                 break;
             case ("Head"):
                 armorType = ArmorEnum.HEAD;
@@ -174,8 +179,9 @@ public class PopulateItems {
                 armorType = ArmorEnum.BOOTS;
                 image = Assets.boots;
                 break;
-            case ("House"):
-                image = Assets.house;
+            case ("Gloves"):
+                armorType = ArmorEnum.GLOVES;
+                image = Assets.glove;
                 break;
             case ("TreasureChest"):
                 image = Assets.chest;
@@ -187,7 +193,6 @@ public class PopulateItems {
 
     private void generateEffects(){
         effects.add(new Effect(statStruc, 0, description)); // create effects for 1 item. 5 max
-        //System.out.println(statStruc.getStat(StatsEnum.LIFE));
     }
 
     private void generateItems(){ // create items
