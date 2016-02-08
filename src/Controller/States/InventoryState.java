@@ -67,6 +67,7 @@ public class InventoryState extends State {
         if(e.getKeyCode() == KeyEvent.VK_Q) {
             int index=inv.q();
             controller.getPlayer().getInventory().interact(index);
+            controller.getPlayer().getStats().update();
             //else controller.getPlayer().getInventory().unequip(index);
         }
         if(e.getKeyCode() == KeyEvent.VK_D) {

@@ -68,6 +68,7 @@ public class GearState extends State {
         if(e.getKeyCode() == KeyEvent.VK_Q) {
             int index=gearView.q();
             controller.getPlayer().getInventory().unequip(index);
+            controller.getPlayer().getStats().update();
         }
         if(e.getKeyCode() == KeyEvent.VK_G || e.getKeyCode() == KeyEvent.VK_ESCAPE) {
             this.switchState();

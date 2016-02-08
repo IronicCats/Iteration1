@@ -1,6 +1,7 @@
 package Model.Entity.Inventory.Equipment;
 
 import Model.Item.Armor;
+import Model.Item.ArmorEnum;
 import Model.Item.Item;
 
 /**
@@ -38,14 +39,13 @@ public class EquippedArmor {
     }
     public void equipArmor(Armor old) {
         Armor armor=new Armor(old);
+        totalDefense+=armor.getStat();
         switch(armor.getArmorType()) {
             case HEAD:
                 head=armor;
-                System.out.println("this was head");
                 break;
             case CHEST:
                 chest=armor;
-                System.out.println("this was chest");
                 break;
             case PANTS:
                 pants=armor;
@@ -65,7 +65,6 @@ public class EquippedArmor {
             default:
                 break;
         }
-        totalDefense+=armor.getStat();
     }
     public Armor unequipArmor(int index){
         Armor temp=null;
@@ -118,6 +117,43 @@ public class EquippedArmor {
         }
         return temp;
     }
+
+    public boolean isEquipped(ArmorEnum a) {
+        switch(a) {
+            case HEAD:
+                if(head != null)
+                    return true;
+                break;
+            case CHEST:
+                if(chest != null)
+                    return true;
+                break;
+            case PANTS:
+                if(pants != null)
+                    return true;
+                break;
+            case GLOVES:
+                if(gloves != null)
+                    return true;
+                break;
+            case BOOTS:
+                if(boots != null)
+                    return true;
+                break;
+            case ACCESSORY1:
+                if(accessory1 != null)
+                    return true;
+                break;
+            case ACCESSORY2:
+                if(accessory1 != null)
+                    return true;
+                break;
+            default:
+                break;
+        }
+        return false;
+    } // end isEquipped
+
     public int getTotalDefense() {
         return totalDefense; }
 
