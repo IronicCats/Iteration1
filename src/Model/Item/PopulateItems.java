@@ -86,11 +86,13 @@ public class PopulateItems {
             if (scan.hasNext("SA")) { // start of array containing StatStructure code
                 scan.next(); // move to first string in array
                 setStatStruc(scan); // method to store array in txt file to statStruc
+                description = "";
                 continue;
             }
             else{
                 setImage(name);
                 generateItems();
+                description = "";
             }
         }
         scan.close(); // close scanner
