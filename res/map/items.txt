@@ -33,14 +33,10 @@ Comment: Armor Items Follow
 1 1 Boots BD +5 defense ED 4 5 null 0
 1 1 Boots BD +5 defense ED 4 5 null 0
 1 1 Boots BD +5 defense ED 4 5 null 0
+4 4 Key BD A key ED 1 0 null 0
 10 10 House BD Obstacle ED 2 0 null 0
 8 4 TreasureChest BD Chest ED 1 0 null 0
-
-
 Comment: Weapons Follow
 
 10 5 Sword BD +5 attack ED 5 5 null 3
-
-
-
 

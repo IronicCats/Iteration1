@@ -179,7 +179,7 @@ public class Inventory {
 
     public void equip(int i){
         if(pack.items[i].getType() == ItemsEnum.WEAPON&&pack.items[i]!=null) {
-            System.out.println("This was a weapon");
+            //System.out.println("This was a weapon");
             equipment.getWeapon().equipWeapon((Weapon)pack.items[i]);
             pack.items[i]=null;
             pack.size--;
@@ -187,7 +187,7 @@ public class Inventory {
 
         }
         else if(pack.items[i].getType() == ItemsEnum.ARMOR&&pack.items[i]!=null){
-            System.out.println("This was a an armor");
+            //System.out.println("This was a an armor");
             equipment.getArmor().equipArmor((Armor)pack.items[i]);
             pack.items[i]=null;
             pack.size--;
@@ -209,7 +209,7 @@ public class Inventory {
 
     }
 
-    public void render(int index,Graphics g,int x, int y, boolean s) {
+    public void render(int index,Graphics g,int x, int y, boolean s,int width,int height) {
         //if(pack.items[index]==null){
         if(s)g.drawImage(Assets.emptyInvSelect,x,y,64,64,null);
         else g.drawImage(Assets.emptyInv,x,y,64,64,null);
@@ -219,6 +219,15 @@ public class Inventory {
         if(pack.items[index]!=null) {
             g.drawImage(pack.items[index].getImage(),x,y,64,64,null);
         }
+        if(s) {
+            if (pack.items[index] != null && (pack.items[index].getType() == ItemsEnum.WEAPON || pack.items[index].getType() == ItemsEnum.ARMOR))
+                g.drawString("*PRESS Q TO EQUIP", width / 2, 9 * height / 12 + 10);
+            else if (pack.items[index] != null && (pack.items[index].getType() == ItemsEnum.USEABLE))
+                g.drawString("*PRESS Q TO USE", width / 2, 9 * height / 12 + 10);
+            if (pack.items[index] != null) g.drawString("*PRESS D TO DROP", width / 2, 9 * height / 12 + 35);
+        }
+        g.drawString("*PRESS SHIFT TO VIEW GEAR",width/2,9*height/12+60);
+        g.drawString("*PRESS I OR ESCAPE TO EXIT",width/2,9*height/12+85);
     }
 
     public void getInput() {
