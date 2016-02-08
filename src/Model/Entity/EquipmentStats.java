@@ -12,6 +12,13 @@ public class EquipmentStats {
     private int armorStats;
     private int weaponStats;
 
+    public EquipmentStats() {
+        this.equipment = null;
+        this.stats = null;
+        this.armorStats = 0;
+        this.weaponStats = 0;
+    } // end default constructor
+
     public EquipmentStats(Equipment equipment, int armorStats, int weaponStats, Stats stats) {
         this.equipment = equipment;
         this.armorStats = armorStats;
