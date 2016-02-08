@@ -33,11 +33,15 @@ public class InventoryView {
     }
 
     public void render(Graphics g) {
+        //StatusView.render(g);
         /*
         in inventory view
          */
         g.setColor(new Color(0, 0, 0, 170));
         g.fillRect(width / 12, height / 12, 5 * width / 6, 5 * height / 6);
+
+        g.setColor(Color.DARK_GRAY);
+        g.fillRect(100,height/4-30,width/2-125,height/2);
 
         g.setColor(new Color(38, 33, 191));
         g.setFont(new Font("Arial", Font.PLAIN, 48));
@@ -63,7 +67,7 @@ public class InventoryView {
             }
             else x+=74;
         }
-
+        /*
         double[] playerStats = calculatePercentages();
 
 
@@ -131,10 +135,25 @@ public class InventoryView {
         //SET EXP PERCENTAGE
         g.setColor(Color.black);
         g.drawString("EXP: " + (int)playerStats[4] + "/" + (int)playerStats[5]  ,baseX-7 + (fm.stringWidth("EXP: 220/099%")), baseY+73);
-        x = x + 100 + 10;
-
+        x = x + 100 + 10;g
+*/
         //g.setColor(Color.YELLOW);
         //g.fillRect(barStartX, y + 5, width, 5);
+        int baseX=100+ (width/2-125)/2-width/8;;
+        int baseY=height/4-10;
+        baseY+=15;
+        g.setFont(new Font("Arial", Font.BOLD, 20));
+        g.drawString("Occupation:"+controller.getPlayer().getOccupation().getName(),baseX,baseY);baseY+=28;
+        // g.setFont(new Font("Arial", Font.BOLD, 20));
+        g.drawString("Level: "+controller.getPlayer().getStats().getLevel(),baseX,baseY);baseY+=28;
+        g.drawString("Strength: "+controller.getPlayer().getStats().getStrength(),baseX,baseY);baseY+=28;
+        g.drawString("Agility: "+controller.getPlayer().getStats().getAgility(),baseX,baseY);baseY+=28;
+        g.drawString("Intellect: "+controller.getPlayer().getStats().getIntellect(),baseX,baseY);baseY+=28;
+        g.drawString("Hardiness: "+controller.getPlayer().getStats().getHardiness(),baseX,baseY);baseY+=28;
+        g.drawString("Movement: "+controller.getPlayer().getStats().getMovement(),baseX,baseY);baseY+=28;
+        g.drawString("Offensive Rating: "+controller.getPlayer().getStats().getOffensiveRating(),baseX,baseY);baseY+=28;
+        g.drawString("Defensive Rating: "+controller.getPlayer().getStats().getDefensiveRating(),baseX,baseY);baseY+=28;
+        g.drawString("Armor Rating: "+controller.getPlayer().getStats().getArmorRating(),baseX,baseY);baseY+=28;;
 
     }
 
