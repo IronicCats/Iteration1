@@ -101,4 +101,4 @@ Comment: Pickupable Follows
 
 4 4 Key
 A key ED
-1 0 null 0
+6 0 null 0
