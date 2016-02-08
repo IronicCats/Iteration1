@@ -52,17 +52,17 @@ public class GearState extends State {
         if(e.getKeyCode() == KeyEvent.VK_SHIFT||e.getKeyCode() == KeyEvent.VK_I) {
             gearView.shift();
         }
-        if(e.getKeyCode() == KeyEvent.VK_UP) {
+        if(e.getKeyCode() == KeyEvent.VK_NUMPAD8 || e.getKeyCode() == KeyEvent.VK_UP) {
             gearView.up();
         }
-        if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+        if(e.getKeyCode() == KeyEvent.VK_NUMPAD2 || e.getKeyCode() == KeyEvent.VK_DOWN) {
             gearView.down();
            // System.out.println("Down P");
         }
-        if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+        if(e.getKeyCode() == KeyEvent.VK_NUMPAD4 || e.getKeyCode() == KeyEvent.VK_LEFT) {
             gearView.left();
         }
-        if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+        if(e.getKeyCode() == KeyEvent.VK_NUMPAD6 || e.getKeyCode() == KeyEvent.VK_RIGHT) {
             gearView.right();
         }
         if(e.getKeyCode() == KeyEvent.VK_Q) {

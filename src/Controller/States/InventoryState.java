@@ -51,17 +51,17 @@ public class InventoryState extends State {
         if(e.getKeyCode() == KeyEvent.VK_SHIFT||e.getKeyCode() == KeyEvent.VK_G) {
             inv.shift();
         }
-        if(e.getKeyCode() == KeyEvent.VK_UP) {
+        if(e.getKeyCode() == KeyEvent.VK_NUMPAD8 || e.getKeyCode() == KeyEvent.VK_UP) {
             inv.up();
         }
-        if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+        if(e.getKeyCode() == KeyEvent.VK_NUMPAD2 || e.getKeyCode() == KeyEvent.VK_DOWN) {
             inv.down();
             //System.out.println("Down P");
         }
-        if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+        if(e.getKeyCode() == KeyEvent.VK_NUMPAD4 || e.getKeyCode() == KeyEvent.VK_LEFT) {
             inv.left();
         }
-        if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+        if(e.getKeyCode() == KeyEvent.VK_NUMPAD6 || e.getKeyCode() == KeyEvent.VK_RIGHT) {
             inv.right();
         }
         if(e.getKeyCode() == KeyEvent.VK_Q) {

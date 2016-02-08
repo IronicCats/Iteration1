@@ -171,6 +171,10 @@ public class Assets {
         buttons.add(buttonSheet.crop(0, 32, width, height));
         //D
         buttons.add(buttonSheet.crop(32, 32, width, height));
+        //M
+        buttons.add(buttonSheet.crop(64, 32, width, height));
+
+
 
         potion = potionSheet.crop(0,0,width,height);
         sack = sackSheet.crop(0,0,width,height);
