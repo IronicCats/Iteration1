@@ -107,6 +107,7 @@ public class GameState extends State {
 
         if(e.getKeyCode() == KeyEvent.VK_I) {
             switchState(States.Inventory);
+            //SaveState.writeFile(player,"Player test.txt");
         }
 
         if(e.getKeyCode() == KeyEvent.VK_G) {
@@ -115,7 +116,8 @@ public class GameState extends State {
 
         if(e.getKeyCode() == KeyEvent.VK_Q){
             controller.getPlayer().PickUpItem();
-            SaveState.writeFile(player,"Player test.txt");
+            //SaveState.writeFile(player,"Player test.txt");
+            //LoadState.loadFile(player,"Player test.txt");
         }
 
         if((e.getKeyCode() == KeyEvent.VK_NUMPAD8 || e.getKeyCode() == KeyEvent.VK_UP)){
