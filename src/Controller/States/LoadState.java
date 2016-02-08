@@ -18,6 +18,7 @@ import Model.Location;
 import Model.Map.Map;
 import View.Graphics.Camera;
 import View.Views.LoadMenu;
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader;
 
 /**
  * Created by Andy on 2/4/2016.
@@ -37,6 +38,10 @@ public class LoadState extends State {
     private Map map;
     private Camera camera;
 
+    int numberOfSaveFilesToDisplay = 3;
+    ArrayList<String> menuOptions;
+
+
     private ArrayList<Object> loadedfile = new ArrayList<Object>();
    //private  static Player player;
 
@@ -53,6 +58,23 @@ public class LoadState extends State {
     }
 
     public void tick() {
+        //list all possible games
+        String [] fileNames = new File("res/saveFiles").list(new FilenameFilter() {
+            @Override
+            public boolean accept(File dir, String name) {
+                return name.endsWith(".sav");
+            }
+        });
+
+        // Add the savegames to an array of menu options
+        menuOptions = new ArrayList<>();
+        for(int i = 0; i < ((fileNames.length > numberOfSaveFilesToDisplay)? numberOfSaveFilesToDisplay : fileNames.length); ++i) {
+            menuOptions.add(fileNames[i]);
+        }
+        menuOptions.add("Back");
+
+        // Send the menu options to the LoadMenu
+        loadMenu.setMenuOptions(menuOptions);
 
     }
 
@@ -114,13 +136,13 @@ public class LoadState extends State {
     @Override
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_UP) {
-            loadMenu.previous();
+            loadMenu.up();
         }
         if(e.getKeyCode() == KeyEvent.VK_DOWN) {
-            loadMenu.next();
+            loadMenu.down();
         }
 
-        if(e.getKeyCode() == 10) {
+        if(e.getKeyCode() == KeyEvent.VK_ENTER) {
             if(loadMenu.checkSelectionStatus())//checking if back option has been selected
             {
                 if(this.getPreviousState() == States.Menu)
