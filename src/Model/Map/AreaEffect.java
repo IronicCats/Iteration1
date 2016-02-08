@@ -34,13 +34,13 @@ public class AreaEffect {
        {
            StatStructure modification = new StatStructure(StatsEnum.LIFE, -5);
            effect = new Effect(modification,0, this.description);
-           decal = new Decal(Assets.skullAndBones,"Healing point", "You get plus 5 health", this.location, DecalEnum.SKULLANDCROSSBONES);
+           decal = new Decal(Assets.skullAndBones,"Damage point", "You get damaged", this.location, DecalEnum.SKULLANDCROSSBONES);
        }
        else if(areaEffect == AreaEffectEnum.HEAL)// if its healing area effect
        {
            StatStructure modification = new StatStructure(StatsEnum.LIFE, 5);
            effect = new Effect(modification,0, this.description);
-           decal = new Decal(Assets.redCross,"Healing point", "You get plus 5 health", this.location, DecalEnum.REDCROSS);
+           decal = new Decal(Assets.redCross,"Healing point", "You get health", this.location, DecalEnum.REDCROSS);
        }
        else if(areaEffect == AreaEffectEnum.DEATH)// if its a death effect
        {

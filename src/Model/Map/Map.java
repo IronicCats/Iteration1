@@ -162,6 +162,16 @@ public class Map {
             }
         }
 
+
+        //putting area effects on the map
+        if(areaEffects.length == 0)
+        {
+
+        }
+        else
+        {
+            
+        }
     }
 
     private int parseInt(String string) {
