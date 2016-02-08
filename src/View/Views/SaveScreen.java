@@ -1,5 +1,7 @@
 package View.Views;
 
+import View.Graphics.Assets;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -27,7 +29,14 @@ public class SaveScreen {
         g.setColor(new Color(38, 166, 91));
         g.fillRect(0, 0, width, height);
 
-        g.setColor(new Color(38, 33, 191));
+        g.setFont(new Font("Arial", Font.PLAIN, 128));
+        g.drawImage(Assets.background, 0, 0, 800, 600, null);
+
+        g.setColor(new Color(12, 12, 12, 130));
+        g.fillRect(0, 0, width, height);
+
+
+        g.setColor(new Color(155, 89, 182));
         g.setFont(new Font("Arial", Font.PLAIN, 48));
         FontMetrics fm = g.getFontMetrics();
         int totalWidth = (fm.stringWidth(savePrompt));

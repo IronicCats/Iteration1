@@ -1,6 +1,7 @@
 package View.Views;
 
 import Controller.States.States;
+import View.Graphics.Assets;
 import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader;
 
 import java.awt.*;
@@ -28,12 +29,17 @@ public class LoadMenu {
 
     public void render(Graphics g)
     {
-        //background
         g.setColor(new Color(38, 166, 91));
         g.fillRect(0, 0, width, height);
 
+        g.setFont(new Font("Arial", Font.PLAIN, 128));
+        g.drawImage(Assets.background, 0, 0, 800, 600, null);
+
+        g.setColor(new Color(12, 12, 12, 130));
+        g.fillRect(0, 0, width, height);
+
         //text for loading
-        g.setColor(new Color(38, 33, 191));
+        g.setColor(new Color(155, 89, 182));
         g.setFont(new Font("Arial", Font.PLAIN, 48));
         FontMetrics fm = g.getFontMetrics();
         int totalWidth = (fm.stringWidth("Pick a game to load"));
@@ -52,11 +58,11 @@ public class LoadMenu {
             int y2 = (height / 2) - 100 + 100 * i;
 
             if(i == currentItem){
-                g.setColor(Color.ORANGE);
+                g.setColor(new Color(149, 165, 166, 175));
                 g.fillRect(x2, y2 - fm2.getHeight() + (fm2.getHeight() / 4), totalWidth2, fm2.getHeight() );
-                g.setColor(Color.PINK);
+                g.setColor(new Color(243, 156, 18));
             }else {
-                g.setColor(Color.GREEN);
+                g.setColor(new Color(231, 76, 60));
             }
             g.drawString(menuOptions.get(i), x2, y2);
 

@@ -25,10 +25,12 @@ public class PauseMenu {
     }
 
     public void render(Graphics g) {
-        g.setColor(new Color(38, 166, 91));
+        g.setColor(new Color(16, 16, 16, 156));
         g.fillRect(width / 4, (height / 2) - (height / 4) - 50, width / 2, (height / 2) + 100);
 
-        g.setColor(new Color(38, 33, 191));
+
+
+        g.setColor(new Color(155, 89, 182));
         g.setFont(new Font("Arial", Font.PLAIN, 48));
         FontMetrics fm = g.getFontMetrics();
         int totalWidth = (fm.stringWidth("Pause Menu"));
@@ -43,11 +45,11 @@ public class PauseMenu {
             x = (width - totalWidth) / 2;
             y = (height / 2) - 50 + 50 * i;
             if(i == currentItem){
-                g.setColor(Color.ORANGE);
+                g.setColor(new Color(149, 165, 166, 175));
                 g.fillRect(x, y - fm.getHeight() + (fm.getHeight() / 4), totalWidth, fm.getHeight() );
-                g.setColor(Color.PINK);
+                g.setColor(new Color(243, 156, 18));
             }else {
-                g.setColor(Color.GREEN);
+                g.setColor(new Color(231, 76, 60));
             }
             g.drawString(menuItems[i], x, y);
         }

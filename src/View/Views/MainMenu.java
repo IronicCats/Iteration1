@@ -33,10 +33,10 @@ public class MainMenu  {
 
     public void render(Graphics g) {
 
-        //g.setColor(new Color(38, 166, 91));
-        //g.fillRect(0, 0, width, height);
-        g.drawImage(Assets.background, backX, backY, 800, 600, null);
 
+        g.drawImage(Assets.background, backX, backY, 800, 600, null);
+        g.setColor(new Color(12, 12, 12, 130));
+        g.fillRect(0, 0, width, height);
         for(int i = 0; i < menuItems.length; ++i) {
             g.setFont(new Font("Arial", Font.PLAIN, 54));
             FontMetrics fm = g.getFontMetrics();

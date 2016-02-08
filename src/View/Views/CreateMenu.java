@@ -7,6 +7,7 @@ import java.awt.event.KeyListener;
 import Controller.Controller;
 import Controller.States.States;
 import View.*;
+import View.Graphics.Assets;
 import View.Views.MainMenu;
 
 /**
@@ -30,18 +31,31 @@ public class CreateMenu {
             g.setColor(new Color(38, 166, 91));
             g.fillRect(0, 0, width, height);
 
+            g.setFont(new Font("Arial", Font.PLAIN, 128));
+            g.drawImage(Assets.background, 0, 0, 800, 600, null);
+            g.setColor(new Color(12, 12, 12, 130));
+            g.fillRect(0, 0, width, height);
+            FontMetrics fm = g.getFontMetrics();
+            g.setColor(new Color(155, 89, 182));
+
+            g.drawString("Choose Class", width / 2 - fm.stringWidth("Choose Class") / 2, fm.getHeight()/2 + 25 );
+
             for(int i = 0; i < menuItems.length; ++i) {
                 g.setFont(new Font("Arial", Font.PLAIN, 54));
-                FontMetrics fm = g.getFontMetrics();
+                fm = g.getFontMetrics();
                 int totalWidth = (fm.stringWidth(menuItems[i]));
                 int x = (width - totalWidth) / 2;
                 int y = (height / 2) - 100 + 100 * i;
                 if(i == currentItem){
-                    g.setColor(Color.ORANGE);
+                    g.setColor(new Color(149, 165, 166, 175));
                     g.fillRect(x, y - fm.getHeight() + (fm.getHeight() / 4), totalWidth, fm.getHeight() );
-                    g.setColor(Color.PINK);
+                    g.setColor(new Color(243, 156, 18));
                 }else {
-                    g.setColor(Color.GREEN);
+                    g.setColor(new Color(231, 76, 60));
+                    if(i == 3) {
+                        g.setColor(new Color(0, 0, 0));
+                    }
+
                 }
                 g.drawString(menuItems[i], x, y);
             }
