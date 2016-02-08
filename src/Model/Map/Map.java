@@ -30,6 +30,7 @@ public class Map {
     private Controller controller;
     private PopulateItems populateItems;
     private Item[] items;
+    private AreaEffect[] areaEffects;
     private Location spawn;
 
     public Map(Controller controller) {
