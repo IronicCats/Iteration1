@@ -43,7 +43,8 @@ public class Inventory {
     public void saveInventory(ArrayList<Object> saveFile){
         saveFile.add(Integer.toString(pack.getSize())+"\n");
         saveFile.add(pack);
-        //saveFile.add(equipment); //fixme
+
+        saveFile.add(equipment); //fixme
 
     }
 
@@ -61,16 +62,33 @@ public class Inventory {
         {
             count++;
             Item a = InventoryList.checkItem((String)saveFile.get(count));
-            System.out.println(a.getName() +" This is what is at " + count);
+            //System.out.println(a.getName() +" This is what is at " + count);
            // p.;
             b.add((Takeable)a);
         }
 
         count++;
 
+        for(int j = count; j <= saveFile.size()-1; j++)
+        {
+            //saveFile.size();
+            Item a = InventoryList.checkItem((String)saveFile.get(count));
+            if(a.getType() == ItemsEnum.WEAPON) {
+                b.equipment.getWeapon().equipWeapon((Weapon)a);
+                count++;
+            }
+            else if(a.getType() == ItemsEnum.ARMOR)
+            {
+                System.out.println("YOU SHOULD BE EQUIPING");
+                b.equipment.getArmor().equipArmor((Armor)a);
+                count++;
+
+            }
+        }
 
 
-        //this.getPack().
+
+
     }
 
 
@@ -161,7 +179,7 @@ public class Inventory {
 
     public void equip(int i){
         if(pack.items[i].getType() == ItemsEnum.WEAPON&&pack.items[i]!=null) {
-            System.out.println("This was a weapon");
+            //System.out.println("This was a weapon");
             equipment.getWeapon().equipWeapon((Weapon)pack.items[i]);
             pack.items[i]=null;
             pack.size--;
@@ -169,9 +187,10 @@ public class Inventory {
 
         }
         else if(pack.items[i].getType() == ItemsEnum.ARMOR&&pack.items[i]!=null){
-            System.out.println("This was a an armor");
+            //System.out.println("This was a an armor");
             equipment.getArmor().equipArmor((Armor)pack.items[i]);
             pack.items[i]=null;
+            pack.size--;
 
             //System.out.println("this was a armor");
         }
@@ -190,7 +209,7 @@ public class Inventory {
 
     }
 
-    public void render(int index,Graphics g,int x, int y, boolean s) {
+    public void render(int index,Graphics g,int x, int y, boolean s,int width,int height) {
         //if(pack.items[index]==null){
         if(s)g.drawImage(Assets.emptyInvSelect,x,y,64,64,null);
         else g.drawImage(Assets.emptyInv,x,y,64,64,null);
@@ -200,6 +219,15 @@ public class Inventory {
         if(pack.items[index]!=null) {
             g.drawImage(pack.items[index].getImage(),x,y,64,64,null);
         }
+        if(s) {
+            if (pack.items[index] != null && (pack.items[index].getType() == ItemsEnum.WEAPON || pack.items[index].getType() == ItemsEnum.ARMOR))
+                g.drawString("*PRESS Q TO EQUIP", width / 2, 9 * height / 12 + 10);
+            else if (pack.items[index] != null && (pack.items[index].getType() == ItemsEnum.USEABLE))
+                g.drawString("*PRESS Q TO USE", width / 2, 9 * height / 12 + 10);
+            if (pack.items[index] != null) g.drawString("*PRESS D TO DROP", width / 2, 9 * height / 12 + 35);
+        }
+        g.drawString("*PRESS SHIFT TO VIEW GEAR",width/2,9*height/12+60);
+        g.drawString("*PRESS I OR ESCAPE TO EXIT",width/2,9*height/12+85);
     }
 
     public void getInput() {

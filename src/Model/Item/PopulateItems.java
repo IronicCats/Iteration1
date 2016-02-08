@@ -189,6 +189,11 @@ public class PopulateItems {
             case ("AccessoryB"):
                 armorType = ArmorEnum.ACCESSORY2;
                 image = Assets.accessory2;
+            case ("Key"):
+                image = Assets.key;
+                break;
+            case ("TreasureChest"):
+                image = Assets.chest;
                 break;
             default:
                 break;

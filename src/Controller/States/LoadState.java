@@ -23,7 +23,7 @@ public class LoadState extends State {
 
 
     public LoadState(Controller controller, int width, int height) {
-        super(controller);;
+        super(controller);
         load = this;
         loadMenu = new LoadMenu(width,height);
     }

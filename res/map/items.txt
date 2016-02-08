@@ -75,7 +75,6 @@ Defense +5 ED
 Defense +2 ED
 4 5 null 0
 
-
 13 16 AccessoryB
 Defense +2 ED
 4 2 null 0
