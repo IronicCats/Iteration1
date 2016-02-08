@@ -26,7 +26,7 @@ public class EquippedArmor {
         accessory2 = null;//new Armor();
         totalDefense = 0;
     } // end constructor
-    public Armor rReturn(int i){
+    public Armor armorReturn(int i){
         if(i==1&&head!=null) return head;
         else if(i==4&&chest!=null) return chest;
         else if(i==5&&gloves!=null) return gloves;
