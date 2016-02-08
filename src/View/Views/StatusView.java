@@ -120,14 +120,23 @@ public class StatusView {
     }
 
     public void renderItemsLists(Graphics g) {
-
-        Tile curTile = controller.getTiles((int)(controller.getPlayer().getLocation().getX()/64), (int)(controller.getPlayer().getLocation().getY()/64));
+        int playerX = controller.getPlayer().getLocation().getX();
+        int playerY = controller.getPlayer().getLocation().getY() ;
+        Tile curTile = controller.getTiles(playerX, playerY);
+        FontMetrics fm = g.getFontMetrics();
+        int amountItems = controller.getTiles(playerX, playerY).getItems().size();
+        //if theres items on the group, render a box and list the items on the screen
         if(curTile.hasItem()) {
-            ArrayList<Item> items = controller.getTiles((int)(controller.getPlayer().getLocation().getX()/64), (int)(controller.getPlayer().getLocation().getY()/64)).getItems();
-            g.setColor(Color.CYAN);
-            String itemname = curTile.getItems().toString();
+            g.drawRect(width - 150, height - 50 - (10 *(amountItems + 1)), fm.stringWidth("1. xxxxxxxxxxxxxxxxxx"), (amountItems + 1) * (fm.getHeight()) );
+            g.setColor(new Color(12, 12, 12, 150));
+            g.fillRect(width - 150, height - 50 - (10 *(amountItems + 1)), fm.stringWidth("1. xxxxxxxxxxxxxxxxxx"), (amountItems + 1) * (fm.getHeight()));
 
-            g.drawString(itemname, width/2, height/2);
+            ArrayList<Item> items = controller.getTiles(playerX, playerY).getItems();
+            g.setColor(Color.CYAN);
+            for (int i = 0; i < items.size(); ++i) {
+                g.drawString(items.get(i).getName(), width - 140, (items.size() > 0)(3*-i) + (fm.getHeight()/2 + height - 40 - (10 *(i + 1))));
+            }
+
         }
     }
 
