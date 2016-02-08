@@ -167,7 +167,7 @@ public class Map {
         }
 
         AreaEffect one = new AreaEffect("Damaged", "You lose health", AreaEffectEnum.DAMAGE);
-        this.getTile(5, 10).addAreaEffect(one);
+        this.getTile(6, 10).addAreaEffect(one);
 
         AreaEffect two = new AreaEffect("Healed", "You gain health", AreaEffectEnum.HEAL);
         this.getTile(9, 6).addAreaEffect(two);
