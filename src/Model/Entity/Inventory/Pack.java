@@ -37,6 +37,13 @@ public class Pack {
 
     }
 
+    public int indexOf(String name) {
+        for(int i = 0; i < cap; i++)
+            if(items[i] != null)
+                if(items[i].getName().equals(name))
+                    return i;
+        return -1;
+    }
 
 
     public String toString()
@@ -86,6 +93,8 @@ public class Pack {
         return size;
     }
 
-
+    public void deleteItem(int index) {
+        items[index] = null;
+    }
 
 } // end class Pack

@@ -9,7 +9,7 @@ Comment: SA = start array, EA = end array
 Comment: BD = begin description, ED = end description
 
 Comment: Type--> 0 = OneShot, 1 = Useable, 2 = Obstacle, 3 = Interactable
-Comment:          4 = Armor, 5 = Weapon, 6 pickupable
+Comment:         4 = Armor, 5 = Weapon, 6 = Pickupable
 
 Comment: OneShot Items Follow
 
@@ -101,4 +101,4 @@ Comment: Pickupable Follows
 
 4 4 Key
 A key ED
-1 0 null 0
+6 0 null 0
