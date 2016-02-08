@@ -1,16 +1,14 @@
 package Model.Entity.Inventory;
 
 import Controller.Controller;
-import Model.Entity.Entity;
 import Model.Entity.Inventory.Equipment.Equipment;
 import Model.Item.Equippable;
 import Model.Item.Item;
-import Model.Item.Takeable;
+import Model.Item.Takeable.Takeable;
 import Model.Item.*;
 import Model.Location;
 import View.Graphics.Assets;
 
-import javax.lang.model.type.NullType;
 import java.awt.*;
 import java.util.ArrayList;
 

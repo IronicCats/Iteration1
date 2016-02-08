@@ -44,8 +44,8 @@ SA Life 3 EA
 Comment: Obstacle Items Follow
 
 10 10 House
-Obstacle ED
-3 0 null 0
+Obstacle House ED
+2 0 null 0
 
 Comment: Interactable Items Follow
 
