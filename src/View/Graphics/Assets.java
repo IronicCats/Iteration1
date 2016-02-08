@@ -51,6 +51,11 @@ public class Assets {
     public static BufferedImage chest;
     public static BufferedImage oneShot;
     public static BufferedImage damage;
+    public static BufferedImage diagonalLeft;
+    public static BufferedImage diagonalRightdown;
+    public static BufferedImage diagonalRightup;
+    public static BufferedImage diagonalLeftup;
+    public static BufferedImage diagonalLeftdown;
 
 
     public static void init() {
@@ -87,6 +92,9 @@ public class Assets {
         SpriteSheet chestforKeySheet = new SpriteSheet(new ImageLoader().loadImage("/textures/Chest.png"));
         SpriteSheet buttonSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/buttons.png"));
         SpriteSheet damageSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/damage.png"));
+        SpriteSheet avatarSheetRight = new SpriteSheet(new ImageLoader(). loadImage("/textures/DiagonalSpriteSheetRight.png"));
+        SpriteSheet avatarSheetLeft = new SpriteSheet(new ImageLoader(). loadImage("/textures/DiagonalSpriteSheetLeft.png"));
+
 
         water = new ArrayList<>(9);
         mountain = new ArrayList<>(9);
@@ -101,6 +109,10 @@ public class Assets {
         sack = sackSheet.crop(0,0,width,height);
         sword = swordSheet.crop(0,0,width,height);
         boots = bootsSheet.crop(0,0,width,height);
+        diagonalRightdown = avatarSheetRight.crop(0,0,width,height);
+        diagonalRightup = avatarSheetRight.crop(32,0,width,height);
+        diagonalLeftdown = avatarSheetLeft.crop(0,0,width,height);
+        diagonalLeftup = avatarSheetLeft.crop(32,0,width,height);
 
         //Water Tiles
         water.add(waterSheet.crop(0, 0, width, height));

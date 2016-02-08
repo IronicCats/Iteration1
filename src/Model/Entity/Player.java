@@ -72,16 +72,16 @@ public class Player extends Entity {
                 location.setDir(3);
                 navigation.move(x);
             } else if (x == 4) {
-                location.setDir(0);
+                location.setDir(4);
                 navigation.move(x);
             } else if (x == 5) {
-                location.setDir(2);
+                location.setDir(5);
                 navigation.move(x);
             } else if (x == 6) {
-                location.setDir(2);
+                location.setDir(6);
                 navigation.move(x);
             } else if (x == 7) {
-                location.setDir(0);
+                location.setDir(7);
                 navigation.move(x);
             }
         }
@@ -103,6 +103,18 @@ public class Player extends Entity {
         else if(location.getDir() == 3){
             facing = Assets.avatarFacingLeft;
         }
+        else if(location.getDir() == 4){
+            facing = Assets.diagonalRightdown;
+        }
+        else if(location.getDir() == 5){
+            facing = Assets.diagonalRightup;
+        }
+        else if(location.getDir() == 6){
+            facing = Assets.diagonalLeftdown;        }
+        else if(location.getDir() == 7){
+            facing = Assets.diagonalLeftup;
+        }
+
         g.drawImage(facing,
                 (int) (location.getPixelX() - controller.getCamera().getxOffset()) + Tile.TILEWIDTH / 2 - width / 2,
                 (int) (location.getPixelY() - controller.getCamera().getyOffset()),
