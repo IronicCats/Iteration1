@@ -160,6 +160,5 @@ public class Assets {
         helmet = helmetSheet.crop(0,0,width,height);
         chest = chestforKeySheet.crop(0,0,width,height);
         oneShot = oneShotSheet.crop(0,0,width,height);
-
     }
 }
