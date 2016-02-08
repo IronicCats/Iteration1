@@ -107,7 +107,6 @@ public class GameState extends State {
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {
             //SaveState.writeFile(player,"Player test.txt");
-            LoadState.loadFile(player,"Player test.txt");
             switchState(States.Pause);
         }
 
