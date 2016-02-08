@@ -37,15 +37,11 @@ public class LoadMenu {
         g.drawString("Pick a game to load", x, y);
 
         //list all possible games
-        fileNames = new File("/TestLoadFiles").list();
+        fileNames = new File("res/testLoadFiles").list();
 
-       for(int i = 0; i < fileNames.length; ++i)
-       {
-           System.out.println(fileNames[i]);
-       }
-        /**
+
         for(int i = 0; i < fileNames.length ; ++i) {
-            g.setFont(new Font("Arial", Font.PLAIN, 54));
+            g.setFont(new Font("Arial", Font.PLAIN, 28));
             FontMetrics fm2 = g.getFontMetrics();
             int totalWidth2 = (fm.stringWidth(fileNames[i]));
             int x2 = (width - totalWidth2) / 2;
@@ -53,14 +49,13 @@ public class LoadMenu {
 
             if(i == currentItem){
                 g.setColor(Color.ORANGE);
-                g.fillRect(x, y - fm2.getHeight() + (fm2.getHeight() / 4), totalWidth2, fm.getHeight() );
+                g.fillRect(x2, y2 - fm2.getHeight() + (fm2.getHeight() / 4), totalWidth2, fm2.getHeight() );
                 g.setColor(Color.PINK);
             }else {
                 g.setColor(Color.GREEN);
             }
-            g.drawString(fileNames[i], x, y);
+            g.drawString(fileNames[i], x2, y2);
         }
-         **/
 
     }
 
@@ -80,9 +75,9 @@ public class LoadMenu {
         }
     }
 
-    public void getSelection()
+    public String getSelection()
     {
-
+        return fileNames[currentItem];
     }
 
 }
