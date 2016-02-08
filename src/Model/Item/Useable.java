@@ -21,6 +21,7 @@ public class Useable extends Takeable{
         player.getStats().applyEffect(this.getEffects());
         location = null;
     }
+
     public String toString()
     {
         String string;

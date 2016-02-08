@@ -46,7 +46,7 @@ public class Assets {
     public static BufferedImage menucursor;
     public static BufferedImage chestArmor;
     public static BufferedImage helmet;
-    public static BufferedImage house;
+    public static BufferedImage oneShot;
 
 
 
@@ -75,6 +75,7 @@ public class Assets {
         SpriteSheet menuCursorSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/MenuCursor.png"));
         SpriteSheet chestSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/ChestArmorSprite.png"));
         SpriteSheet helmetSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/Helmet.png"));
+        SpriteSheet oneShotSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/OneShot.png"));
 
 
         SpriteSheet buttonSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/buttons.png"));
@@ -152,5 +153,6 @@ public class Assets {
         menucursor = menuCursorSheet.crop(0,0,width,height);
         chestArmor = chestSheet.crop(0,0,width,height);
         helmet = helmetSheet.crop(0,0,width,height);
+        oneShot = oneShotSheet.crop(0,0,width,height);
     }
 }

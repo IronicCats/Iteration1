@@ -32,7 +32,7 @@ public class InventoryList {
         createHealthPotion(loc);
         createManaPotion(loc);
         createHelmet(loc);
-        createChestPiece(loc);
+        createChest(loc);
         createBoots(loc);
         createGauntlets(loc);
         createSword(loc);
@@ -95,7 +95,7 @@ public class InventoryList {
         return helmet;
 
     }
-    public static Armor createChestPiece(Location l)
+    public static Armor createChest(Location l)
     {
         String description = "Chest piece: +4 armor rating";
 
