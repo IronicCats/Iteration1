@@ -1,5 +1,6 @@
 package View.Views;
 
+import Controller.States.State;
 import Controller.States.States;
 
 import java.awt.*;
@@ -16,6 +17,7 @@ public class LoadMenu {
     private int currentItem = 0;
     String [] fileName;
     String [] fileNames;
+    States previousState;
 
     public LoadMenu(int width, int height)
     {
@@ -90,6 +92,16 @@ public class LoadMenu {
             currentItem = fileNames.length - 1;
         }
     }
+
+    public void setPreviousState(States s)
+    {
+        previousState = s;
+    }
+    public States getPreviousState()
+    {
+        return previousState;
+    }
+
     public boolean checkSelectionStatus()
     {
        if(fileNames[currentItem] == "Back")

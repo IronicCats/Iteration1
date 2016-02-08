@@ -42,5 +42,11 @@ public class SaveScreen {
         y = (height / 2);
         g.drawString(currentSaveGameName, x, y);
 
+        //text for the option of going back into the
+        totalWidth = (fm.stringWidth("Back"));
+        x = (width - totalWidth) / 2;
+        y = (height / 2) + 150;
+        g.drawString("Back", x, y);
+
     }
 }
