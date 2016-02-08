@@ -217,15 +217,75 @@ public class Inventory {
         if(pack.items[index]!=null) {
             g.drawImage(pack.items[index].getImage(),x,y,64,64,null);
         }
+
+
+        int xCoord=width/2,yCoord=9*height/12+10;
+        FontMetrics fm = g.getFontMetrics();
+        g.setColor(Color.WHITE);
+        g.setFont(new Font("Arial", Font.BOLD, 12));
+        fm = g.getFontMetrics();
+        int startY=3*height/4-10;int size=3*height/24+10;
         if(s) {
-            if (pack.items[index] != null && (pack.items[index].getType() == ItemsEnum.WEAPON || pack.items[index].getType() == ItemsEnum.ARMOR))
-                g.drawString("*PRESS Q TO EQUIP", width / 2, 9 * height / 12 + 10);
-            else if (pack.items[index] != null && (pack.items[index].getType() == ItemsEnum.USEABLE))
-                g.drawString("*PRESS Q TO USE", width / 2, 9 * height / 12 + 10);
-            if (pack.items[index] != null) g.drawString("*PRESS D TO DROP", width / 2, 9 * height / 12 + 35);
+            if (pack.items[index] != null && (pack.items[index].getType() == ItemsEnum.WEAPON || pack.items[index].getType() == ItemsEnum.ARMOR)){
+                g.drawImage(Assets.buttons.get(0), xCoord, yCoord, 64, 64, null);
+                g.drawString("Equip", xCoord + 64/2 - fm.stringWidth("Equip")/2, yCoord + 60);
+                xCoord += 64;
+                g.setColor(Color.DARK_GRAY);
+                g.fillRect(100,startY,width/2-125,size);
+                //int startY=3*height/4-10;int size=3*height/24+10;
+                g.setColor(Color.WHITE);
+                g.setFont(new Font("Arial", Font.BOLD, 15));
+                Item temp= pack.items[index];
+                if(pack.items[index].getType() == ItemsEnum.ARMOR) {
+                    g.setColor(Color.WHITE);
+                    g.drawString("Armor Name: " + pack.items[index].getName(), 100, startY + size / 6);
+                    g.drawString("Defence: " + ((Armor)temp).getStat(), 100, startY + size / 2);
+                    g.drawString("Description: " + pack.items[index].getDescription(), 100, startY + 5 * size / 6);
+                }
+                else{
+                    g.setColor(Color.WHITE);
+                    g.drawString("Weapon Name: " + pack.items[index].getName(), 100, startY + size / 6);
+                    g.drawString("Damage: " + ((Weapon)temp).getStat(), 100, startY + size / 2);
+                    g.drawString("Description: " + pack.items[index].getDescription(), 100, startY + 5 * size / 6);
+                }
+            }
+            else if (pack.items[index] != null && (pack.items[index].getType() == ItemsEnum.USEABLE)) {
+                g.drawImage(Assets.buttons.get(0), xCoord, yCoord, 64, 64, null);
+                g.drawString("Use", xCoord + 64 / 2 - fm.stringWidth("Use") / 2, yCoord + 60);
+                xCoord += 64;
+                g.setColor(Color.DARK_GRAY);
+                g.fillRect(100,startY,width/2-125,size);
+                //int startY=3*height/4-10;int size=3*height/24+10;
+                g.setColor(Color.WHITE);
+                g.setFont(new Font("Arial", Font.BOLD, 15));
+                g.drawString("Item Name: "+pack.items[index].getName(),100,startY+size/6);
+                //g.drawString("Defence: "+pack.items[index].getStat(),100,startY+size/2);
+                g.drawString("Description: "+pack.items[index].getDescription(),100,startY+5*size/6);
+
+            }
+            if (pack.items[index] != null) {
+                g.drawImage(Assets.buttons.get(4), xCoord, yCoord, 64, 64, null);
+                g.drawString("Drop", xCoord + 64/2 - fm.stringWidth("Drop")/2, yCoord + 60);
+                xCoord += 64;
+                //g.setColor(Color.DARK_GRAY);
+                //g.fillRect(100,startY,width/2-125,size);
+                //int startY=3*height/4-10;int size=3*height/24+10;
+                //g.setColor(Color.WHITE);
+                //g.setFont(new Font("Arial", Font.BOLD, 15));
+                //g.drawString("Armor Name: "+pack.items[index].getName(),100,startY+size/6);
+                //g.drawString("Defence: "+pack.items[index].getStat(),100,startY+size/2);
+                //g.drawString("Description: "+pack.items[index].getDescription(),100,startY+5*size/6);
+
+            }
+            g.setColor(Color.WHITE);
+            String[] buttonText = {"","Escape", "Gear","Escape"};
+            for(int i=1;i<=3;i++) {
+                g.drawImage(Assets.buttons.get(i), xCoord, yCoord, 64, 64, null);
+                g.drawString(buttonText[i], xCoord + 64 / 2 - fm.stringWidth(buttonText[i]) / 2, yCoord + 60);
+                xCoord += 64;
+            }
         }
-        g.drawString("*PRESS SHIFT TO VIEW GEAR",width/2,9*height/12+60);
-        g.drawString("*PRESS I OR ESCAPE TO EXIT",width/2,9*height/12+85);
+
     }
 
     public void getInput() {
