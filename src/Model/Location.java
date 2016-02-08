@@ -4,7 +4,8 @@ package Model;
  * Created by jlkegley on 1/31/2016.
  */
 public class Location {
-    private int x, y, dir;
+    private float x, y;
+    int dir;
 
     public Location(int x, int y, int dir) {
         this.x = x * 64;
@@ -13,7 +14,7 @@ public class Location {
     }
 
     public int getX() {
-        return x/64;
+        return (int)x/64;
     }
 
     public void setX(int x) {
@@ -21,12 +22,31 @@ public class Location {
     }
 
     public int getY() {
-        return y/64;
+        return (int)y/64;
     }
 
     public void setY(int y) {
         this.y = y*64;
     }
+
+    public float getPixelX (){
+        return this.x;
+    }
+
+    public float getPixelY (){
+        return this.y;
+    }
+
+    public void setPixelX (float x){
+        this.x = x;
+    }
+
+
+    public void setPixelY(float y) {
+        this.y = y;
+    }
+
+
 
     public int getDir() {
         return dir;

@@ -1,6 +1,7 @@
 package Model.Entity;
 
 import Controller.Controller;
+import Model.Entity.Inventory.Equipment.Equipment;
 import Model.Entity.Inventory.Inventory;
 import Model.Entity.Occupation.Occupation;
 import Model.Entity.Occupation.Smasher;
@@ -24,6 +25,7 @@ public abstract class Entity {
     protected Location location;
     private Inventory inventory;
     private Nav nav;
+    private EquipmentStats equipmentStats;
 
 
 
@@ -39,28 +41,34 @@ public abstract class Entity {
         this.height = height;
         this.occupation = o;
         this.stats = stats;
+        this.equipmentStats = null;
         this.bounds = new Rectangle(0, 0, width , height);
         bounds = new Rectangle(0, 0, width , height);
     }
+
+    public void initializeEquipmentStats(Equipment equipment) {
+        this.equipmentStats = new EquipmentStats(equipment, 0, 0, this.stats);
+        stats.setEquipmentStats(equipmentStats);
+    } // end initializeEquipmentStats
 
     public abstract void tick();
 
     public abstract void render(Graphics g);
 
-    public float getX() {
-        return location.getX();
+    public float getPixelX() {
+        return location.getPixelX();
     }
 
-    public void setX(float x) {
-        location.setX((int) x);
+    public void setX(int x) {
+        location.setX(x);
     }
 
-    public float getY() {
-        return location.getY();
+    public float getPixelY() {
+        return location.getPixelY();
     }
 
-    public void setY(float y) {
-        location.setY((int) y);
+    public void setY(int y) {
+        location.setY(y);
     }
 
     public int getWidth() {

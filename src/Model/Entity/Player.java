@@ -13,6 +13,7 @@ import View.Graphics.Assets;
 
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.util.ArrayList;
@@ -34,6 +35,7 @@ public class Player extends Entity {
         bounds.y = DEFAULT_CREATURE_HEIGHT;
         navigation = new Nav(location, bounds, controller, this);
         this.inventory = inventory;
+        initializeEquipmentStats(inventory.getEquipment());
     }
 
 
@@ -45,12 +47,14 @@ public class Player extends Entity {
     }
 
     public void PickUpItem(){
-        if(controller.getTiles(location.getX()/64,location.getY()/64).hasItem()) {
+        if(controller.getTiles(location.getX(),location.getY()).hasItem()) {
             System.out.println(location.getX()+"  "+location.getY());
-            inventory.store(controller.getTiles(location.getX() / 64, location.getY() / 64).getItems());
+            inventory.store(controller.getTiles(location.getX(), location.getY()).getItems());
         }
         System.out.println(location.getX()+"  "+location.getY());
     }
+
+
 
     public void move(int x){
         if(!navigation.isMoving) {
@@ -81,42 +85,26 @@ public class Player extends Entity {
 
     @Override
     public void render(Graphics g) {
+        BufferedImage facing = Assets.avatarFacingDown;
         if (location.getDir() == 0) {
-            g.drawImage(Assets.avatarFacingUp,
-                    (int) (getX() - controller.getCamera().getxOffset()) + Tile.TILEWIDTH / 2 - width / 2,
-                    (int) (getY() - controller.getCamera().getyOffset()),
-                    width,
-                    height,
-                    null
-            );
+            facing = Assets.avatarFacingUp;
         }
         else if(location.getDir() == 1){
-            g.drawImage(Assets.avatarFacingRight,
-                    (int) (getX() - controller.getCamera().getxOffset()) + Tile.TILEWIDTH / 2 - width / 2,
-                    (int) (getY() - controller.getCamera().getyOffset()),
-                    width,
-                    height,
-                    null
-            );
+            facing = Assets.avatarFacingRight;
         }
         else if(location.getDir() == 2){
-            g.drawImage(Assets.avatarFacingDown,
-                    (int) (getX() - controller.getCamera().getxOffset()) + Tile.TILEWIDTH / 2 - width / 2,
-                    (int) (getY() - controller.getCamera().getyOffset()),
-                    width,
-                    height,
-                    null
-            );
+            facing = Assets.avatarFacingDown;
         }
         else if(location.getDir() == 3){
-            g.drawImage(Assets.avatarFacingLeft,
-                    (int) (getX() - controller.getCamera().getxOffset()) + Tile.TILEWIDTH / 2 - width / 2,
-                    (int) (getY() - controller.getCamera().getyOffset()),
-                    width,
-                    height,
-                    null
-            );
+            facing = Assets.avatarFacingLeft;
         }
+        g.drawImage(facing,
+                (int) (location.getPixelX() - controller.getCamera().getxOffset()) + Tile.TILEWIDTH / 2 - width / 2,
+                (int) (location.getPixelY() - controller.getCamera().getyOffset()),
+                width,
+                height,
+                null
+        );
 
     }
 
@@ -175,11 +163,11 @@ public class Player extends Entity {
 
 
     }
-    public Location getLocation(){
+    /*public Location getLocation(){
         //System.out.println(location.getX());
         //System.out.println(location.getY());
         location.setX(getNavigation().location.getX());
         location.setY(getNavigation().location.getY());
         return location;
-    }
+    }*/
 }

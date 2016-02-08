@@ -42,8 +42,6 @@ public class GameState extends State {
     private Camera camera;
     private Useable potion;
     private Location location;
-
-    private Location spawn = new Location(64,64,0);
     private Player player;
     private StatusView statusView;
     private AreaEffect areaEffect;
@@ -53,8 +51,6 @@ public class GameState extends State {
     public GameState(Controller controller) {
         super(controller);
         game = this;
-
-        location = new Location(4,5,0); //Location is in wrong coordinates it should be in pixels not in tile
         statusView = new StatusView(controller);
 
     }
@@ -106,11 +102,14 @@ public class GameState extends State {
     @Override
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            SaveState.writeFile(player,"Player test.txt");
+            //LoadState.loadFile(player,"Player test.txt");
             switchState(States.Pause);
         }
 
         if(e.getKeyCode() == KeyEvent.VK_I) {
             switchState(States.Inventory);
+            //SaveState.writeFile(player,"Player test.txt");
         }
 
         if(e.getKeyCode() == KeyEvent.VK_G) {
@@ -119,7 +118,7 @@ public class GameState extends State {
 
         if(e.getKeyCode() == KeyEvent.VK_Q){
             controller.getPlayer().PickUpItem();
-            SaveState.writeFile(player,"Player test.txt");
+
         }
 
         if((e.getKeyCode() == KeyEvent.VK_NUMPAD8 || e.getKeyCode() == KeyEvent.VK_UP)){
@@ -183,10 +182,6 @@ public class GameState extends State {
         camera = controller.getCamera();
         map = controller.getMap();
 
-        //Test Code
-        areaEffect = new AreaEffect("Damage", "Damage", AreaEffectEnum.DAMAGE, new Location(7,8,0)); //Same with this one
-        map.getTile(2,6).addAreaEffect(areaEffect);
-        //End Test
 
         return;
     }

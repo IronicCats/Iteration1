@@ -37,8 +37,8 @@ public class Camera {
         }
     }
     public void centerOnPlayer(Player player) {
-        xOffset = player.getLocation().getX() - gameWidth/2 + player.getWidth()/2;
-        yOffset = player.getLocation().getY() - gameHeight/2 + player.getHeight()/2;
+        xOffset = player.getLocation().getPixelX() - gameWidth/2 + player.getWidth()/2;
+        yOffset = player.getLocation().getPixelY() - gameHeight/2 + player.getHeight()/2;
         keepCameraonMap();
     }
 

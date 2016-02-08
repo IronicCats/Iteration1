@@ -23,7 +23,7 @@ public class DerivedStats {
          */
         primaryStats = ps;
         level = 1;
-        //equipmentStats = ss.equipmentStats;
+        equipmentStats = null;
         baseLife = ps.getHardiness() + level;
         baseMana = ps.getIntellect() + level;
 
@@ -59,9 +59,9 @@ public class DerivedStats {
          */
         baseLife = primaryStats.getHardiness() + level;
         baseMana = primaryStats.getIntellect() + level;
-        //offensiveRating = equipmentStats.getWeaponStats() + primaryStats.strength + level;
+        offensiveRating = equipmentStats.getWeaponStats() + primaryStats.getBaseStr() + level;
         defensiveRating = primaryStats.getAgility() + level;
-        //armorRating = equipmentStats.getArmorStats() + primaryStats.hardiness;
+        armorRating = equipmentStats.getArmorStats() + primaryStats.getBaseHard();
     } // end update
 
     public int getLevel() { return level; }
@@ -81,6 +81,7 @@ public class DerivedStats {
     public void setArmorRating(int armorRating) { this.armorRating = armorRating; }
     public void setBaseLife(int life){this.life = life;}
     public void setBaseMana(int mana){this.mana = mana;}
+    public void setEquipmentStats(EquipmentStats equipmentStats) { this.equipmentStats = equipmentStats; }
 
     public void modifyLevel(int level) { this.level += level; }
     public void modifyLife(int life) { this.life += life; }

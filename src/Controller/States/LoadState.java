@@ -58,7 +58,23 @@ public class LoadState extends State {
 
             for(int i = 0; i <= lineNum-1; i++)
             {
-                loadedfile.add(Integer.parseInt(inputReader.readLine()));
+
+
+
+                if(i <= 23) {
+
+                    loadedfile.add(Integer.parseInt(inputReader.readLine()));
+                    //System.out.println("hey before");
+                   // System.out.println(loadedfile.get(i).toString() + " "+ i);
+                    //System.out.println("Hey after");
+                }
+                else {
+                    loadedfile.add(inputReader.readLine());
+                    //System.out.println("hey1 before");
+                    //System.out.println(loadedfile.get(i).toString() + " "+ i);
+                    //System.out.println("hey1 after");
+                }
+                //loadedfile.add(Integer.parseInt(inputReader.readLine()));
                //System.out.println(loadedfile.get(i) + " " + i);
             }
 
@@ -89,9 +105,15 @@ public class LoadState extends State {
         }
 
         if(e.getKeyCode() == 10) {
-            loadMenu.getSelection();
-            System.out.println(loadMenu.getSelection());
-            //later when load method is actually done call load.loadFile(player,loadMenu.getSelection)
+            if(loadMenu.checkSelectionStatus())//checking if back option has been selected
+            {
+                setState(MenuState.menu);
+            }
+            else
+            {
+                System.out.println(loadMenu.getSelectionString());
+                //later when load method is actually done call load.loadFile(player,loadMenu.getSelection)
+            }
         }
     }
 

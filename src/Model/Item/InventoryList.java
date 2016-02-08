@@ -10,39 +10,54 @@ import View.Graphics.Assets;
  * Created by Andy on 2/6/2016.
  */
 public class InventoryList {
-    static Useable healthPotion;
-    static Useable manaPotion;
-    static Armor helmet;
-    static Armor chest;
-    static Armor boots;
-    static Armor gauntlets;
-    static Weapon sword;
-    static Armor accessoryA;
-    static Armor accessoryB;
-    static Armor pants;
-    static Location loc;
+
+    static Useable healthPotion =null;
+    static Useable manaPotion = null;
+    static Armor helmet = null;
+    static Armor chestPiece = null;
+    static Armor boots = null;
+    static Armor gauntlets = null;
+    static Weapon sword = null;
+    static Armor accessoryA = null;
+    static Armor accessoryB = null;
+    static Armor pants = null;
+    static Location loc = null;
+
 
 
 
     public static void init()
     {
-        healthPotion = null;
-        manaPotion = null;
+        loc = new Location(-1,-1,0);
+        createHealthPotion(loc);
+        createManaPotion(loc);
+        createHelmet(loc);
+        createChest(loc);
+        createBoots(loc);
+        createGauntlets(loc);
+        createSword(loc);
+        createAccessoryA(loc);
+        createAccessoryB(loc);
+        createPants(loc);
+        System.out.println("This should be initialized.");
     }
     public static Item checkItem(String itemname)
     {
+        //System.out.println("Do i get here? 1 " + itemname);
+        //System.out.println(healthPotion.getName());
         Item a = null;
-        if(itemname == healthPotion.getName())
-        {a = healthPotion;}
-        else if(itemname == manaPotion.getName()){a = manaPotion;}
-        else if(itemname == sword.getName()){a=sword;}
-        else if(itemname == helmet.getName()){a=helmet;}
-        else if(itemname == chest.getName()){a=chest;}
-        else if(itemname == boots.getName()){a=boots;}
-        else if(itemname == gauntlets.getName()){a=gauntlets;}
-        else if(itemname == accessoryA.getName()){a=accessoryA;}
-        else if(itemname == accessoryB.getName()){a=accessoryB;}
-        else if(itemname == pants.getName()){a=pants;}
+
+        if(itemname.equalsIgnoreCase(healthPotion.getName())) {a = healthPotion;}
+        else if(itemname.equalsIgnoreCase(manaPotion.getName())){a = manaPotion;}
+        else if(itemname.equalsIgnoreCase(sword.getName())){a=sword;}
+        else if(itemname.equalsIgnoreCase(helmet.getName())){a=helmet;}
+        else if(itemname.equalsIgnoreCase(chestPiece.getName())){a=chestPiece;}
+        else if(itemname.equalsIgnoreCase(boots.getName())){a=boots;}
+        else if(itemname.equalsIgnoreCase(gauntlets.getName())){a=gauntlets;}
+        else if(itemname.equalsIgnoreCase(accessoryA.getName())){a=accessoryA;}
+        else if(itemname.equalsIgnoreCase(accessoryB.getName())){a=accessoryB;}
+        else if(itemname.equalsIgnoreCase(pants.getName())){a=pants;}
+
 
         return a;
     }
@@ -83,8 +98,10 @@ public class InventoryList {
     public static Armor createChest(Location l)
     {
         String description = "Chest piece: +4 armor rating";
-        chest= new Armor(Assets.chestArmor,l,ItemsEnum.ARMOR,"Chest",description,null,null,6,ArmorEnum.CHEST);
-        return chest;
+
+        chestPiece= new Armor(Assets.chestArmor,l,ItemsEnum.ARMOR,"Chest",description,null,null,6,ArmorEnum.CHEST);
+        return chestPiece;
+
     }
     public static Armor createBoots(Location l)
     {

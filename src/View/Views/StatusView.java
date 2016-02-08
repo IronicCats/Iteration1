@@ -4,6 +4,7 @@ import Controller.Controller;
 import Model.Item.Item;
 import Model.Location;
 import Model.Map.Tiles.Tile;
+import View.Graphics.Assets;
 
 
 import java.awt.*;
@@ -53,7 +54,7 @@ public class StatusView {
 
         //SET HEALTH PERCENTAGE
         g.setColor(Color.black);
-        g.drawString("HEALTH: " + (int)playerStats[0] + "%", (width/8 - fm.stringWidth("HEALTH: 99%") / 2), y + 2);
+        g.drawString("LIVES: " + (int)playerStats[3] + " - HEALTH: " + (int)playerStats[0] + "%", (width/8 - fm.stringWidth("Lives: 10 - HEALTH: 99%") / 2), y + 2);
         x = x + 100 + 10;
 
 
@@ -86,7 +87,7 @@ public class StatusView {
         g.fillRect(barStartX, y + 5, width, 5);
 
         renderItemsLists(g);
-
+        renderButtons(g);
     }
 
     public double[] calculatePercentages() {
@@ -120,14 +121,46 @@ public class StatusView {
     }
 
     public void renderItemsLists(Graphics g) {
-        Tile curTile = controller.getTiles((int)(controller.getPlayer().getLocation().getX()/64), (int)(controller.getPlayer().getLocation().getY()/64));
+        int playerX = controller.getPlayer().getLocation().getX();
+        int playerY = controller.getPlayer().getLocation().getY() ;
+        Tile curTile = controller.getTiles(playerX, playerY);
+        FontMetrics fm = g.getFontMetrics();
+        int amountItems = controller.getTiles(playerX, playerY).getItems().size();
+        //if theres items on the group, render a box and list the items on the screen
         if(curTile.hasItem()) {
-            ArrayList<Item> items = controller.getTiles((int)(controller.getPlayer().getLocation().getX()/64), (int)(controller.getPlayer().getLocation().getY()/64)).getItems();
-            g.setColor(Color.CYAN);
-            String itemname = curTile.getItems().toString();
+            g.drawRect(width - 150, height - 50 - (10 *(amountItems + 1)), fm.stringWidth("1. xxxxxxxxxxxxxxxxxx"), (amountItems + 1) * (fm.getHeight()) );
+            g.setColor(new Color(12, 12, 12, 150));
+            g.fillRect(width - 150, height - 50 - (10 *(amountItems + 1)), fm.stringWidth("1. xxxxxxxxxxxxxxxxxx"), (amountItems + 1) * (fm.getHeight()));
 
-            g.drawString(itemname, width/2, height/2);
+            ArrayList<Item> items = controller.getTiles(playerX, playerY).getItems();
+            g.setColor(Color.CYAN);
+            for (int i = 0; i < items.size(); ++i) {
+                g.drawString(items.get(i).getName(), width - 140,(3*-i) + (fm.getHeight()/2 + height - 40 - (10 *(i + 1))));
+            }
+
         }
+    }
+
+    public void renderButtons(Graphics g) {
+        int startX = 0;
+        int startY = height - 100;
+        int playerX = controller.getPlayer().getLocation().getX();
+        int playerY = controller.getPlayer().getLocation().getY() ;
+        FontMetrics fm = g.getFontMetrics();
+        Tile curTile = controller.getTiles(playerX, playerY);
+        g.setColor(new Color(255, 255, 255, 150));
+        if(curTile.getItems().size() > 0) {
+            g.drawImage(Assets.buttons.get(0), 0, startY, 64, 64, null);
+            g.drawString("Interact", 64/2 - fm.stringWidth("Interact")/2, startY + 64);
+            startX = 64;
+        }
+        String[] buttonText = {"Inventory", "Gear", "Menu"};
+        for(int i = 1; i <= 3; ++i) {
+            g.drawImage(Assets.buttons.get(i), startX, startY, 64, 64, null);
+            g.drawString(buttonText[i - 1], startX + 64/2 - fm.stringWidth(buttonText[i - 1])/2, startY + 64);
+            startX += 64;
+        }
+
     }
 
 }

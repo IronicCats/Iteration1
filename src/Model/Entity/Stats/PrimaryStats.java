@@ -30,6 +30,8 @@ public class PrimaryStats {
         this.agility = 0;
         this.intellect = 0;
         this.hardiness = 0;
+        this.baseLives = 0;
+        equipmentStats = null;
 
     } // end constructor
 
@@ -51,7 +53,7 @@ public class PrimaryStats {
         hardiness = baseHard;
         experience = ss.getStat(StatsEnum.EXPERIENCE);
         movement = baseMovement;
-        //equipmentStats = ;
+        equipmentStats = null;
 
         /*
         predefined multipliers
@@ -122,6 +124,7 @@ public class PrimaryStats {
     public void setBaseIntel(int intel){this.baseIntel = intel;}
     public void setBaseHard(int hard){this.baseHard = hard;}
     public void setBaseMovement(int move){this.baseMovement = move;}
+    public void setEquipmentStats(EquipmentStats equipmentStats) { this.equipmentStats = equipmentStats; }
 
     public void modifyLivesLeft(int livesLeft) {
         this.livesLeft += livesLeft;
