@@ -93,6 +93,8 @@ public class Pack {
         return size;
     }
 
-
+    public void deleteItem(int index) {
+        items[index] = null;
+    }
 
 } // end class Pack
