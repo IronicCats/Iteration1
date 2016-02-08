@@ -16,6 +16,8 @@ import View.Graphics.Camera;
 import View.Views.MainMenu;
 import View.Views.CreateMenu;
 import Model.Map.Map;
+import View.Views.MapView;
+
 /**
  * Created by Peter Camejo on 2/7/2016.
  */
@@ -77,6 +79,7 @@ public class CreateState extends State implements KeyListener {
         controller.setPlayer(player);
         controller.setMap(map);
         controller.setCamera(camera);
+
         //Make sure GameState updates.
         GameState.game.init();
 
