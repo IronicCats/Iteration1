@@ -44,7 +44,7 @@ public class Interactable extends Item {
             chestItems.add(InventoryList.createHealthPotion(player.getLocation()));
             int index = player.getInventory().getPack().indexOf(requirements.getItemRequirement());
             if(index != -1)
-                player.getInventory().drop(index);
+                player.getInventory().getPack().deleteItem(index);
             player.getInventory().store(chestItems);
         } else {
             System.out.println("requirement not met");
