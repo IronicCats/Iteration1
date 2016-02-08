@@ -34,6 +34,7 @@ public class PauseState extends State {
                 break;
             case Load:
                 System.out.println("Load Game");
+                LoadState.setPreviousState(States.Pause);
                 setState(LoadState.load);
                 break;
             case Exit:
