@@ -153,7 +153,7 @@ public class Map {
                 }
                 tiles[x][y] = tile;
                 for(int i = 0; i < items.length; i++) {
-                    if(tile.getLocation().getX() == items[i].getLocation().getX() && tile.getLocation().getY() == items[i].getLocation().getY()){
+                    if(tile.getLocation().getX() == items[i].getLocation().getX() && tile.getLocation().getY() == items[i].getLocation().getY() && !tile.isUnWalkable){
                         tile.addItem(items[i]);
                         System.out.println(items[i].getType().toString());
                     }

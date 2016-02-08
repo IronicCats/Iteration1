@@ -5,12 +5,16 @@ import Model.Entity.Player;
 
 import Model.Entity.Player;
 
+import Model.Entity.Stats.StatsEnum;
 import Model.Item.Item;
+import Model.Item.ItemsEnum;
 import Model.Location;
 import Model.Map.AreaEffect;
 import View.Graphics.Assets;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import sun.awt.image.BufferedImageDevice;
+
+import Model.Entity.Stats.Effect;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -33,6 +37,9 @@ public abstract class Tile {
     private ArrayList<Item> items = new ArrayList<>();
     private AreaEffect tileAreaEffect;
     private boolean HasAreaEffect;
+
+    private Effect []oneShot;
+    private boolean hasOneShot;
 
     public  Tile(BufferedImage texture, Location location, boolean isUnWalkable) {
         this.location = location;
@@ -69,6 +76,12 @@ public abstract class Tile {
         {
             player.getStats().applyEffect(tileAreaEffect.getEffect());
         }
+        for(int i = 0; i < items.size(); i++){ // loops through array of items to apply instant effects
+            if(items.get(i).getType() == ItemsEnum.ONESHOT){
+                player.getStats().applyEffect(items.get(i).getEffects());
+                items.remove(i);
+            }
+        }
     }
 
     public void removePlayer(){
@@ -76,7 +89,6 @@ public abstract class Tile {
     }
 
     public void addItem(Item item) {
-        System.out.println("add at " + location.getX() + " " + location.getY());
         items.add(item);
     }
 
@@ -91,6 +103,10 @@ public abstract class Tile {
 
     public Location getLocation() {
         return location;
+    }
+
+    public boolean isUnWalkable() {
+        return isUnWalkable;
     }
 
     public void addAreaEffect(AreaEffect effect)

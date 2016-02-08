@@ -80,7 +80,7 @@ public class InventoryList {
         return helmet;
 
     }
-    public static Armor createChestPiece(Location l)
+    public static Armor createChest(Location l)
     {
         String description = "Chest piece: +4 armor rating";
         chest= new Armor(Assets.chestArmor,l,ItemsEnum.ARMOR,"Chest",description,null,null,6,ArmorEnum.CHEST);
