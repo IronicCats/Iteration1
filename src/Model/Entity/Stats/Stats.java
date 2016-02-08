@@ -53,6 +53,7 @@ public class Stats {
          */
         primaryStats.levelUp();
         derivedStats.levelUp();
+
     } // end levelUp
 
     public void kill() {
@@ -146,7 +147,7 @@ public class Stats {
                 case LIFE:
                     if(e.modification.getStat(s) + getLife() > getBaseLife())
                         derivedStats.setLife(getBaseLife());
-                    else if(e.modification.getStat(s) + derivedStats.getLife() <= 0) {
+                    else if((e.modification.getStat(s) + derivedStats.getLife()) <= 0) {
                         kill();
                     }
                     else

@@ -42,12 +42,15 @@ public class SaveState extends State {
 
 
     public void writeFile(Player player, String filepath) {
+        saveFile = new ArrayList<Object>();
         File outputFile;
+        FileWriter fileWrite;
         //BufferedWriter outputWriter;
 
         try {
             outputFile = new File(filepath);
-            outputWriter = new BufferedWriter(new FileWriter(outputFile, false));
+            fileWrite = new FileWriter(outputFile, false);
+            outputWriter = new BufferedWriter(fileWrite);
 
             //okay so now it should call the Player's save method
             
@@ -60,12 +63,20 @@ public class SaveState extends State {
             for (int i = 0; i < saveFile.size(); i++) {
                 outputWriter.write(Objects.toString(saveFile.get(i)));
             }
+
+            fileWrite.flush();
+            outputWriter.flush();
             outputWriter.close();
+            fileWrite.close();
+
+
             //so I need a Tostring for Location, a ToString for Stats, a toString for pack(maybe individually for items), and to string for equipment
             //outputWriter.write(Objects.toString(saveFile));
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
     }
 
     public String getSaveFilePath(String saveFileName) {
