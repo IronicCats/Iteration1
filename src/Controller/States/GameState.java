@@ -133,6 +133,8 @@ public class GameState extends State {
                 switch(item.getType()) {
                     case PICKUPABLE:
                     case USEABLE:
+                    case WEAPON:
+                    case ARMOR:
                         controller.getPlayer().PickUpItem();
                         break;
                     default:
