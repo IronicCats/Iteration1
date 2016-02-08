@@ -3,6 +3,7 @@ package Controller.States;
 import Controller.Controller;
 import View.View;
 import View.Views.InventoryView;
+import View.Views.StatusView;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -13,16 +14,18 @@ import java.awt.event.KeyEvent;
 public class InventoryState extends State {
     InventoryView inv;
     public static InventoryState inventory;
-
+    public static StatusView sV;
     public InventoryState(Controller controller, int width, int height){
         super(controller);
         inventory=this;
         inv=new InventoryView(controller, width, height);
+        sV=new StatusView(controller);
     }
     public void switchState() {
         System.out.println("Resume Game from Inventory");
         setState(GameState.game);
         inv.setS(0);
+
     }
     @Override
     public void tick() {
@@ -35,6 +38,7 @@ public class InventoryState extends State {
         controller.getMap().render(g);
         controller.getPlayer().render(g);
         inv.render(g);
+        sV.render(g);
     }
 
     @Override
@@ -44,7 +48,7 @@ public class InventoryState extends State {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if(e.getKeyCode() == KeyEvent.VK_SHIFT) {
+        if(e.getKeyCode() == KeyEvent.VK_SHIFT||e.getKeyCode() == KeyEvent.VK_G) {
             inv.shift();
         }
         if(e.getKeyCode() == KeyEvent.VK_UP) {
