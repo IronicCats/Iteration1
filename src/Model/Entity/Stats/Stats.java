@@ -152,6 +152,15 @@ public class Stats {
                     else
                         derivedStats.modifyLife(e.modification.getStat(s));
                     break;
+                case MANA:
+                    if(e.modification.getStat(s) + getMana() > getBaseMana())
+                        derivedStats.setMana(getBaseMana());
+                    else if(e.modification.getStat(s) + derivedStats.getMana() <= 0) {
+                        derivedStats.setMana(0);
+                    }
+                    else
+                        derivedStats.modifyMane(e.modification.getStat(s));
+                    break;
                 case OFFENSIVE_RATING:
                     derivedStats.modifyOffensiveRating(e.modification.getStat(s));
                     break;

@@ -22,6 +22,7 @@ public class Assets {
     public static ArrayList<BufferedImage> grass;
     public static ArrayList<BufferedImage> water;
     public static ArrayList<BufferedImage> mountain;
+    public static ArrayList<BufferedImage> buttons;
 
 
     public static BufferedImage avatarFacingDown;
@@ -47,7 +48,7 @@ public class Assets {
     public static BufferedImage helmet;
     public static BufferedImage house;
     public static BufferedImage key;
-
+    public static BufferedImage oneShot;
 
     public static void init() {
         SpriteSheet grassSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/GrassTiles.png"));
@@ -74,10 +75,13 @@ public class Assets {
         SpriteSheet chestSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/ChestArmorSprite.png"));
         SpriteSheet helmetSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/Helmet.png"));
         SpriteSheet keysheet = new SpriteSheet(new ImageLoader().loadImage("/textures/KeySprite.png"));
+        SpriteSheet oneShotSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/OneShot.png"));
+        SpriteSheet buttonSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/buttons.png"));
 
         water = new ArrayList<>(9);
         mountain = new ArrayList<>(9);
         grass = new ArrayList<>(9);
+        buttons = new ArrayList<>(4);
 
         avatarFacingDown = avatarSheet.crop(0, 0, width, height);
         avatarFacingUp = avatarSheet.crop(32,0,width,height);
@@ -122,6 +126,15 @@ public class Assets {
         grass.add(grassSheet.crop(64, 64, width, height));
 
 
+        //Q
+        buttons.add(buttonSheet.crop(0, 0, width, height));
+        //I
+        buttons.add(buttonSheet.crop(32, 0, width, height));
+        //G
+        buttons.add(buttonSheet.crop(64, 0, width, height));
+        //ESC
+        buttons.add(buttonSheet.crop(0, 32, width, height));
+
         potion = potionSheet.crop(0,0,width,height);
         sack = sackSheet.crop(0,0,width,height);
         skullAndBones = skullAndBonesSheet.crop(0, 0, 28, 28);
@@ -138,5 +151,6 @@ public class Assets {
         chestArmor = chestSheet.crop(0,0,width,height);
         helmet = helmetSheet.crop(0,0,width,height);
         key = keysheet.crop(0,0,width,height);
+        oneShot = oneShotSheet.crop(0,0,width,height);
     }
 }

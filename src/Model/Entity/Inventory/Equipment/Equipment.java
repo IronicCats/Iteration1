@@ -48,6 +48,23 @@ public class Equipment {
         else if(index==3&&weapon.getWeapon()!=null) g.drawImage(weapon.getWeapon().getImage(),x,y,64,64,null);
     }
 
+    public String toString()
+    {
+        String s = null;
+        if(getWeapon().isEquipped())
+        {
+            s = s + getWeapon().toString();
+        }
+        s = s + armor.getHead().toString();
+        s = s + armor.getChest().toString();
+        s = s + armor.getPants().toString();
+        s = s + armor.getBoots().toString();
+        s = s + armor.getGloves().toString();
+        s = s + armor.getAccessory1().toString();
+        s = s + armor.getAccessory2().toString();
+        return s;
+    }
+
 
 
     // end constructor
