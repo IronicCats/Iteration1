@@ -183,6 +183,9 @@ public class PopulateItems {
                 armorType = ArmorEnum.GLOVES;
                 image = Assets.glove;
                 break;
+            case ("TreasureChest"):
+                image = Assets.chest;
+                break;
             default:
                 break;
         }
