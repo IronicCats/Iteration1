@@ -48,23 +48,26 @@ public class InventoryView {
         g.drawString("Inventory", x, y);
         x=width/2;
         y=height/4;
-
+        //g.setFont(new Font("Arial", Font.BOLD, 12));
+        g.setColor(Color.WHITE);
+        g.setFont(new Font("Arial", Font.BOLD, 20));
+        //fm = g.getFontMetrics();
         for (int i = 0; i < controller.getPlayer().getInventory().getPack().getCap(); ++i) {
             if(s == i)
-                controller.getPlayer().getInventory().render(i,g,x,y, true);
+                controller.getPlayer().getInventory().render(i,g,x,y, true,width,height);
             else
-                controller.getPlayer().getInventory().render(i,g,x,y, false);
+                controller.getPlayer().getInventory().render(i,g,x,y, false,width,height);
             if((i+1)%4==0 && i!=0){
                 y+=74;
                 x=width/2;
             }
             else x+=74;
         }
+
         double[] playerStats = calculatePercentages();
 
         g.setFont(new Font("Arial", Font.BOLD, 12));
         fm = g.getFontMetrics();
-
 
         x = (barStartX) + 5;
         y = height - fm.getHeight() + 5;

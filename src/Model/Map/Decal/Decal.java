@@ -31,8 +31,20 @@ public class Decal {
 
     public Location getLocation() {return location;}
 
+    public int getWidth() {
+        return ITEMWIDTH;
+    }
+
+    public int getHeight() {
+        return ITEMHEIGHT;
+    }
+
     //render methods
     public void render(Graphics g, int x, int y) { // render decal image
-        g.drawImage(image, x + Tile.TILEWIDTH/2 - ITEMWIDTH/2 , y + Tile.TILEHEIGHT/2 - ITEMHEIGHT/2, ITEMWIDTH, ITEMHEIGHT, null);
+        render(g, x, y, Tile.TILEWIDTH, Tile.TILEHEIGHT, ITEMHEIGHT, ITEMWIDTH);
+    }
+
+    public void render(Graphics g, int xLoc, int yLoc, int tileWidth, int tileHeight, int itemHeight, int itemWidth) {
+        g.drawImage(image, xLoc + tileWidth/2 - itemWidth/2 , yLoc + tileHeight/2 - itemHeight/2, itemWidth, itemHeight, null);
     }
 }

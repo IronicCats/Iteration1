@@ -1,6 +1,7 @@
 package Model.Item;
 
 import Model.Entity.Player;
+import Model.Item.Takeable.Takeable;
 import Model.Location;
 import Model.Requirements;
 

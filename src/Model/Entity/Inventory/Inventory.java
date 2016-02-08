@@ -1,16 +1,14 @@
 package Model.Entity.Inventory;
 
 import Controller.Controller;
-import Model.Entity.Entity;
 import Model.Entity.Inventory.Equipment.Equipment;
 import Model.Item.Equippable;
 import Model.Item.Item;
-import Model.Item.Takeable;
+import Model.Item.Takeable.Takeable;
 import Model.Item.*;
 import Model.Location;
 import View.Graphics.Assets;
 
-import javax.lang.model.type.NullType;
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -43,7 +41,8 @@ public class Inventory {
     public void saveInventory(ArrayList<Object> saveFile){
         saveFile.add(Integer.toString(pack.getSize())+"\n");
         saveFile.add(pack);
-        //saveFile.add(equipment); //fixme
+
+        saveFile.add(equipment); //fixme
 
     }
 
@@ -61,16 +60,33 @@ public class Inventory {
         {
             count++;
             Item a = InventoryList.checkItem((String)saveFile.get(count));
-            System.out.println(a.getName() +" This is what is at " + count);
+            //System.out.println(a.getName() +" This is what is at " + count);
            // p.;
             b.add((Takeable)a);
         }
 
         count++;
 
+        for(int j = count; j <= saveFile.size()-1; j++)
+        {
+            //saveFile.size();
+            Item a = InventoryList.checkItem((String)saveFile.get(count));
+            if(a.getType() == ItemsEnum.WEAPON) {
+                b.equipment.getWeapon().equipWeapon((Weapon)a);
+                count++;
+            }
+            else if(a.getType() == ItemsEnum.ARMOR)
+            {
+                System.out.println("YOU SHOULD BE EQUIPING");
+                b.equipment.getArmor().equipArmor((Armor)a);
+                count++;
+
+            }
+        }
 
 
-        //this.getPack().
+
+
     }
 
 
@@ -79,9 +95,8 @@ public class Inventory {
         for(int i = tileItems.size()-1; i >=0; --i) {
             ItemsEnum itemType = tileItems.get(i).getType();
             if(itemType == ItemsEnum.USEABLE || itemType == ItemsEnum.ARMOR || itemType == ItemsEnum.WEAPON || itemType == ItemsEnum.PICKUPABLE) {
-                if(add((Takeable)tileItems.get(i))){
+                if(add((Takeable) tileItems.get(i))){
                     tileItems.remove(i);
-                    //((Takeable) tileItems.get(i)).setLocation(new Location(-1,-1,0));
                 }
             }
         }
@@ -162,8 +177,9 @@ public class Inventory {
 
     public boolean contains(Takeable takeable) {
         for (int i = 0; i < pack.size; i++) {
-            if(pack.items[i].getName().equals(takeable.getName()))
-                return true;
+            if(pack.items[i] != null)
+                if(pack.items[i].getName().equals(takeable.getName()))
+                    return true;
         }
         System.out.println("Inventory does not contain " + takeable);
         return false;
@@ -172,7 +188,7 @@ public class Inventory {
 
     public void equip(int i){
         if(pack.items[i].getType() == ItemsEnum.WEAPON&&pack.items[i]!=null) {
-            System.out.println("This was a weapon");
+            //System.out.println("This was a weapon");
             equipment.getWeapon().equipWeapon((Weapon)pack.items[i]);
             pack.items[i]=null;
             pack.size--;
@@ -180,9 +196,10 @@ public class Inventory {
 
         }
         else if(pack.items[i].getType() == ItemsEnum.ARMOR&&pack.items[i]!=null){
-            System.out.println("This was a an armor");
+            //System.out.println("This was a an armor");
             equipment.getArmor().equipArmor((Armor)pack.items[i]);
             pack.items[i]=null;
+            pack.size--;
 
             //System.out.println("this was a armor");
         }
@@ -201,7 +218,7 @@ public class Inventory {
 
     }
 
-    public void render(int index,Graphics g,int x, int y, boolean s) {
+    public void render(int index,Graphics g,int x, int y, boolean s,int width,int height) {
         //if(pack.items[index]==null){
         if(s)g.drawImage(Assets.emptyInvSelect,x,y,64,64,null);
         else g.drawImage(Assets.emptyInv,x,y,64,64,null);
@@ -211,6 +228,15 @@ public class Inventory {
         if(pack.items[index]!=null) {
             g.drawImage(pack.items[index].getImage(),x,y,64,64,null);
         }
+        if(s) {
+            if (pack.items[index] != null && (pack.items[index].getType() == ItemsEnum.WEAPON || pack.items[index].getType() == ItemsEnum.ARMOR))
+                g.drawString("*PRESS Q TO EQUIP", width / 2, 9 * height / 12 + 10);
+            else if (pack.items[index] != null && (pack.items[index].getType() == ItemsEnum.USEABLE))
+                g.drawString("*PRESS Q TO USE", width / 2, 9 * height / 12 + 10);
+            if (pack.items[index] != null) g.drawString("*PRESS D TO DROP", width / 2, 9 * height / 12 + 35);
+        }
+        g.drawString("*PRESS SHIFT TO VIEW GEAR",width/2,9*height/12+60);
+        g.drawString("*PRESS I OR ESCAPE TO EXIT",width/2,9*height/12+85);
     }
 
     public void getInput() {

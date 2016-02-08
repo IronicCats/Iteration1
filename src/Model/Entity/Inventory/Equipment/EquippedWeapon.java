@@ -21,6 +21,7 @@ public class EquippedWeapon {
         this.damage=newWep.getStat();
     }
     public Weapon unequipWeapon(){
+        if(weapon==null)return null;
         Weapon temp = new Weapon(weapon);
         weapon=null;
         return temp;
@@ -35,5 +36,14 @@ public class EquippedWeapon {
 
     public int getDamage() {
         return damage;
+    }
+
+   public String toString()
+    {
+        String string;
+
+        string = (weapon.getName() + "\n");
+
+        return string;
     }
 }

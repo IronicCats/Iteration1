@@ -3,6 +3,7 @@ package Model.Item;
 import Model.Entity.Stats.Effect;
 import Model.Entity.Stats.StatStructure;
 import Model.Entity.Stats.StatsEnum;
+import Model.Item.Takeable.Takeable;
 import Model.Location;
 import Model.Requirements;
 import View.Graphics.Assets;

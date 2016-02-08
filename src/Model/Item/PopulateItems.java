@@ -34,7 +34,7 @@ public class PopulateItems {
     private int reqLevel;
 
     private String name; // storage variable for name read from file
-    private String description = ""; // storage variable for description read from file
+    private String description; // storage variable for description read from file
     int x, y, type, stat; // used to store position, item type, and stats for armor and weapon
 
     private WeaponEnum weaponType;
@@ -67,12 +67,11 @@ public class PopulateItems {
 
             name = scan.next(); // read name
 
-            if (scan.hasNext("BD")) { // read in description
-                while (!scan.hasNext("ED")) {
-                    description.concat(scan.next() + "");
-                }
-                scan.next(); // move out of description
+            while(!scan.hasNext("ED")){
+                description += " " + scan.next();
             }
+
+            scan.next(); // move out of description
 
             type = scan.nextInt(); // read in int representing type
 
@@ -87,11 +86,13 @@ public class PopulateItems {
             if (scan.hasNext("SA")) { // start of array containing StatStructure code
                 scan.next(); // move to first string in array
                 setStatStruc(scan); // method to store array in txt file to statStruc
+                description = "";
                 continue;
             }
             else{
                 setImage(name);
                 generateItems();
+                description = "";
             }
         }
         scan.close(); // close scanner
@@ -183,11 +184,21 @@ public class PopulateItems {
                 armorType = ArmorEnum.GLOVES;
                 image = Assets.glove;
                 break;
+            case ("AccessoryA"):
+                armorType = ArmorEnum.ACCESSORY1;
+                image = Assets.accessory1;
+                break;
+            case ("AccessoryB"):
+                armorType = ArmorEnum.ACCESSORY2;
+                image = Assets.accessory2;
             case ("Key"):
                 image = Assets.key;
                 break;
             case ("TreasureChest"):
                 image = Assets.chest;
+                break;
+            case ("House"):
+                image = Assets.house;
                 break;
             default:
                 break;
@@ -208,7 +219,8 @@ public class PopulateItems {
                     break;
             case 2: items.add(new Obstacle(image, location, ItemsEnum.OBSTACLE, name, description, null, null));
                     break;
-            case 3: items.add(new Interactable(image, location, ItemsEnum.INTERACTABLE, name, description, effects.toArray(new Effect[effects.size()]), requirements));
+            case 3: //items.add(new Interactable(image, location, ItemsEnum.INTERACTABLE, name, description, effects.toArray(new Effect[effects.size()]), requirements));
+                items.add(InventoryList.createTreasureChest(location));
                     break;
             case 4: items.add(new Armor(image, location, ItemsEnum.ARMOR, name, description, null, requirements, stat, armorType));
                     break;

@@ -50,11 +50,17 @@ public class Assets {
     public static BufferedImage key;
     public static BufferedImage chest;
     public static BufferedImage oneShot;
+    public static BufferedImage damage;
+
 
     public static void init() {
         SpriteSheet grassSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/GrassTiles.png"));
         SpriteSheet mountainSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/MountainTile.png"));
         SpriteSheet waterSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/WaterTile.png"));
+
+
+        SpriteSheet houseSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/house.png"));
+
 
 
         SpriteSheet avatarSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/CharSpriteSheet.png"));
@@ -75,10 +81,12 @@ public class Assets {
         SpriteSheet menuCursorSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/MenuCursor.png"));
         SpriteSheet chestSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/ChestArmorSprite.png"));
         SpriteSheet helmetSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/Helmet.png"));
+
         SpriteSheet keysheet = new SpriteSheet(new ImageLoader().loadImage("/textures/KeySprite.png"));
         SpriteSheet oneShotSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/OneShot.png"));
         SpriteSheet chestforKeySheet = new SpriteSheet(new ImageLoader().loadImage("/textures/Chest.png"));
         SpriteSheet buttonSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/buttons.png"));
+        SpriteSheet damageSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/damage.png"));
 
         water = new ArrayList<>(9);
         mountain = new ArrayList<>(9);
@@ -140,8 +148,9 @@ public class Assets {
         potion = potionSheet.crop(0,0,width,height);
         sack = sackSheet.crop(0,0,width,height);
         skullAndBones = skullAndBonesSheet.crop(0, 0, 28, 28);
-        redCross = crossSheet.crop(0, 0, 28, 28);
-        goldStar = starSheet.crop(0, 0, 28, 28);
+        redCross = crossSheet.crop(0, 0, 32, 32);
+        goldStar = starSheet.crop(0, 0, 32, 32);
+        damage = damageSheet.crop(0, 0, 32, 32);
         emptyInv = emptyInvSheet.crop(0,0,width,height);
         emptyInvSelect =selectInvSheet.crop(0,0,width,height);
         pants = pantsSheet.crop(0,0,width,height);
@@ -156,5 +165,6 @@ public class Assets {
         chest = chestforKeySheet.crop(0,0,width,height);
         oneShot = oneShotSheet.crop(0,0,width,height);
 
+        house = houseSheet.crop(0, 0, 32, 32);
     }
 }

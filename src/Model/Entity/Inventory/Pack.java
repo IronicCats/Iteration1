@@ -1,6 +1,7 @@
 package Model.Entity.Inventory;
 
 import Model.Item.*;
+import Model.Item.Takeable.Takeable;
 
 /**
  * Created by broskj on 2/1/16.
@@ -36,6 +37,13 @@ public class Pack {
 
     }
 
+    public int indexOf(String name) {
+        for(int i = 0; i < cap; i++)
+            if(items[i] != null)
+                if(items[i].getName().equals(name))
+                    return i;
+        return -1;
+    }
 
 
     public String toString()
@@ -49,10 +57,10 @@ public class Pack {
             System.out.println(position);
             if(items[position] == null)
             {
-                System.out.println(position + " out loop");
+                //System.out.println(position + " out loop");
                 while(items[position] == null)
                 {
-                    System.out.println(position + " in loop");
+                    //System.out.println(position + " in loop");
                     position++;
                 }
             }

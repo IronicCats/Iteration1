@@ -8,7 +8,7 @@ import Model.Entity.Occupation.Occupation;
 import Model.Entity.Inventory.Inventory;
 import Model.Entity.Stats.Stats;
 import Model.Item.Item;
-import Model.Item.Takeable;
+import Model.Item.Takeable.Takeable;
 import Model.Location;
 import Model.Map.Tiles.Tile;
 import View.Graphics.Assets;

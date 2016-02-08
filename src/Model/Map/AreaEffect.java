@@ -33,7 +33,7 @@ public class AreaEffect {
        {
            StatStructure modification = new StatStructure(StatsEnum.LIFE, -5);
            effect = new Effect(modification,0, this.description);
-           decal = new Decal(Assets.skullAndBones, this.location, DecalEnum.SKULLANDCROSSBONES);
+           decal = new Decal(Assets.damage, this.location, DecalEnum.SKULLANDCROSSBONES);
        }
        else if(areaEffect == AreaEffectEnum.HEAL)// if its healing area effect
        {
@@ -66,10 +66,16 @@ public class AreaEffect {
 
     public Effect getEffect() {return effect;}
 
+    public Decal getDecal() {return decal;}
+
     //render method
     public void render(Graphics g, int x, int y)
     {
         decal.render(g, x, y);
+    }
+
+    public void render(Graphics g, int xLocation, int yLocation, int tileWidth, int tileHeight, int areaAffectWidth, int areaAffectHeight) {
+        decal.render(g, xLocation, yLocation, tileWidth, tileHeight, areaAffectHeight, areaAffectWidth);
     }
 
 }

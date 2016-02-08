@@ -1,6 +1,8 @@
 package View.Views;
 
 import Controller.Controller;
+import Controller.States.GameState;
+import Controller.States.State;
 import Model.Item.Item;
 import Model.Location;
 import Model.Map.Tiles.Tile;
@@ -47,8 +49,7 @@ public class StatusView {
         int red = (int)(255 * (100 - playerStats[0])) / 100;
         int blu = 0;
 
-
-        g.setColor(new Color(red, gr, blu));
+        g.setColor(getRGB(red, gr, blu));
 
         g.fillRect(0, y - 10,  (int)((playerStats[0]/100.0) * (width/4)) , fm.getHeight() + 1);
 
@@ -73,7 +74,7 @@ public class StatusView {
         red = (int)(255 * (100 - playerStats[6])) / 100;
         blu = 100;
 
-        g.setColor(new Color(red, gr, blu));
+        g.setColor(getRGB(red, gr, blu));
 
 
         //Making the EXP Bar fill the rest of the game screen
@@ -86,8 +87,10 @@ public class StatusView {
         g.setColor(Color.YELLOW);
         g.fillRect(barStartX, y + 5, width, 5);
 
-        renderItemsLists(g);
-        renderButtons(g);
+        if (State.getState() == GameState.game) {
+            renderItemsLists(g);
+            renderButtons(g);
+        }
     }
 
     public double[] calculatePercentages() {
@@ -133,7 +136,7 @@ public class StatusView {
             g.fillRect(width - 150, height - 50 - (10 *(amountItems + 1)), fm.stringWidth("1. xxxxxxxxxxxxxxxxxx"), (amountItems + 1) * (fm.getHeight()));
 
             ArrayList<Item> items = controller.getTiles(playerX, playerY).getItems();
-            g.setColor(Color.CYAN);
+            g.setColor(new Color(255, 255, 255, 150));
             if(items.size() == 1){
                 g.drawString(items.get(0).getName(), width - 140, (fm.getHeight() / 2 + (height - 60)));
 
@@ -166,6 +169,13 @@ public class StatusView {
             startX += 64;
         }
 
+    }
+
+    public Color getRGB(int r, int g, int b) {
+        if( r < 0 || r > 255) {r = 0;};
+        if( g < 0 || g > 255) {g = 0;};
+        if( b < 0 || b > 255) {b = 0;};
+        return new Color(r, g, b);
     }
 
 }
