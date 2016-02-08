@@ -137,7 +137,11 @@ public class Player extends Entity {
     public void loadPlayer(ArrayList<Object> saveFile, int count)
     {
         Location l = new Location((int)saveFile.get(0),(int)saveFile.get(1),0);
-        this.setLocation(l);
+        System.out.println(Integer.toString(count));
+        this.setX(l.getX());
+        this.setY(l.getY());
+        this.navigation.setGoalX(l.getPixelX());
+        this.navigation.setGoalY(l.getPixelY());
         this.getStats().getPrimaryStats().setLivesLeft((int)saveFile.get(2));
         this.getStats().getPrimaryStats().setBaseLives((int)saveFile.get(3)); //idk if this is being changed 3
         this.getStats().getPrimaryStats().setStrength((int)saveFile.get(4));
@@ -161,8 +165,9 @@ public class Player extends Entity {
         this.getStats().getDerivedStats().setArmorRating((int)saveFile.get(22));
 
         count = 23;
-
-        this.getInventory().loadInventory(saveFile, count);
+        System.out.println(Integer.toString(saveFile.size()));
+        if(saveFile.size() > 22)
+            this.getInventory().loadInventory(saveFile, count);
 
 
 

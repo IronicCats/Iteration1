@@ -125,6 +125,7 @@ public class Nav {
     }
 
     public void move() {
+
         if(location.getPixelY() == goalY && location.getPixelX() == goalX) {
             //System.out.println("Ive got a player");
             if(isMoving) {
