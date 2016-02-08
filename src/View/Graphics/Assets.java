@@ -46,6 +46,7 @@ public class Assets {
     public static BufferedImage chestArmor;
     public static BufferedImage helmet;
     public static BufferedImage house;
+    public static BufferedImage key;
 
 
     public static void init() {
@@ -72,6 +73,7 @@ public class Assets {
         SpriteSheet menuCursorSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/MenuCursor.png"));
         SpriteSheet chestSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/ChestArmorSprite.png"));
         SpriteSheet helmetSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/Helmet.png"));
+        SpriteSheet keysheet = new SpriteSheet(new ImageLoader().loadImage("/textures/KeySprite.png"));
 
         water = new ArrayList<>(9);
         mountain = new ArrayList<>(9);
@@ -135,5 +137,6 @@ public class Assets {
         menucursor = menuCursorSheet.crop(0,0,width,height);
         chestArmor = chestSheet.crop(0,0,width,height);
         helmet = helmetSheet.crop(0,0,width,height);
+        key = keysheet.crop(0,0,width,height);
     }
 }
