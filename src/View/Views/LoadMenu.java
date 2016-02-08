@@ -5,6 +5,7 @@ import Controller.States.States;
 
 import java.awt.*;
 import java.io.File;
+import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -42,7 +43,12 @@ public class LoadMenu {
         g.drawString("Pick a game to load", x, y);
 
         //list all possible games
-        fileName = new File("res/saveFiles").list();
+        fileName = new File("res/saveFiles").list(new FilenameFilter() {
+            @Override
+            public boolean accept(File dir, String name) {
+                return name.endsWith(".sav");
+            }
+        });
         int fileNamesInitialSize = fileName.length;
         fileNames = new String[fileNamesInitialSize + 1];
         for(int j = 0; j <= fileName.length; ++j)
