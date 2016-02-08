@@ -164,10 +164,7 @@ public class Assets {
         key = keysheet.crop(0,0,width,height);
         chest = chestforKeySheet.crop(0,0,width,height);
         oneShot = oneShotSheet.crop(0,0,width,height);
-<<<<<<< HEAD
-=======
-
         house = houseSheet.crop(0, 0, 32, 32);
->>>>>>> master
+
     }
 }
