@@ -36,6 +36,7 @@ public class LoadState extends State {
         loadMenu.render(g);
     }
 
+
     public static void loadFile(Player player,String filepath) {
         File inputFile;
         BufferedReader inputReader;
@@ -107,7 +108,14 @@ public class LoadState extends State {
         if(e.getKeyCode() == 10) {
             if(loadMenu.checkSelectionStatus())//checking if back option has been selected
             {
-                setState(MenuState.menu);
+                if(this.getPreviousState() == States.Menu)
+                {
+                    setState(MenuState.menu);
+                }
+                else if(this.getPreviousState() == States.Pause)
+                {
+                    setState(PauseState.pause);
+                }
             }
             else
             {

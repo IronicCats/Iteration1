@@ -31,6 +31,7 @@ public class MenuState extends State implements KeyListener {
             case Load:
                 System.out.println("Load Game");
                 //Add the Load Game state switch here
+                LoadState.setPreviousState(States.Menu);
                 setState(LoadState.load);
                 break;
             case Exit:
