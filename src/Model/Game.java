@@ -30,6 +30,7 @@ public class Game implements Runnable {
     private State loadState;
     private State saveState;
     private State createState;
+    private State mapState;
 
 
 
@@ -56,6 +57,8 @@ public class Game implements Runnable {
         loadState = new LoadState(controller, width, height);
         saveState = new SaveState(controller, width, height);
 
+        // Map state is initialized in the init function for gameState
+
         State.setInitialState(menuState);
         InventoryList.init();
 
@@ -81,6 +84,10 @@ public class Game implements Runnable {
 
     public void setWidth(int width) {
         this.width = width;
+    }
+
+    public void setMapState(MapState map) {
+        this.mapState = map;
     }
 
     public void run() {

@@ -62,16 +62,33 @@ public class Inventory {
         {
             count++;
             Item a = InventoryList.checkItem((String)saveFile.get(count));
-            System.out.println(a.getName() +" This is what is at " + count);
+            //System.out.println(a.getName() +" This is what is at " + count);
            // p.;
             b.add((Takeable)a);
         }
 
         count++;
 
+        for(int j = count; j <= saveFile.size()-1; j++)
+        {
+            //saveFile.size();
+            Item a = InventoryList.checkItem((String)saveFile.get(count));
+            if(a.getType() == ItemsEnum.WEAPON) {
+                b.equipment.getWeapon().equipWeapon((Weapon)a);
+                count++;
+            }
+            else if(a.getType() == ItemsEnum.ARMOR)
+            {
+                System.out.println("YOU SHOULD BE EQUIPING");
+                b.equipment.getArmor().equipArmor((Armor)a);
+                count++;
+
+            }
+        }
 
 
-        //this.getPack().
+
+
     }
 
 
