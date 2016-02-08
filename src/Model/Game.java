@@ -58,8 +58,6 @@ public class Game implements Runnable {
 
         State.setInitialState(menuState);
 
-        InventoryList.init();//added this to initialize all items
-
     }
 
     public void tick() {

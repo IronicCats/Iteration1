@@ -1,5 +1,8 @@
 package Model.Item;
 
+import Model.Entity.Stats.Effect;
+import Model.Entity.Stats.StatStructure;
+import Model.Entity.Stats.StatsEnum;
 import Model.Location;
 import View.Graphics.Assets;
 
@@ -17,21 +20,14 @@ public class InventoryList {
     static Armor accessoryA;
     static Armor accessoryB;
     static Armor pants;
+    static Location loc;
 
 
 
     public static void init()
     {
-        createHealthPotion(healthPotion);
-        createManaPotion(manaPotion);
-        createSword(sword);
-        createHelmet(helmet);
-        createChestPiece(chestPiece);
-        createBoots(boots);
-        createGauntlets(gauntlets);
-        createAccessoryA(accessoryA);
-        createAccessoryB(accessoryB);
-        createPants(pants);
+        healthPotion = null;
+        manaPotion = null;
     }
     public static Item checkItem(String itemname)
     {
@@ -51,77 +47,76 @@ public class InventoryList {
         return a;
     }
 
-    public static Useable createHealthPotion(Useable a)
+    public static Useable createHealthPotion(Location l)
     {
         //image, location, type, name, description, effects, requirements
         //need to create effect
-        Location l = new Location(-1,-1,0);
-        a = new Useable(Assets.potion,l, ItemsEnum.USEABLE,"Potion","This heals 3 health",null,null);
-        return a;
+        String description = "This potion heals 5 health";
+        Effect[] e = {new Effect(new StatStructure(StatsEnum.LIFE,5),0,description)};
+        healthPotion = new Useable(Assets.potion,l, ItemsEnum.USEABLE,"Health",description,e,null);
+        return healthPotion;
     }
-    public static Useable createManaPotion(Useable a)
+    public static Useable createManaPotion(Location l)
     {
         //need to create effect
-        Location l = new Location(-1,-1,0);
-        a = new Useable(Assets.manapotion,l, ItemsEnum.USEABLE,"Potion","This heals 3 health",null,null);
-        return a;
+        String description = "This potion restores 3 mana";
+        Effect[] e = {new Effect(new StatStructure(StatsEnum.MANA,3),0,description)};
+        manaPotion = new Useable(Assets.manapotion,l, ItemsEnum.USEABLE,"Mana",description,e,null);
+        return manaPotion;
     }
-    public static Weapon createSword(Weapon a)
+    public static Weapon createSword(Location l)
     {
         //(image, location, type, name, description, effects, requirements, stat)
-        Location l = new Location(-1,-1,0);
-            a = new Weapon(Assets.sword,l,ItemsEnum.WEAPON,"Sword","Sword with 5 attack",null,null,5,WeaponEnum.SWORD);
-        return a;
+        String description = "Sword: +5 weapon rating";
+        sword = new Weapon(Assets.sword,l,ItemsEnum.WEAPON,"Sword",description,null,null,5,WeaponEnum.SWORD);
+        return sword;
 
     }
-    public static Armor createHelmet(Armor a)
+    public static Armor createHelmet(Location l)
     {
         //(image, location, type, name, description, effects, requirements, stat);
-        Location l = new Location(-1,-1,0);
-        a = new Armor(Assets.helmet,l,ItemsEnum.ARMOR,"Helmet","Helmet with 4 defense",null,null,4,ArmorEnum.HEAD);
-        return a;
+        String description = "Helmet: +4 armor rating";
+        helmet = new Armor(Assets.helmet,l,ItemsEnum.ARMOR,"Helmet",description,null,null,4,ArmorEnum.HEAD);
+        return helmet;
 
     }
-    public static Armor createChestPiece(Armor a)
+    public static Armor createChestPiece(Location l)
     {
-        Location l = new Location(-1,-1,0);
-        a = new Armor(Assets.chestArmor,l,ItemsEnum.ARMOR,"Chest Piece","Chest Piece with 6 defense",null,null,6,ArmorEnum.CHEST);
-        return a;
+        String description = "Chest piece: +4 armor rating";
+        chestPiece= new Armor(Assets.chestArmor,l,ItemsEnum.ARMOR,"Chest Piece",description,null,null,6,ArmorEnum.CHEST);
+        return chestPiece;
     }
-    public static Armor createBoots(Armor a)
+    public static Armor createBoots(Location l)
     {
-        Location l = new Location(-1,-1,0);
-        a = new Armor(Assets.boots,l,ItemsEnum.ARMOR,"Boots","Boots with 3 defense",null,null,3,ArmorEnum.BOOTS);
-        return a;
+        String description = "Boots: +3 armor rating";
+        boots = new Armor(Assets.boots,l,ItemsEnum.ARMOR,"Boots",description,null,null,3,ArmorEnum.BOOTS);
+        return boots;
     }
-    public static Armor createGauntlets(Armor a)
+    public static Armor createGauntlets(Location l)
     {
-        Location l = new Location(-1,-1,0);
-        a = new Armor(Assets.glove,l,ItemsEnum.ARMOR,"Gauntlets","Gauntlets with 4 defense",null,null,4,ArmorEnum.GLOVES);
-        return a;
+        String description = "Gauntlets: +3 armor rating";
+        gauntlets = new Armor(Assets.glove,l,ItemsEnum.ARMOR,"Gauntlets",description,null,null,3,ArmorEnum.GLOVES);
+        return gauntlets;
 
     }
-    public static Armor createAccessoryA(Armor a)
+    public static Armor createAccessoryA(Location l)
     {
-        Location l = new Location(-1,-1,0);
-        a = new Armor(Assets.accessory1,l,ItemsEnum.ARMOR,"Accessory A","Accessory with 2 defense",null,null,2,ArmorEnum.ACCESSORY1);
-        return a;
+        String description = "Accessory: +2 armor rating";
+        accessoryA = new Armor(Assets.accessory1,l,ItemsEnum.ARMOR,"Accessory A",description,null,null,2,ArmorEnum.ACCESSORY1);
+        return accessoryA;
     }
-    public static Armor createAccessoryB(Armor a)
+    public static Armor createAccessoryB(Location l)
     {
-        Location l = new Location(-1,-1,0);
-        a = new Armor(Assets.accessory2,l,ItemsEnum.ARMOR,"Accessory B","Accessory with 3 defense",null,null,3,ArmorEnum.ACCESSORY2);
-        return a;
+        String description = "Accessory: +2 armor rating";
+        accessoryB = new Armor(Assets.accessory2,l,ItemsEnum.ARMOR,"Accessory B",description,null,null,2,ArmorEnum.ACCESSORY2);
+        return accessoryB;
     }
-    public static Armor createPants(Armor a)
+    public static Armor createPants(Location l)
     {
-        Location l = new Location(-1,-1,0);
-        a = new Armor(Assets.pants,l,ItemsEnum.ARMOR,"Pants","Pants with 3 defense",null,null,3,ArmorEnum.PANTS);
-        return a;
+        String description = "Pants: +4 armor rating";
+        pants = new Armor(Assets.pants,l,ItemsEnum.ARMOR,"Pants",description,null,null,4,ArmorEnum.PANTS);
+        return pants;
     }
-
-
-
 
 
 }

@@ -7,6 +7,7 @@ import Model.Item.Equippable;
 import Model.Item.Item;
 import Model.Item.Takeable;
 import Model.Item.*;
+import Model.Location;
 import View.Graphics.Assets;
 
 import javax.lang.model.type.NullType;
@@ -75,6 +76,7 @@ public class Inventory {
             if(itemType == ItemsEnum.USEABLE || itemType == ItemsEnum.ARMOR || itemType == ItemsEnum.WEAPON) {
                 if(add((Takeable)tileItems.get(i))){
                     tileItems.remove(i);
+                    //((Takeable) tileItems.get(i)).setLocation(new Location(-1,-1,0));
                 }
             }
         }
@@ -87,6 +89,7 @@ public class Inventory {
                 if(pack.items[i] == null) {
                     pack.items[i] = takeableItem;
                     pack.size++;
+                    takeableItem.setLocation(new Location(-1,-1,0));
                     return true;
                 }
             }
