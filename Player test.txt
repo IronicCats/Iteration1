@@ -18,10 +18,11 @@
 6
 6
 6
-0
 6
-0
-3
+6
+5
+2
+Health
 Health
 Sword
 Chest
