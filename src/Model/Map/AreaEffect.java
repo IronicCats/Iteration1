@@ -33,7 +33,7 @@ public class AreaEffect {
        {
            StatStructure modification = new StatStructure(StatsEnum.LIFE, -5);
            effect = new Effect(modification,0, this.description);
-           decal = new Decal(Assets.skullAndBones, this.location, DecalEnum.SKULLANDCROSSBONES);
+           decal = new Decal(Assets.damage, this.location, DecalEnum.SKULLANDCROSSBONES);
        }
        else if(areaEffect == AreaEffectEnum.HEAL)// if its healing area effect
        {
