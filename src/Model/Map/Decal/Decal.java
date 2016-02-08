@@ -18,19 +18,14 @@ public class Decal {
     private DecalEnum type;
 
     //constructor
-    public Decal(BufferedImage image, String name, String description, Model.Location location, DecalEnum type )
+    public Decal(BufferedImage image, Model.Location location, DecalEnum type )
     {
         this.image = image;
-        this.name = name;
-        this.description = description;
         this.location = location;
         this.type = type;
     }
 
     //accessor methods
-    public String getDescription() {return description;}
-
-    public String getName() {return name;}
 
     public DecalEnum getType() {return type;}
 

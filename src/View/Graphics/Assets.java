@@ -22,6 +22,7 @@ public class Assets {
     public static ArrayList<BufferedImage> grass;
     public static ArrayList<BufferedImage> water;
     public static ArrayList<BufferedImage> mountain;
+    public static ArrayList<BufferedImage> buttons;
 
 
     public static BufferedImage avatarFacingDown;
@@ -46,6 +47,8 @@ public class Assets {
     public static BufferedImage chestArmor;
     public static BufferedImage helmet;
     public static BufferedImage house;
+
+
 
 
     public static void init() {
@@ -73,9 +76,14 @@ public class Assets {
         SpriteSheet chestSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/ChestArmorSprite.png"));
         SpriteSheet helmetSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/Helmet.png"));
 
+
+        SpriteSheet buttonSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/buttons.png"));
+
+
         water = new ArrayList<>(9);
         mountain = new ArrayList<>(9);
         grass = new ArrayList<>(9);
+        buttons = new ArrayList<>(4);
 
         avatarFacingDown = avatarSheet.crop(0, 0, width, height);
         avatarFacingUp = avatarSheet.crop(32,0,width,height);
@@ -119,6 +127,15 @@ public class Assets {
         grass.add(grassSheet.crop(32, 64, width, height));
         grass.add(grassSheet.crop(64, 64, width, height));
 
+
+        //Q
+        buttons.add(buttonSheet.crop(0, 0, width, height));
+        //I
+        buttons.add(buttonSheet.crop(32, 0, width, height));
+        //G
+        buttons.add(buttonSheet.crop(64, 0, width, height));
+        //ESC
+        buttons.add(buttonSheet.crop(0, 32, width, height));
 
         potion = potionSheet.crop(0,0,width,height);
         sack = sackSheet.crop(0,0,width,height);
