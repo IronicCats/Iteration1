@@ -51,19 +51,24 @@ public class Equipment {
             g.drawImage(armor.armorReturn(index).getImage(), x, y, 64, 64, null);
         else if (index == 3 && weapon.getWeapon() != null)
             g.drawImage(weapon.getWeapon().getImage(), x, y, 64, 64, null);
-        g.setFont(new Font("Arial", Font.BOLD, 20));
-         if(s){
+       // g.setFont(new Font("Arial", Font.BOLD, 20));
+        g.setFont(new Font("Arial", Font.BOLD, 12));
+        g.setColor(new Color(255, 255, 255, 150));
+        int xCoord=width/2+15,yCoord=9*height/12+10;
+        FontMetrics fm = g.getFontMetrics();
+        if(s){
              int startY=3*height/4-10;int size=3*height/24+10;
-             int xCoord=width/2+15,yCoord=9*height/12;
-             FontMetrics fm = g.getFontMetrics();
              if(index==3&&weapon.isEquipped()){
-                 //String[] buttonText = {"Inventory", "Gear", "Menu"};
-                 g.setColor(new Color(255, 255, 255, 150));
-                 //set FUCKING FONT
-                 String[] buttonText = {"Unequip","Inventory", "Gear","Escape"};
-                 for(int i = 0; i <= 3; ++i) {
-                     g.drawImage(Assets.buttons.get(i), xCoord, startY, 64, 64, null);
-                     g.drawString(buttonText[i], xCoord + 64/2 - fm.stringWidth(buttonText[i])/2, yCoord + 64);
+                     g.setColor(Color.WHITE);
+                     g.setFont(new Font("Arial", Font.BOLD, 12));
+                 fm = g.getFontMetrics();
+                     g.drawImage(Assets.buttons.get(0), xCoord, yCoord, 64, 64, null);
+                     g.drawString("Unequip", xCoord + 64/2 - fm.stringWidth("Unequip")/2, yCoord + 60);
+                     xCoord += 64;
+                 String[] buttonText = {"","Inventory", "Escape","Escape"};
+                 for(int i=1;i<=3;i++) {
+                     g.drawImage(Assets.buttons.get(i), xCoord, yCoord, 64, 64, null);
+                     g.drawString(buttonText[i], xCoord + 64 / 2 - fm.stringWidth(buttonText[i]) / 2, yCoord + 60);
                      xCoord += 64;
                  }
                  //g.drawString("*PRESS Q TO UNEQUIP", width / 2, 9 * height / 12 + 35);
@@ -77,7 +82,14 @@ public class Equipment {
                  g.drawString("Description: "+weapon.getWeapon().getDescription(),100,startY+5*size/6);
              }
             else if(armor.armorReturn(index)!=null) {
-                 g.drawString("*PRESS Q TO UNEQUIP", width / 2, 9 * height / 12 + 35);
+                 //the unequip and equip
+                 g.setColor(Color.WHITE);
+                 g.setFont(new Font("Arial", Font.BOLD, 12));
+                 fm = g.getFontMetrics();
+                 g.drawImage(Assets.buttons.get(0), xCoord, yCoord, 64, 64, null);
+                 g.drawString("Unequip", xCoord + 64/2 - fm.stringWidth("Unequip")/2, yCoord + 60);
+                 xCoord += 64;  
+                 //the box
                  g.setColor(Color.DARK_GRAY);
                  g.fillRect(100,startY,width/2-125,size);
                  //int startY=3*height/4-10;int size=3*height/24+10;
@@ -86,9 +98,31 @@ public class Equipment {
                  g.drawString("Armor Name: "+armor.armorReturn(index).getName(),100,startY+size/6);
                  g.drawString("Defence: "+armor.armorReturn(index).getStat(),100,startY+size/2);
                  g.drawString("Description: "+armor.armorReturn(index).getDescription(),100,startY+5*size/6);
+                 g.setFont(new Font("Arial", Font.BOLD, 12));
+                 fm = g.getFontMetrics();
+                 g.setColor(Color.WHITE);
+                 String[] buttonText = {"","Inventory", "Escape","Escape"};
+                 for(int i=1;i<=3;i++) {
+                     g.drawImage(Assets.buttons.get(i), xCoord, yCoord, 64, 64, null);
+                     g.drawString(buttonText[i], xCoord + 64 / 2 - fm.stringWidth(buttonText[i]) / 2, yCoord + 60);
+                     xCoord += 64;
+                 }
             }
-             g.setFont(new Font("Arial", Font.BOLD, 20));
+            else{
+                 g.setFont(new Font("Arial", Font.BOLD, 12));
+                 fm = g.getFontMetrics();
+                 g.setColor(Color.WHITE);
+                 String[] buttonText = {"","Inventory", "Escape","Escape"};
+                 for(int i=1;i<=3;i++) {
+                     g.drawImage(Assets.buttons.get(i), xCoord, yCoord, 64, 64, null);
+                     g.drawString(buttonText[i], xCoord + 64 / 2 - fm.stringWidth(buttonText[i]) / 2, yCoord + 60);
+                     xCoord += 64;
+                 }
+             }
         }
+
+
+
         //g.drawString("*PRESS SHIFT TO VIEW INV",width/2,9*height/12+60);
         //g.drawString("*PRESS G OR ESCAPE TO EXIT",width/2,9*height/12+85);
     }
