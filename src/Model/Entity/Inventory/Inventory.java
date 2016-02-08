@@ -123,7 +123,7 @@ public class Inventory {
 
     public void dropAll(){
         for(int i = 0; i < pack.cap; i++){
-            if(pack.items!=null){
+            if(pack.items[i]!=null){
                 Takeable itemToDrop = pack.items[i];
                 int x = controller.getPlayer().getLocation().getX();
                 int y = controller.getPlayer().getLocation().getY();
