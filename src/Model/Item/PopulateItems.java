@@ -177,6 +177,9 @@ public class PopulateItems {
             case ("House"):
                 image = Assets.house;
                 break;
+            case ("Key"):
+                image = Assets.key;
+                break;
             default:
                 break;
         }
