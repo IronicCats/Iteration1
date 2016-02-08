@@ -5,7 +5,6 @@ import java.io.File;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-import Model.Entity.Inventory.Inventory;
 import Model.Entity.Stats.StatStructure;
 import Model.Entity.Stats.StatsEnum;
 import View.Graphics.Assets;
@@ -29,7 +28,10 @@ public class PopulateItems {
     private ArrayList<Item> items = new ArrayList<>(); // array holding all items
 
     private Location location;
-    private Requirements requirements = new Requirements(0); // test requirements
+
+    private Requirements requirements; //
+    private String reqItem;
+    private int reqLevel;
 
     private String name; // storage variable for name read from file
     private String description = ""; // storage variable for description read from file
@@ -75,6 +77,10 @@ public class PopulateItems {
             type = scan.nextInt(); // read in int representing type
 
             stat = scan.nextInt(); // read in stat associated with armor/weapon
+
+            reqItem = scan.next(); // required Item
+
+            reqLevel = scan.nextInt(); // required level
 
             if (scan.hasNext("SA")) { // start of array containing StatStructure code
                 scan.next(); // move to first string in array

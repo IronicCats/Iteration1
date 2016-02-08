@@ -42,8 +42,6 @@ public class GameState extends State {
     private Camera camera;
     private Useable potion;
     private Location location;
-
-    private Location spawn = new Location(64,64,0);
     private Player player;
     private StatusView statusView;
     private AreaEffect areaEffect;
@@ -53,7 +51,6 @@ public class GameState extends State {
     public GameState(Controller controller) {
         super(controller);
         game = this;
-
         location = new Location(4,5,0); //Location is in wrong coordinates it should be in pixels not in tile
         statusView = new StatusView(controller);
 
@@ -184,7 +181,7 @@ public class GameState extends State {
         map = controller.getMap();
 
         //Test Code
-        areaEffect = new AreaEffect("Damage", "Damage", AreaEffectEnum.DAMAGE, new Location(7,8,0)); //Same with this one
+        areaEffect = new AreaEffect("Damage", "Damage", AreaEffectEnum.DAMAGE); //Same with this one
         map.getTile(2,6).addAreaEffect(areaEffect);
         //End Test
 
