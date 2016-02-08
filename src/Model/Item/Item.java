@@ -34,6 +34,7 @@ public abstract class Item {
         this.description = description;
         this.effects = effects;
         this.requirements = requirements;
+        System.out.println("Requirements Item: " + requirements);
     }
 
     /* getter functions */

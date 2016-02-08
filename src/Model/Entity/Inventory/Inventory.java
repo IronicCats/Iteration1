@@ -78,7 +78,7 @@ public class Inventory {
     public void store(ArrayList<Item> tileItems) {
         for(int i = tileItems.size()-1; i >=0; --i) {
             ItemsEnum itemType = tileItems.get(i).getType();
-            if(itemType == ItemsEnum.USEABLE || itemType == ItemsEnum.ARMOR || itemType == ItemsEnum.WEAPON) {
+            if(itemType == ItemsEnum.USEABLE || itemType == ItemsEnum.ARMOR || itemType == ItemsEnum.WEAPON || itemType == ItemsEnum.PICKUPABLE) {
                 if(add((Takeable)tileItems.get(i))){
                     tileItems.remove(i);
                     //((Takeable) tileItems.get(i)).setLocation(new Location(-1,-1,0));
@@ -140,16 +140,19 @@ public class Inventory {
         if(pack.items[i].getType() == ItemsEnum.WEAPON ||(pack.items[i].getType() == ItemsEnum.ARMOR)){
             this.equip(i);
         }
-        else if(pack.items[i].getType() == ItemsEnum.USEABLE) {
+        else if(pack.items[i].getType() == ItemsEnum.USEABLE || pack.items[i].getType() == ItemsEnum.PICKUPABLE) {
             this.use(i);
         }
     }
     public void use(int i){
         if( i < pack.cap&&pack.items[i]!=null) {
             if(pack.items[i].getType() == ItemsEnum.USEABLE) {
-                controller.getPlayer().getStats().applyEffect(pack.items[i].getEffects());
+                pack.items[i].onInteract(controller.getPlayer());
+                //controller.getPlayer().getStats().applyEffect(pack.items[i].getEffects());
                 pack.items[i] = null;
                 pack.size--;
+            } else if(pack.items[i].getType() == ItemsEnum.PICKUPABLE) {
+                pack.items[i].onInteract(controller.getPlayer());
             }
             else {
                 System.out.println("Cannot use item of type not USABLE");
@@ -157,6 +160,14 @@ public class Inventory {
         }
     }
 
+    public boolean contains(Takeable takeable) {
+        for (int i = 0; i < pack.size; i++) {
+            if(pack.items[i].getName().equals(takeable.getName()))
+                return true;
+        }
+        System.out.println("Inventory does not contain " + takeable);
+        return false;
+    } // end contains
 
 
     public void equip(int i){

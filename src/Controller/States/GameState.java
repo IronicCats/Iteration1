@@ -16,6 +16,7 @@ import Model.Entity.Stats.Effect;
 import Model.Entity.Stats.StatStructure;
 import Model.Entity.Stats.Stats;
 import Model.Entity.Stats.StatsEnum;
+import Model.Item.Interactable;
 import Model.Item.Item;
 import Model.Item.ItemsEnum;
 import Model.Item.Useable;
@@ -117,8 +118,23 @@ public class GameState extends State {
         }
 
         if(e.getKeyCode() == KeyEvent.VK_Q){
-            controller.getPlayer().PickUpItem();
-
+            int x = player.getLocation().getX(),
+                y = player.getLocation().getY(),
+                size = controller.getTiles(x, y).getItems().size();
+            for(int i = 0; i < size; i++) {
+                Item item = controller.getTiles(player.getLocation().getX(), player.getLocation().getY()).getItems().get(i);
+                switch(item.getType()) {
+                    case PICKUPABLE:
+                    case USEABLE:
+                        controller.getPlayer().PickUpItem();
+                        break;
+                    default:
+                        System.out.println(item.getType());
+                        System.out.println("Item is " + item.getName());
+                        item.onInteract(player);
+                        break;
+                }
+            }
         }
 
         if((e.getKeyCode() == KeyEvent.VK_NUMPAD8 || e.getKeyCode() == KeyEvent.VK_UP)){

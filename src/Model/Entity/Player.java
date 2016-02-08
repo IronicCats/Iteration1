@@ -7,6 +7,8 @@ import Model.Game;
 import Model.Entity.Occupation.Occupation;
 import Model.Entity.Inventory.Inventory;
 import Model.Entity.Stats.Stats;
+import Model.Item.Item;
+import Model.Item.Takeable;
 import Model.Location;
 import Model.Map.Tiles.Tile;
 import View.Graphics.Assets;
@@ -47,11 +49,10 @@ public class Player extends Entity {
     }
 
     public void PickUpItem(){
+        System.out.println(controller.getTiles(location.getX(),location.getY()).getItems());
         if(controller.getTiles(location.getX(),location.getY()).hasItem()) {
-            System.out.println(location.getX()+"  "+location.getY());
             inventory.store(controller.getTiles(location.getX(), location.getY()).getItems());
         }
-        System.out.println(location.getX()+"  "+location.getY());
     }
 
 
@@ -174,4 +175,8 @@ public class Player extends Entity {
         location.setY(getNavigation().location.getY());
         return location;
     }*/
+
+    public String toString() {
+        return "Occupation: " + getOccupation() + "; location: " + location.getX() + "," + location.getY() + "\n";
+    } // end toString
 }

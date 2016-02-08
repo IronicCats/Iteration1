@@ -214,6 +214,8 @@ public class PopulateItems {
                     break;
             case 5: items.add(new Weapon(image, location, ItemsEnum.WEAPON, name, description, null, requirements, stat, weaponType));
                     break;
+            case 6: items.add(new Pickupable(image, location, ItemsEnum.PICKUPABLE, name, description, requirements));
+                break;
             default:
                     break;
         }
