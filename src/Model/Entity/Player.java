@@ -7,6 +7,8 @@ import Model.Game;
 import Model.Entity.Occupation.Occupation;
 import Model.Entity.Inventory.Inventory;
 import Model.Entity.Stats.Stats;
+import Model.Item.Item;
+import Model.Item.Takeable.Takeable;
 import Model.Location;
 import Model.Map.Tiles.Tile;
 import View.Graphics.Assets;
@@ -47,11 +49,10 @@ public class Player extends Entity {
     }
 
     public void PickUpItem(){
+        System.out.println(controller.getTiles(location.getX(),location.getY()).getItems());
         if(controller.getTiles(location.getX(),location.getY()).hasItem()) {
-            System.out.println(location.getX()+"  "+location.getY());
             inventory.store(controller.getTiles(location.getX(), location.getY()).getItems());
         }
-        System.out.println(location.getX()+"  "+location.getY());
     }
 
 
@@ -137,7 +138,11 @@ public class Player extends Entity {
     public void loadPlayer(ArrayList<Object> saveFile, int count)
     {
         Location l = new Location((int)saveFile.get(0),(int)saveFile.get(1),0);
-        this.setLocation(l);
+        System.out.println(Integer.toString(count));
+        this.setX(l.getX());
+        this.setY(l.getY());
+        this.navigation.setGoalX(l.getPixelX());
+        this.navigation.setGoalY(l.getPixelY());
         this.getStats().getPrimaryStats().setLivesLeft((int)saveFile.get(2));
         this.getStats().getPrimaryStats().setBaseLives((int)saveFile.get(3)); //idk if this is being changed 3
         this.getStats().getPrimaryStats().setStrength((int)saveFile.get(4));
@@ -161,8 +166,9 @@ public class Player extends Entity {
         this.getStats().getDerivedStats().setArmorRating((int)saveFile.get(22));
 
         count = 23;
-
-        this.getInventory().loadInventory(saveFile, count);
+        System.out.println(Integer.toString(saveFile.size()));
+        if(saveFile.size() > 22)
+            this.getInventory().loadInventory(saveFile, count);
 
 
 
@@ -174,4 +180,8 @@ public class Player extends Entity {
         location.setY(getNavigation().location.getY());
         return location;
     }*/
+
+    public String toString() {
+        return "Occupation: " + getOccupation() + "; location: " + location.getX() + "," + location.getY() + "\n";
+    } // end toString
 }

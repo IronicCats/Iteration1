@@ -144,6 +144,8 @@ public class Assets {
         buttons.add(buttonSheet.crop(64, 0, width, height));
         //ESC
         buttons.add(buttonSheet.crop(0, 32, width, height));
+        //D
+        buttons.add(buttonSheet.crop(32, 32, width, height));
 
         potion = potionSheet.crop(0,0,width,height);
         sack = sackSheet.crop(0,0,width,height);

@@ -86,11 +86,13 @@ public class PopulateItems {
             if (scan.hasNext("SA")) { // start of array containing StatStructure code
                 scan.next(); // move to first string in array
                 setStatStruc(scan); // method to store array in txt file to statStruc
+                description = "";
                 continue;
             }
             else{
                 setImage(name);
                 generateItems();
+                description = "";
             }
         }
         scan.close(); // close scanner
@@ -217,12 +219,15 @@ public class PopulateItems {
                     break;
             case 2: items.add(new Obstacle(image, location, ItemsEnum.OBSTACLE, name, description, null, null));
                     break;
-            case 3: items.add(new Interactable(image, location, ItemsEnum.INTERACTABLE, name, description, effects.toArray(new Effect[effects.size()]), requirements));
+            case 3: //items.add(new Interactable(image, location, ItemsEnum.INTERACTABLE, name, description, effects.toArray(new Effect[effects.size()]), requirements));
+                items.add(InventoryList.createTreasureChest(location));
                     break;
             case 4: items.add(new Armor(image, location, ItemsEnum.ARMOR, name, description, null, requirements, stat, armorType));
                     break;
             case 5: items.add(new Weapon(image, location, ItemsEnum.WEAPON, name, description, null, requirements, stat, weaponType));
                     break;
+            case 6: items.add(new Pickupable(image, location, ItemsEnum.PICKUPABLE, name, description, requirements));
+                break;
             default:
                     break;
         }

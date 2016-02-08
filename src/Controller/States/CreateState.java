@@ -46,7 +46,6 @@ public class CreateState extends State implements KeyListener {
         createView = new CreateMenu(width, height);
 
         //Creating player
-        pack = new Pack(10);
         inventory = new Inventory(controller);
         map = new Map(controller);
         camera = new Camera(controller.getGame().getWidth(), controller.getGame().getHeight(),map);
