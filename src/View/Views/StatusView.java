@@ -134,7 +134,7 @@ public class StatusView {
             ArrayList<Item> items = controller.getTiles(playerX, playerY).getItems();
             g.setColor(Color.CYAN);
             for (int i = 0; i < items.size(); ++i) {
-                g.drawString(items.get(i).getName(), width - 140, (items.size() > 0)(3*-i) + (fm.getHeight()/2 + height - 40 - (10 *(i + 1))));
+                g.drawString(items.get(i).getName(), width - 140,(3*-i) + (fm.getHeight()/2 + height - 40 - (10 *(i + 1))));
             }
 
         }
