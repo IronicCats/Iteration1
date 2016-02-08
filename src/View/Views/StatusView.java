@@ -4,6 +4,7 @@ import Controller.Controller;
 import Model.Item.Item;
 import Model.Location;
 import Model.Map.Tiles.Tile;
+import View.Graphics.Assets;
 
 
 import java.awt.*;
@@ -86,7 +87,7 @@ public class StatusView {
         g.fillRect(barStartX, y + 5, width, 5);
 
         renderItemsLists(g);
-
+        renderButtons(g);
     }
 
     public double[] calculatePercentages() {
@@ -138,6 +139,28 @@ public class StatusView {
             }
 
         }
+    }
+
+    public void renderButtons(Graphics g) {
+        int startX = 0;
+        int startY = height - 100;
+        int playerX = controller.getPlayer().getLocation().getX();
+        int playerY = controller.getPlayer().getLocation().getY() ;
+        FontMetrics fm = g.getFontMetrics();
+        Tile curTile = controller.getTiles(playerX, playerY);
+        g.setColor(new Color(255, 255, 255, 150));
+        if(curTile.getItems().size() > 0) {
+            g.drawImage(Assets.buttons.get(0), 0, startY, 64, 64, null);
+            g.drawString("Interact", 64/2 - fm.stringWidth("Interact")/2, startY + 64);
+            startX = 64;
+        }
+        String[] buttonText = {"Inventory", "Gear", "Menu"};
+        for(int i = 1; i <= 3; ++i) {
+            g.drawImage(Assets.buttons.get(i), startX, startY, 64, 64, null);
+            g.drawString(buttonText[i - 1], startX + 64/2 - fm.stringWidth(buttonText[i - 1])/2, startY + 64);
+            startX += 64;
+        }
+
     }
 
 }
