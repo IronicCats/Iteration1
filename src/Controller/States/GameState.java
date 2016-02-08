@@ -74,6 +74,10 @@ public class GameState extends State {
                 //Add the Load Game state switch here
                 setState(PauseState.pause);
                 break;
+            case Map:
+                System.out.println("View Full Map");
+                setState(MapState.map);
+                break;
             case Exit:
                 System.out.println("Exit Game");
                 System.exit(0);
@@ -102,8 +106,8 @@ public class GameState extends State {
     @Override
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-            SaveState.writeFile(player,"Player test.txt");
-            //LoadState.loadFile(player,"Player test.txt");
+            //SaveState.writeFile(player,"Player test.txt");
+            LoadState.loadFile(player,"Player test.txt");
             switchState(States.Pause);
         }
 
@@ -114,6 +118,10 @@ public class GameState extends State {
 
         if(e.getKeyCode() == KeyEvent.VK_G) {
             switchState(States.Gear);
+        }
+
+        if(e.getKeyCode() == KeyEvent.VK_M) {
+            switchState(States.Map);
         }
 
         if(e.getKeyCode() == KeyEvent.VK_Q){
@@ -181,8 +189,11 @@ public class GameState extends State {
         player = controller.getPlayer();
         camera = controller.getCamera();
         map = controller.getMap();
+        controller.getGame().setMapState(new MapState(controller, controller.getGame().getWidth(), controller.getGame().getHeight()));
+
 
 
         return;
     }
+
 }
