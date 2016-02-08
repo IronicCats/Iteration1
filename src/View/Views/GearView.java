@@ -54,8 +54,9 @@ public class GearView {
         //sets the stats screen
         g.setColor(Color.DARK_GRAY);
         g.fillRect(100,height/4-30,width/2-125,height/2);
-        g.fillRect(100,height/4-30,width/2-125,height/12);
+      //  g.fillRect(100,3*height/4-10,width/2-125,3*height/24+10);
 
+        //done setting the rectangle screens
         g.setColor(new Color(38, 33, 191));
         g.setFont(new Font("Arial", Font.PLAIN, 48));
         FontMetrics fm = g.getFontMetrics();
@@ -161,7 +162,7 @@ public class GearView {
 
 
         //Making the EXP Bar fill the rest of the game screen
-        g.fillRect(baseX, baseY+40, (int) (playerStats[6]/100.0 * width/4) , fm.getHeight() + 1);
+        g.fillRect(baseX, baseY+60, (int) (playerStats[6]/100.0 * width/4) , fm.getHeight() + 1);
         //SET EXP PERCENTAGE
         g.setColor(Color.black);
         g.drawString("EXP: " + (int)playerStats[4] + "/" + (int)playerStats[5]  ,baseX-7 + (fm.stringWidth("EXP: 220/099%")), baseY+73);

@@ -50,9 +50,33 @@ public class Equipment {
         else if (index == 3 && weapon.getWeapon() != null)
             g.drawImage(weapon.getWeapon().getImage(), x, y, 64, 64, null);
         g.setFont(new Font("Arial", Font.BOLD, 20));
-         if(s&&(index==3&&weapon.isEquipped()||armor.armorReturn(index)!=null)){
-            g.drawString("*PRESS Q TO UNEQUIP", width / 2, 9 * height / 12 + 35);
+         if(s){
+             int startY=3*height/4-10;int size=3*height/24+10;
+             if(index==3&&weapon.isEquipped()){
+                 g.drawString("*PRESS Q TO UNEQUIP", width / 2, 9 * height / 12 + 35);
+                 g.setColor(Color.DARK_GRAY);
+                 g.fillRect(100,startY,width/2-125,size);
+                 //int startY=3*height/4-10;int size=3*height/24+10;
+                 g.setColor(Color.WHITE);
+                 g.setFont(new Font("Arial", Font.BOLD, 15));
+                 g.drawString("Weapon Name: "+weapon.getWeapon().getName(),100,startY+size/6);
+                 g.drawString("Damage: "+ weapon.getDamage(),100,startY+size/2);
+                 g.drawString("Description: "+weapon.getWeapon().getDescription(),100,startY+5*size/6);
+             }
+            else if(armor.armorReturn(index)!=null) {
+                 g.drawString("*PRESS Q TO UNEQUIP", width / 2, 9 * height / 12 + 35);
+                 g.setColor(Color.DARK_GRAY);
+                 g.fillRect(100,startY,width/2-125,size);
+                 //int startY=3*height/4-10;int size=3*height/24+10;
+                 g.setColor(Color.WHITE);
+                 g.setFont(new Font("Arial", Font.BOLD, 15));
+                 g.drawString("Armor Name: "+armor.armorReturn(index).getName(),100,startY+size/6);
+                 g.drawString("Defence: "+armor.armorReturn(index).getStat(),100,startY+size/2);
+                 g.drawString("Description: "+armor.armorReturn(index).getDescription(),100,startY+5*size/6);
+            }
+             g.setFont(new Font("Arial", Font.BOLD, 20));
         }
+
         g.drawString("*PRESS SHIFT TO VIEW INV",width/2,9*height/12+60);
         g.drawString("*PRESS G OR ESCAPE TO EXIT",width/2,9*height/12+85);
     }
