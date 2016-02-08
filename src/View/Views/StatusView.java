@@ -175,7 +175,6 @@ public class StatusView {
         if( r < 0 || r > 255) {r = 0;};
         if( g < 0 || g > 255) {g = 0;};
         if( b < 0 || b > 255) {b = 0;};
-        System.out.println(r + " " + g + " " + b);
         return new Color(r, g, b);
     }
 
