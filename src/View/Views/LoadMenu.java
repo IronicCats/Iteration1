@@ -47,7 +47,6 @@ public class LoadMenu {
         int y = (height / 2) - 150;
         g.drawString("Pick a game to load", x, y);
 
-
         numberOfMenuOptions = menuOptions.size();
 
         for(int i = 0; i < menuOptions.size(); ++i) {
@@ -84,7 +83,6 @@ public class LoadMenu {
             currentItem++;
         }
     }
-
 
     public boolean checkSelectionStatus() {
        return (menuOptions.get(currentItem).equals("Back"));
