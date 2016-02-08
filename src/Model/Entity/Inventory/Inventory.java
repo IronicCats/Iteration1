@@ -120,6 +120,21 @@ public class Inventory {
             System.out.println("Trying to drop item at index greater than pack capacity");
         }
     }
+
+    public void dropAll(){
+        for(int i = 0; i < pack.cap; i++){
+            if(pack.items[i]!=null){
+                Takeable itemToDrop = pack.items[i];
+                int x = controller.getPlayer().getLocation().getX();
+                int y = controller.getPlayer().getLocation().getY();
+                itemToDrop.setLocation(controller.getPlayer().getLocation());
+                controller.getTiles(x,y).addItem(itemToDrop);
+                pack.items[i] = null;
+                pack.size--;
+            }
+        }
+    }
+
     public void interact(int i){
         if(pack.items[i]==null)return;
         if(pack.items[i].getType() == ItemsEnum.WEAPON ||(pack.items[i].getType() == ItemsEnum.ARMOR)){
