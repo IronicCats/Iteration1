@@ -120,4 +120,12 @@ public class EquippedArmor {
     }
     public int getTotalDefense() {
         return totalDefense; }
+
+    public Armor getHead(){return head;}
+    public Armor getChest(){return chest;}
+    public Armor getPants(){return pants;}
+    public Armor getBoots(){return boots;}
+    public Armor getGloves(){return gloves;}
+    public Armor getAccessory1(){return accessory1;}
+    public Armor getAccessory2(){return accessory2;}
 } // end class EquippedArmor

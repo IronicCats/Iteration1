@@ -102,6 +102,8 @@ public class GameState extends State {
     @Override
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            SaveState.writeFile(player,"Player test.txt");
+            //LoadState.loadFile(player,"Player test.txt");
             switchState(States.Pause);
         }
 
@@ -116,8 +118,7 @@ public class GameState extends State {
 
         if(e.getKeyCode() == KeyEvent.VK_Q){
             controller.getPlayer().PickUpItem();
-            //SaveState.writeFile(player,"Player test.txt");
-            //LoadState.loadFile(player,"Player test.txt");
+
         }
 
         if((e.getKeyCode() == KeyEvent.VK_NUMPAD8 || e.getKeyCode() == KeyEvent.VK_UP)){
