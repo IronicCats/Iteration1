@@ -97,6 +97,9 @@ public abstract class Tile {
     }
 
     public void addItem(Item item) {
+        if(item.getType() == ItemsEnum.OBSTACLE){
+            isUnWalkable = true;
+        }
         items.add(item);
     }
 
