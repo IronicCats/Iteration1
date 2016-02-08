@@ -11,6 +11,7 @@ import View.Graphics.Assets;
 import Model.Entity.Stats.Effect;
 import Model.Location;
 import Model.Requirements;
+import com.sun.corba.se.spi.orbutil.fsm.StateEngine;
 
 /**
  * Created by Wimberley on 2/5/16.
@@ -34,7 +35,7 @@ public class PopulateItems {
     private int reqLevel;
 
     private String name; // storage variable for name read from file
-    private String description = ""; // storage variable for description read from file
+    private String description; // storage variable for description read from file
     int x, y, type, stat; // used to store position, item type, and stats for armor and weapon
 
     private WeaponEnum weaponType;
@@ -67,12 +68,11 @@ public class PopulateItems {
 
             name = scan.next(); // read name
 
-            if (scan.hasNext("BD")) { // read in description
-                while (!scan.hasNext("ED")) {
-                    description.concat(scan.next() + "");
-                }
-                scan.next(); // move out of description
+            while(!scan.hasNext("ED")){
+                description += " " + scan.next();
             }
+
+            scan.next(); // move out of description
 
             type = scan.nextInt(); // read in int representing type
 
@@ -183,11 +183,21 @@ public class PopulateItems {
                 armorType = ArmorEnum.GLOVES;
                 image = Assets.glove;
                 break;
+            case ("AccessoryA"):
+                armorType = ArmorEnum.ACCESSORY1;
+                image = Assets.accessory1;
+                break;
+            case ("AccessoryB"):
+                armorType = ArmorEnum.ACCESSORY2;
+                image = Assets.accessory2;
             case ("Key"):
                 image = Assets.key;
                 break;
             case ("TreasureChest"):
                 image = Assets.chest;
+                break;
+            case ("House"):
+                image = Assets.house;
                 break;
             default:
                 break;
