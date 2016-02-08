@@ -67,8 +67,7 @@ public class Stats {
         if(primaryStats.getLivesLeft() <= 0)
             State.setState(KillState.state);
         else{
-            System.out.println(controller.getMap().getSpawn().getX());
-            System.out.println(controller.getMap().getSpawn().getY());
+            controller.getPlayer().getInventory().dropAll();
             controller.getPlayer().setX(controller.getMap().getSpawn().getX());
             controller.getPlayer().setY(controller.getMap().getSpawn().getY());
             controller.getPlayer().getNavigation().setGoalX(controller.getMap().getSpawn().getPixelX());

@@ -54,6 +54,8 @@ public class Player extends Entity {
         System.out.println(location.getX()+"  "+location.getY());
     }
 
+
+
     public void move(int x){
         if(!navigation.isMoving) {
             if (x == 0) {
