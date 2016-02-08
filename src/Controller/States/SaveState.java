@@ -98,12 +98,23 @@ public class SaveState extends State {
             saveScreen.setCurrentSaveGameName(saveGameName.toString());
         }
         else if(e.getKeyCode() == KeyEvent.VK_ENTER) {
-            System.out.println("Saving game to '" + getSaveFilePath(saveGameName.toString()));
-            writeFile(controller.getPlayer(), getSaveFilePath(saveGameName.toString()));
-            System.out.println("Saving Done.");
-            State.setState(GameState.game);
-        }
+            if(saveScreen.getSelection().equals("back")) {
+                State.setState(GameState.game);
+            }
+            else {
+                System.out.println("Saving game to '" + getSaveFilePath(saveGameName.toString()));
+                writeFile(controller.getPlayer(), getSaveFilePath(saveGameName.toString()));
+                System.out.println("Saving Done.");
+                State.setState(GameState.game);
+            }
 
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_UP) {
+            saveScreen.up();
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+            saveScreen.down();
+        }
     }
 
     @Override

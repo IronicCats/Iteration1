@@ -76,6 +76,8 @@ public class LoadState extends State {
         // Send the menu options to the LoadMenu
         loadMenu.setMenuOptions(menuOptions);
 
+
+
     }
 
     public void render(Graphics g) {

@@ -11,6 +11,7 @@ import java.awt.*;
 public class SaveScreen {
 
     int width, height;
+    int selection = 0;
     private String currentSaveGameName = "";
     private final String savePrompt = "Name the game and press enter";
 
@@ -44,18 +45,52 @@ public class SaveScreen {
         int y = (height / 2) - 150;
         g.drawString("Name the game", x, y);
 
+
         //text box for name
         g.drawString(savePrompt, x, y);
         totalWidth = fm.stringWidth(currentSaveGameName);
         x = (width - totalWidth)/2;
         y = (height / 2);
+
+        if(selection == 0) {
+            g.setColor(new Color(149, 165, 166, 175));
+            g.fillRect(x, y - fm.getHeight() + (fm.getHeight() / 4), totalWidth, fm.getHeight() );
+            g.setColor(new Color(243, 156, 18));
+        } else {
+            g.setColor(new Color(231, 76, 60));
+        }
         g.drawString(currentSaveGameName, x, y);
 
         //text for the option of going back into the
         totalWidth = (fm.stringWidth("Back"));
         x = (width - totalWidth) / 2;
         y = (height / 2) + 150;
+        if(selection == 1) {
+            g.setColor(new Color(149, 165, 166, 175));
+            g.fillRect(x, y - fm.getHeight() + (fm.getHeight() / 4), totalWidth, fm.getHeight() );
+            g.setColor(new Color(243, 156, 18));
+        } else {
+            g.setColor(new Color(231, 76, 60));
+        }
         g.drawString("Back", x, y);
 
     }
+
+    public void up() {
+        selection = 0;
+    }
+
+    public void down() {
+        selection = 1;
+    }
+
+    public String getSelection() {
+        if(selection == 1) {
+            return "back";
+        } else {
+            return "naming";
+        }
+    }
+
+
 }

@@ -72,7 +72,9 @@ public class PauseState extends State {
         }
         if(e.getKeyCode() == KeyEvent.VK_DOWN) {
             pauseMenu.next();
-            System.out.println("Down P");
+        }
+        if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            switchState(States.Game);
         }
         if(e.getKeyCode() == 10) {
             switchState(pauseMenu.getSelection());
