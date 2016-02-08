@@ -51,6 +51,11 @@ public class Assets {
     public static BufferedImage chest;
     public static BufferedImage oneShot;
     public static BufferedImage damage;
+    public static BufferedImage diagonalLeft;
+    public static BufferedImage diagonalRightdown;
+    public static BufferedImage diagonalRightup;
+    public static BufferedImage diagonalLeftup;
+    public static BufferedImage diagonalLeftdown;
 
     public static BufferedImage title;
     public static BufferedImage background;
@@ -94,6 +99,9 @@ public class Assets {
         SpriteSheet chestforKeySheet = new SpriteSheet(new ImageLoader().loadImage("/textures/Chest.png"));
         SpriteSheet buttonSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/buttons.png"));
         SpriteSheet damageSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/damage.png"));
+        SpriteSheet avatarSheetRight = new SpriteSheet(new ImageLoader(). loadImage("/textures/DiagonalSpriteSheetRight.png"));
+        SpriteSheet avatarSheetLeft = new SpriteSheet(new ImageLoader(). loadImage("/textures/DiagonalSpriteSheetLeft.png"));
+
 
 
 
@@ -114,6 +122,10 @@ public class Assets {
         sack = sackSheet.crop(0,0,width,height);
         sword = swordSheet.crop(0,0,width,height);
         boots = bootsSheet.crop(0,0,width,height);
+        diagonalRightdown = avatarSheetRight.crop(0,0,width,height);
+        diagonalRightup = avatarSheetRight.crop(32,0,width,height);
+        diagonalLeftdown = avatarSheetLeft.crop(0,0,width,height);
+        diagonalLeftup = avatarSheetLeft.crop(32,0,width,height);
 
         //Water Tiles
         water.add(waterSheet.crop(0, 0, width, height));
@@ -179,7 +191,7 @@ public class Assets {
         key = keysheet.crop(0,0,width,height);
         chest = chestforKeySheet.crop(0,0,width,height);
         oneShot = oneShotSheet.crop(0,0,width,height);
-
         house = houseSheet.crop(0, 0, 32, 32);
+
     }
 }

@@ -48,6 +48,7 @@ Obstacle House ED
 2 0 null 0
 
 Comment: Interactable Items Follow
+8 4 TreasureChest BD Chest ED 3 0 null 0
 
 8 4 TreasureChest
 Chest ED
@@ -102,3 +103,4 @@ Comment: Pickupable Follows
 4 4 Key
 A key ED
 6 0 null 0
+
