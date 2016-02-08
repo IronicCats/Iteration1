@@ -1,6 +1,8 @@
-package Model.Item;
+package Model.Item.Takeable;
 
 import Model.Entity.Stats.Effect;
+import Model.Item.Item;
+import Model.Item.ItemsEnum;
 import Model.Location;
 import Model.Requirements;
 
@@ -10,7 +12,7 @@ import java.awt.image.BufferedImage;
  * Created by Wimberley on 2/3/16.
  */
 
-public abstract class Takeable extends Item{
+public abstract class Takeable extends Item {
 
     protected int stat;
 

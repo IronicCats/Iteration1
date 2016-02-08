@@ -1,10 +1,11 @@
 package Model.Item;
 
 import Model.Entity.Stats.Effect;
+import Model.Item.Takeable.Takeable;
 import Model.Location;
 
 import java.awt.image.BufferedImage;
-import Model.Entity.Player;
+
 import Model.Requirements;
 
 /**
