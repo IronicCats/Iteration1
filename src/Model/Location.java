@@ -59,7 +59,7 @@ public class Location {
 
     public String toString(){
         String locString;
-        locString = (this.x + "\n" + this.y + "\n");
+        locString = ((int)this.x/64 + "\n" + (int)this.y/64 + "\n");
         return locString;
     }
 }

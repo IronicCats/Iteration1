@@ -46,12 +46,10 @@ public class Assets {
     public static BufferedImage menucursor;
     public static BufferedImage chestArmor;
     public static BufferedImage helmet;
-<<<<<<< HEAD
     public static BufferedImage house;
     public static BufferedImage chest;
-=======
     public static BufferedImage oneShot;
->>>>>>> master
+
 
 
 
@@ -80,11 +78,9 @@ public class Assets {
         SpriteSheet menuCursorSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/MenuCursor.png"));
         SpriteSheet chestSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/ChestArmorSprite.png"));
         SpriteSheet helmetSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/Helmet.png"));
-<<<<<<< HEAD
         SpriteSheet chestforKeySheet = new SpriteSheet(new ImageLoader().loadImage("/textures/Chest.png"));
-=======
         SpriteSheet oneShotSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/OneShot.png"));
->>>>>>> master
+
 
 
         SpriteSheet buttonSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/buttons.png"));
@@ -162,10 +158,8 @@ public class Assets {
         menucursor = menuCursorSheet.crop(0,0,width,height);
         chestArmor = chestSheet.crop(0,0,width,height);
         helmet = helmetSheet.crop(0,0,width,height);
-<<<<<<< HEAD
         chest = chestforKeySheet.crop(0,0,width,height);
-=======
         oneShot = oneShotSheet.crop(0,0,width,height);
->>>>>>> master
+
     }
 }
