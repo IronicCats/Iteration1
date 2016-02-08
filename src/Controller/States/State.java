@@ -13,6 +13,7 @@ import View.View;
 public abstract class State implements KeyListener {
 
     private static State state = null;
+    private static States previousState;
 
     public static void setState(State thisState) {
         View.view.removeKeyListener(state);
@@ -41,5 +42,7 @@ public abstract class State implements KeyListener {
 
     public abstract void render(Graphics g);
 
+    public static void setPreviousState(States s){ previousState = s;};
 
+    public States getPreviousState(){return previousState;};
 }

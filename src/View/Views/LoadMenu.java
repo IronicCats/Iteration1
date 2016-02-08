@@ -93,14 +93,6 @@ public class LoadMenu {
         }
     }
 
-    public void setPreviousState(States s)
-    {
-        previousState = s;
-    }
-    public States getPreviousState()
-    {
-        return previousState;
-    }
 
     public boolean checkSelectionStatus()
     {
@@ -113,6 +105,7 @@ public class LoadMenu {
            return false;
        }
     }
+
     public String getSelectionString()
     {
         return fileNames[currentItem];
