@@ -72,7 +72,7 @@ public class Nav {
             if (Obstaclecheck) {
                 goalX = location.getPixelX() - Tile.TILEWIDTH;
             }
-        }/*
+        }
         else if(direction == 4){
             if(controller.getTiles((location.getX() + 1),(location.getY() - 1)).isUnWalkable){
                 Obstaclecheck = false;
@@ -86,7 +86,7 @@ public class Nav {
             }
         }
         else if(direction == 5){
-            if(controller.getTiles((location.getX() + Tile.TILEWIDTH),(location.getY() + Tile.TILEHEIGHT)).isUnWalkable){
+            if(controller.getTiles((location.getX() + 1),(location.getY() + 1)).isUnWalkable){
                 Obstaclecheck = false;
             }
             else if(location.getPixelY() == (controller.getMap().getHeight() * Tile.TILEHEIGHT)/2 - Tile.TILEHEIGHT || location.getPixelX() + Tile.TILEWIDTH == (controller.getMap().getWidth() * Tile.TILEWIDTH)/2){
@@ -98,7 +98,7 @@ public class Nav {
             }
         }
         else if(direction == 6){
-            if(controller.getTiles((location.getX() - Tile.TILEWIDTH),(location.getY() + Tile.TILEHEIGHT)).isUnWalkable){
+            if(controller.getTiles((location.getX() - 1),(location.getY() + 1)).isUnWalkable){
                 Obstaclecheck = false;
             }
             else if(location.getPixelY() == (controller.getMap().getHeight() * Tile.TILEHEIGHT)/2 - Tile.TILEHEIGHT || location.getX() - Tile.TILEWIDTH == -Tile.TILEWIDTH){
@@ -121,7 +121,7 @@ public class Nav {
                 goalY = location.getPixelY() - Tile.TILEHEIGHT;
             }
         }
-        */
+
     }
 
     public void move() {
