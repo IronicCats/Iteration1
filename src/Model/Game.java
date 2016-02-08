@@ -57,6 +57,7 @@ public class Game implements Runnable {
         saveState = new SaveState(controller, width, height);
 
         State.setInitialState(menuState);
+        InventoryList.init();
 
     }
 
