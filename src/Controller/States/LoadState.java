@@ -7,7 +7,16 @@ import java.io.*;
 import java.util.ArrayList;
 
 import Controller.Controller;
+import Model.Entity.Inventory.Inventory;
+import Model.Entity.Inventory.Pack;
+import Model.Entity.Occupation.Occupation;
+import Model.Entity.Occupation.Smasher;
+import Model.Entity.Occupation.Summoner;
 import Model.Entity.Player;
+import Model.Entity.Stats.Stats;
+import Model.Location;
+import Model.Map.Map;
+import View.Graphics.Camera;
 import View.Views.LoadMenu;
 
 /**
@@ -17,8 +26,18 @@ public class LoadState extends State {
     public LoadMenu loadMenu;
     public static LoadState load;
 
-    static int count = 0;
-    static ArrayList<Object> loadedfile = new ArrayList<Object>();
+    //Charcter Variables
+    private Pack pack;
+    private Inventory inventory;
+    private Occupation occupation;
+    private Stats stats;
+    private Player player;
+
+    //Map/Camera Variabes
+    private Map map;
+    private Camera camera;
+
+    private ArrayList<Object> loadedfile = new ArrayList<Object>();
    //private  static Player player;
 
 
@@ -26,6 +45,11 @@ public class LoadState extends State {
         super(controller);
         load = this;
         loadMenu = new LoadMenu(width,height);
+
+        // Create Player
+        inventory = new Inventory(controller);
+        map = new Map(controller);
+        camera = new Camera(controller.getGame().getWidth(), controller.getGame().getHeight(),map);
     }
 
     public void tick() {
@@ -36,18 +60,15 @@ public class LoadState extends State {
         loadMenu.render(g);
     }
 
+    public void loadFile(String filepath) {
 
-    public static void loadFile(Player player,String filepath) {
         File inputFile;
         BufferedReader inputReader;
-
 
         try {
             inputFile = new File(filepath);
             inputReader = new BufferedReader(new FileReader(inputFile));
             String s = inputFile.toString();
-
-
 
             //TEST//
             LineNumberReader lnr = new LineNumberReader(new FileReader(filepath));
@@ -59,11 +80,7 @@ public class LoadState extends State {
 
             for(int i = 0; i <= lineNum-1; i++)
             {
-
-
-
                 if(i <= 23) {
-
                     loadedfile.add(Integer.parseInt(inputReader.readLine()));
                     //System.out.println("hey before");
                    // System.out.println(loadedfile.get(i).toString() + " "+ i);
@@ -80,15 +97,13 @@ public class LoadState extends State {
             }
 
             int a = 0;
-           player.loadPlayer(loadedfile,a);//TEMPORARY COMMENT, NEEDED
-
-
+            controller.getPlayer().loadPlayer(loadedfile,a);//TEMPORARY COMMENT, NEEDED
+            loadedfile = new ArrayList<>();
             inputReader.close();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     @Override
@@ -117,12 +132,36 @@ public class LoadState extends State {
                     setState(PauseState.pause);
                 }
             }
-            else
-            {
+            else {
                 System.out.println(loadMenu.getSelectionString());
-                //later when load method is actually done call load.loadFile(player,loadMenu.getSelection)
+                loadGame();
             }
         }
+    }
+
+    private void loadGame() {
+        // Create new dummy versions of everything.
+        occupation = new Summoner();
+        stats = new Stats(occupation.getInitialStats(),controller);
+
+        player = new Player(controller, new Location(0,0,0), inventory, occupation, stats);
+
+        //Controller updates
+        controller.setPlayer(player);
+        controller.setMap(map);
+        controller.setCamera(camera);
+
+        System.out.println("Trying to load game.");
+        loadFile(getLoadFilePath(loadMenu.getSelectionString()));
+        System.out.println("Game Loaded.");
+
+        //later when load method is actually done call load.loadFile(player,loadMenu.getSelection)
+        GameState.game.init();
+        State.setState(GameState.game);
+    }
+
+    public String getLoadFilePath(String saveFileName) {
+        return (System.getProperty("user.dir") + File.separatorChar + "res" + File.separatorChar + "saveFiles" + File.separatorChar + saveFileName);
     }
 
     @Override

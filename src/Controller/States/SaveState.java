@@ -12,25 +12,23 @@ import java.util.Objects;
 
 import Controller.Controller;
 import Model.Entity.Player;
-import View.Views.MainMenu;
 import View.Views.SaveScreen;
 
 public class SaveState extends State {
     public SaveScreen saveScreen;
     public static SaveState save;
 
-    static ArrayList<Object> savefile = new ArrayList<Object>();
-    static BufferedWriter outputWriter;
-    private Player player;
+    private ArrayList<Object> saveFile;
+    private BufferedWriter outputWriter;
     private StringBuilder saveGameName = new StringBuilder();
 
     public SaveState(Controller controller, int width, int height) {
         super(controller);
         save = this;
         saveScreen = new SaveScreen(width, height);
-        player = controller.getPlayer();
         saveGameName.append("gameName");
         saveScreen.setCurrentSaveGameName(saveGameName.toString());
+        this.saveFile = new ArrayList<Object>();
         //INITALIZE CANVAS TO HAVE BUTTONS init();
     }
 
@@ -43,28 +41,28 @@ public class SaveState extends State {
     }
 
 
-    public static void writeFile(Player player, String filepath) {
+    public void writeFile(Player player, String filepath) {
         File outputFile;
         //BufferedWriter outputWriter;
 
         try {
             outputFile = new File(filepath);
-            outputWriter = new BufferedWriter(new FileWriter(outputFile));
+            outputWriter = new BufferedWriter(new FileWriter(outputFile, false));
 
             //okay so now it should call the Player's save method
             
-            player.savePlayer(savefile);
+            player.savePlayer(saveFile);
             //then Location object
             //then Stats object
             //then pack, pack should save individual items
             //then equipment
             //also current map status??
-            for (int i = 0; i < savefile.size(); i++) {
-                outputWriter.write(Objects.toString(savefile.get(i)));
+            for (int i = 0; i < saveFile.size(); i++) {
+                outputWriter.write(Objects.toString(saveFile.get(i)));
             }
             outputWriter.close();
             //so I need a Tostring for Location, a ToString for Stats, a toString for pack(maybe individually for items), and to string for equipment
-            //outputWriter.write(Objects.toString(savefile));
+            //outputWriter.write(Objects.toString(saveFile));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -92,8 +90,8 @@ public class SaveState extends State {
             saveScreen.setCurrentSaveGameName(saveGameName.toString());
         }
         else if(e.getKeyCode() == KeyEvent.VK_ENTER) {
-            System.out.println("Saving Game...");
-            writeFile(player, getSaveFilePath(saveGameName.toString()));
+            System.out.println("Saving game to '" + getSaveFilePath(saveGameName.toString()));
+            writeFile(controller.getPlayer(), getSaveFilePath(saveGameName.toString()));
             System.out.println("Saving Done.");
             State.setState(GameState.game);
         }
