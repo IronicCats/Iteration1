@@ -1,6 +1,7 @@
 package View.Views;
 
 import Controller.States.States;
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader;
 
 import java.awt.*;
 import java.io.File;
@@ -14,13 +15,13 @@ import java.util.ArrayList;
 public class LoadMenu {
 
     int width, height;
-    private int currentItem = 0;
-    int numberOfSaveFilesToDisplay = 3;
-    String [] fileNames;
+    private int currentItem;
     ArrayList<String> menuOptions = new ArrayList<>();
+    int numberOfMenuOptions;
 
     public LoadMenu(int width, int height)
     {
+        this.currentItem = 0;
         this.width = width;
         this.height = height;
     }
@@ -40,19 +41,9 @@ public class LoadMenu {
         int y = (height / 2) - 150;
         g.drawString("Pick a game to load", x, y);
 
-        //list all possible games
-        fileNames = new File("res/saveFiles").list(new FilenameFilter() {
-            @Override
-            public boolean accept(File dir, String name) {
-                return name.endsWith(".sav");
-            }
-        });
 
-        for(int i = 0; i < ((fileNames.length > numberOfSaveFilesToDisplay)? numberOfSaveFilesToDisplay : fileNames.length); ++i) {
-            menuOptions.add(fileNames[i]);
-        }
-        menuOptions.add("Back");
-        
+        numberOfMenuOptions = menuOptions.size();
+
         for(int i = 0; i < menuOptions.size(); ++i) {
             g.setFont(new Font("Arial", Font.PLAIN, 28));
             FontMetrics fm2 = g.getFontMetrics();
@@ -74,37 +65,30 @@ public class LoadMenu {
 
     }
 
-    public void next()
+    public void up()
     {
-        ++currentItem;
-        if(currentItem > fileNames.length){
-            currentItem = 0;
+        if((currentItem - 1) >= 0) {
+            currentItem--;
         }
     }
 
-    public void previous()
+    public void down()
     {
-        --currentItem;
-        if(currentItem < 0){
-            currentItem = fileNames.length - 1;
+        if((currentItem + 1) < numberOfMenuOptions) {
+            currentItem++;
         }
     }
 
 
-    public boolean checkSelectionStatus()
-    {
-       if(menuOptions.get(currentItem) == "Back")
-       {
-           return true;
-       }
-        else
-       {
-           return false;
-       }
+    public boolean checkSelectionStatus() {
+       return (menuOptions.get(currentItem).equals("Back"));
     }
 
-    public String getSelectionString()
-    {
+    public void setMenuOptions(ArrayList<String> op) {
+        menuOptions = op;
+    }
+
+    public String getSelectionString() {
         return menuOptions.get(currentItem);
     }
 
