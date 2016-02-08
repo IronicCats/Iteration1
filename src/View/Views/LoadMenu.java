@@ -93,7 +93,7 @@ public class LoadMenu {
 
     public boolean checkSelectionStatus()
     {
-       if(fileNames[currentItem] == "Back")
+       if(menuOptions.get(currentItem) == "Back")
        {
            return true;
        }
@@ -105,7 +105,7 @@ public class LoadMenu {
 
     public String getSelectionString()
     {
-        return fileNames[currentItem];
+        return menuOptions.get(currentItem);
     }
 
 }
