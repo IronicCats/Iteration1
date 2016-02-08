@@ -140,8 +140,8 @@ public class Assets {
         potion = potionSheet.crop(0,0,width,height);
         sack = sackSheet.crop(0,0,width,height);
         skullAndBones = skullAndBonesSheet.crop(0, 0, 28, 28);
-        redCross = crossSheet.crop(0, 0, 28, 28);
-        goldStar = starSheet.crop(0, 0, 28, 28);
+        redCross = crossSheet.crop(0, 0, 32, 32);
+        goldStar = starSheet.crop(0, 0, 32, 32);
         emptyInv = emptyInvSheet.crop(0,0,width,height);
         emptyInvSelect =selectInvSheet.crop(0,0,width,height);
         pants = pantsSheet.crop(0,0,width,height);
