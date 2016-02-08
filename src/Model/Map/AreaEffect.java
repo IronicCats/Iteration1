@@ -33,25 +33,25 @@ public class AreaEffect {
        {
            StatStructure modification = new StatStructure(StatsEnum.LIFE, -5);
            effect = new Effect(modification,0, this.description);
-           decal = new Decal(Assets.skullAndBones,"Damage point", "You get damaged", this.location, DecalEnum.SKULLANDCROSSBONES);
+           decal = new Decal(Assets.skullAndBones, this.location, DecalEnum.SKULLANDCROSSBONES);
        }
        else if(areaEffect == AreaEffectEnum.HEAL)// if its healing area effect
        {
            StatStructure modification = new StatStructure(StatsEnum.LIFE, 5);
            effect = new Effect(modification,0, this.description);
-           decal = new Decal(Assets.redCross,"Healing point", "You get health", this.location, DecalEnum.REDCROSS);
+           decal = new Decal(Assets.redCross, this.location, DecalEnum.REDCROSS);
        }
        else if(areaEffect == AreaEffectEnum.DEATH)// if its a death effect
        {
            StatStructure modification = new StatStructure(StatsEnum.LIVES_LEFT, -1);
            effect = new Effect(modification,0, this.description);
-           decal = new Decal(Assets.skullAndBones,"Death point", "Die", this.location, DecalEnum.SKULLANDCROSSBONES);
+           decal = new Decal(Assets.skullAndBones, this.location, DecalEnum.SKULLANDCROSSBONES);
        }
        else if(areaEffect == AreaEffectEnum.LEVELUP)// if its healing area effect
        {
            StatStructure modification = new StatStructure(StatsEnum.LEVEL, 1);
            effect = new Effect(modification,0, this.description);
-           decal = new Decal(Assets.goldStar,"Level Up", "You get another level", this.location, DecalEnum.GOLDSTAR);
+           decal = new Decal(Assets.goldStar, this.location, DecalEnum.GOLDSTAR);
        }
     }
 

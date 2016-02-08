@@ -29,8 +29,9 @@ public class Map {
     private Controller controller;
     private PopulateItems populateItems;
     private Item[] items;
-    private AreaEffect[] areaEffects;
     private Location spawn;
+    private AreaEffect[] areaEffects;
+    private Location[] areaEffectLocation;
 
     public Map(Controller controller) {
         //System.out.println(items[0].getLocation().getY());
@@ -162,16 +163,40 @@ public class Map {
             }
         }
 
+        AreaEffect one = new AreaEffect("Damaged", "You lose health", AreaEffectEnum.DAMAGE);
+        this.getTile(5, 10).addAreaEffect(one);
 
-        //putting area effects on the map
-        if(areaEffects.length == 0)
-        {
+        AreaEffect two = new AreaEffect("Healed", "You gain health", AreaEffectEnum.HEAL);
+        this.getTile(9, 6).addAreaEffect(two);
 
-        }
-        else
+        AreaEffect three = new AreaEffect("Death", "You die", AreaEffectEnum.DEATH);
+        this.getTile(3, 5).addAreaEffect(three);
+
+        AreaEffect four =  new AreaEffect("Level Up", "You get a level", AreaEffectEnum.LEVELUP);
+        this.getTile(12, 2).addAreaEffect(four);
+
+        /**
+        areaEffects[0] = new AreaEffect("Damaged", "You lose health", AreaEffectEnum.DAMAGE);
+        areaEffects[1] = new AreaEffect("Healed", "You gain health", AreaEffectEnum.HEAL);
+        areaEffects[2] = new AreaEffect("Death", "You die", AreaEffectEnum.DEATH);
+        areaEffects[3] = new AreaEffect("Level Up", "You get a level", AreaEffectEnum.LEVELUP);
+        areaEffects[4] = new AreaEffect("Damaged", "You lose health", AreaEffectEnum.DAMAGE);
+        areaEffects[5] = new AreaEffect("Healed", "You gain health", AreaEffectEnum.HEAL);
+        areaEffects[6] = new AreaEffect("Death", "You die", AreaEffectEnum.DEATH);
+
+        for(int j = 0; j < areaEffects.length; ++j)
         {
-            
+            areaEffectLocation[j] = new Location(j, 2 * j + 1, 0);
         }
+
+
+        for(int i = 0; i < areaEffects.length; ++i)
+        {
+            this.getTile(areaEffectLocation[i].getX(), areaEffectLocation[i].getY() * 2).addAreaEffect(areaEffects[i]);
+        }
+         **/
+
+
     }
 
     private int parseInt(String string) {
