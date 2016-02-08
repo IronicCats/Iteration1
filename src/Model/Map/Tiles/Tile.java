@@ -51,23 +51,31 @@ public abstract class Tile {
     }
 
     public void render(Graphics g,int x, int y) {
-
-        if(items.size() == 0) {
-            g.drawImage(texture, x, y, TILEWIDTH, TILEHEIGHT, null); //TILEWIDTH and TILEHEIGHT
+        renderTile(g, x, y, TILEWIDTH, TILEHEIGHT);
+        if(items.size() > 0) {
+            renderItem(g, x, y, TILEWIDTH, TILEHEIGHT,Item.ITEMWIDTH, Item.ITEMHEIGHT);
         }
-        else if(items.size() == 1) {
-            g.drawImage(texture, x, y, TILEWIDTH, TILEHEIGHT, null); //TILEWIDTH and TILEHEIGHT
-            items.get(0).render(g, x, y);
+        if(HasAreaEffect) {
+            renderAreaAffect(g, x, y, TILEWIDTH, TILEHEIGHT, tileAreaEffect.getDecal().getWidth(), tileAreaEffect.getDecal().getHeight());
+        }
+
+    }
+
+    public void renderTile(Graphics g, int xLocation, int yLocation, int tileWidth, int tileHeight) {
+        g.drawImage(texture, xLocation, yLocation, tileWidth, tileHeight, null); //TILEWIDTH and TILEHEIGHT
+    }
+
+    public void renderAreaAffect(Graphics g, int xLocation, int yLocation, int tileWidth, int tileHeight, int decalWidth, int decalHeight) {
+        tileAreaEffect.render(g, xLocation, yLocation,tileWidth, tileHeight, decalWidth, decalHeight);
+    }
+
+    public void renderItem(Graphics g, int xLocation, int yLocation, int tileWidth, int tileHeight, int itemWidth, int itemHeight) {
+        if(items.size() == 1) {
+            items.get(0).render(g, xLocation, yLocation);
         }
         else {
-            g.drawImage(texture, x, y, TILEWIDTH, TILEHEIGHT, null);
-            g.drawImage(Assets.sack, x + Tile.TILEWIDTH/2 - Item.ITEMWIDTH/2 , y + Tile.TILEHEIGHT/2 - Item.ITEMHEIGHT/2, Item.ITEMWIDTH, Item.ITEMHEIGHT, null);
+            g.drawImage(Assets.sack, xLocation + tileWidth/2 - itemWidth/2 , yLocation + tileHeight/2 - itemHeight/2, itemWidth, itemHeight, null);
         }
-
-        if (HasAreaEffect) {
-            tileAreaEffect.render(g,x,y);
-        }
-
     }
 
     public void addPlayer(Player player){
