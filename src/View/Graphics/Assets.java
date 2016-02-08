@@ -59,6 +59,10 @@ public class Assets {
         SpriteSheet waterSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/WaterTile.png"));
 
 
+        SpriteSheet houseSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/house.png"));
+
+
+
         SpriteSheet avatarSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/CharSpriteSheet.png"));
         SpriteSheet potionSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/PotionSprite.png"));
         SpriteSheet skullAndBonesSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/Skull.png"));
@@ -161,5 +165,6 @@ public class Assets {
         chest = chestforKeySheet.crop(0,0,width,height);
         oneShot = oneShotSheet.crop(0,0,width,height);
 
+        house = houseSheet.crop(0, 0, 32, 32);
     }
 }
