@@ -51,6 +51,7 @@ public class Assets {
     public static BufferedImage oneShot;
 
 
+
     public static void init() {
         SpriteSheet grassSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/GrassTiles.png"));
         SpriteSheet mountainSheet = new SpriteSheet(new ImageLoader().loadImage("/textures/MountainTile.png"));
@@ -154,5 +155,6 @@ public class Assets {
         helmet = helmetSheet.crop(0,0,width,height);
         chest = chestforKeySheet.crop(0,0,width,height);
         oneShot = oneShotSheet.crop(0,0,width,height);
+
     }
 }

@@ -43,7 +43,8 @@ public class Inventory {
     public void saveInventory(ArrayList<Object> saveFile){
         saveFile.add(Integer.toString(pack.getSize())+"\n");
         saveFile.add(pack);
-        //saveFile.add(equipment); //fixme
+
+        saveFile.add(equipment); //fixme
 
     }
 
@@ -172,6 +173,7 @@ public class Inventory {
             System.out.println("This was a an armor");
             equipment.getArmor().equipArmor((Armor)pack.items[i]);
             pack.items[i]=null;
+            pack.size--;
 
             //System.out.println("this was a armor");
         }

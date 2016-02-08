@@ -49,10 +49,10 @@ public class Pack {
             System.out.println(position);
             if(items[position] == null)
             {
-                System.out.println(position + " out loop");
+                //System.out.println(position + " out loop");
                 while(items[position] == null)
                 {
-                    System.out.println(position + " in loop");
+                    //System.out.println(position + " in loop");
                     position++;
                 }
             }

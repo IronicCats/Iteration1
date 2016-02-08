@@ -2,6 +2,7 @@ package Model.Entity.Inventory.Equipment;
 
 import Model.Entity.EquipmentStats;
 import Model.Item.Equippable;
+import Model.Item.Weapon;
 import View.Graphics.Assets;
 
 import java.awt.*;
@@ -50,17 +51,24 @@ public class Equipment {
 
     public String toString()
     {
-        String s = null;
+        String s = "";
         if(getWeapon().isEquipped())
         {
-            s = s + getWeapon().toString();
+            s = s + weapon.toString();
         }
-        s = s + armor.getHead().toString();
-        s = s + armor.getChest().toString();
-        s = s + armor.getPants().toString();
+        if(armor.getHead() != null)
+         s = s + armor.getHead().toString();
+        if(armor.getChest() != null)
+            s = s + armor.getChest().toString();
+        if(armor.getHead() != null)
+            s = s + armor.getPants().toString();
+        if(armor.getBoots() != null)
         s = s + armor.getBoots().toString();
+        if(armor.getGloves() != null)
         s = s + armor.getGloves().toString();
+        if(armor.getAccessory1() != null)
         s = s + armor.getAccessory1().toString();
+        if(armor.getAccessory2() != null)
         s = s + armor.getAccessory2().toString();
         return s;
     }
