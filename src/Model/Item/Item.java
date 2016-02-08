@@ -67,7 +67,12 @@ public abstract class Item {
     public abstract void onInteract(Player player); // OneShot, useable
 
     public void render(Graphics g,int x, int y) { // render image of item
-        g.drawImage(image, x + Tile.TILEWIDTH/2 - ITEMWIDTH/2 , y + Tile.TILEHEIGHT/2 - ITEMHEIGHT/2, ITEMWIDTH, ITEMHEIGHT, null);
+        if(this.getType() == ItemsEnum.INTERACTABLE || this.getType() == ItemsEnum.OBSTACLE){
+            g.drawImage(image, x + Tile.TILEWIDTH/2 - ITEMWIDTH , y + Tile.TILEHEIGHT/2 - ITEMHEIGHT, ITEMWIDTH * 2, ITEMHEIGHT * 2, null);
+        }else {
+            g.drawImage(image, x + Tile.TILEWIDTH/2 - ITEMWIDTH/2 , y + Tile.TILEHEIGHT/2 - ITEMHEIGHT/2, ITEMWIDTH, ITEMHEIGHT, null);
+        }
+
     }
 
     public abstract String toString();
