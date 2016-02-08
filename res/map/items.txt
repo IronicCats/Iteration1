@@ -14,4 +14,5 @@ Comment: 4 = Armor, 5 = Weapon
 1 1 Boots BD +5 defense ED 4 5 null 0
 1 1 Boots BD +5 defense ED 4 5 null 0
 10 10 House BD Obstacle ED 2 0 null 0
+8 4 TreasureChest BD Chest ED 1 0 null 0
 
