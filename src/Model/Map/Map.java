@@ -30,6 +30,8 @@ public class Map {
     private PopulateItems populateItems;
     private Item[] items;
     private Location spawn;
+    private AreaEffect[] areaEffects;
+    private Location[] areaEffectLocation;
     private int spawnX;
     private int spawnY;
 
@@ -163,6 +165,40 @@ public class Map {
                 }
             }
         }
+
+        AreaEffect one = new AreaEffect("Damaged", "You lose health", AreaEffectEnum.DAMAGE);
+        this.getTile(6, 10).addAreaEffect(one);
+
+        AreaEffect two = new AreaEffect("Healed", "You gain health", AreaEffectEnum.HEAL);
+        this.getTile(9, 6).addAreaEffect(two);
+
+        AreaEffect three = new AreaEffect("Death", "You die", AreaEffectEnum.DEATH);
+        this.getTile(3, 5).addAreaEffect(three);
+
+        AreaEffect four =  new AreaEffect("Level Up", "You get a level", AreaEffectEnum.LEVELUP);
+        this.getTile(12, 2).addAreaEffect(four);
+
+        /**
+        areaEffects[0] = new AreaEffect("Damaged", "You lose health", AreaEffectEnum.DAMAGE);
+        areaEffects[1] = new AreaEffect("Healed", "You gain health", AreaEffectEnum.HEAL);
+        areaEffects[2] = new AreaEffect("Death", "You die", AreaEffectEnum.DEATH);
+        areaEffects[3] = new AreaEffect("Level Up", "You get a level", AreaEffectEnum.LEVELUP);
+        areaEffects[4] = new AreaEffect("Damaged", "You lose health", AreaEffectEnum.DAMAGE);
+        areaEffects[5] = new AreaEffect("Healed", "You gain health", AreaEffectEnum.HEAL);
+        areaEffects[6] = new AreaEffect("Death", "You die", AreaEffectEnum.DEATH);
+
+        for(int j = 0; j < areaEffects.length; ++j)
+        {
+            areaEffectLocation[j] = new Location(j, 2 * j + 1, 0);
+        }
+
+
+        for(int i = 0; i < areaEffects.length; ++i)
+        {
+            this.getTile(areaEffectLocation[i].getX(), areaEffectLocation[i].getY() * 2).addAreaEffect(areaEffects[i]);
+        }
+         **/
+
 
     }
 

@@ -182,10 +182,6 @@ public class GameState extends State {
         camera = controller.getCamera();
         map = controller.getMap();
 
-        //Test Code
-        areaEffect = new AreaEffect("Damage", "Damage", AreaEffectEnum.DAMAGE); //Same with this one
-        map.getTile(2,6).addAreaEffect(areaEffect);
-        //End Test
 
         return;
     }
