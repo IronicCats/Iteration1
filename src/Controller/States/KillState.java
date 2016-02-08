@@ -15,7 +15,6 @@ public class KillState extends State implements KeyListener {
     public KillState(Controller controller, int width, int height) {
         super(controller);
         killMenu = new KillMenu(width, height);
-        System.out.println("Kill State");
         state = this;
     }
 
@@ -49,11 +48,9 @@ public class KillState extends State implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_UP) {
-            System.out.println("Up");
             killMenu.previous();
         }
         if(e.getKeyCode() == KeyEvent.VK_DOWN) {
-            System.out.println("Down");
             killMenu.next();
         }
 

@@ -53,4 +53,8 @@ Comment: Weapons Follow
 Comment: Weapons Follow
 
 10 5 Sword BD +5 attack ED 5 5 null 3
+<<<<<<< HEAD
+>>>>>>> master
+=======
+
 >>>>>>> master
